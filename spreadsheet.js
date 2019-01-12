@@ -82,9 +82,13 @@ function listMajors(auth) {
     if (rows.length) {
       console.log('Name, Rank:');
       // Print columns A and E, which correspond to indices 0 and 4.
+      var stream = fs.createWriteStream("current_list.txt");
+
       rows.map((row) => {
+        stream.write(`${row[0]}, ${row[1]}\n`);
         console.log(`${row[0]}, ${row[1]}`);
       });
+      stream.end();
     } else {
       console.log('No data found.');
     }

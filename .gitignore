@@ -7,3 +7,8 @@
 #google
 credentials.json
 token.json
+
+#spreadsheets
+current_list.txt
+stored_list.txt
+announce_queue.txt

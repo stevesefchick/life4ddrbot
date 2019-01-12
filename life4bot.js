@@ -10,7 +10,6 @@
 //add express calls
 
 var twit = require('twit');
-var spreadsheet = require('./spreadsheet.js');
 require('dotenv').config();
 
 
@@ -26,6 +25,11 @@ app.listen(port, () => console.log(`Listening on port ${port}!`));
 //add init from spreadsheet
 
 //add get from spreadsheet
+var getSpreadsheet = function()
+{
+    var spreadsheet = require('./spreadsheet.js');
+
+}
 
 //check file to spreadsheet
 
@@ -33,6 +37,9 @@ app.listen(port, () => console.log(`Listening on port ${port}!`));
 var life4actionTime = function()
 {
     console.log('App is running!!!');
+
+    console.log('Retrieving spreadsheet...');
+    getSpreadsheet();
 }
 
 //tweet init
