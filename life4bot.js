@@ -9,10 +9,10 @@
 
 //add express calls
 
-//add dotenv
-
-
 var twit = require('twit');
+var spreadsheet = require('./spreadsheet.js');
+require('dotenv').config();
+
 
 const express = require('express');
 const app = express();
