@@ -32,7 +32,7 @@ app.listen(port, () => console.log(`Listening on port ${port}!`));
 //check for needed activity
 var life4actionTime = function()
 {
-    console.log('App is running!');
+    console.log('App is running!!!');
 }
 
 //tweet init
