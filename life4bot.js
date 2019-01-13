@@ -9,8 +9,10 @@
 
 //add express calls
 
+const fs = require('fs');
 var twit = require('twit');
 require('dotenv').config();
+var Promise = require('promise');
 
 
 const express = require('express');
@@ -18,11 +20,6 @@ const app = express();
 const port = process.env.PORT;
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
-
-
-//add plugin for spreadsheet
-
-//add init from spreadsheet
 
 //add get from spreadsheet
 var getSpreadsheet = function()
@@ -32,20 +29,37 @@ var getSpreadsheet = function()
 }
 
 //check file to spreadsheet
+var compareLists = function()
+{
+
+}
+
 
 //check for needed activity
 var life4actionTime = function()
 {
-    console.log('App is running!!!');
 
-    console.log('Retrieving spreadsheet...');
-    getSpreadsheet();
+    return getSpreadsheet()
+    .then(initPlayerList);
+    //console.log('App is running!!!');
+
+    //getSpreadsheet();
+
+
+    //getSpreadsheet();
+
+    //only enable during debug
+    //initPlayerList();
 }
 
-//tweet init
+//run this for init...only debug!
 var initPlayerList = function()
 {
-
+    var fs = require('fs');
+    fs.copyFile('current_list.txt', 'stored_list.txt', (err) => {
+        if (err) throw err;
+        console.log('list was copied!');
+      });
 }
 
 //tweet new
