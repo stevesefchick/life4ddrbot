@@ -1,19 +1,33 @@
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
+require('dotenv').config();
 
-// If modifying these scopes, delete token.json.
+
+
+
+
+
+
+//mysql
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host     : process.env.MYSQLHOST,
+  user     : process.env.MYSQLUSER,
+  password : process.env.MYSQLPW,
+  database : process.env.MYSQLPLAYERDB
+});
+
+
+
+
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
-// The file token.json stores the user's access and refresh tokens, and is
-// created automatically when the authorization flow completes for the first
-// time.
 const TOKEN_PATH = 'token.json';
 
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
-  // Authorize a client with credentials, then call the Google Sheets API.
-  authorize(JSON.parse(content), listMajors);
+  authorize(JSON.parse(content), getFromSpreadsheet);
 });
 
 /**
@@ -66,12 +80,12 @@ function getNewToken(oAuth2Client, callback) {
   });
 }
 
-/**
- * Prints the names and majors of students in a sample spreadsheet:
- * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
- */
-function listMajors(auth) {
+
+
+
+
+
+function getFromSpreadsheet(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1FPiO1h9XDSeTB6tWmRi7ursSqFOBYitiVweu3eOQ8tg',
@@ -79,16 +93,29 @@ function listMajors(auth) {
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
+
+
+
     if (rows.length) {
+      connection.connect();
       console.log('Name, Rank:');
-      // Print columns A and E, which correspond to indices 0 and 4.
-      var stream = fs.createWriteStream("current_list.txt");
+
+
 
       rows.map((row) => {
-        stream.write(`${row[0]}, ${row[1]}\n`);
-        console.log(`${row[0]}, ${row[1]}`);
+        var playerName = `${row[0]}`;
+        var playerquery = "SELECT playerName from playerList WHERE playerName = '"+playerName+"'";
+
+        connection.query(playerquery, function (error, results) {
+          if (error) throw error;
+          console.log(results[0]);
+          console.log(`${row[0]}, ${row[1]}`);
+
+        });
+
       });
-      stream.end();
+      connection.end();
+
     } else {
       console.log('No data found.');
     }

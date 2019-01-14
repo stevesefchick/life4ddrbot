@@ -31,7 +31,10 @@ var getSpreadsheet = function()
 //check file to spreadsheet
 var compareLists = function()
 {
-
+    var stored_list = fs.readFileSync('stored_list.txt').toString().split("\n");
+    for (i in stored_list){
+        console.log(stored_list[i]);
+    }
 }
 
 
@@ -39,14 +42,12 @@ var compareLists = function()
 var life4actionTime = function()
 {
 
-    return getSpreadsheet()
-    .then(initPlayerList);
-    //console.log('App is running!!!');
+    console.log('App is running!!!');
 
-    //getSpreadsheet();
+    //compareLists();
 
+    getSpreadsheet();
 
-    //getSpreadsheet();
 
     //only enable during debug
     //initPlayerList();
