@@ -97,18 +97,43 @@ function getFromSpreadsheet(auth) {
 
 
     if (rows.length) {
-      connection.connect();
+
+      //connect to db
+      connection.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected to MySQL!");
+      });
+
+
       console.log('Name, Rank:');
 
 
 
       rows.map((row) => {
+
+
+        
         var playerName = `${row[0]}`;
-        var playerquery = "SELECT playerName from playerList WHERE playerName = '"+playerName+"'";
+        var playerRank = `${row[1]}`;
+        var playerquery = "SELECT playerName, playerRank from playerList WHERE playerName = '" + playerName + "'";
+        var insertplayerquery = "INSERT INTO playerList (playerName, playerRank) VALUES ('" + playerName + "','" + playerRank + "')";
 
         connection.query(playerquery, function (error, results) {
           if (error) throw error;
-          console.log(results[0]);
+          if (results && results.length)
+          {
+            console.log("Player " + playerName +" exists!");
+            console.log(results);
+          }
+          else
+          {
+            console.log("Player " + playerName + " does not exist!");
+            connection.query(insertplayerquery, function (ierror,iresults) {
+              if (ierror) throw ierror;
+              console.log("Player " + playerName + "created!");
+            })
+            //console.log(insertplayerquery);
+          }
           console.log(`${row[0]}, ${row[1]}`);
 
         });

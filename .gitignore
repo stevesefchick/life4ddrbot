@@ -12,3 +12,6 @@ token.json
 current_list.txt
 stored_list.txt
 announce_queue.txt
+
+#workspace
+life4workspace.code-workspace

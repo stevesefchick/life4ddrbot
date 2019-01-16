@@ -11,9 +11,10 @@
 
 const fs = require('fs');
 var twit = require('twit');
-require('dotenv').config();
-var Promise = require('promise');
+var config = require('./config.js');
+var Twitter = new twit(config);
 
+require('dotenv').config();
 
 const express = require('express');
 const app = express();
@@ -25,7 +26,6 @@ app.listen(port, () => console.log(`Listening on port ${port}!`));
 var getSpreadsheet = function()
 {
     var spreadsheet = require('./spreadsheet.js');
-
 }
 
 //check file to spreadsheet
@@ -48,25 +48,19 @@ var life4actionTime = function()
 
     getSpreadsheet();
 
+    //tweetNewPlayer();
 
     //only enable during debug
     //initPlayerList();
 }
 
-//run this for init...only debug!
-var initPlayerList = function()
-{
-    var fs = require('fs');
-    fs.copyFile('current_list.txt', 'stored_list.txt', (err) => {
-        if (err) throw err;
-        console.log('list was copied!');
-      });
-}
-
 //tweet new
 var tweetNewPlayer = function()
 {
-
+    //var post = "test tweet!";
+    //Twitter.post('statuses/update', {status: post}, function(err, data, response) {
+    //    console.log(data)
+    //})
 }
 
 //tweet rank up
