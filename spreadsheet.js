@@ -20,7 +20,6 @@ var connection = mysql.createConnection({
 
 
 
-
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
 
@@ -99,10 +98,10 @@ function getFromSpreadsheet(auth) {
     if (rows.length) {
 
       //connect to db
-      connection.connect(function(err) {
-        if (err) throw err;
-        console.log("Connected to MySQL!");
-      });
+      //connection.connect(function(err) {
+      //  if (err) throw err;
+      //  console.log("Connected to MySQL!");
+      //});
 
 
       console.log('Name, Rank:');
@@ -128,10 +127,13 @@ function getFromSpreadsheet(auth) {
           else
           {
             console.log("Player " + playerName + " does not exist!");
+
             connection.query(insertplayerquery, function (ierror,iresults) {
-              if (ierror) throw ierror;
-              console.log("Player " + playerName + "created!");
-            })
+                if (ierror) throw ierror;
+                console.log("Player " + playerName + "created!")   
+            });
+
+
             //console.log(insertplayerquery);
           }
           console.log(`${row[0]}, ${row[1]}`);
@@ -139,10 +141,12 @@ function getFromSpreadsheet(auth) {
         });
 
       });
-      connection.end();
+      //connection.end();
 
     } else {
       console.log('No data found.');
     }
+
+    
   });
 }
