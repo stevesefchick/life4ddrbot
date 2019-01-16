@@ -4,6 +4,11 @@ const {google} = require('googleapis');
 require('dotenv').config();
 
 
+//twitter
+var twit = require('twit');
+var config = require('./config.js');
+var Twitter = new twit(config);
+
 
 
 
@@ -119,18 +124,49 @@ function getFromSpreadsheet(auth) {
 
         connection.query(playerquery, function (error, results) {
           if (error) throw error;
+          //player exists!
           if (results && results.length)
           {
             console.log("Player " + playerName +" exists!");
             console.log(results);
+
+            //check for rank-up
+            if (results[0].playerRank == playerRank)
+            {
+                //rank is the same!
+                console.log(playerName +"'s rank has not changed!");
+
+            }
+            else
+            {
+                //rank up!
+                console.log(playerName +"'s rank has changed! Was: " + playerRank + " | is now: " + results[0].playerRank);
+                var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "' where playerName = '" + playerName +"'";
+
+                connection.query(updateplayerquery, function (ierror,iresults) {
+                  if (ierror) throw ierror;
+                  console.log("Player " + playerName + " rank updated!");
+                  var post = playerName + " has earned a new rank! They are now " + playerRank +"!";
+                  Twitter.post('statuses/update', {status: post}, function(err, data, response) {
+                      console.log(data)
+                  })
+              });
+
+
+            }
           }
+          //player doesn't exist! Create a record and tweet it out!
           else
           {
             console.log("Player " + playerName + " does not exist!");
 
             connection.query(insertplayerquery, function (ierror,iresults) {
                 if (ierror) throw ierror;
-                console.log("Player " + playerName + "created!")   
+                console.log("Player " + playerName + " created!");
+                var post = playerName + " has joined Life4!";
+                Twitter.post('statuses/update', {status: post}, function(err, data, response) {
+                    console.log(data)
+                })
             });
 
 
