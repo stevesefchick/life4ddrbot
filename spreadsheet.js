@@ -93,7 +93,7 @@ function getFromSpreadsheet(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1FPiO1h9XDSeTB6tWmRi7ursSqFOBYitiVweu3eOQ8tg',
-    range: 'User List!A2:B',
+    range: 'User List!A2:E',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
@@ -119,8 +119,16 @@ function getFromSpreadsheet(auth) {
         
         var playerName = `${row[0]}`;
         var playerRank = `${row[1]}`;
+        var playerRivalCode = `${row[2]}`;
+        var playerTwitterHandle = `${row[3]}`;
+        var playerDateEarned = `${row[4]}`;
+
+
+
         var playerquery = "SELECT playerName, playerRank from playerList WHERE playerName = '" + playerName + "'";
-        var insertplayerquery = "INSERT INTO playerList (playerName, playerRank) VALUES ('" + playerName + "','" + playerRank + "')";
+        var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRivalCode + "','"+playerTwitterHandle+"','" + playerDateEarned + "')";
+
+        //console.log(insertplayerquery);
 
         connection.query(playerquery, function (error, results) {
           if (error) throw error;
@@ -141,12 +149,23 @@ function getFromSpreadsheet(auth) {
             {
                 //rank up!
                 console.log(playerName +"'s rank has changed! Was: " + playerRank + " | is now: " + results[0].playerRank);
-                var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "' where playerName = '" + playerName +"'";
+                var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "', playerRivalCode='"+playerRivalCode+"', twitterHandle='"+ playerTwitterHandle + "', playerDateEarned='" + playerDateEarned + "' where playerName = '" + playerName +"'";
+                console.log(updateplayerquery);
 
                 connection.query(updateplayerquery, function (ierror,iresults) {
                   if (ierror) throw ierror;
                   console.log("Player " + playerName + " rank updated!");
-                  var post = playerName + " has earned a new rank! They are now " + playerRank +"!";
+
+                  var post ="";
+                  if (playerTwitterHandle != "")
+                  {
+                    post = playerTwitterHandle + " has earned a new rank! They are now " + playerRank +"!";
+                  }
+                  else
+                  {
+                    post = playerName + " has earned a new rank! They are now " + playerRank +"!";
+                  }
+
                   Twitter.post('statuses/update', {status: post}, function(err, data, response) {
                       console.log(data)
                   })
@@ -163,7 +182,19 @@ function getFromSpreadsheet(auth) {
             connection.query(insertplayerquery, function (ierror,iresults) {
                 if (ierror) throw ierror;
                 console.log("Player " + playerName + " created!");
-                var post = playerName + " has joined LIFE4!";
+                //var post = playerName + " has joined LIFE4!";
+
+                var post ="";
+                if (playerTwitterHandle != "")
+                {
+                  post = playerTwitterHandle + " has joined LIFE4! Their current rank is " + playerRank + "!";
+                }
+                else
+                {
+                  post = playerName + " has joined LIFE4! Their current rank is " + playerRank + "!";
+                }
+
+
                 Twitter.post('statuses/update', {status: post}, function(err, data, response) {
                     console.log(data)
                 })
