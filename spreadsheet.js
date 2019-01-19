@@ -163,7 +163,7 @@ function getFromSpreadsheet(auth) {
             connection.query(insertplayerquery, function (ierror,iresults) {
                 if (ierror) throw ierror;
                 console.log("Player " + playerName + " created!");
-                var post = playerName + " has joined Life4!";
+                var post = playerName + " has joined LIFE4!";
                 Twitter.post('statuses/update', {status: post}, function(err, data, response) {
                     console.log(data)
                 })
