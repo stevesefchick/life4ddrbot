@@ -159,11 +159,11 @@ function getFromSpreadsheet(auth) {
                   var post ="";
                   if (playerTwitterHandle != "")
                   {
-                    post = playerTwitterHandle + " has earned a new rank! They are now " + playerRank +"!";
+                    post = "Player " + playerTwitterHandle + " has earned a new rank! They are now " + playerRank +"!";
                   }
                   else
                   {
-                    post = playerName + " has earned a new rank! They are now " + playerRank +"!";
+                    post = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"!";
                   }
 
                   Twitter.post('statuses/update', {status: post}, function(err, data, response) {
@@ -187,11 +187,11 @@ function getFromSpreadsheet(auth) {
                 var post ="";
                 if (playerTwitterHandle != "")
                 {
-                  post = playerTwitterHandle + " has joined LIFE4! Their current rank is " + playerRank + "!";
+                  post = "Player " + playerTwitterHandle + " has joined LIFE4! Their current rank is " + playerRank + "!";
                 }
                 else
                 {
-                  post = playerName + " has joined LIFE4! Their current rank is " + playerRank + "!";
+                  post = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "!";
                 }
 
 

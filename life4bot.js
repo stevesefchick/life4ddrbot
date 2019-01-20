@@ -24,6 +24,11 @@ var getSpreadsheet = function()
     var spreadsheet = require('./spreadsheet.js');
 }
 
+var botJoinDiscordChannel = function()
+{
+    console.log("henlo");
+}
+
 //check for needed activity
 var life4actionTime = function()
 {
