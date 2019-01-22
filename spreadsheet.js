@@ -9,9 +9,15 @@ var twit = require('twit');
 var config = require('./config.js');
 var Twitter = new twit(config);
 
+//discord
+var Discord = require('discord.js');
+var bot = new Discord.Client();
 
+bot.login(process.env.DISCORD_BOT_TOKEN);
 
-
+bot.on('ready', () => {
+    console.log(`Logged in as ${bot.user.tag}!`);
+  });
 
 
 //mysql
@@ -23,7 +29,73 @@ var connection = mysql.createConnection({
   database : process.env.MYSQLPLAYERDB
 });
 
+var getDiscordIcon = function(rank)
+{
+  var discordemoji="";
 
+  if (rank == "Gold I" || "Gold I (P)")
+  {
+    discordemoji = "<:g1:530666992189964309>";
+  }
+  else if (rank == "Gold II" || "Gold II (P)")
+  {
+    discordemoji = "<:g2:530667245911670784>";
+  }
+  else if (rank == "Gold III" || "Gold III (P)")
+  {
+    discordemoji = "<:g3:530667268099670016>";
+  }
+  else if (rank == "Silver I" || "Silver I (P)")
+  {
+    discordemoji = "<:s1:530666613595308034>";
+  }
+  else if (rank == "Silver II"  || "Silver II (P)")
+  {
+    discordemoji = "<:s2:530666638903738379>";
+  }
+  else if (rank == "Silver III"  || "Silver III (P)")
+  {
+    discordemoji = "<:s3:530666660051419136>";
+  }
+  else if (rank == "Bronze I"  || "Bronze I (P)")
+  {
+    discordemoji = "<:b1:530665305694011404>";
+  }
+  else if (rank == "Bronze II"  || "Bronze II (P)")
+  {
+    discordemoji = "<:b2:530665345858666496>";
+  }
+  else if (rank == "Bronze III"  || "Bronze III (P)")
+  {
+    discordemoji = "<:b3:530665367417389097>";
+  }
+  else if (rank == "Diamond I")
+  {
+    discordemoji = "<:d1:530667766487842826>";
+  }
+  else if (rank == "Diamond II")
+  {
+    discordemoji = "<:d2:530667779775397889>";
+  }
+  else if (rank == "Diamond III")
+  {
+    discordemoji = "<:d3:530667792303783937>";
+  }
+  else if (rank == "Cobalt I")
+  {
+    discordemoji = "<:c1:530667803498250252>";
+  }
+  else if (rank == "Cobalt II")
+  {
+    discordemoji = "<:c2:530667816836399114>";
+  }
+  else if (rank == "Cobalt III")
+  {
+    discordemoji = "<:c3:530667834418921482>";
+  }
+
+  return discordemoji;
+}
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
@@ -156,19 +228,29 @@ function getFromSpreadsheet(auth) {
                   if (ierror) throw ierror;
                   console.log("Player " + playerName + " rank updated!");
 
-                  var post ="";
+                  var twitterpost ="";
+                  var discordpost = "";
                   if (playerTwitterHandle != "")
                   {
-                    post = "Player " + playerTwitterHandle + " has earned a new rank! They are now " + playerRank +"!";
+                    twitterpost = "Player " + playerTwitterHandle + " has earned a new rank! They are now " + playerRank +"! Congratulations! ";
                   }
                   else
                   {
-                    post = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"!";
+                    twitterpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! ";
                   }
 
-                  Twitter.post('statuses/update', {status: post}, function(err, data, response) {
+                  discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon();
+
+                  Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
                       console.log(data)
-                  })
+                  });
+
+
+                  const channel = bot.channels.find('name', 'rankups')
+                  channel.send(discordpost)
+                  .then(message => console.log(discordpost))
+                  .catch(console.error);
+
               });
 
 
@@ -184,20 +266,30 @@ function getFromSpreadsheet(auth) {
                 console.log("Player " + playerName + " created!");
                 //var post = playerName + " has joined LIFE4!";
 
-                var post ="";
+                var twitterpost ="";
+                var discordpost = "";
                 if (playerTwitterHandle != "")
                 {
-                  post = "Player " + playerTwitterHandle + " has joined LIFE4! Their current rank is " + playerRank + "!";
+                  twitterpost = "Player " + playerTwitterHandle + " has joined LIFE4! Their current rank is " + playerRank + "!";
                 }
                 else
                 {
-                  post = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "!";
+                  twitterpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "!";
                 }
 
+                discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon();
 
-                Twitter.post('statuses/update', {status: post}, function(err, data, response) {
+                Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
                     console.log(data)
-                })
+                });
+
+
+                const channel = bot.channels.find('name', 'rankups')
+                channel.send(discordpost)
+                .then(message => console.log(discordpost))
+                .catch(console.error);
+
+
             });
 
 
