@@ -33,39 +33,39 @@ var getDiscordIcon = function(rank)
 {
   var discordemoji="";
 
-  if (rank == "Gold I" || "Gold I (P)")
+  if (rank == "Gold I" || rank ==  "Gold I (P)")
   {
     discordemoji = "<:g1:530666992189964309>";
   }
-  else if (rank == "Gold II" || "Gold II (P)")
+  else if (rank == "Gold II" || rank ==  "Gold II (P)")
   {
     discordemoji = "<:g2:530667245911670784>";
   }
-  else if (rank == "Gold III" || "Gold III (P)")
+  else if (rank == "Gold III" || rank ==  "Gold III (P)")
   {
     discordemoji = "<:g3:530667268099670016>";
   }
-  else if (rank == "Silver I" || "Silver I (P)")
+  else if (rank == "Silver I" || rank == "Silver I (P)")
   {
     discordemoji = "<:s1:530666613595308034>";
   }
-  else if (rank == "Silver II"  || "Silver II (P)")
+  else if (rank == "Silver II"  || rank ==  "Silver II (P)")
   {
     discordemoji = "<:s2:530666638903738379>";
   }
-  else if (rank == "Silver III"  || "Silver III (P)")
+  else if (rank == "Silver III"  || rank ==  "Silver III (P)")
   {
     discordemoji = "<:s3:530666660051419136>";
   }
-  else if (rank == "Bronze I"  || "Bronze I (P)")
+  else if (rank == "Bronze I"  || rank ==  "Bronze I (P)")
   {
     discordemoji = "<:b1:530665305694011404>";
   }
-  else if (rank == "Bronze II"  || "Bronze II (P)")
+  else if (rank == "Bronze II"  || rank ==  "Bronze II (P)")
   {
     discordemoji = "<:b2:530665345858666496>";
   }
-  else if (rank == "Bronze III"  || "Bronze III (P)")
+  else if (rank == "Bronze III"  || rank ==  "Bronze III (P)")
   {
     discordemoji = "<:b3:530665367417389097>";
   }
@@ -239,8 +239,10 @@ function getFromSpreadsheet(auth) {
                     twitterpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! ";
                   }
 
-                  discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon();
+                  discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon(playerRank);
 
+
+                  //comment for testing
                   Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
                       console.log(data)
                   });
@@ -250,6 +252,7 @@ function getFromSpreadsheet(auth) {
                   channel.send(discordpost)
                   .then(message => console.log(discordpost))
                   .catch(console.error);
+                  
 
               });
 
@@ -277,8 +280,9 @@ function getFromSpreadsheet(auth) {
                   twitterpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "!";
                 }
 
-                discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon();
+                discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon(playerRank);
 
+                //comment for testing
                 Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
                     console.log(data)
                 });
