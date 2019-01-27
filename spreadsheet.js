@@ -190,7 +190,7 @@ function getFromSpreadsheet(auth) {
         var playerTwitterHandle = `${row[3]}`;
         var playerDateEarned = `${row[4]}`;
 
-        if (playerName === undefined)
+        if (playerName === undefined || playerRank === undefined)
         {
           console.log("This is undefined!");
         }
