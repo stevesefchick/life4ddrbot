@@ -174,11 +174,6 @@ function getFromSpreadsheet(auth) {
 
     if (rows.length) {
 
-      //connect to db
-      //connection.connect(function(err) {
-      //  if (err) throw err;
-      //  console.log("Connected to MySQL!");
-      //});
 
 
       console.log('Name, Rank:');
@@ -195,6 +190,12 @@ function getFromSpreadsheet(auth) {
         var playerTwitterHandle = `${row[3]}`;
         var playerDateEarned = `${row[4]}`;
 
+        if (playerName === undefined)
+        {
+          console.log("This is undefined!");
+        }
+        else
+        {
 
 
         var playerquery = "SELECT playerName, playerRank from playerList WHERE playerName = '" + playerName + "'";
@@ -232,7 +233,7 @@ function getFromSpreadsheet(auth) {
                   var discordpost = "";
                   if (playerTwitterHandle != "")
                   {
-                    twitterpost = "Player " + playerTwitterHandle + " has earned a new rank! They are now " + playerRank +"! Congratulations! ";
+                    twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has earned a new rank! They are now " + playerRank +"! Congratulations! ";
                   }
                   else
                   {
@@ -273,7 +274,7 @@ function getFromSpreadsheet(auth) {
                 var discordpost = "";
                 if (playerTwitterHandle != "")
                 {
-                  twitterpost = "Player " + playerTwitterHandle + " has joined LIFE4! Their current rank is " + playerRank + "!";
+                  twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has joined LIFE4! Their current rank is " + playerRank + "!";
                 }
                 else
                 {
@@ -302,6 +303,10 @@ function getFromSpreadsheet(auth) {
           console.log(`${row[0]}, ${row[1]}`);
 
         });
+
+
+      }
+
 
       });
       //connection.end();
