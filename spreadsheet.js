@@ -93,6 +93,31 @@ var getDiscordIcon = function(rank)
   {
     discordemoji = "<:c3:530667834418921482>";
   }
+  else if (rank == "Wood I" || rank ==  "Wood I (P)")
+  {
+    //tbd
+  }
+  else if (rank == "Wood II" || rank ==  "Wood II (P)")
+  {
+    //tbd
+  }
+  else if (rank == "Wood III" || rank ==  "Wood III (P)")
+  {
+    //tbd
+  }
+  else if (rank == "Amethyst I")
+  {
+    //tbd
+  }
+  else if (rank == "Amethyst II")
+  {
+    //tbd
+  }
+  else if (rank == "Amethyst III")
+  {
+    //tbd
+  }
+
 
   return discordemoji;
 }
