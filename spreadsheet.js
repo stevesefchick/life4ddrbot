@@ -29,6 +29,99 @@ var connection = mysql.createConnection({
   database : process.env.MYSQLPLAYERDB
 });
 
+var getTwitterImageURL = function(rank)
+{
+  var twitterImageURL = "";
+
+  if (rank == "Gold I" || rank ==  "Gold I (P)")
+  {
+    twitterImageURL = './rankup_images/G1.png';
+  }
+  else if (rank == "Gold II" || rank ==  "Gold II (P)")
+  {
+    twitterImageURL = './rankup_images/G2.png';
+  }
+  else if (rank == "Gold III" || rank ==  "Gold III (P)")
+  {
+    twitterImageURL = './rankup_images/G3.png';
+  }
+  else if (rank == "Silver I" || rank == "Silver I (P)")
+  {
+    twitterImageURL = './rankup_images/S1.png';
+  }
+  else if (rank == "Silver II"  || rank ==  "Silver II (P)")
+  {
+    twitterImageURL = './rankup_images/S2.png';
+  }
+  else if (rank == "Silver III"  || rank ==  "Silver III (P)")
+  {
+    twitterImageURL = './rankup_images/S3.png';
+  }
+  else if (rank == "Bronze I"  || rank ==  "Bronze I (P)")
+  {
+    twitterImageURL = './rankup_images/B1.png';
+  }
+  else if (rank == "Bronze II"  || rank ==  "Bronze II (P)")
+  {
+    twitterImageURL = './rankup_images/B2.png';
+  }
+  else if (rank == "Bronze III"  || rank ==  "Bronze III (P)")
+  {
+    twitterImageURL = './rankup_images/B3.png';
+  }
+  else if (rank == "Diamond I")
+  {
+    twitterImageURL = './rankup_images/D1.png';
+  }
+  else if (rank == "Diamond II")
+  {
+    twitterImageURL = './rankup_images/D2.png';
+  }
+  else if (rank == "Diamond III")
+  {
+    twitterImageURL = './rankup_images/D3.png';
+  }
+  else if (rank == "Cobalt I")
+  {
+    twitterImageURL = './rankup_images/C1.png';
+  }
+  else if (rank == "Cobalt II")
+  {
+    twitterImageURL = './rankup_images/C2.png';
+  }
+  else if (rank == "Cobalt III")
+  {
+    twitterImageURL = './rankup_images/C3.png';
+  }
+  else if (rank == "Wood I" || rank ==  "Wood I (P)")
+  {
+    twitterImageURL = './rankup_images/W1.png';
+  }
+  else if (rank == "Wood II" || rank ==  "Wood II (P)")
+  {
+    twitterImageURL = './rankup_images/W1.png';
+  }
+  else if (rank == "Wood III" || rank ==  "Wood III (P)")
+  {
+    twitterImageURL = './rankup_images/W3.png';
+  }
+  else if (rank == "Amethyst I")
+  {
+    twitterImageURL = './rankup_images/A1.png';
+  }
+  else if (rank == "Amethyst II")
+  {
+    twitterImageURL = './rankup_images/A2.png';
+  }
+  else if (rank == "Amethyst III")
+  {
+    twitterImageURL = './rankup_images/A3.png';
+  }
+
+  return twitterImageURL;
+
+}
+
 var getDiscordIcon = function(rank)
 {
   var discordemoji="";
@@ -215,7 +308,7 @@ function getFromSpreadsheet(auth) {
         var playerTwitterHandle = `${row[3]}`;
         var playerDateEarned = `${row[4]}`;
 
-        if (playerName === undefined || playerRank === undefined)
+        if (playerName === undefined || playerRank === undefined || (playerRank === undefined && playerName === undefined))
         {
           console.log("This is undefined!");
         }
@@ -268,10 +361,36 @@ function getFromSpreadsheet(auth) {
                   discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon(playerRank);
 
 
-                  //comment for testing
-                  Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
-                      console.log(data)
-                  });
+
+                  // read the file
+                  var b64content = fs.readFileSync(getTwitterImageURL(playerRank), { encoding: 'base64' })
+                  
+                  // get the new image media on twitter!
+                  Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
+                    var mediaIdStr = data.media_id_string
+                    var altText = "Player rank"
+                    var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+                  
+                    Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
+                      if (!err) {
+                        // post the tweet!
+                        var params = { status: twitterpost.toString(), media_ids: [mediaIdStr] }
+                  
+                        Twitter.post('statuses/update', params, function (err, data, response) {
+                          console.log(data)
+                        })
+                      }
+                    })
+                  })
+
+
+
+
+
+                  //old twitter post
+                  //Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
+                  //    console.log(data)
+                  //});
 
 
                   const channel = bot.channels.find('name', 'rankups')
@@ -308,10 +427,32 @@ function getFromSpreadsheet(auth) {
 
                 discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon(playerRank);
 
-                //comment for testing
-                Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
-                    console.log(data)
-                });
+                  // read the file
+                  var b64content = fs.readFileSync(getTwitterImageURL(playerRank), { encoding: 'base64' })
+                  
+                  // get the new image media on twitter!
+                  Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
+                    var mediaIdStr = data.media_id_string
+                    var altText = "Player rank"
+                    var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+                  
+                    Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
+                      if (!err) {
+                        // post the tweet!
+                        var params = { status: twitterpost.toString(), media_ids: [mediaIdStr] }
+                  
+                        Twitter.post('statuses/update', params, function (err, data, response) {
+                          console.log(data)
+                        })
+                      }
+                    })
+                  })
+
+
+                //old twitter post
+                //Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
+                //    console.log(data)
+                //});
 
 
                 const channel = bot.channels.find('name', 'rankups')
