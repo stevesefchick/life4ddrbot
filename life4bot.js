@@ -26,13 +26,6 @@ var Twitter = new twit(config);
   });
 */
 
-/*
-  bot.on('message',function(message) {
-    const channel = bot.channels.find('name', 'general')
-    channel.send('horse')
-});
-*/
-
 require('dotenv').config();
 
 const express = require('express');
