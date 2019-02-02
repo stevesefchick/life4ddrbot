@@ -188,27 +188,27 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Wood I" || rank ==  "Wood I (P)")
   {
-    //tbd
+    discordemoji = "<:w1:540808051284901898>";
   }
   else if (rank == "Wood II" || rank ==  "Wood II (P)")
   {
-    //tbd
+    discordemoji = "<:w2:540808115994492948>";
   }
   else if (rank == "Wood III" || rank ==  "Wood III (P)")
   {
-    //tbd
+    discordemoji = "<:w3:540808178108203018>";
   }
   else if (rank == "Amethyst I")
   {
-    //tbd
+    discordemoji = "<:a1:540807826323537930>";
   }
   else if (rank == "Amethyst II")
   {
-    //tbd
+    discordemoji = "<:a2:540807915850956810>";
   }
   else if (rank == "Amethyst III")
   {
-    //tbd
+    discordemoji = "<:a3:540807991373594633>";
   }
 
 
