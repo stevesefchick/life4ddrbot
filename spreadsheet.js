@@ -275,7 +275,63 @@ function getNewToken(oAuth2Client, callback) {
 }
 
 
+var checkForDerank = function(existingRank,newRank)
+{
+  console.log("Old Rank = " + existingRank);
+  console.log("New Rank = " + newRank);
 
+  if (existingRank == "Wood II (P)" && newRank =="Wood I")
+  {
+    return true;
+  }
+  else if (existingRank == "Wood III (P)" && newRank =="Wood II")
+  {
+    return true;
+  }
+  else if (existingRank == "Bronze I (P)" && newRank =="Wood III")
+  {
+    return true;
+  }
+  else if (existingRank == "Bronze II (P)" && newRank =="Bronze I")
+  {
+    return true;
+  }
+  else if (existingRank == "Bronze III (P)" && newRank =="Bronze II")
+  {
+    return true;
+  }
+  else if (existingRank == "Silver I (P)" && newRank =="Bronze III")
+  {
+    return true;
+  }
+  else if (existingRank == "Silver II (P)" && newRank =="Silver I")
+  {
+    return true;
+  }
+  else if (existingRank == "Silver III (P)" && newRank =="Silver II")
+  {
+    return true;
+  }
+  else if (existingRank == "Gold I (P)" && newRank =="Silver III")
+  {
+    return true;
+  }
+  else if (existingRank == "Gold II (P)" && newRank =="Gold I")
+  {
+    return true;
+  }
+  else if (existingRank == "Gold III (P)" && newRank =="Gold II")
+  {
+    return true;
+  }
+  //for testing
+  else if (existingRank == "Diamond I (P)" && newRank =="Gold III")
+  {
+    return true;
+  }
+
+  return false;
+}
 
 
 
@@ -338,7 +394,7 @@ function getFromSpreadsheet(auth) {
             }
             else
             {
-                //rank up!
+                //rank change!
                 console.log(playerName +"'s rank has changed! Was: " + playerRank + " | is now: " + results[0].playerRank);
                 var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "', playerRivalCode='"+playerRivalCode+"', twitterHandle='"+ playerTwitterHandle + "', playerDateEarned='" + playerDateEarned + "' where playerName = '" + playerName +"'";
                 console.log(updateplayerquery);
@@ -347,19 +403,42 @@ function getFromSpreadsheet(auth) {
                   if (ierror) throw ierror;
                   console.log("Player " + playerName + " rank updated!");
 
+                  //derank check
+                  var isDerank = checkForDerank(results[0].playerRank, playerRank);
+
                   var twitterpost ="";
                   var discordpost = "";
                   if (playerTwitterHandle != "")
                   {
-                    twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has earned a new rank! They are now " + playerRank +"! Congratulations! ";
+                    if (isDerank == true)
+                    {
+                      twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has de-ranked out of their placement rank to " + playerRank +". Don't give up, you can do it!";
+                    }
+                    else
+                    {
+                      twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has earned a new rank! They are now " + playerRank +"! Congratulations! ";
+                    }
                   }
                   else
                   {
-                    twitterpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! ";
+                    if (isDerank == true)
+                    {
+                      twitterpost = "Player " + playerName + " has de-ranked out of their placement rank to " + playerRank +". Don't give up, you can do it! ";
+                    }
+                    else
+                    {
+                      twitterpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! ";
+                    }
                   }
 
-                  discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon(playerRank);
-
+                  if (isDerank == true)
+                  {
+                    discordpost = "Player " + playerName + " has de-ranked out of their placement rank to " + playerRank +". Don't give up, you can do it!" + getDiscordIcon(playerRank);
+                  }
+                  else
+                  {
+                    discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon(playerRank);
+                  }
 
 
                   // read the file
@@ -383,14 +462,6 @@ function getFromSpreadsheet(auth) {
                     })
                   })
 
-
-
-
-
-                  //old twitter post
-                  //Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
-                  //    console.log(data)
-                  //});
 
 
                   const channel = bot.channels.find('name', 'rankups')
