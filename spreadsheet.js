@@ -375,6 +375,10 @@ function getFromSpreadsheet(auth) {
         var playerquery = "SELECT playerName, playerRank from playerList WHERE playerName = '" + playerName + "'";
         var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRivalCode + "','"+playerTwitterHandle+"','" + playerDateEarned + "')";
 
+        var playerCountQuery = "select COUNT(*) AS playercount from playerList";
+
+
+
         //console.log(insertplayerquery);
 
         connection.query(playerquery, function (error, results) {
@@ -535,7 +539,45 @@ function getFromSpreadsheet(auth) {
             });
 
 
-            //console.log(insertplayerquery);
+            //check counts!
+            connection.query(playerCountQuery, function (error, results) {
+              if (error) throw error;
+              if (results && results.length)
+              {
+                var count = results[0].playercount;
+
+                console.log(count);
+
+                if (count % 50 == 0)
+                {
+                    var milestonepost = "Wow! " + count + " players have joined @Life4DDR!";
+
+                    Twitter.post('statuses/update', {status: milestonepost}, function(err, data, response) {
+                        console.log(data)
+                    });
+
+                    const channel = bot.channels.find('name', 'general')
+                    channel.send(milestonepost)
+                    .then(message => console.log(milestonepost))
+                    .catch(console.error);
+                }
+                else if (count == 420)
+                {
+                  var milestonepost = "Wow! " + count + " players have joined @Life4DDR! Nice.";
+
+                  Twitter.post('statuses/update', {status: milestonepost}, function(err, data, response) {
+                      console.log(data)
+                  });
+
+                  const channel = bot.channels.find('name', 'general')
+                  channel.send(milestonepost)
+                  .then(message => console.log(milestonepost))
+                  .catch(console.error);
+                }
+              }
+            })
+
+
           }
           console.log(`${row[0]}, ${row[1]}`);
 
