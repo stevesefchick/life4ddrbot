@@ -550,28 +550,30 @@ function getFromSpreadsheet(auth) {
 
                 if (count % 50 == 0)
                 {
-                    var milestonepost = "Wow! " + count + " players have joined @Life4DDR!";
+                    var milestoneposttwitter = "Wow! " + count + " players have joined @LIFE4DDR!";
+                    var milestonepostdiscord = "Wow! " + count + " players have joined LIFE4!";
 
-                    Twitter.post('statuses/update', {status: milestonepost}, function(err, data, response) {
+                    Twitter.post('statuses/update', {status: milestoneposttwitter}, function(err, data, response) {
                         console.log(data)
                     });
 
                     const channel = bot.channels.find('name', 'general')
-                    channel.send(milestonepost)
-                    .then(message => console.log(milestonepost))
+                    channel.send(milestonepostdiscord)
+                    .then(message => console.log(milestonepostdiscord))
                     .catch(console.error);
                 }
                 else if (count == 420)
                 {
-                  var milestonepost = "Wow! " + count + " players have joined @Life4DDR! Nice.";
+                  var milestoneposttwitter = "Wow! " + count + " players have joined @LIFE4DDR! Nice.";
+                  var milestonepostdiscord = "Wow! " + count + " players have joined LIFE4!";
 
-                  Twitter.post('statuses/update', {status: milestonepost}, function(err, data, response) {
+                  Twitter.post('statuses/update', {status: milestoneposttwitter}, function(err, data, response) {
                       console.log(data)
                   });
 
                   const channel = bot.channels.find('name', 'general')
-                  channel.send(milestonepost)
-                  .then(message => console.log(milestonepost))
+                  channel.send(milestonepostdiscord)
+                  .then(message => console.log(milestonepostdiscord))
                   .catch(console.error);
                 }
               }
