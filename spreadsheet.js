@@ -540,6 +540,7 @@ function getFromSpreadsheet(auth) {
 
 
             //check counts!
+            /*
             connection.query(playerCountQuery, function (error, results) {
               if (error) throw error;
               if (results && results.length)
@@ -578,6 +579,7 @@ function getFromSpreadsheet(auth) {
                 }
               }
             })
+            */
 
 
           }
