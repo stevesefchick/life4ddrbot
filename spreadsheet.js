@@ -445,6 +445,12 @@ function getFromSpreadsheet(auth) {
                   }
 
 
+
+                  //update don't do anything if it's a derank!
+                  if (isDerank == false)
+                  {
+
+                  
                   // read the file
                   var b64content = fs.readFileSync(getTwitterImageURL(playerRank), { encoding: 'base64' })
                   
@@ -473,7 +479,9 @@ function getFromSpreadsheet(auth) {
                   .then(message => console.log(discordpost))
                   .catch(console.error);
                   
+                }
 
+                
               });
 
 
