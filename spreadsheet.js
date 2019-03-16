@@ -372,7 +372,7 @@ function getFromSpreadsheet(auth) {
         {
 
 
-        var playerquery = "SELECT playerName, playerRank from playerList WHERE playerName = '" + playerName + "'";
+        var playerquery = "SELECT playerName, playerRank, playerID, playerDateEarned from playerList WHERE playerName = '" + playerName + "'";
         var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRivalCode + "','"+playerTwitterHandle+"','" + playerDateEarned + "')";
 
         var playerCountQuery = "select COUNT(*) AS playercount from playerList";
@@ -389,6 +389,10 @@ function getFromSpreadsheet(auth) {
             console.log("Player " + playerName +" exists!");
             console.log(results);
 
+            //query for update inserts!
+            var playerHistoryInsert = "INSERT INTO playerHistory (playerID, playerRank, playerUpdate) VALUES ('" + results[0].playerID + "','" +results[0].playerRank + "','" + results[0].playerDateEarned + "')";
+
+
             //check for rank-up
             if (results[0].playerRank == playerRank)
             {
@@ -403,6 +407,9 @@ function getFromSpreadsheet(auth) {
                 var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "', playerRivalCode='"+playerRivalCode+"', twitterHandle='"+ playerTwitterHandle + "', playerDateEarned='" + playerDateEarned + "' where playerName = '" + playerName +"'";
                 console.log(updateplayerquery);
 
+
+
+                //run the main table update
                 connection.query(updateplayerquery, function (ierror,iresults) {
                   if (ierror) throw ierror;
                   console.log("Player " + playerName + " rank updated!");
@@ -481,6 +488,13 @@ function getFromSpreadsheet(auth) {
                   
                 }
 
+
+                //run the history table query
+                connection.query(playerHistoryInsert, function(error,results2)
+                {
+                  if (error) throw error;
+                  console.log(results2);
+                });
                 
               });
 
@@ -531,13 +545,6 @@ function getFromSpreadsheet(auth) {
                     })
                   })
 
-
-                //old twitter post
-                //Twitter.post('statuses/update', {status: twitterpost}, function(err, data, response) {
-                //    console.log(data)
-                //});
-
-
                 const channel = bot.channels.find('name', 'rankups')
                 channel.send(discordpost)
                 .then(message => console.log(discordpost))
@@ -545,6 +552,23 @@ function getFromSpreadsheet(auth) {
 
 
             });
+
+
+            //GET THE PLAYER ID
+            var getPlayerID = "SELECT playerID from playerList where playerName='" + playerName + "'";
+            connection.query(getPlayerID, function(error,results3)
+            {
+              if (error) throw error;
+                //DO THE INSERT
+                var playerHistoryInsert = "INSERT INTO playerHistory (playerID, playerRank, playerUpdate) VALUES ('" + results3[0].playerID + "','" + playerRank + "','" + playerDateEarned + "')";
+                connection.query(playerHistoryInsert, function(error,results4)
+                {
+                  if (error) throw error;
+                  console.log(results4);
+                });            
+          });
+            
+
 
 
             //check counts!
