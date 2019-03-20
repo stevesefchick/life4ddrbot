@@ -390,7 +390,7 @@ function getFromSpreadsheet(auth) {
             console.log(results);
 
             //query for update inserts!
-            var playerHistoryInsert = "INSERT INTO playerHistory (playerID, playerRank, playerUpdate) VALUES ('" + results[0].playerID + "','" +results[0].playerRank + "','" + results[0].playerDateEarned + "')";
+            var playerHistoryInsert = "INSERT INTO playerHistory (playerID, playerRank, playerUpdate) VALUES ('" + results[0].playerID + "','" +results[0].playerRank + "', now())";
 
 
             //check for rank-up
@@ -398,7 +398,6 @@ function getFromSpreadsheet(auth) {
             {
                 //rank is the same!
                 console.log(playerName +"'s rank has not changed!");
-
             }
             else
             {
@@ -560,7 +559,7 @@ function getFromSpreadsheet(auth) {
             {
               if (error) throw error;
                 //DO THE INSERT
-                var playerHistoryInsert = "INSERT INTO playerHistory (playerID, playerRank, playerUpdate) VALUES ('" + results3[0].playerID + "','" + playerRank + "','" + playerDateEarned + "')";
+                var playerHistoryInsert = "INSERT INTO playerHistory (playerID, playerRank, playerUpdate) VALUES ('" + results3[0].playerID + "','" + playerRank + "', now())";
                 connection.query(playerHistoryInsert, function(error,results4)
                 {
                   if (error) throw error;
