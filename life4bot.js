@@ -34,10 +34,21 @@ const port = process.env.PORT;
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
+var heckPromise = () =>
+{
+    return new Promise((resolve,reject) => {
+      getSpreadsheet((err) => {
+        if (error) reject (err);
+        else resolve("done");
+      });
+    });
+
+}
+
 //add get from spreadsheet
 var getSpreadsheet = function()
 {
-    var spreadsheet = require('./spreadsheet.js');
+  var spreadsheet = require('./spreadsheet.js');
 }
 
 var botJoinDiscordChannel = function()
@@ -51,13 +62,27 @@ var botJoinDiscordChannel = function()
     console.log("henlo");
 }
 
+
+
 //check for needed activity
 var life4actionTime = function()
 {
 
     console.log('App is running!!!');
-    //botJoinDiscordChannel();
+    //this works
     getSpreadsheet();
+
+    /*
+    heckPromise()
+    .then(content =>
+      {
+        console.log("heck it's done");
+        return "dang";
+      })
+    .catch(err => console.log(err));
+*/
+
+
 }
 
 life4actionTime();

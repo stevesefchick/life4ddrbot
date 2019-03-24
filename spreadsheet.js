@@ -22,12 +22,17 @@ bot.on('ready', () => {
 
 //mysql
 var mysql = require('mysql');
+var connection;
+//connection wuz here
+/*
 var connection = mysql.createConnection({
   host     : process.env.MYSQLHOST,
   user     : process.env.MYSQLUSER,
   password : process.env.MYSQLPW,
   database : process.env.MYSQLPLAYERDB
 });
+*/
+
 
 var getTwitterImageURL = function(rank)
 {
@@ -224,12 +229,7 @@ fs.readFile('credentials.json', (err, content) => {
   authorize(JSON.parse(content), getFromSpreadsheet);
 });
 
-/**
- * Create an OAuth2 client with the given credentials, and then execute the
- * given callback function.
- * @param {Object} credentials The authorization client credentials.
- * @param {function} callback The callback to call with the authorized client.
- */
+//authorize the app
 function authorize(credentials, callback) {
   const {client_secret, client_id, redirect_uris} = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(
@@ -243,12 +243,7 @@ function authorize(credentials, callback) {
   });
 }
 
-/**
- * Get and store new token after prompting for user authorization, and then
- * execute the given callback with the authorized OAuth2 client.
- * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
- * @param {getEventsCallback} callback The callback for the authorized client.
- */
+//get google token
 function getNewToken(oAuth2Client, callback) {
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: 'offline',
@@ -274,7 +269,7 @@ function getNewToken(oAuth2Client, callback) {
   });
 }
 
-
+//check to see if a player has deranked
 var checkForDerank = function(existingRank,newRank)
 {
   console.log("Old Rank = " + existingRank);
@@ -334,8 +329,16 @@ var checkForDerank = function(existingRank,newRank)
 }
 
 
-
+//for player ranks! retrieve from the spreadsheet
 function getFromSpreadsheet(auth) {
+
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1FPiO1h9XDSeTB6tWmRi7ursSqFOBYitiVweu3eOQ8tg',
@@ -344,10 +347,12 @@ function getFromSpreadsheet(auth) {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
 
+    console.log('BEGINNING PLAYER RANK FUNCTION');
 
 
     if (rows.length) {
 
+      connection.connect();
 
 
       console.log('Name, Rank:');
@@ -375,11 +380,9 @@ function getFromSpreadsheet(auth) {
         var playerquery = "SELECT playerName, playerRank, playerID, playerDateEarned from playerList WHERE playerName = '" + playerName + "'";
         var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRivalCode + "','"+playerTwitterHandle+"','" + playerDateEarned + "')";
 
-        var playerCountQuery = "select COUNT(*) AS playercount from playerList";
+        //not used
+        //var playerCountQuery = "select COUNT(*) AS playercount from playerList";
 
-
-
-        //console.log(insertplayerquery);
 
         connection.query(playerquery, function (error, results) {
           if (error) throw error;
@@ -618,12 +621,15 @@ function getFromSpreadsheet(auth) {
 
         });
 
+      //connection.end();
 
       }
 
 
       });
-      //connection.end();
+
+      connection.end();
+
 
     } else {
       console.log('No data found.');
@@ -631,4 +637,6 @@ function getFromSpreadsheet(auth) {
 
     
   });
+
+
 }
