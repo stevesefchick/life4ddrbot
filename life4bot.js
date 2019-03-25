@@ -34,16 +34,18 @@ const port = process.env.PORT;
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
-var heckPromise = () =>
+/*
+var heckPromise = function()
 {
     return new Promise((resolve,reject) => {
       getSpreadsheet((err) => {
         if (error) reject (err);
-        else resolve("done");
+        else resolve();
       });
     });
 
 }
+*/
 
 //add get from spreadsheet
 var getSpreadsheet = function()
@@ -72,6 +74,15 @@ var life4actionTime = function()
     //this works
     getSpreadsheet();
 
+
+    /*
+    (async () => {
+      console.log("heck");
+      const promise1 = await heckPromise();
+      console.log("heck");
+    })
+    */
+
     /*
     heckPromise()
     .then(content =>
@@ -82,8 +93,22 @@ var life4actionTime = function()
     .catch(err => console.log(err));
 */
 
-
+/*
+return new Promise((resolve, reject) => {
+  console.log('App is running!!! heck');
+  resolve();
+})
+*/
 }
+
+/*
+(async () => {
+  console.log("heck");
+  const promise1 = await heckPromise();
+  console.log("heck");
+  const runthething = await heckPromise();
+})
+*/
 
 life4actionTime();
 

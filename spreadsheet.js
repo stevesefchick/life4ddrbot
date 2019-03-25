@@ -23,15 +23,6 @@ bot.on('ready', () => {
 //mysql
 var mysql = require('mysql');
 var connection;
-//connection wuz here
-/*
-var connection = mysql.createConnection({
-  host     : process.env.MYSQLHOST,
-  user     : process.env.MYSQLUSER,
-  password : process.env.MYSQLPW,
-  database : process.env.MYSQLPLAYERDB
-});
-*/
 
 
 var getTwitterImageURL = function(rank)
@@ -223,11 +214,27 @@ var getDiscordIcon = function(rank)
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
 
-// Load client secrets from a local file.
-fs.readFile('credentials.json', (err, content) => {
-  if (err) return console.log('Error loading client secret file:', err);
-  authorize(JSON.parse(content), getFromSpreadsheet);
-});
+
+
+function readSecretsFromFile()
+{
+  //load client secrets
+    fs.readFile('credentials.json', (err, content) => {
+      if (err) return console.log('Error loading client secret file:', err);
+      authorize(JSON.parse(content), getFromPlayerSpreadsheet);
+    });
+
+}
+
+function readSecretsFromFileForTrials()
+{
+  //load client secrets
+    fs.readFile('credentials.json', (err, content) => {
+      if (err) return console.log('Error loading client secret file:', err);
+      authorize(JSON.parse(content), getFromTrialSpreadsheet);
+    });
+
+}
 
 //authorize the app
 function authorize(credentials, callback) {
@@ -330,8 +337,9 @@ var checkForDerank = function(existingRank,newRank)
 
 
 //for player ranks! retrieve from the spreadsheet
-function getFromSpreadsheet(auth) {
+function getFromPlayerSpreadsheet(auth) {
 
+  
   connection = mysql.createConnection({
     host     : process.env.MYSQLHOST,
     user     : process.env.MYSQLUSER,
@@ -635,8 +643,55 @@ function getFromSpreadsheet(auth) {
       console.log('No data found.');
     }
 
-    
+
   });
 
 
+
 }
+
+function getFromTrialSpreadsheet(auth)
+{
+
+  //MYSQL connection
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+
+  const sheets = google.sheets({version: 'v4', auth});
+  sheets.spreadsheets.values.get({
+    spreadsheetId: '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+    range: 'Heartbreak (12)!A2:E',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const rows = res.data.values;
+
+    console.log('BEGINNING PLAYER TRIAL FUNCTION');
+
+  });
+
+
+
+  //FOR EACH TRIAL
+  //read from spreadsheet
+  //check db for player info and retrieve it
+  //check in db for existing trial entry
+  //if new, insert into audit and playertrial
+  //announce
+  //if updated, insert into playertrial and audit
+  //announce
+}
+
+
+(async () => {
+
+  await readSecretsFromFile();
+  await readSecretsFromFileForTrials();
+
+})();
+
+// RUN THE STUFF HERE
+//readSecretsFromFile();
