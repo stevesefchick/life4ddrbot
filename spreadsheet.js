@@ -661,17 +661,102 @@ function getFromTrialSpreadsheet(auth)
     database : process.env.MYSQLPLAYERDB
   });
 
+  console.log('BEGINNING PLAYER TRIAL FUNCTION');
+
   const sheets = google.sheets({version: 'v4', auth});
+
+  /*
+    HEARTBREAK(12)
+  */
   sheets.spreadsheets.values.get({
     spreadsheetId: '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-    range: 'Heartbreak (12)!A2:E',
+    range: 'ALL TRIALS!A2:C',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
 
-    console.log('BEGINNING PLAYER TRIAL FUNCTION');
+    console.log("Heartbreak(12)");
 
+    if (rows.length) {
+
+      //connection.connect();
+
+      rows.map((row) => {
+        var heartbreakName = `${row[0]}`;
+        var heartbreakRank = `${row[1]}`;
+        var heartbreakScore = `${row[2]}`;
+        console.log(heartbreakName + heartbreakRank + heartbreakScore);
+
+        //check for undefined
+        if (heartbreakName === undefined || heartbreakRank === undefined || heartbreakScore === undefined)
+        {
+          console.log("This is undefined!");
+        }
+        else
+        {
+          console.log("doing stuff!");
+        }
+
+
+
+
+      });
+
+      //connection.end();
+
+    } else {
+      console.log('No data found for Heartbreak(12)');
+    }
   });
+
+
+    /*
+    CELESTIAL(13)
+  */
+ sheets.spreadsheets.values.get({
+  spreadsheetId: '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  range: 'ALL TRIALS!F2:H',
+}, (err, res) => {
+  if (err) return console.log('The API returned an error: ' + err);
+  const rows = res.data.values;
+
+  console.log("Celestial(13)");
+
+  if (rows.length) {
+
+    //connection.connect();
+
+    rows.map((row) => {
+      var celeName = `${row[0]}`;
+      var celeRank = `${row[1]}`;
+      var celeScore = `${row[2]}`;
+      console.log(celeName + celeRank + celeScore);
+
+      //check for undefined
+      if (celeName === undefined || celeRank === undefined || celeScore === undefined)
+      {
+        console.log("This is undefined!");
+      }
+      else
+      {
+        console.log("doing stuff!");
+      }
+
+
+
+
+
+    });
+    
+    //connection.end();
+
+  } else {
+    console.log('No data found for Heartbreak(12)');
+  }
+});
+
+
+
 
 
 
@@ -688,7 +773,7 @@ function getFromTrialSpreadsheet(auth)
 
 (async () => {
 
-  await readSecretsFromFile();
+  //await readSecretsFromFile();
   await readSecretsFromFileForTrials();
 
 })();
