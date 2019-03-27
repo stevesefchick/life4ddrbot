@@ -363,9 +363,6 @@ function getFromPlayerSpreadsheet(auth) {
       connection.connect();
 
 
-      console.log('Name, Rank:');
-
-
 
       rows.map((row) => {
 
@@ -650,6 +647,9 @@ function getFromPlayerSpreadsheet(auth) {
 
 }
 
+
+
+
 function getFromTrialSpreadsheet(auth)
 {
 
@@ -677,15 +677,21 @@ function getFromTrialSpreadsheet(auth)
 
     console.log("Heartbreak(12)");
 
+
+
     if (rows.length) {
 
-      //connection.connect();
+      connection.connect();
 
       rows.map((row) => {
         var heartbreakName = `${row[0]}`;
         var heartbreakRank = `${row[1]}`;
         var heartbreakScore = `${row[2]}`;
-        console.log(heartbreakName + heartbreakRank + heartbreakScore);
+        var heartbreakDiff = heartbreakScore.substr(heartbreakScore.indexOf('('), heartbreakScore.indexOf(')'));
+        heartbreakScore = heartbreakScore.substr(0, heartbreakScore.indexOf(' '));
+
+
+        console.log(heartbreakName + "|" + heartbreakRank + "|" + heartbreakScore + "|" + heartbreakDiff);
 
         //check for undefined
         if (heartbreakName === undefined || heartbreakRank === undefined || heartbreakScore === undefined)
@@ -695,10 +701,33 @@ function getFromTrialSpreadsheet(auth)
         else
         {
           console.log("doing stuff!");
+
+          //check for player and get player details
+          var playerquery = "SELECT playerName, playerRank, playerID, playerDateEarned from playerList WHERE playerName = '" + heartbreakName + "'";
+    
+          //FIRST check if player exists
+          connection.query(playerquery, function (error, results) {
+            if (error) throw error;
+            //player exists!
+            if (results && results.length)
+            {
+
+                //CHECK IF EXISTS
+
+
+                //IF NEW
+                var inserttrialplayerquery = "INSERT INTO playertrialrank (playerID, trialName, playerRank, playerScore, playerDiff, playerUpdateDate) VALUES ("+results[0].playerID+", 'Heartbreak(12)', '" + heartbreakRank + "', " + heartbreakScore + ", '" + heartbreakDiff + "', now())";
+                //console.log(inserttrialplayerquery);
+
+                connection.query(inserttrialplayerquery, function (ierror,iresults) {
+                  if (ierror) throw ierror;
+                  console.log("Player " + heartbreakName + " new trial entry added!");
+                });
+
+            }
+          });  
+
         }
-
-
-
 
       });
 
@@ -713,6 +742,7 @@ function getFromTrialSpreadsheet(auth)
     /*
     CELESTIAL(13)
   */
+ /*
  sheets.spreadsheets.values.get({
   spreadsheetId: '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
   range: 'ALL TRIALS!F2:H',
@@ -755,7 +785,7 @@ function getFromTrialSpreadsheet(auth)
   }
 });
 
-
+*/
 
 
 
@@ -771,12 +801,29 @@ function getFromTrialSpreadsheet(auth)
 }
 
 
-(async () => {
+/*
+async function f() {
+
+  let promise = new Promise((resolve, reject) => {
+    readSecretsFromFileForTrials(() => resolve("done!"), 100000)
+  });
+
+  let result = await promise; // wait till the promise resolves (*)
+
+  console.log(result); // "done!"
+}
+
+f();
+*/
+
+//(async () => {
 
   //await readSecretsFromFile();
-  await readSecretsFromFileForTrials();
+  //await readSecretsFromFileForTrials();
 
-})();
+//})();
 
 // RUN THE STUFF HERE
 //readSecretsFromFile();
+
+readSecretsFromFileForTrials();
