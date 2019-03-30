@@ -13,6 +13,10 @@ var Twitter = new twit(config);
 var Discord = require('discord.js');
 var bot = new Discord.Client();
 
+//waitfor
+var wait = require('wait.for');
+
+
 bot.login(process.env.DISCORD_BOT_TOKEN);
 
 bot.on('ready', () => {
@@ -700,10 +704,9 @@ function getFromTrialSpreadsheet(auth)
         }
         else
         {
-          console.log("doing stuff!");
 
           //check for player and get player details
-          var playerquery = "SELECT playerName, playerRank, playerID, playerDateEarned from playerList WHERE playerName = '" + heartbreakName + "'";
+          var playerquery = "SELECT playerName, playerRank, playerID, playerDateEarned FROM playerList WHERE playerName = '" + heartbreakName + "'";
     
           //FIRST check if player exists
           connection.query(playerquery, function (error, results) {
@@ -711,18 +714,45 @@ function getFromTrialSpreadsheet(auth)
             //player exists!
             if (results && results.length)
             {
+              var checkfortrialquery = "SELECT playerTrialRankID FROM playertrialrank where playerID = " + results[0].playerID + " and trialName = 'Heartbreak(12)'";
+
 
                 //CHECK IF EXISTS
-
-
-                //IF NEW
-                var inserttrialplayerquery = "INSERT INTO playertrialrank (playerID, trialName, playerRank, playerScore, playerDiff, playerUpdateDate) VALUES ("+results[0].playerID+", 'Heartbreak(12)', '" + heartbreakRank + "', " + heartbreakScore + ", '" + heartbreakDiff + "', now())";
-                //console.log(inserttrialplayerquery);
-
-                connection.query(inserttrialplayerquery, function (ierror,iresults) {
+                connection.query(checkfortrialquery, function (ierror,iresults) {
                   if (ierror) throw ierror;
-                  console.log("Player " + heartbreakName + " new trial entry added!");
+                  //EXISTS! UPDATE!
+                  if (iresults && iresults.length)
+                  {
+                    console.log("Player exists for Heartbreak(12)!");
+
+                    //CHECK FOR HIGHER RANK
+
+                    //TWEET/DISCORD
+                  }
+                  //DOES NOT EXIST! INSERT!
+                  else{
+                    console.log("Player does not exist for this trial!");
+
+                      var inserttrialplayerquery = "INSERT INTO playertrialrank (playerID, trialName, playerRank, playerScore, playerDiff, playerUpdateDate) VALUES ("+results[0].playerID+", 'Heartbreak(12)', '" + heartbreakRank + "', " + heartbreakScore + ", '" + heartbreakDiff + "', now())";
+
+                      connection.query(inserttrialplayerquery, function (ierror,iresults) {
+                        if (ierror) throw ierror;
+                        console.log("Player " + heartbreakName + " new trial entry added!");
+
+                        //GET TRIAL ID
+
+                        //UPDATE AUDIT
+
+                        //TWEET/DISCORD
+                      });
+                  }
+
+
+
+
                 });
+
+
 
             }
           });  
