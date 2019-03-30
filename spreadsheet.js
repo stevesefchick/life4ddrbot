@@ -240,8 +240,33 @@ function readSecretsFromFileForTrials()
 
 }
 
+
+function anyStandardAsync(callback){
+  setTimeout( function(){
+                fs.readFile('credentials.json', (err, content) => {
+                  if (err) return console.log('Error loading client secret file:', err);
+                  var creddata = JSON.parse(content);
+                  callback(null,creddata);
+                  //authorize(JSON.parse(content), newGetTrials);
+                });
+                //callback(null,'hi '+param);
+      }, 1000);
+};
+
+function trialSequence()
+{
+  console.log("Trials starting");
+  var getTrialJSON = wait.for(anyStandardAsync);
+  console.log("JSON Cred object retrieved!");
+  var getauth = wait.for(authorize,getTrialJSON,null);
+  console.log("got that auth!");
+
+}
+
+
 //authorize the app
 function authorize(credentials, callback) {
+
   const {client_secret, client_id, redirect_uris} = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(
       client_id, client_secret, redirect_uris[0]);
@@ -252,7 +277,9 @@ function authorize(credentials, callback) {
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(oAuth2Client);
   });
-}
+
+
+};
 
 //get google token
 function getNewToken(oAuth2Client, callback) {
@@ -652,7 +679,18 @@ function getFromPlayerSpreadsheet(auth) {
 }
 
 
-
+function newGetTrials(auth)
+{
+  const sheets = google.sheets({version: 'v4', auth});
+  sheets.spreadsheets.values.get({
+    spreadsheetId: '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+    range: 'ALL TRIALS!A2:C',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const rows = res.data.values;
+    callback(rows);
+  });
+}
 
 function getFromTrialSpreadsheet(auth)
 {
@@ -855,5 +893,8 @@ f();
 
 // RUN THE STUFF HERE
 //readSecretsFromFile();
+
+
+//wait.launchFiber(trialSequence);
 
 readSecretsFromFileForTrials();
