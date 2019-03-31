@@ -241,7 +241,7 @@ function readSecretsFromFileForTrials()
 }
 
 
-function anyStandardAsync(callback){
+function getCredentials(callback){
   setTimeout( function(){
                 fs.readFile('credentials.json', (err, content) => {
                   if (err) return console.log('Error loading client secret file:', err);
@@ -256,12 +256,34 @@ function anyStandardAsync(callback){
 function trialSequence()
 {
   console.log("Trials starting");
-  var getTrialJSON = wait.for(anyStandardAsync);
+  var getTrialJSON = wait.for(getCredentials);
   console.log("JSON Cred object retrieved!");
-  var getauth = wait.for(authorize,getTrialJSON,null);
-  console.log("got that auth!");
-
+  var getauth = wait.for(newauthorize,getTrialJSON);
+  console.log("Authorization complete! Hot damn!");
+  var getTrialListHeartbreak = wait.for(newGetTrials,getauth);
+  console.log("HEARTBREAK(12) LIST RETRIEVED!");
+  console.log(getTrialListHeartbreak);
+  //get player details
+  //check for player trial entry
+  //insert if doesn't exist
+  //update if does exist
 }
+
+function newauthorize(credentials, callback) {
+
+  const {client_secret, client_id, redirect_uris} = credentials.installed;
+  const oAuth2Client = new google.auth.OAuth2(
+      client_id, client_secret, redirect_uris[0]);
+
+  // Check if we have previously stored a token.
+  fs.readFile(TOKEN_PATH, (err, token) => {
+    if (err) return getNewToken(oAuth2Client, callback);
+    oAuth2Client.setCredentials(JSON.parse(token));
+    callback(null,oAuth2Client);
+  });
+
+
+};
 
 
 //authorize the app
@@ -679,7 +701,7 @@ function getFromPlayerSpreadsheet(auth) {
 }
 
 
-function newGetTrials(auth)
+function newGetTrials(auth,callback)
 {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
@@ -688,7 +710,7 @@ function newGetTrials(auth)
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
-    callback(rows);
+    callback(null,rows);
   });
 }
 
@@ -895,6 +917,6 @@ f();
 //readSecretsFromFile();
 
 
-//wait.launchFiber(trialSequence);
+wait.launchFiber(trialSequence);
 
-readSecretsFromFileForTrials();
+//readSecretsFromFileForTrials();
