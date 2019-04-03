@@ -230,17 +230,6 @@ function readSecretsFromFile()
 
 }
 
-function readSecretsFromFileForTrials()
-{
-  //load client secrets
-    fs.readFile('credentials.json', (err, content) => {
-      if (err) return console.log('Error loading client secret file:', err);
-      authorize(JSON.parse(content), getFromTrialSpreadsheet);
-    });
-
-}
-
-
 function getCredentials(callback){
   setTimeout( function(){
                 fs.readFile('credentials.json', (err, content) => {
@@ -253,20 +242,117 @@ function getCredentials(callback){
       }, 1000);
 };
 
+function trialGetSpreadsheetRowNameValue(row, callback){
+  setTimeout( function(){
+
+            var returnedName = `${row[0]}`;
+
+            console.log("name = " + returnedName);
+
+            callback(null,returnedName)
+
+  }, 100);
+}; 
+
+
+function trialGetSpreadsheetRowRankValue(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[1]}`;
+
+            console.log("rank = " + returnedRank);
+
+            callback(null,returnedRank)
+
+  }, 100);
+}; 
+
+function trialGetSpreadsheetRowScoreValue(row, callback){
+  setTimeout( function(){
+
+            var returnedScore = `${row[2]}`;
+            returnedScore = returnedScore.substr(0, returnedScore.indexOf(' '));
+            console.log("score = " + returnedScore);
+
+            callback(null,returnedScore)
+
+  }, 100);
+}; 
+
+function trialGetSpreadsheetRowDiffValue(row, callback){
+  setTimeout( function(){
+
+            var returnedDiff = `${row[2]}`;
+            returnedDiff = returnedDiff.substr(returnedDiff.indexOf('('), returnedDiff.indexOf(')'));
+            console.log("diff = " + returnedDiff);
+
+            callback(null,returnedDiff)
+
+  }, 100);
+}; 
+
+//checks existing DB for player
+function trialCheckForPlayer(playername,callback){
+  setTimeout( function(){
+
+        var playerquery = "SELECT playerName, playerRank, playerID, playerDateEarned FROM playerList WHERE playerName = '" + playername + "'";
+          connection.query(playerquery, function (error, results) {
+            if (error) throw error;
+            callback(null,results)
+
+          });
+
+
+}, 250);
+}
+
 function trialSequence()
 {
+  //connecting to DB
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+
+  
+  connection.connect();
+
   console.log("Trials starting");
   var getTrialJSON = wait.for(getCredentials);
   console.log("JSON Cred object retrieved!");
   var getauth = wait.for(newauthorize,getTrialJSON);
   console.log("Authorization complete! Hot damn!");
-  var getTrialListHeartbreak = wait.for(newGetTrials,getauth);
+  var trialListHeartbreak = wait.for(newGetTrials,getauth);
   console.log("HEARTBREAK(12) LIST RETRIEVED!");
-  console.log(getTrialListHeartbreak);
+  //for each player
+  if (trialListHeartbreak.length)
+  {
+    console.log("Retrieving Heartbreak(12) player info...");
+    trialListHeartbreak.map((row) => {
+      var heartbreakName = wait.for(trialGetSpreadsheetRowNameValue,row);
+      var heartbreakRank = wait.for(trialGetSpreadsheetRowRankValue,row);
+      var heartbreakScore = wait.for(trialGetSpreadsheetRowScoreValue,row);
+      var heartbreakDiff = wait.for(trialGetSpreadsheetRowDiffValue,row);
+      //check for player in DB
+      var playerresults = wait.for(trialCheckForPlayer,heartbreakName);
+      console.log("Player found in DB!");
+      //check for player in trials DB
+     
+    });
+  }
+
+  console.log("Heartbreak(12) complete!");
+
+
+
   //get player details
   //check for player trial entry
   //insert if doesn't exist
   //update if does exist
+
+
 }
 
 function newauthorize(credentials, callback) {
