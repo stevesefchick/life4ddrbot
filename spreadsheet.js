@@ -306,7 +306,23 @@ function trialCheckForPlayer(playername,callback){
 }, 250);
 }
 
-function trialSequence()
+function trialCheckForExistingTrial(playerID,trialName, callback){
+
+  setTimeout( function(){
+
+    var checkfortrialquery = "SELECT playerTrialRankID, playerRank, playerScore FROM playertrialrank where playerID = " + playerID + " and trialName = '" + trialName + "'";
+    connection.query(checkfortrialquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function LIFE4sequence()
 {
   //connecting to DB
   connection = mysql.createConnection({
@@ -319,11 +335,21 @@ function trialSequence()
   
   connection.connect();
 
+  //TODO: Add update here for players!
+
+
+
+
+
+
   console.log("Trials starting");
   var getTrialJSON = wait.for(getCredentials);
   console.log("JSON Cred object retrieved!");
   var getauth = wait.for(newauthorize,getTrialJSON);
   console.log("Authorization complete! Hot damn!");
+
+
+  console.log("Beginning HEARTBREAK(12)");
   var trialListHeartbreak = wait.for(newGetTrials,getauth);
   console.log("HEARTBREAK(12) LIST RETRIEVED!");
   //for each player
@@ -337,21 +363,32 @@ function trialSequence()
       var heartbreakDiff = wait.for(trialGetSpreadsheetRowDiffValue,row);
       //check for player in DB
       var playerresults = wait.for(trialCheckForPlayer,heartbreakName);
-      console.log("Player found in DB!");
-      //check for player in trials DB
-     
+      //if the player exists
+      if (playerresults && playerresults.length)
+      {
+          console.log("Player found in DB!");
+          //check for player in trials DB
+          var trialresults = wait.for(trialCheckForExistingTrial, playerresults[0].playerID, "Heartbreak(12)");
+
+          if (trialresults)
+          {
+            console.log("exists!");
+            //run the update
+          }
+          else
+          {
+            console.log("does not exist!!");
+            //run the insert
+          }
+      }
+      else
+      {
+        console.log("This player doesn't exist!");
+      }
     });
   }
 
   console.log("Heartbreak(12) complete!");
-
-
-
-  //get player details
-  //check for player trial entry
-  //insert if doesn't exist
-  //update if does exist
-
 
 }
 
@@ -1003,6 +1040,6 @@ f();
 //readSecretsFromFile();
 
 
-wait.launchFiber(trialSequence);
+wait.launchFiber(LIFE4sequence);
 
 //readSecretsFromFileForTrials();
