@@ -267,6 +267,31 @@ function trialGetSpreadsheetRowRankValue(row, callback){
   }, 100);
 }; 
 
+
+function trialGetSpreadsheetRowTwitterHandleValue(row, callback){
+  setTimeout( function(){
+
+            var returnedtwitter = `${row[4]}`;
+
+            console.log("twitter  = " + returnedtwitter);
+
+            callback(null,returnedtwitter)
+
+  }, 100);
+}; 
+
+function trialGetSpreadsheetRowRivalCodeValue(row, callback){
+  setTimeout( function(){
+
+            var returnedrival = `${row[3]}`;
+
+            console.log("rival  = " + returnedrival);
+
+            callback(null,returnedrival)
+
+  }, 100);
+}; 
+
 function trialGetSpreadsheetRowScoreValue(row, callback){
   setTimeout( function(){
 
@@ -292,6 +317,7 @@ function trialGetSpreadsheetRowDiffValue(row, callback){
 }; 
 
 //checks existing DB for player
+/*
 function trialCheckForPlayer(playername,callback){
   setTimeout( function(){
 
@@ -305,17 +331,86 @@ function trialCheckForPlayer(playername,callback){
 
 }, 250);
 }
+*/
 
-function trialCheckForExistingTrial(playerID,trialName, callback){
+function trialCheckForExistingTrial(playerName,trialName, callback){
 
   setTimeout( function(){
 
-    var checkfortrialquery = "SELECT playerTrialRankID, playerRank, playerScore FROM playertrialrank where playerID = " + playerID + " and trialName = '" + trialName + "'";
+    var checkfortrialquery = "SELECT playerTrialRankID, playerRank, playerScore FROM playertrialrank where playerName = '" + playerName + "' and trialName = '" + trialName + "'";
     connection.query(checkfortrialquery, function (error, results) {
         if (error) throw error;
         callback(null,results)
 
       });
+
+
+}, 250);
+
+}
+
+
+function insertNewTrialRecord(playerName,playerRivalCode,trialName,playerRank,playerScore,playerDiff,playerTwitterHandle, callback){
+
+  setTimeout( function(){
+
+    var insertquery = "INSERT INTO playertrialrank (playerName, playerRivalCode, trialName, playerRank, playerScore, playerDiff, playerTwitterHandle, playerUpdateDate) VALUES ('"+playerName+"','"+playerRivalCode+"','"+trialName+"','"+playerRank+"','"+playerScore+"','"+playerDiff+"','"+playerTwitterHandle+"',now())";
+    connection.query(insertquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function insertNewTrialAuditRecord(playerTrialID,playerRank,playerScore,playerDiff,callback)
+{
+  setTimeout( function(){
+
+    var insertquery = "INSERT INTO playertrialrankhistory (playerTrialRankID, playerRank, playerScore, playerDiff, playerUpdateDate) VALUES ('"+playerTrialID+"','"+playerRank+"','"+playerScore+"','"+playerDiff+"',now())";
+    connection.query(insertquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,playerDiff,playerTwitterHandle,trialName,callback)
+{
+  setTimeout( function(){
+
+    var post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+
+    console.log("weh");
+    callback(null,"done");
+
+
+}, 250);
+
+}
+
+function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,callback)
+{
+  setTimeout( function(){
+
+    //TODO: Need to add discord icons
+    var discordpost = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+
+    const channel = bot.channels.find('name', 'trial-rankups')
+    channel.send(discordpost)
+    .then(message => console.log(discordpost))
+    .catch(console.error);
+
+
+
+    callback(null,"done");
 
 
 }, 250);
@@ -361,30 +456,35 @@ function LIFE4sequence()
       var heartbreakRank = wait.for(trialGetSpreadsheetRowRankValue,row);
       var heartbreakScore = wait.for(trialGetSpreadsheetRowScoreValue,row);
       var heartbreakDiff = wait.for(trialGetSpreadsheetRowDiffValue,row);
+      var heartbreakTwitter = wait.for(trialGetSpreadsheetRowTwitterHandleValue,row);
+      var heartbreakRival = wait.for(trialGetSpreadsheetRowRivalCodeValue,row);
       //check for player in DB
-      var playerresults = wait.for(trialCheckForPlayer,heartbreakName);
-      //if the player exists
-      if (playerresults && playerresults.length)
-      {
-          console.log("Player found in DB!");
-          //check for player in trials DB
-          var trialresults = wait.for(trialCheckForExistingTrial, playerresults[0].playerID, "Heartbreak(12)");
+      //NO LONGER NEEDED
+      //var playerresults = wait.for(trialCheckForPlayer,heartbreakName);
 
-          if (trialresults)
+          //check for player in trials DB
+          var trialresults = wait.for(trialCheckForExistingTrial, heartbreakName, "Heartbreak(12)");
+          if (trialresults && trialresults.length)
           {
             console.log("exists!");
             //run the update
           }
           else
           {
-            console.log("does not exist!!");
-            //run the insert
+            console.log("Player does not exist! Inserting new record!");
+            var insertresults = wait.for(insertNewTrialRecord, heartbreakName, heartbreakRival, "Heartbreak(12)",heartbreakRank, heartbreakScore, heartbreakDiff,heartbreakTwitter);
+            trialresults = wait.for(trialCheckForExistingTrial, heartbreakName, "Heartbreak(12)");
+            console.log("Insert complete! Preparing audit update");
+            insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,heartbreakRank, heartbreakScore, heartbreakDiff);
+            console.log("Insert complete! Preparing announcement...");
+            //TODO: need to determine ranking
+            var twitterannounce = wait.for(announceNewPlayerTrialTwitter, heartbreakName, heartbreakRank,heartbreakScore,heartbreakDiff, heartbreakTwitter, "Heartbreak(12)");
+            console.log("Twitter announcement complete!");
+            var discordannounce = wait.for(announceNewPlayerTrialDiscord, heartbreakName, heartbreakRank,heartbreakScore,heartbreakDiff, "Heartbreak(12)");
+            console.log("Discord announcement complete!");
+
           }
-      }
-      else
-      {
-        console.log("This player doesn't exist!");
-      }
+
     });
   }
 
@@ -829,7 +929,7 @@ function newGetTrials(auth,callback)
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-    range: 'ALL TRIALS!A2:C',
+    range: 'ALL TRIALS!A2:E',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
