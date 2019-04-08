@@ -389,9 +389,9 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
     //TODO: Need to add @ to players with Twitter handles
     var post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
 
-    //Twitter.post('statuses/update', { status: post }, function(err, data, response) {
-    //  console.log(data)
-    //})
+    Twitter.post('statuses/update', { status: post }, function(err, data, response) {
+      console.log(data)
+    })
 
     callback(null,"done");
 
@@ -407,10 +407,10 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
     //TODO: Need to add discord icons
     var discordpost = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
 
-    //const channel = bot.channels.find('name', 'trial-rankups')
-   // channel.send(discordpost)
-    //.then(message => console.log(discordpost))
-    //.catch(console.error);
+    const channel = bot.channels.find('name', 'trial-rankups')
+    channel.send(discordpost)
+    .then(message => console.log(discordpost))
+    .catch(console.error);
 
 
 
@@ -523,6 +523,8 @@ function LIFE4sequence()
   console.log(listOfTrials[i] + " complete!");
 
 }
+
+//TODO: Close the MySQL connection
 
 }
 
