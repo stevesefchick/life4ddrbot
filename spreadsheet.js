@@ -382,6 +382,207 @@ function insertNewTrialAuditRecord(playerTrialID,playerRank,playerScore,playerDi
 
 }
 
+
+var getTwitterTrialImageURL = function(trial,rank)
+{
+  var twitterImageURL = "";
+
+  //HEARTBREAK(12)
+  if (rank == "Silver" && trial == "HEARTBREAK(12)")
+  {
+    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK SILVER.png';
+  }
+  else if (rank == "Gold" && trial == "HEARTBREAK(12)")
+  {
+    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK GOLD.png';
+  }
+  else if (rank == "Diamond" && trial == "HEARTBREAK(12)")
+  {
+    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK DIAMOND.png';
+  }
+  else if (rank == "Cobalt" && trial == "HEARTBREAK(12)")
+  {
+    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK COBALT.png';
+  }
+  else if (rank == "Amethyst" && trial == "HEARTBREAK(12)")
+  {
+    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK AMETHYST.png';
+  }
+//CELESTIAL(13)
+else if (rank == "Silver" && trial == "CELESTIAL(13)")
+{
+  twitterImageURL = './trial_images/CELESTIAL/CELESTIAL SILVER.png';
+}
+else if (rank == "Gold" && trial == "CELESTIAL(13)")
+{
+  twitterImageURL = './trial_images/CELESTIAL/CELESTIAL GOLD.png';
+}
+else if (rank == "Diamond" && trial == "CELESTIAL(13)")
+{
+  twitterImageURL = './trial_images/CELESTIAL/CELESTIAL DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "CELESTIAL(13)")
+{
+  twitterImageURL = './trial_images/CELESTIAL/CELESTIAL COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "CELESTIAL(13)")
+{
+  twitterImageURL = './trial_images/CELESTIAL/CELESTIAL AMETHYST.png';
+}
+//DAYBREAK(14)
+else if (rank == "Silver" && trial == "DAYBREAK(14)")
+{
+  twitterImageURL = './trial_images/DAYBREAK/DAYBREAK SILVER.png';
+}
+else if (rank == "Gold" && trial == "DAYBREAK(14)")
+{
+  twitterImageURL = './trial_images/DAYBREAK/DAYBREAK GOLD.png';
+}
+else if (rank == "Diamond" && trial == "DAYBREAK(14)")
+{
+  twitterImageURL = './trial_images/DAYBREAK/DAYBREAK DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "DAYBREAK(14)")
+{
+  twitterImageURL = './trial_images/DAYBREAK/DAYBREAK COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "DAYBREAK(14)")
+{
+  twitterImageURL = './trial_images/DAYBREAK/DAYBREAK AMETHYST.png';
+}
+//HELLSCAPE(14)
+else if (rank == "Silver" && trial == "HELLSCAPE(14)")
+{
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE SILVER.png';
+}
+else if (rank == "Gold" && trial == "HELLSCAPE(14)")
+{
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE GOLD.png';
+}
+else if (rank == "Diamond" && trial == "HELLSCAPE(14)")
+{
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "HELLSCAPE(14)")
+{
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "HELLSCAPE(14)")
+{
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE AMETHYST.png';
+}
+//CLOCKWORK(15)
+else if (rank == "Silver" && trial == "CLOCKWORK(15)")
+{
+  twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK SILVER.png';
+}
+else if (rank == "Gold" && trial == "CLOCKWORK(15)")
+{
+  twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK GOLD.png';
+}
+else if (rank == "Diamond" && trial == "CLOCKWORK(15)")
+{
+  twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "CLOCKWORK(15)")
+{
+  twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "CLOCKWORK(15)")
+{
+  twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK AMETHYST.png';
+}
+//PHARAOH(15)
+else if (rank == "Silver" && trial == "PHARAOH(15)")
+{
+  twitterImageURL = './trial_images/PHARAOH/PHARAOH SILVER.png';
+}
+else if (rank == "Gold" && trial == "PHARAOH(15)")
+{
+  twitterImageURL = './trial_images/PHARAOH/PHARAOH GOLD.png';
+}
+else if (rank == "Diamond" && trial == "PHARAOH(15)")
+{
+  twitterImageURL = './trial_images/PHARAOH/PHARAOH DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "PHARAOH(15)")
+{
+  twitterImageURL = './trial_images/PHARAOH/PHARAOH COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "PHARAOH(15)")
+{
+  twitterImageURL = './trial_images/PHARAOH/PHARAOH AMETHYST.png';
+}
+//PARADOX(16)
+else if (rank == "Gold" && trial == "PARADOX(16)")
+{
+  twitterImageURL = './trial_images/PARADOX/PARADOX GOLD.png';
+}
+else if (rank == "Diamond" && trial == "PARADOX(16)")
+{
+  twitterImageURL = './trial_images/PARADOX/PARADOX DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "PARADOX(16)")
+{
+  twitterImageURL = './trial_images/PARADOX/PARADOX COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "PARADOX(16)")
+{
+  twitterImageURL = './trial_images/PARADOX/PARADOX AMETHYST.png';
+}
+//INHUMAN(16)
+else if (rank == "Gold" && trial == "INHUMAN(16)")
+{
+  twitterImageURL = './trial_images/INHUMAN/INHUMAN GOLD.png';
+}
+else if (rank == "Diamond" && trial == "INHUMAN(16)")
+{
+  twitterImageURL = './trial_images/INHUMAN/INHUMAN DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "INHUMAN(16)")
+{
+  twitterImageURL = './trial_images/INHUMAN/INHUMAN COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "INHUMAN(16)")
+{
+  twitterImageURL = './trial_images/INHUMAN/INHUMAN AMETHYST.png';
+}
+//CHEMICAL(17)
+else if (rank == "Gold" && trial == "CHEMICAL(17)")
+{
+  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL GOLD.png';
+}
+else if (rank == "Diamond" && trial == "CHEMICAL(17)")
+{
+  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "CHEMICAL(17)")
+{
+  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "CHEMICAL(17)")
+{
+  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL AMETHYST.png';
+}
+//ORIGIN(18)
+else if (rank == "Diamond" && trial == "ORIGIN(18)")
+{
+  twitterImageURL = './trial_images/ORIGIN/ORIGIN DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "ORIGIN(18)")
+{
+  twitterImageURL = './trial_images/ORIGIN/ORIGIN COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "ORIGIN(18)")
+{
+  twitterImageURL = './trial_images/ORIGIN/ORIGIN AMETHYST.png';
+}
+
+  return twitterImageURL;
+
+}
+
+
 function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,playerDiff,playerTwitterHandle,trialName,callback)
 {
   setTimeout( function(){
@@ -389,9 +590,26 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
     //TODO: Need to add @ to players with Twitter handles
     var post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
 
-    Twitter.post('statuses/update', { status: post }, function(err, data, response) {
-      console.log(data)
-    })
+    var b64content = fs.readFileSync(getTwitterTrialImageURL(trialName,playerRank), { encoding: 'base64' })
+                  
+    // get the new image media on twitter!
+    Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
+      var mediaIdStr = data.media_id_string
+      var altText = "Player trial rank rank"
+      var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+    
+      Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
+        if (!err) {
+          // post the tweet!
+          var params = { status: post.toString(), media_ids: [mediaIdStr] }
+    
+          Twitter.post('statuses/update', params, function (err, data, response) {
+            console.log(data)
+          })
+        }
+      })
+    });
+
 
     callback(null,"done");
 
