@@ -242,6 +242,55 @@ function getCredentials(callback){
       }, 1000);
 };
 
+function playerGetSpreadsheetRowNameValue(row, callback){
+  setTimeout( function(){
+
+            var returnedName = `${row[0]}`;
+
+            console.log("name = " + returnedName);
+
+            callback(null,returnedName)
+
+  }, 100);
+}; 
+
+function playerGetSpreadsheetRowRankValue(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[1]}`;
+
+            console.log("rank = " + returnedRank);
+
+            callback(null,returnedRank)
+
+  }, 100);
+}; 
+
+function playerGetSpreadsheetRowRivalValue(row, callback){
+  setTimeout( function(){
+
+            var returnedRival = `${row[2]}`;
+
+            console.log("rival = " + returnedRival);
+
+            callback(null,returnedRival)
+
+  }, 100);
+}; 
+
+function playerGetSpreadsheetRowTwitterValue(row, callback){
+  setTimeout( function(){
+
+            var returnedTwitter = `${row[3]}`;
+
+            console.log("twitter = " + returnedTwitter);
+
+            callback(null,returnedTwitter)
+
+  }, 100);
+}; 
+
+
 function trialGetSpreadsheetRowNameValue(row, callback){
   setTimeout( function(){
 
@@ -587,8 +636,15 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
 {
   setTimeout( function(){
 
-    //TODO: Need to add @ to players with Twitter handles
-    var post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+    var post = "";
+    if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+    {
+      post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+    }
+    else
+    {
+      post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+    }
 
     var b64content = fs.readFileSync(getTwitterTrialImageURL(trialName,playerRank), { encoding: 'base64' })
                   
@@ -652,42 +708,73 @@ function LIFE4sequence()
   
   connection.connect();
 
-  //TODO: Add update here for players!
 
 
 
 
-  var listOfTrials = [
-    "HEARTBREAK(12)",
-    "CELESTIAL(13)",
-    "DAYBREAK(14)",
-    "HELLSCAPE(14)",
-    "CLOCKWORK(15)",
-    "PHARAOH(15)",
-    "PARADOX(16)",
-    "INHUMAN(16)",
-    "CHEMICAL(17)",
-    "ORIGIN(18)"
-  ];
-
-  var trialRanges = [
-    'ALL TRIALS!A2:E',
-    'ALL TRIALS!F2:J',
-    'ALL TRIALS!K2:O',
-    'ALL TRIALS!P2:T',
-    'ALL TRIALS!U2:Y',
-    'ALL TRIALS!Z2:AD',
-    'ALL TRIALS!AE2:AI',
-    'ALL TRIALS!AJ2:AN',
-    'ALL TRIALS!AO2:AS',
-    'ALL TRIALS!AT2:AX'
-  ];
-
-  console.log("Trials starting");
   var getTrialJSON = wait.for(getCredentials);
   console.log("JSON Cred object retrieved!");
   var getauth = wait.for(newauthorize,getTrialJSON);
   console.log("Authorization complete! Hot damn!");
+
+
+  //TODO: Add update here for players!
+
+console.log("Player retrieval starting!");
+var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
+console.log("Player list retrieved!");
+  if (playerSpreadsheetList.length)
+  {
+    playerSpreadsheetList.map((row) => {
+      var playerName = wait.for(playerGetSpreadsheetRowNameValue,row);
+      var playerRank = wait.for(playerGetSpreadsheetRowRankValue,row);
+      var playerTwitter = wait.for(playerGetSpreadsheetRowTwitterValue,row);
+      var playerRival = wait.for(playerGetSpreadsheetRowRivalValue,row);
+
+
+      //insert if new
+      //update audit
+      //discord
+      //twitter
+
+      //update if exists
+      //update audit
+      //discord
+      //twitter
+
+
+    });
+  }
+
+
+
+console.log("Trials starting!");
+
+var listOfTrials = [
+  "HEARTBREAK(12)",
+  "CELESTIAL(13)",
+  "DAYBREAK(14)",
+  "HELLSCAPE(14)",
+  "CLOCKWORK(15)",
+  "PHARAOH(15)",
+  "PARADOX(16)",
+  "INHUMAN(16)",
+  "CHEMICAL(17)",
+  "ORIGIN(18)"
+];
+
+var trialRanges = [
+  'ALL TRIALS!A2:E',
+  'ALL TRIALS!F2:J',
+  'ALL TRIALS!K2:O',
+  'ALL TRIALS!P2:T',
+  'ALL TRIALS!U2:Y',
+  'ALL TRIALS!Z2:AD',
+  'ALL TRIALS!AE2:AI',
+  'ALL TRIALS!AJ2:AN',
+  'ALL TRIALS!AO2:AS',
+  'ALL TRIALS!AT2:AX'
+];
 
   for (var i = 0; i < listOfTrials.length;i++)
   {
@@ -1177,6 +1264,19 @@ function getFromPlayerSpreadsheet(auth) {
 
 }
 
+
+function newGetPlayersFromSheets(auth,callback)
+{
+  const sheets = google.sheets({version: 'v4', auth});
+  sheets.spreadsheets.values.get({
+    spreadsheetId: '1FPiO1h9XDSeTB6tWmRi7ursSqFOBYitiVweu3eOQ8tg',
+    range: 'User List!A2:E',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const rows = res.data.values;
+    callback(null,rows);
+  });
+}
 
 function newGetTrials(auth,trialRange,callback)
 {
