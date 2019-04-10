@@ -1029,6 +1029,7 @@ var trialRanges = [
             }
             else
             {
+              console.log("Player score update!");
             //TODO: Add trial update
 
             }
