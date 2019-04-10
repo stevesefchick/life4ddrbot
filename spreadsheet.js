@@ -398,6 +398,54 @@ function trialCheckForExistingTrial(playerName,trialName, callback){
 
 }
 
+function checkForExistingPlayer(playerName, callback){
+
+  setTimeout( function(){
+
+    var checkforplayerquery = "SELECT playerID,playerName,playerRank FROM playerList where playerName = '" + playerName + "'";
+    connection.query(checkforplayerquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+
+function updatePlayerRecord(playerName, playerRank, playerRival, playerTwitter,callback){
+
+  setTimeout( function(){
+
+    var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "', playerRivalCode='"+playerRival+"', twitterHandle='"+ playerTwitter + "', playerDateEarned=now() where playerName = '" + playerName +"'";
+    connection.query(updateplayerquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function insertNewPlayerRecord(playerName, playerRank, playerRival, playerTwitter,callback){
+
+  setTimeout( function(){
+
+    var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRival + "','"+playerTwitter+"', now())";
+    connection.query(insertplayerquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
 
 function insertNewTrialRecord(playerName,playerRivalCode,trialName,playerRank,playerScore,playerDiff,playerTwitterHandle, callback){
 
@@ -420,6 +468,22 @@ function insertNewTrialAuditRecord(playerTrialID,playerRank,playerScore,playerDi
   setTimeout( function(){
 
     var insertquery = "INSERT INTO playertrialrankhistory (playerTrialRankID, playerRank, playerScore, playerDiff, playerUpdateDate) VALUES ('"+playerTrialID+"','"+playerRank+"','"+playerScore+"','"+playerDiff+"',now())";
+    connection.query(insertquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function insertNewPlayerAuditRecord(playerID,playerRank,callback)
+{
+  setTimeout( function(){
+
+    var insertquery = "INSERT INTO playerHistory (playerID,playerRank,playerUpdate) VALUES ("+playerID+",'"+playerRank+"',now())";
     connection.query(insertquery, function (error, results) {
         if (error) throw error;
         callback(null,results)
@@ -674,6 +738,130 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
 
 }
 
+function announceNewPlayerTwitter(playerName, playerRank,playerTwitterHandle,callback)
+{
+  setTimeout( function(){
+
+    var twitterpost ="";
+    if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+    {
+      twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has joined LIFE4! Their current rank is " + playerRank + "!";
+    }
+    else
+    {
+      twitterpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "!";
+    }
+
+    var b64content = fs.readFileSync(getTwitterImageURL(playerRank), { encoding: 'base64' })
+                  
+    // get the new image media on twitter!
+    Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
+      var mediaIdStr = data.media_id_string
+      var altText = "Player rank"
+      var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+    
+      Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
+        if (!err) {
+          // post the tweet!
+          var params = { status: twitterpost.toString(), media_ids: [mediaIdStr] }
+    
+          Twitter.post('statuses/update', params, function (err, data, response) {
+            console.log(data)
+          })
+        }
+      })
+    })
+
+
+    callback(null,"done");
+
+
+}, 250);
+
+}
+
+
+function announcePlayerRankupTwitter(playerName, playerRank,playerTwitterHandle,callback)
+{
+  setTimeout( function(){
+
+    var twitterpost ="";
+    if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+    {
+      twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has earned a new rank! They are now " + playerRank +"! Congratulations! ";
+    }
+    else
+    {
+      twitterpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! ";
+    }
+
+    var b64content = fs.readFileSync(getTwitterImageURL(playerRank), { encoding: 'base64' })
+                  
+    // get the new image media on twitter!
+    Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
+      var mediaIdStr = data.media_id_string
+      var altText = "Player rank"
+      var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+    
+      Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
+        if (!err) {
+          // post the tweet!
+          var params = { status: twitterpost.toString(), media_ids: [mediaIdStr] }
+    
+          Twitter.post('statuses/update', params, function (err, data, response) {
+            console.log(data)
+          })
+        }
+      })
+    })
+
+
+    callback(null,"done");
+
+
+}, 250);
+
+}
+
+function announcePlayerRankupDiscord(playerName, playerRank,callback)
+{
+  setTimeout( function(){
+
+    //TODO: Need to add discord icons
+    var discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon(playerRank);
+
+    const channel = bot.channels.find('name', 'rankups')
+    channel.send(discordpost)
+    .then(message => console.log(discordpost))
+    .catch(console.error);
+
+    callback(null,"done");
+
+
+}, 250);
+
+}
+
+function announceNewPlayerDiscord(playerName, playerRank,callback)
+{
+  setTimeout( function(){
+
+    //TODO: Need to add discord icons
+    var discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon(playerRank);
+
+    const channel = bot.channels.find('name', 'rankups')
+    channel.send(discordpost)
+    .then(message => console.log(discordpost))
+    .catch(console.error);
+
+    callback(null,"done");
+
+
+}, 250);
+
+}
+
+
 function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,callback)
 {
   setTimeout( function(){
@@ -731,22 +919,53 @@ console.log("Player list retrieved!");
       var playerTwitter = wait.for(playerGetSpreadsheetRowTwitterValue,row);
       var playerRival = wait.for(playerGetSpreadsheetRowRivalValue,row);
 
+      //check for existing player
+      var playerresults = wait.for(checkForExistingPlayer, playerName);
 
-      //insert if new
-      //update audit
-      //discord
-      //twitter
+      //exists
+      if (playerresults && playerresults.length)
+      {
+        console.log("Player exists!");
 
-      //update if exists
-      //update audit
-      //discord
-      //twitter
+        if (playerRank == playerresults[0].playerRank)
+        {
+          console.log("Same rank!");
+        }
+        else
+        {
+          console.log("New rank!");
+          var updateplayerresults = wait.for(updatePlayerRecord, playerName,playerRank,playerRival,playerTwitter);
+          console.log("Player updated!");
+          var insertresults = wait.for(insertNewPlayerAuditRecord, playerresults[0].playerID, playerRank);
+          console.log("Player Audit History complete!");
+          var twitterannounce = wait.for(announcePlayerRankupTwitter, playerName, playerRank, playerTwitter);
+          console.log("Twitter announcement complete!");
+          var discordannounce = wait.for(announcePlayerRankupDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i]);
+          console.log("Discord announcement complete!");
 
+        }
 
+      }
+      //does not exist!
+      else
+      {
+        console.log("Player does not exist!");
+              //insert if new
+        var playerinsert = wait.for(insertNewPlayerRecord,playerName,playerRank,playerRival,playerTwitter);
+        console.log("Player " + playerName + " added!");
+        //re-retrieve player
+        playerresults = wait.for(checkForExistingPlayer, playerName);
+        var insertresults = wait.for(insertNewPlayerAuditRecord, playerresults[0].playerID, playerRank);
+        console.log("Player Audit History complete!");
+        var twitterannounce = wait.for(announceNewPlayerTwitter, playerName, playerRank, playerTwitter);
+        console.log("Twitter announcement complete!");
+        var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerRank);
+        console.log("Discord announcement complete!");
+      }
     });
   }
 
-
+console.log("Players complete!");
 
 console.log("Trials starting!");
 
@@ -803,8 +1022,16 @@ var trialRanges = [
           var trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
           if (trialresults && trialresults.length)
           {
-            console.log("exists!");
-            //run the update
+            console.log("Player exists! Check for update!");
+            if (playerScore == trialresults[0].playerScore)
+            {
+              console.log("Player has same score!");
+            }
+            else
+            {
+            //TODO: Add trial update
+
+            }
           }
           else
           {
