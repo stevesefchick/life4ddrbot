@@ -215,6 +215,40 @@ var getDiscordIcon = function(rank)
   return discordemoji;
 }
 
+
+var getTrialDiscordIcon = function(rank)
+{
+  var discordemoji="";
+
+  if (rank == "Gold")
+  {
+    discordemoji = "<:g3:530667268099670016>";
+  }
+  else if (rank == "Silver")
+  {
+    discordemoji = "<:s3:530666660051419136>";
+  }
+  else if (rank == "Bronze")
+  {
+    discordemoji = "<:b3:530665367417389097>";
+  }
+  else if (rank == "Diamond")
+  {
+    discordemoji = "<:d3:530667792303783937>";
+  }
+  else if (rank == "Cobalt")
+  {
+    discordemoji = "<:c3:530667834418921482>";
+  }
+  else if (rank == "Amethyst")
+  {
+    discordemoji = "<:a3:540807991373594633>";
+  }
+
+
+  return discordemoji;
+}
+
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
 
@@ -247,11 +281,11 @@ function playerGetSpreadsheetRowNameValue(row, callback){
 
             var returnedName = `${row[0]}`;
 
-            console.log("name = " + returnedName);
+           // console.log("name = " + returnedName);
 
             callback(null,returnedName)
 
-  }, 100);
+  }, 25);
 }; 
 
 function playerGetSpreadsheetRowRankValue(row, callback){
@@ -259,11 +293,11 @@ function playerGetSpreadsheetRowRankValue(row, callback){
 
             var returnedRank = `${row[1]}`;
 
-            console.log("rank = " + returnedRank);
+           // console.log("rank = " + returnedRank);
 
             callback(null,returnedRank)
 
-  }, 100);
+  }, 25);
 }; 
 
 function playerGetSpreadsheetRowRivalValue(row, callback){
@@ -271,11 +305,11 @@ function playerGetSpreadsheetRowRivalValue(row, callback){
 
             var returnedRival = `${row[2]}`;
 
-            console.log("rival = " + returnedRival);
+           // console.log("rival = " + returnedRival);
 
             callback(null,returnedRival)
 
-  }, 100);
+  }, 25);
 }; 
 
 function playerGetSpreadsheetRowTwitterValue(row, callback){
@@ -283,11 +317,11 @@ function playerGetSpreadsheetRowTwitterValue(row, callback){
 
             var returnedTwitter = `${row[3]}`;
 
-            console.log("twitter = " + returnedTwitter);
+           // console.log("twitter = " + returnedTwitter);
 
             callback(null,returnedTwitter)
 
-  }, 100);
+  }, 25);
 }; 
 
 
@@ -296,11 +330,11 @@ function trialGetSpreadsheetRowNameValue(row, callback){
 
             var returnedName = `${row[0]}`;
 
-            console.log("name = " + returnedName);
+           // console.log("name = " + returnedName);
 
             callback(null,returnedName)
 
-  }, 100);
+  }, 25);
 }; 
 
 
@@ -309,11 +343,11 @@ function trialGetSpreadsheetRowRankValue(row, callback){
 
             var returnedRank = `${row[1]}`;
 
-            console.log("rank = " + returnedRank);
+           // console.log("rank = " + returnedRank);
 
             callback(null,returnedRank)
 
-  }, 100);
+  }, 25);
 }; 
 
 
@@ -322,11 +356,11 @@ function trialGetSpreadsheetRowTwitterHandleValue(row, callback){
 
             var returnedtwitter = `${row[4]}`;
 
-            console.log("twitter  = " + returnedtwitter);
+           // console.log("twitter  = " + returnedtwitter);
 
             callback(null,returnedtwitter)
 
-  }, 100);
+  }, 25);
 }; 
 
 function trialGetSpreadsheetRowRivalCodeValue(row, callback){
@@ -334,11 +368,11 @@ function trialGetSpreadsheetRowRivalCodeValue(row, callback){
 
             var returnedrival = `${row[3]}`;
 
-            console.log("rival  = " + returnedrival);
+           // console.log("rival  = " + returnedrival);
 
             callback(null,returnedrival)
 
-  }, 100);
+  }, 25);
 }; 
 
 function trialGetSpreadsheetRowScoreValue(row, callback){
@@ -346,11 +380,11 @@ function trialGetSpreadsheetRowScoreValue(row, callback){
 
             var returnedScore = `${row[2]}`;
             returnedScore = returnedScore.substr(0, returnedScore.indexOf(' '));
-            console.log("score = " + returnedScore);
+            //console.log("score = " + returnedScore);
 
             callback(null,returnedScore)
 
-  }, 100);
+  }, 25);
 }; 
 
 function trialGetSpreadsheetRowDiffValue(row, callback){
@@ -358,29 +392,12 @@ function trialGetSpreadsheetRowDiffValue(row, callback){
 
             var returnedDiff = `${row[2]}`;
             returnedDiff = returnedDiff.substr(returnedDiff.indexOf('('), returnedDiff.indexOf(')'));
-            console.log("diff = " + returnedDiff);
+            //console.log("diff = " + returnedDiff);
 
             callback(null,returnedDiff)
 
-  }, 100);
+  }, 25);
 }; 
-
-//checks existing DB for player
-/*
-function trialCheckForPlayer(playername,callback){
-  setTimeout( function(){
-
-        var playerquery = "SELECT playerName, playerRank, playerID, playerDateEarned FROM playerList WHERE playerName = '" + playername + "'";
-          connection.query(playerquery, function (error, results) {
-            if (error) throw error;
-            callback(null,results)
-
-          });
-
-
-}, 250);
-}
-*/
 
 function trialCheckForExistingTrial(playerName,trialName, callback){
 
@@ -394,7 +411,7 @@ function trialCheckForExistingTrial(playerName,trialName, callback){
       });
 
 
-}, 250);
+}, 100);
 
 }
 
@@ -410,7 +427,7 @@ function checkForExistingPlayer(playerName, callback){
       });
 
 
-}, 250);
+}, 100);
 
 }
 
@@ -463,6 +480,22 @@ function insertNewTrialRecord(playerName,playerRivalCode,trialName,playerRank,pl
 
 }
 
+function updateTrialRecord(trialrecordID,playerName,playerRivalCode,playerRank,playerScore,playerDiff,playerTwitterHandle, callback){
+
+  setTimeout( function(){
+
+    var updatequery = "UPDATE playertrialrank set playerName = '"+playerName+"', playerRivalCode='"+playerRivalCode+"',playerRank='"+playerRank+"',playerScore="+playerScore+",playerDiff='"+playerDiff+"',playerTwitterHandle='"+playerTwitterHandle+"' where playerTrialRankID = " +trialrecordID;
+    connection.query(updatequery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
 function insertNewTrialAuditRecord(playerTrialID,playerRank,playerScore,playerDiff,callback)
 {
   setTimeout( function(){
@@ -501,192 +534,192 @@ var getTwitterTrialImageURL = function(trial,rank)
   var twitterImageURL = "";
 
   //HEARTBREAK(12)
-  if (rank == "Silver" && trial == "HEARTBREAK(12)")
+  if (rank == "Silver" && trial == "HEARTBREAK (12)")
   {
     twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK SILVER.png';
   }
-  else if (rank == "Gold" && trial == "HEARTBREAK(12)")
+  else if (rank == "Gold" && trial == "HEARTBREAK (12)")
   {
     twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK GOLD.png';
   }
-  else if (rank == "Diamond" && trial == "HEARTBREAK(12)")
+  else if (rank == "Diamond" && trial == "HEARTBREAK (12)")
   {
     twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK DIAMOND.png';
   }
-  else if (rank == "Cobalt" && trial == "HEARTBREAK(12)")
+  else if (rank == "Cobalt" && trial == "HEARTBREAK (12)")
   {
     twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK COBALT.png';
   }
-  else if (rank == "Amethyst" && trial == "HEARTBREAK(12)")
+  else if (rank == "Amethyst" && trial == "HEARTBREAK (12)")
   {
     twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK AMETHYST.png';
   }
 //CELESTIAL(13)
-else if (rank == "Silver" && trial == "CELESTIAL(13)")
+else if (rank == "Silver" && trial == "CELESTIAL (13)")
 {
   twitterImageURL = './trial_images/CELESTIAL/CELESTIAL SILVER.png';
 }
-else if (rank == "Gold" && trial == "CELESTIAL(13)")
+else if (rank == "Gold" && trial == "CELESTIAL (13)")
 {
   twitterImageURL = './trial_images/CELESTIAL/CELESTIAL GOLD.png';
 }
-else if (rank == "Diamond" && trial == "CELESTIAL(13)")
+else if (rank == "Diamond" && trial == "CELESTIAL (13)")
 {
   twitterImageURL = './trial_images/CELESTIAL/CELESTIAL DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "CELESTIAL(13)")
+else if (rank == "Cobalt" && trial == "CELESTIAL (13)")
 {
   twitterImageURL = './trial_images/CELESTIAL/CELESTIAL COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "CELESTIAL(13)")
+else if (rank == "Amethyst" && trial == "CELESTIAL (13)")
 {
   twitterImageURL = './trial_images/CELESTIAL/CELESTIAL AMETHYST.png';
 }
 //DAYBREAK(14)
-else if (rank == "Silver" && trial == "DAYBREAK(14)")
+else if (rank == "Silver" && trial == "DAYBREAK (14)")
 {
   twitterImageURL = './trial_images/DAYBREAK/DAYBREAK SILVER.png';
 }
-else if (rank == "Gold" && trial == "DAYBREAK(14)")
+else if (rank == "Gold" && trial == "DAYBREAK (14)")
 {
   twitterImageURL = './trial_images/DAYBREAK/DAYBREAK GOLD.png';
 }
-else if (rank == "Diamond" && trial == "DAYBREAK(14)")
+else if (rank == "Diamond" && trial == "DAYBREAK (14)")
 {
   twitterImageURL = './trial_images/DAYBREAK/DAYBREAK DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "DAYBREAK(14)")
+else if (rank == "Cobalt" && trial == "DAYBREAK (14)")
 {
   twitterImageURL = './trial_images/DAYBREAK/DAYBREAK COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "DAYBREAK(14)")
+else if (rank == "Amethyst" && trial == "DAYBREAK (14)")
 {
   twitterImageURL = './trial_images/DAYBREAK/DAYBREAK AMETHYST.png';
 }
 //HELLSCAPE(14)
-else if (rank == "Silver" && trial == "HELLSCAPE(14)")
+else if (rank == "Silver" && trial == "HELLSCAPE (14)")
 {
   twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE SILVER.png';
 }
-else if (rank == "Gold" && trial == "HELLSCAPE(14)")
+else if (rank == "Gold" && trial == "HELLSCAPE (14)")
 {
   twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE GOLD.png';
 }
-else if (rank == "Diamond" && trial == "HELLSCAPE(14)")
+else if (rank == "Diamond" && trial == "HELLSCAPE (14)")
 {
   twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "HELLSCAPE(14)")
+else if (rank == "Cobalt" && trial == "HELLSCAPE (14)")
 {
   twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "HELLSCAPE(14)")
+else if (rank == "Amethyst" && trial == "HELLSCAPE (14)")
 {
   twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE AMETHYST.png';
 }
 //CLOCKWORK(15)
-else if (rank == "Silver" && trial == "CLOCKWORK(15)")
+else if (rank == "Silver" && trial == "CLOCKWORK (15)")
 {
   twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK SILVER.png';
 }
-else if (rank == "Gold" && trial == "CLOCKWORK(15)")
+else if (rank == "Gold" && trial == "CLOCKWORK (15)")
 {
   twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK GOLD.png';
 }
-else if (rank == "Diamond" && trial == "CLOCKWORK(15)")
+else if (rank == "Diamond" && trial == "CLOCKWORK (15)")
 {
   twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "CLOCKWORK(15)")
+else if (rank == "Cobalt" && trial == "CLOCKWORK (15)")
 {
   twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "CLOCKWORK(15)")
+else if (rank == "Amethyst" && trial == "CLOCKWORK (15)")
 {
   twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK AMETHYST.png';
 }
 //PHARAOH(15)
-else if (rank == "Silver" && trial == "PHARAOH(15)")
+else if (rank == "Silver" && trial == "PHARAOH (15)")
 {
   twitterImageURL = './trial_images/PHARAOH/PHARAOH SILVER.png';
 }
-else if (rank == "Gold" && trial == "PHARAOH(15)")
+else if (rank == "Gold" && trial == "PHARAOH (15)")
 {
   twitterImageURL = './trial_images/PHARAOH/PHARAOH GOLD.png';
 }
-else if (rank == "Diamond" && trial == "PHARAOH(15)")
+else if (rank == "Diamond" && trial == "PHARAOH (15)")
 {
   twitterImageURL = './trial_images/PHARAOH/PHARAOH DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "PHARAOH(15)")
+else if (rank == "Cobalt" && trial == "PHARAOH (15)")
 {
   twitterImageURL = './trial_images/PHARAOH/PHARAOH COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "PHARAOH(15)")
+else if (rank == "Amethyst" && trial == "PHARAOH (15)")
 {
   twitterImageURL = './trial_images/PHARAOH/PHARAOH AMETHYST.png';
 }
 //PARADOX(16)
-else if (rank == "Gold" && trial == "PARADOX(16)")
+else if (rank == "Gold" && trial == "PARADOX (16)")
 {
   twitterImageURL = './trial_images/PARADOX/PARADOX GOLD.png';
 }
-else if (rank == "Diamond" && trial == "PARADOX(16)")
+else if (rank == "Diamond" && trial == "PARADOX (16)")
 {
   twitterImageURL = './trial_images/PARADOX/PARADOX DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "PARADOX(16)")
+else if (rank == "Cobalt" && trial == "PARADOX (16)")
 {
   twitterImageURL = './trial_images/PARADOX/PARADOX COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "PARADOX(16)")
+else if (rank == "Amethyst" && trial == "PARADOX (16)")
 {
   twitterImageURL = './trial_images/PARADOX/PARADOX AMETHYST.png';
 }
 //INHUMAN(16)
-else if (rank == "Gold" && trial == "INHUMAN(16)")
+else if (rank == "Gold" && trial == "INHUMAN (16)")
 {
   twitterImageURL = './trial_images/INHUMAN/INHUMAN GOLD.png';
 }
-else if (rank == "Diamond" && trial == "INHUMAN(16)")
+else if (rank == "Diamond" && trial == "INHUMAN (16)")
 {
   twitterImageURL = './trial_images/INHUMAN/INHUMAN DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "INHUMAN(16)")
+else if (rank == "Cobalt" && trial == "INHUMAN (16)")
 {
   twitterImageURL = './trial_images/INHUMAN/INHUMAN COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "INHUMAN(16)")
+else if (rank == "Amethyst" && trial == "INHUMAN (16)")
 {
   twitterImageURL = './trial_images/INHUMAN/INHUMAN AMETHYST.png';
 }
 //CHEMICAL(17)
-else if (rank == "Gold" && trial == "CHEMICAL(17)")
+else if (rank == "Gold" && trial == "CHEMICAL (17)")
 {
   twitterImageURL = './trial_images/CHEMICAL/CHEMICAL GOLD.png';
 }
-else if (rank == "Diamond" && trial == "CHEMICAL(17)")
+else if (rank == "Diamond" && trial == "CHEMICAL (17)")
 {
   twitterImageURL = './trial_images/CHEMICAL/CHEMICAL DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "CHEMICAL(17)")
+else if (rank == "Cobalt" && trial == "CHEMICAL (17)")
 {
   twitterImageURL = './trial_images/CHEMICAL/CHEMICAL COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "CHEMICAL(17)")
+else if (rank == "Amethyst" && trial == "CHEMICAL (17)")
 {
   twitterImageURL = './trial_images/CHEMICAL/CHEMICAL AMETHYST.png';
 }
 //ORIGIN(18)
-else if (rank == "Diamond" && trial == "ORIGIN(18)")
+else if (rank == "Diamond" && trial == "ORIGIN (18)")
 {
   twitterImageURL = './trial_images/ORIGIN/ORIGIN DIAMOND.png';
 }
-else if (rank == "Cobalt" && trial == "ORIGIN(18)")
+else if (rank == "Cobalt" && trial == "ORIGIN (18)")
 {
   twitterImageURL = './trial_images/ORIGIN/ORIGIN COBALT.png';
 }
-else if (rank == "Amethyst" && trial == "ORIGIN(18)")
+else if (rank == "Amethyst" && trial == "ORIGIN (18)")
 {
   twitterImageURL = './trial_images/ORIGIN/ORIGIN AMETHYST.png';
 }
@@ -734,7 +767,50 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
     callback(null,"done");
 
 
-}, 250);
+}, 1000);
+
+}
+
+
+function announceUpdatePlayerTrialTwitter(playerName, playerRank,playerScore,playerDiff,playerTwitterHandle,trialName,callback)
+{
+  setTimeout( function(){
+
+    var post = "";
+    if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+    {
+      post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+    }
+    else
+    {
+      post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+    }
+
+    var b64content = fs.readFileSync(getTwitterTrialImageURL(trialName,playerRank), { encoding: 'base64' })
+                  
+    // get the new image media on twitter!
+    Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
+      var mediaIdStr = data.media_id_string
+      var altText = "Player trial rank rank"
+      var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+    
+      Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
+        if (!err) {
+          // post the tweet!
+          var params = { status: post.toString(), media_ids: [mediaIdStr] }
+    
+          Twitter.post('statuses/update', params, function (err, data, response) {
+            console.log(data)
+          })
+        }
+      })
+    });
+
+
+    callback(null,"done");
+
+
+}, 1000);
 
 }
 
@@ -776,7 +852,7 @@ function announceNewPlayerTwitter(playerName, playerRank,playerTwitterHandle,cal
     callback(null,"done");
 
 
-}, 250);
+}, 1000);
 
 }
 
@@ -819,7 +895,7 @@ function announcePlayerRankupTwitter(playerName, playerRank,playerTwitterHandle,
     callback(null,"done");
 
 
-}, 250);
+}, 1000);
 
 }
 
@@ -827,7 +903,6 @@ function announcePlayerRankupDiscord(playerName, playerRank,callback)
 {
   setTimeout( function(){
 
-    //TODO: Need to add discord icons
     var discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon(playerRank);
 
     const channel = bot.channels.find('name', 'rankups')
@@ -838,7 +913,7 @@ function announcePlayerRankupDiscord(playerName, playerRank,callback)
     callback(null,"done");
 
 
-}, 250);
+}, 750);
 
 }
 
@@ -846,7 +921,6 @@ function announceNewPlayerDiscord(playerName, playerRank,callback)
 {
   setTimeout( function(){
 
-    //TODO: Need to add discord icons
     var discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon(playerRank);
 
     const channel = bot.channels.find('name', 'rankups')
@@ -857,7 +931,7 @@ function announceNewPlayerDiscord(playerName, playerRank,callback)
     callback(null,"done");
 
 
-}, 250);
+}, 750);
 
 }
 
@@ -866,8 +940,7 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
 {
   setTimeout( function(){
 
-    //TODO: Need to add discord icons
-    var discordpost = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
 
     const channel = bot.channels.find('name', 'trial-rankups')
     channel.send(discordpost)
@@ -879,7 +952,27 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
     callback(null,"done");
 
 
-}, 250);
+}, 750);
+
+}
+
+function announceUpdatePlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,callback)
+{
+  setTimeout( function(){
+
+    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+
+    const channel = bot.channels.find('name', 'trial-rankups')
+    channel.send(discordpost)
+    .then(message => console.log(discordpost))
+    .catch(console.error);
+
+
+
+    callback(null,"done");
+
+
+}, 750);
 
 }
 
@@ -906,8 +999,6 @@ function LIFE4sequence()
   console.log("Authorization complete! Hot damn!");
 
 
-  //TODO: Add update here for players!
-
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
 console.log("Player list retrieved!");
@@ -925,7 +1016,7 @@ console.log("Player list retrieved!");
       //exists
       if (playerresults && playerresults.length)
       {
-        console.log("Player exists!");
+        console.log("Player "+playerName + " exists!");
 
         if (playerRank == playerresults[0].playerRank)
         {
@@ -940,7 +1031,7 @@ console.log("Player list retrieved!");
           console.log("Player Audit History complete!");
           var twitterannounce = wait.for(announcePlayerRankupTwitter, playerName, playerRank, playerTwitter);
           console.log("Twitter announcement complete!");
-          var discordannounce = wait.for(announcePlayerRankupDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i]);
+          var discordannounce = wait.for(announcePlayerRankupDiscord, playerName, playerRank);
           console.log("Discord announcement complete!");
 
         }
@@ -949,7 +1040,7 @@ console.log("Player list retrieved!");
       //does not exist!
       else
       {
-        console.log("Player does not exist!");
+        console.log("Player " + playerName + " does not exist!");
               //insert if new
         var playerinsert = wait.for(insertNewPlayerRecord,playerName,playerRank,playerRival,playerTwitter);
         console.log("Player " + playerName + " added!");
@@ -970,16 +1061,16 @@ console.log("Players complete!");
 console.log("Trials starting!");
 
 var listOfTrials = [
-  "HEARTBREAK(12)",
-  "CELESTIAL(13)",
-  "DAYBREAK(14)",
-  "HELLSCAPE(14)",
-  "CLOCKWORK(15)",
-  "PHARAOH(15)",
-  "PARADOX(16)",
-  "INHUMAN(16)",
-  "CHEMICAL(17)",
-  "ORIGIN(18)"
+  "HEARTBREAK (12)",
+  "CELESTIAL (13)",
+  "DAYBREAK (14)",
+  "HELLSCAPE (14)",
+  "CLOCKWORK (15)",
+  "PHARAOH (15)",
+  "PARADOX (16)",
+  "INHUMAN (16)",
+  "CHEMICAL (17)",
+  "ORIGIN (18)"
 ];
 
 var trialRanges = [
@@ -1030,7 +1121,15 @@ var trialRanges = [
             else
             {
               console.log("Player score update!");
-            //TODO: Add trial update
+              var updateresults = wait.for(updateTrialRecord, trialresults[0].playerTrialRankID, playerName, playerRival,playerRank, playerScore, playerDiff,playerTwitter);
+              console.log("Player trial insert complete!");
+              trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
+              insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
+              console.log("Audit update complete! Preparing announcement...");
+              var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i]);
+            console.log("Twitter announcement complete!");
+            var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i]);
+            console.log("Discord announcement complete!");
 
             }
           }
@@ -1057,8 +1156,7 @@ var trialRanges = [
 
 }
 
-//TODO: Close the MySQL connection
-
+connection.end();
 }
 
 function newauthorize(credentials, callback) {
