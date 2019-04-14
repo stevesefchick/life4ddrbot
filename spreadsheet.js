@@ -431,6 +431,31 @@ function checkForExistingPlayer(playerName, callback){
 
 }
 
+function getranks(trialname, playerName, callback){
+
+  setTimeout( function(){
+
+    var checkrankquery = "SELECT playerName, playerScore from playertrialrank WHERE trialName = '"+trialname+"' order by playerScore DESC";
+    var theRank = 0;
+    connection.query(checkrankquery, function (error, results) {
+        if (error) throw error;
+        console.log(results);
+        for (var i = 0; i < results.length;++i)
+        {
+            if (results[i].playerName == playerName)
+            {
+              theRank = i + 1;  
+            }
+        }
+        callback(null,theRank)
+
+      });
+
+
+}, 100);
+
+}
+
 
 function updatePlayerRecord(playerName, playerRank, playerRival, playerTwitter,callback){
 
@@ -729,18 +754,18 @@ else if (rank == "Amethyst" && trial == "ORIGIN (18)")
 }
 
 
-function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,playerDiff,playerTwitterHandle,trialName,callback)
+function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,playerDiff,playerTwitterHandle,trialName, numberRank,callback)
 {
   setTimeout( function(){
 
     var post = "";
     if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
     {
-      post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+      post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
     }
     else
     {
-      post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+      post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
     }
 
     var b64content = fs.readFileSync(getTwitterTrialImageURL(trialName,playerRank), { encoding: 'base64' })
@@ -772,18 +797,18 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
 }
 
 
-function announceUpdatePlayerTrialTwitter(playerName, playerRank,playerScore,playerDiff,playerTwitterHandle,trialName,callback)
+function announceUpdatePlayerTrialTwitter(playerName, playerRank,playerScore,playerDiff,playerTwitterHandle,trialName,numberRank,callback)
 {
   setTimeout( function(){
 
     var post = "";
     if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
     {
-      post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+      post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
     }
     else
     {
-      post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+      post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
     }
 
     var b64content = fs.readFileSync(getTwitterTrialImageURL(trialName,playerRank), { encoding: 'base64' })
@@ -936,11 +961,11 @@ function announceNewPlayerDiscord(playerName, playerRank,callback)
 }
 
 
-function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,callback)
+function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,numberRank,callback)
 {
   setTimeout( function(){
 
-    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
 
     const channel = bot.channels.find('name', 'trial-rankups')
     channel.send(discordpost)
@@ -956,11 +981,11 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
 
 }
 
-function announceUpdatePlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,callback)
+function announceUpdatePlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName, numberRank,callback)
 {
   setTimeout( function(){
 
-    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + "!";
+    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
 
     const channel = bot.channels.find('name', 'trial-rankups')
     channel.send(discordpost)
@@ -997,7 +1022,6 @@ function LIFE4sequence()
   console.log("JSON Cred object retrieved!");
   var getauth = wait.for(newauthorize,getTrialJSON);
   console.log("Authorization complete! Hot damn!");
-
 
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
@@ -1093,6 +1117,7 @@ var trialRanges = [
   //get the list of players
   var trialPlayerList = wait.for(newGetTrials, getauth, trialRanges[i]);
 
+
   console.log(listOfTrials[i] +" LIST RETRIEVED!");
   //for each player
   if (trialPlayerList.length)
@@ -1125,10 +1150,12 @@ var trialRanges = [
               console.log("Player trial insert complete!");
               trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
               insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
-              console.log("Audit update complete! Preparing announcement...");
-              var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i]);
+              console.log("Audit update complete!");
+              var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
+              console.log("Numerical rank retrieved!");
+              var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
             console.log("Twitter announcement complete!");
-            var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i]);
+            var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i],playerNumberRanking);
             console.log("Discord announcement complete!");
 
             }
@@ -1140,11 +1167,12 @@ var trialRanges = [
             trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
             console.log("Insert complete! Preparing audit update");
             insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
-            console.log("Insert complete! Preparing announcement...");
-            //TODO: need to determine ranking
-            var twitterannounce = wait.for(announceNewPlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i]);
+            console.log("Insert complete!");
+            var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
+            console.log("Numerical rank retrieved!");
+            var twitterannounce = wait.for(announceNewPlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
             console.log("Twitter announcement complete!");
-            var discordannounce = wait.for(announceNewPlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i]);
+            var discordannounce = wait.for(announceNewPlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i],playerNumberRanking);
             console.log("Discord announcement complete!");
 
           }
