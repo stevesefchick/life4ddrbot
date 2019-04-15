@@ -1034,6 +1034,9 @@ console.log("Player list retrieved!");
       var playerTwitter = wait.for(playerGetSpreadsheetRowTwitterValue,row);
       var playerRival = wait.for(playerGetSpreadsheetRowRivalValue,row);
 
+      if ((playerName != null && playerName != "undefined") &&
+      (playerRank != null && playerRank != "undefined"))
+    {
       //check for existing player
       var playerresults = wait.for(checkForExistingPlayer, playerName);
 
@@ -1077,6 +1080,7 @@ console.log("Player list retrieved!");
         var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerRank);
         console.log("Discord announcement complete!");
       }
+    }
     });
   }
 
@@ -1130,10 +1134,11 @@ var trialRanges = [
       var playerDiff = wait.for(trialGetSpreadsheetRowDiffValue,row);
       var playerTwitter = wait.for(trialGetSpreadsheetRowTwitterHandleValue,row);
       var playerRival = wait.for(trialGetSpreadsheetRowRivalCodeValue,row);
-      //check for player in DB
-      //NO LONGER NEEDED
-      //var playerresults = wait.for(trialCheckForPlayer,heartbreakName);
 
+      if ((playerName != null && playerName != "undefined") &&
+          (playerRank != null && playerRank != "undefined") &&
+          (playerScore != null && playerScore != "undefined") )
+      {
           //check for player in trials DB
           var trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
           if (trialresults && trialresults.length)
@@ -1176,6 +1181,7 @@ var trialRanges = [
             console.log("Discord announcement complete!");
 
           }
+      }
 
     });
   }
