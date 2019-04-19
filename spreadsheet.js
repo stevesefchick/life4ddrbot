@@ -252,18 +252,6 @@ var getTrialDiscordIcon = function(rank)
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
 
-
-
-function readSecretsFromFile()
-{
-  //load client secrets
-    fs.readFile('credentials.json', (err, content) => {
-      if (err) return console.log('Error loading client secret file:', err);
-      authorize(JSON.parse(content), getFromPlayerSpreadsheet);
-    });
-
-}
-
 function getCredentials(callback){
   setTimeout( function(){
                 fs.readFile('credentials.json', (err, content) => {
@@ -1098,7 +1086,12 @@ var listOfTrials = [
   "PARADOX (16)",
   "INHUMAN (16)",
   "CHEMICAL (17)",
-  "ORIGIN (18)"
+  "ORIGIN (18)",
+  "MAINFRAME (13)",
+  "COUNTDOWN (14)",
+  "HEATWAVE (15)",
+  "SNOWSTORM (16)",
+  "ASCENSION (17)"
 ];
 
 var trialRanges = [
@@ -1111,7 +1104,12 @@ var trialRanges = [
   'ALL TRIALS!AE2:AI',
   'ALL TRIALS!AJ2:AN',
   'ALL TRIALS!AO2:AS',
-  'ALL TRIALS!AT2:AX'
+  'ALL TRIALS!AT2:AX',
+  "ALL TRIALS!AY2:BC",
+  "ALL TRIALS!BD2:BH",
+  "ALL TRIALS!BI2:BM",
+  "ALL TRIALS!BN2:BR",
+  "ALL TRIALS!BS1:BW"
 ];
 
   for (var i = 0; i < listOfTrials.length;i++)
@@ -1190,6 +1188,7 @@ var trialRanges = [
 
 }
 
+console.log("LIFE4 bot update complete!");
 connection.end();
 }
 
@@ -1312,319 +1311,6 @@ var checkForDerank = function(existingRank,newRank)
   return false;
 }
 
-
-//for player ranks! retrieve from the spreadsheet
-function getFromPlayerSpreadsheet(auth) {
-
-  
-  connection = mysql.createConnection({
-    host     : process.env.MYSQLHOST,
-    user     : process.env.MYSQLUSER,
-    password : process.env.MYSQLPW,
-    database : process.env.MYSQLPLAYERDB
-  });
-
-  const sheets = google.sheets({version: 'v4', auth});
-  sheets.spreadsheets.values.get({
-    spreadsheetId: '1FPiO1h9XDSeTB6tWmRi7ursSqFOBYitiVweu3eOQ8tg',
-    range: 'User List!A2:E',
-  }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err);
-    const rows = res.data.values;
-
-    console.log('BEGINNING PLAYER RANK FUNCTION');
-
-
-    if (rows.length) {
-
-      connection.connect();
-
-
-
-      rows.map((row) => {
-
-
-        
-        var playerName = `${row[0]}`;
-        var playerRank = `${row[1]}`;
-        var playerRivalCode = `${row[2]}`;
-        var playerTwitterHandle = `${row[3]}`;
-        var playerDateEarned = `${row[4]}`;
-
-        if (playerName === undefined || playerRank === undefined || (playerRank === undefined && playerName === undefined))
-        {
-          console.log("This is undefined!");
-        }
-        else
-        {
-
-
-        var playerquery = "SELECT playerName, playerRank, playerID, playerDateEarned from playerList WHERE playerName = '" + playerName + "'";
-        var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRivalCode + "','"+playerTwitterHandle+"','" + playerDateEarned + "')";
-
-        //not used
-        //var playerCountQuery = "select COUNT(*) AS playercount from playerList";
-
-
-        connection.query(playerquery, function (error, results) {
-          if (error) throw error;
-          //player exists!
-          if (results && results.length)
-          {
-            console.log("Player " + playerName +" exists!");
-            console.log(results);
-
-            //query for update inserts!
-            var playerHistoryInsert = "INSERT INTO playerHistory (playerID, playerRank, playerUpdate) VALUES ('" + results[0].playerID + "','" +results[0].playerRank + "', now())";
-
-
-            //check for rank-up
-            if (results[0].playerRank == playerRank)
-            {
-                //rank is the same!
-                console.log(playerName +"'s rank has not changed!");
-            }
-            else
-            {
-                //rank change!
-                console.log(playerName +"'s rank has changed! Was: " + playerRank + " | is now: " + results[0].playerRank);
-                var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "', playerRivalCode='"+playerRivalCode+"', twitterHandle='"+ playerTwitterHandle + "', playerDateEarned='" + playerDateEarned + "' where playerName = '" + playerName +"'";
-                console.log(updateplayerquery);
-
-
-
-                //run the main table update
-                connection.query(updateplayerquery, function (ierror,iresults) {
-                  if (ierror) throw ierror;
-                  console.log("Player " + playerName + " rank updated!");
-
-                  //derank check
-                  var isDerank = checkForDerank(results[0].playerRank, playerRank);
-
-                  var twitterpost ="";
-                  var discordpost = "";
-                  if (playerTwitterHandle != "")
-                  {
-                    if (isDerank == true)
-                    {
-                      twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has de-ranked out of their placement rank to " + playerRank +". Don't give up, you can do it!";
-                    }
-                    else
-                    {
-                      twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has earned a new rank! They are now " + playerRank +"! Congratulations! ";
-                    }
-                  }
-                  else
-                  {
-                    if (isDerank == true)
-                    {
-                      twitterpost = "Player " + playerName + " has de-ranked out of their placement rank to " + playerRank +". Don't give up, you can do it! ";
-                    }
-                    else
-                    {
-                      twitterpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! ";
-                    }
-                  }
-
-                  if (isDerank == true)
-                  {
-                    discordpost = "Player " + playerName + " has de-ranked out of their placement rank to " + playerRank +". Don't give up, you can do it!" + getDiscordIcon(playerRank);
-                  }
-                  else
-                  {
-                    discordpost = "Player " + playerName + " has earned a new rank! They are now " + playerRank +"! Congratulations! "  + getDiscordIcon(playerRank);
-                  }
-
-
-
-                  //update don't do anything if it's a derank!
-                  if (isDerank == false)
-                  {
-
-                  
-                  // read the file
-                  var b64content = fs.readFileSync(getTwitterImageURL(playerRank), { encoding: 'base64' })
-                  
-                  // get the new image media on twitter!
-                  Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
-                    var mediaIdStr = data.media_id_string
-                    var altText = "Player rank"
-                    var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
-                  
-                    Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
-                      if (!err) {
-                        // post the tweet!
-                        var params = { status: twitterpost.toString(), media_ids: [mediaIdStr] }
-                  
-                        Twitter.post('statuses/update', params, function (err, data, response) {
-                          console.log(data)
-                        })
-                      }
-                    })
-                  })
-
-
-
-                  const channel = bot.channels.find('name', 'rankups')
-                  channel.send(discordpost)
-                  .then(message => console.log(discordpost))
-                  .catch(console.error);
-                  
-                }
-
-
-                //run the history table query
-                connection.query(playerHistoryInsert, function(error,results2)
-                {
-                  if (error) throw error;
-                  console.log(results2);
-                });
-                
-              });
-
-
-            }
-          }
-          //player doesn't exist! Create a record and tweet it out!
-          else
-          {
-            console.log("Player " + playerName + " does not exist!");
-
-            connection.query(insertplayerquery, function (ierror,iresults) {
-                if (ierror) throw ierror;
-                console.log("Player " + playerName + " created!");
-                //var post = playerName + " has joined LIFE4!";
-
-                var twitterpost ="";
-                var discordpost = "";
-                if (playerTwitterHandle != "")
-                {
-                  twitterpost = "Player " + playerName + " (" + playerTwitterHandle + ") has joined LIFE4! Their current rank is " + playerRank + "!";
-                }
-                else
-                {
-                  twitterpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "!";
-                }
-
-                discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon(playerRank);
-
-                  // read the file
-                  var b64content = fs.readFileSync(getTwitterImageURL(playerRank), { encoding: 'base64' })
-                  
-                  // get the new image media on twitter!
-                  Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
-                    var mediaIdStr = data.media_id_string
-                    var altText = "Player rank"
-                    var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
-                  
-                    Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
-                      if (!err) {
-                        // post the tweet!
-                        var params = { status: twitterpost.toString(), media_ids: [mediaIdStr] }
-                  
-                        Twitter.post('statuses/update', params, function (err, data, response) {
-                          console.log(data)
-                        })
-                      }
-                    })
-                  })
-
-                const channel = bot.channels.find('name', 'rankups')
-                channel.send(discordpost)
-                .then(message => console.log(discordpost))
-                .catch(console.error);
-
-
-            });
-
-
-            //GET THE PLAYER ID
-            var getPlayerID = "SELECT playerID from playerList where playerName='" + playerName + "'";
-            connection.query(getPlayerID, function(error,results3)
-            {
-              if (error) throw error;
-                //DO THE INSERT
-                var playerHistoryInsert = "INSERT INTO playerHistory (playerID, playerRank, playerUpdate) VALUES ('" + results3[0].playerID + "','" + playerRank + "', now())";
-                connection.query(playerHistoryInsert, function(error,results4)
-                {
-                  if (error) throw error;
-                  console.log(results4);
-                });            
-          });
-            
-
-
-
-            //check counts!
-            /*
-            connection.query(playerCountQuery, function (error, results) {
-              if (error) throw error;
-              if (results && results.length)
-              {
-                var count = results[0].playercount;
-
-                console.log(count);
-
-                if (count % 50 == 0)
-                {
-                    var milestoneposttwitter = "Wow! " + count + " players have joined @LIFE4DDR!";
-                    var milestonepostdiscord = "Wow! " + count + " players have joined LIFE4!";
-
-                    Twitter.post('statuses/update', {status: milestoneposttwitter}, function(err, data, response) {
-                        console.log(data)
-                    });
-
-                    const channel = bot.channels.find('name', 'general')
-                    channel.send(milestonepostdiscord)
-                    .then(message => console.log(milestonepostdiscord))
-                    .catch(console.error);
-                }
-                else if (count == 420)
-                {
-                  var milestoneposttwitter = "Wow! " + count + " players have joined @LIFE4DDR! Nice.";
-                  var milestonepostdiscord = "Wow! " + count + " players have joined LIFE4!";
-
-                  Twitter.post('statuses/update', {status: milestoneposttwitter}, function(err, data, response) {
-                      console.log(data)
-                  });
-
-                  const channel = bot.channels.find('name', 'general')
-                  channel.send(milestonepostdiscord)
-                  .then(message => console.log(milestonepostdiscord))
-                  .catch(console.error);
-                }
-              }
-            })
-            */
-
-
-          }
-          console.log(`${row[0]}, ${row[1]}`);
-
-        });
-
-      //connection.end();
-
-      }
-
-
-      });
-
-      connection.end();
-
-
-    } else {
-      console.log('No data found.');
-    }
-
-
-  });
-
-
-
-}
-
-
 function newGetPlayersFromSheets(auth,callback)
 {
   const sheets = google.sheets({version: 'v4', auth});
@@ -1650,9 +1336,5 @@ function newGetTrials(auth,trialRange,callback)
     callback(null,rows);
   });
 }
-
-// RUN THE STUFF HERE
-//readSecretsFromFile();
-
 
 wait.launchFiber(LIFE4sequence);
