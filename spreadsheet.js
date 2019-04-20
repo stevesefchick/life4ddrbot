@@ -736,6 +736,108 @@ else if (rank == "Amethyst" && trial == "ORIGIN (18)")
 {
   twitterImageURL = './trial_images/ORIGIN/ORIGIN AMETHYST.png';
 }
+//ASCENSION (17)
+else if (rank == "Gold" && trial == "ASCENSION (17)")
+{
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_GOLD.png';
+}
+else if (rank == "Diamond" && trial == "ASCENSION (17)")
+{
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "ASCENSION (17)")
+{
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "ASCENSION (17)")
+{
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_AMETHYST.png';
+}
+//COUNTDOWN (14)
+else if (rank == "Silver" && trial == "COUNTDOWN (14)")
+{
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_SILVER.png';
+}
+else if (rank == "Gold" && trial == "COUNTDOWN (14)")
+{
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_GOLD.png';
+}
+else if (rank == "Diamond" && trial == "COUNTDOWN (14)")
+{
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "COUNTDOWN (14)")
+{
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "COUNTDOWN (14)")
+{
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_AMETHYST.png';
+}
+//HEATWAVE (15)
+else if (rank == "Silver" && trial == "HEATWAVE (15)")
+{
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_SILVER.png';
+}
+else if (rank == "Gold" && trial == "HEATWAVE (15)")
+{
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_GOLD.png';
+}
+else if (rank == "Diamond" && trial == "HEATWAVE (15)")
+{
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "HEATWAVE (15)")
+{
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "HEATWAVE (15)")
+{
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_AMETHYST.png';
+}
+//MAINFRAME (13)
+else if (rank == "Silver" && trial == "MAINFRAME (13)")
+{
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_SILVER.png';
+}
+else if (rank == "Gold" && trial == "MAINFRAME (13)")
+{
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_GOLD.png';
+}
+else if (rank == "Diamond" && trial == "MAINFRAME (13)")
+{
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "MAINFRAME (13)")
+{
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "MAINFRAME (13)")
+{
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_AMETHYST.png';
+}
+//SNOWDRIFT (16)
+else if (rank == "Silver" && trial == "SNOWDRIFT (16)")
+{
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_SILVER.png';
+}
+else if (rank == "Gold" && trial == "SNOWDRIFT (13)")
+{
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_GOLD.png';
+}
+else if (rank == "Diamond" && trial == "SNOWDRIFT (13)")
+{
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "SNOWDRIFT (13)")
+{
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_COBALT.png';
+}
+else if (rank == "Amethyst" && trial == "SNOWDRIFT (13)")
+{
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_AMETHYST.png';
+}
+
 
   return twitterImageURL;
 
@@ -953,8 +1055,10 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
 {
   setTimeout( function(){
 
+
     var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
 
+    
     const channel = bot.channels.find('name', 'trial-rankups')
     channel.send(discordpost)
     .then(message => console.log(discordpost))
@@ -1090,7 +1194,7 @@ var listOfTrials = [
   "MAINFRAME (13)",
   "COUNTDOWN (14)",
   "HEATWAVE (15)",
-  "SNOWSTORM (16)",
+  "SNOWDRIFT (16)",
   "ASCENSION (17)"
 ];
 
@@ -1109,7 +1213,7 @@ var trialRanges = [
   "ALL TRIALS!BD2:BH",
   "ALL TRIALS!BI2:BM",
   "ALL TRIALS!BN2:BR",
-  "ALL TRIALS!BS1:BW"
+  "ALL TRIALS!BS2:BW"
 ];
 
   for (var i = 0; i < listOfTrials.length;i++)
@@ -1122,7 +1226,7 @@ var trialRanges = [
 
   console.log(listOfTrials[i] +" LIST RETRIEVED!");
   //for each player
-  if (trialPlayerList.length)
+  if (trialPlayerList && trialPlayerList.length)
   {
     console.log("Retrieving" + listOfTrials[i] + " player info...");
     trialPlayerList.map((row) => {
