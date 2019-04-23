@@ -99,7 +99,7 @@ var getTwitterImageURL = function(rank)
   }
   else if (rank == "Wood II" || rank ==  "Wood II (P)")
   {
-    twitterImageURL = './rankup_images/W1.png';
+    twitterImageURL = './rankup_images/W2.png';
   }
   else if (rank == "Wood III" || rank ==  "Wood III (P)")
   {
@@ -401,6 +401,21 @@ function trialCheckForExistingTrial(playerName,trialName, callback){
 
 }, 100);
 
+}
+
+function getAllPlayerIDPlayerName(callback)
+{
+  setTimeout( function(){
+
+    var getquery = "SELECT playerID, playerName from playerList WHERE activeStatus = 'ACTIVE'";
+    connection.query(getquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 100);
 }
 
 function checkForExistingPlayer(playerName, callback){
@@ -1118,6 +1133,8 @@ function LIFE4sequence()
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
 console.log("Player list retrieved!");
+
+
   if (playerSpreadsheetList.length)
   {
     playerSpreadsheetList.map((row) => {
@@ -1175,6 +1192,35 @@ console.log("Player list retrieved!");
     }
     });
   }
+
+
+/*
+  console.log("Performing player cleanup!");
+  //check for players that no longer exist in the spreadsheet
+  //TODO: Make case agnostic
+  var getAllPlayerIDName = wait.for(getAllPlayerIDPlayerName);
+  for (var i=0;i<getAllPlayerIDName.length;++i)
+  {
+    var exists = false;
+
+    if (playerSpreadsheetList.length)
+    {
+      playerSpreadsheetList.map((row) => {
+        if (`${row[0]}` == getAllPlayerIDName[i].playerName)
+        {
+          exists = true;
+          console.log("eyy, "+ getAllPlayerIDName[i].playerName);
+        }
+    });
+    }
+
+    if (exists==false)
+    {
+      console.log("oh no " + getAllPlayerIDName[i].playerName);
+    }
+  }
+  */
+  
 
 console.log("Players complete!");
 
