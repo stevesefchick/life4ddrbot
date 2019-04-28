@@ -754,103 +754,103 @@ else if (rank == "Amethyst" && trial == "ORIGIN (18)")
 //ASCENSION (17)
 else if (rank == "Gold" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_GOLD.png';
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_GOLD.jpg';
 }
 else if (rank == "Diamond" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_DIAMOND.png';
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_DIAMOND.jpg';
 }
 else if (rank == "Cobalt" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_COBALT.png';
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_COBALT.jpg';
 }
 else if (rank == "Amethyst" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_AMETHYST.png';
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_AMETHYST.jpg';
 }
 //COUNTDOWN (14)
 else if (rank == "Silver" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_SILVER.png';
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_SILVER.jpg';
 }
 else if (rank == "Gold" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_GOLD.png';
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_GOLD.jpg';
 }
 else if (rank == "Diamond" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_DIAMOND.png';
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_DIAMOND.jpg';
 }
 else if (rank == "Cobalt" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_COBALT.png';
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_COBALT.jpg';
 }
 else if (rank == "Amethyst" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_AMETHYST.png';
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_AMETHYST.jpg';
 }
 //HEATWAVE (15)
 else if (rank == "Silver" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_SILVER.png';
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_SILVER.jpg';
 }
 else if (rank == "Gold" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_GOLD.png';
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_GOLD.jpg';
 }
 else if (rank == "Diamond" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_DIAMOND.png';
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_DIAMOND.jpg';
 }
 else if (rank == "Cobalt" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_COBALT.png';
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_COBALT.jpg';
 }
 else if (rank == "Amethyst" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_AMETHYST.png';
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_AMETHYST.jpg';
 }
 //MAINFRAME (13)
 else if (rank == "Silver" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_SILVER.png';
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_SILVER.jpg';
 }
 else if (rank == "Gold" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_GOLD.png';
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_GOLD.jpg';
 }
 else if (rank == "Diamond" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_DIAMOND.png';
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_DIAMOND.jpg';
 }
 else if (rank == "Cobalt" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_COBALT.png';
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_COBALT.jpg';
 }
 else if (rank == "Amethyst" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_AMETHYST.png';
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_AMETHYST.jpg';
 }
 //SNOWDRIFT (16)
 else if (rank == "Silver" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_SILVER.png';
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_SILVER.jpg';
 }
-else if (rank == "Gold" && trial == "SNOWDRIFT (13)")
+else if (rank == "Gold" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_GOLD.png';
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_GOLD.jpg';
 }
-else if (rank == "Diamond" && trial == "SNOWDRIFT (13)")
+else if (rank == "Diamond" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_DIAMOND.png';
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_DIAMOND.jpg';
 }
-else if (rank == "Cobalt" && trial == "SNOWDRIFT (13)")
+else if (rank == "Cobalt" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_COBALT.png';
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_COBALT.jpg';
 }
-else if (rank == "Amethyst" && trial == "SNOWDRIFT (13)")
+else if (rank == "Amethyst" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_AMETHYST.png';
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_AMETHYST.jpg';
 }
 
 
@@ -916,6 +916,7 @@ function announceUpdatePlayerTrialTwitter(playerName, playerRank,playerScore,pla
       post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
     }
 
+    console.log(trialName + "||" + playerRank);
     var b64content = fs.readFileSync(getTwitterTrialImageURL(trialName,playerRank), { encoding: 'base64' })
                   
     // get the new image media on twitter!
@@ -1274,7 +1275,7 @@ var trialRanges = [
   //for each player
   if (trialPlayerList && trialPlayerList.length)
   {
-    console.log("Retrieving" + listOfTrials[i] + " player info...");
+    console.log("Retrieving " + listOfTrials[i] + " player info...");
     trialPlayerList.map((row) => {
       var playerName = wait.for(trialGetSpreadsheetRowNameValue,row);
       var playerRank = wait.for(trialGetSpreadsheetRowRankValue,row);
