@@ -1122,10 +1122,6 @@ function LIFE4sequence()
   
   connection.connect();
 
-
-//TODO: Create Queue DB 
-
-
   var getTrialJSON = wait.for(getCredentials);
   console.log("JSON Cred object retrieved!");
   var getauth = wait.for(newauthorize,getTrialJSON);
@@ -1134,6 +1130,8 @@ function LIFE4sequence()
 //TODO: Begin retrieval of queue
 //TODO: Blast one 1x from queue
 //TODO: Set queue item to PROCESSED
+
+//TODO: If queue is empty, do other stuff?
 
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
@@ -1201,35 +1199,7 @@ console.log("Player list retrieved!");
     }
     });
   }
-
-
-/*
-  console.log("Performing player cleanup!");
-  //check for players that no longer exist in the spreadsheet
-  //TODO: Make case agnostic
-  var getAllPlayerIDName = wait.for(getAllPlayerIDPlayerName);
-  for (var i=0;i<getAllPlayerIDName.length;++i)
-  {
-    var exists = false;
-
-    if (playerSpreadsheetList.length)
-    {
-      playerSpreadsheetList.map((row) => {
-        if (`${row[0]}` == getAllPlayerIDName[i].playerName)
-        {
-          exists = true;
-          console.log("eyy, "+ getAllPlayerIDName[i].playerName);
-        }
-    });
-    }
-
-    if (exists==false)
-    {
-      console.log("oh no " + getAllPlayerIDName[i].playerName);
-    }
-  }
-  */
-  
+ 
 
 console.log("Players complete!");
 
