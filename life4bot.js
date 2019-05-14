@@ -21,7 +21,7 @@ const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
 
-//add get from spreadsheet
+//run main class
 var getSpreadsheet = function()
 {
   var spreadsheet = require('./spreadsheet.js');

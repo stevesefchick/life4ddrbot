@@ -325,6 +325,20 @@ function trialGetSpreadsheetRowNameValue(row, callback){
   }, 25);
 }; 
 
+function getReadyFromQueue(callback){
+
+  setTimeout( function(){
+
+    var getQuery = "select playerQueueID, playerName, updateType, updateCategory, playerID, trialID, queueStatus from playerQueue where queueStatus = 'ACTIVE' limit 1";
+    connection.query(getQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+};
 
 function trialGetSpreadsheetRowRankValue(row, callback){
   setTimeout( function(){
@@ -1127,6 +1141,16 @@ function LIFE4sequence()
   var getauth = wait.for(newauthorize,getTrialJSON);
   console.log("Authorization complete! Hot damn!");
 
+  console.log("Checking queue for requests!");
+  var queueResults = wait.for(getReadyFromQueue);
+  if (queueResults.length)
+  {
+    console.log("Something exists in the queue!");
+  }
+  else
+  {
+    console.log("Queue is empty!");
+  }
 //TODO: Begin retrieval of queue
 //TODO: Blast one 1x from queue
 //TODO: Set queue item to PROCESSED
