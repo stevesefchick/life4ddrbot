@@ -1141,21 +1141,52 @@ function LIFE4sequence()
   var getauth = wait.for(newauthorize,getTrialJSON);
   console.log("Authorization complete! Hot damn!");
 
+
+
+  //TODO: Blast one 1x from queue
+//TODO: Set queue item to PROCESSED
+
   console.log("Checking queue for requests!");
   var queueResults = wait.for(getReadyFromQueue);
   if (queueResults.length)
   {
     console.log("Something exists in the queue!");
+    if (queueResults[0].updateCategory == "TRIAL")
+    {
+        //DO TRIAL
+        //TODO: Get additional trial info here
+        if (queueResults[0].updateType == "NEW")
+        {
+          //NEW TRIAL
+        }
+        else if (queueResults[0].updateType == "UPDATE")
+        {
+          //TRIAL UPDATE
+        }
+    }
+    else if (queueResults[0].updateCategory == "PLAYER")
+    {
+        //DO PLAYER
+        //TODO: Get additional player info here
+        if (queueResults[0].updateType == "NEW")
+        {
+          //NEW PLAYER
+        }
+        else if (queueResults[0].updateType == "UPDATE")
+        {
+          //PLAYER UPDATE
+        }
+    } 
+
+
+
   }
   else
   {
     console.log("Queue is empty!");
   }
-//TODO: Begin retrieval of queue
-//TODO: Blast one 1x from queue
-//TODO: Set queue item to PROCESSED
 
-//TODO: If queue is empty, do other stuff?
+console.log("Queue updates are complete!");
 
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
