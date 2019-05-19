@@ -325,6 +325,22 @@ function trialGetSpreadsheetRowNameValue(row, callback){
   }, 25);
 }; 
 
+function setQueueItemToProcessed(playerQueueID,callback){
+
+  setTimeout( function(){
+
+    var updateQuery = "UPDATE playerQueue SET queueStatus = 'DONE' WHERE playerQueueID = " + playerQueueID; 
+
+    connection.query(updateQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+};
+
 function getReadyFromQueue(callback){
 
   setTimeout( function(){
@@ -1144,7 +1160,6 @@ function LIFE4sequence()
 
 
   //TODO: Blast one 1x from queue
-//TODO: Set queue item to PROCESSED
 
   console.log("Checking queue for requests!");
   var queueResults = wait.for(getReadyFromQueue);
@@ -1178,6 +1193,7 @@ function LIFE4sequence()
         }
     } 
 
+var queueDone = wait.for(setQueueItemToProcessed,queueResults[0].playerQueueID);
 
 
   }
