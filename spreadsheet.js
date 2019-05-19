@@ -356,6 +356,37 @@ function getReadyFromQueue(callback){
 
 };
 
+function getTrialQueueInfo(trialID,callback){
+
+  setTimeout( function(){
+
+    var trialQueueQuery = "SELECT * from playertrialrank WHERE playerTrailRankID = " + trialID;
+    connection.query(trialQueueQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
+
+
+function getPlayerQueueInfo(playerID,callback){
+
+  setTimeout( function(){
+
+    var playerQueueQuery = "SELECT * from playerList WHERE playerID = " + playerID;
+    connection.query(playerQueueQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
+
 function trialGetSpreadsheetRowRankValue(row, callback){
   setTimeout( function(){
 
@@ -1158,38 +1189,43 @@ function LIFE4sequence()
   console.log("Authorization complete! Hot damn!");
 
 
-
-  //TODO: Blast one 1x from queue
-
   console.log("Checking queue for requests!");
   var queueResults = wait.for(getReadyFromQueue);
   if (queueResults.length)
   {
     console.log("Something exists in the queue!");
+    //trial queue
     if (queueResults[0].updateCategory == "TRIAL")
     {
-        //DO TRIAL
-        //TODO: Get additional trial info here
+      console.log("Trial identified!");
+
+      var trialInfo = wait.for(getTrialQueueInfo,queueResults[0].trialID);
+        console.log("Trial #" + queueResults[0].trialID + "  retrieved!");
+
         if (queueResults[0].updateType == "NEW")
         {
-          //NEW TRIAL
+          //TODO:NEW TRIAL
         }
         else if (queueResults[0].updateType == "UPDATE")
         {
-          //TRIAL UPDATE
+          //TODO:TRIAL UPDATE
         }
     }
+    //player queue
     else if (queueResults[0].updateCategory == "PLAYER")
     {
-        //DO PLAYER
-        //TODO: Get additional player info here
+        console.log("Player identified!");
+
+        var playerInfo = wait.for(getPlayerQueueInfo,queueResults[0].playerID);
+        console.log("Player " + playerInfo[0].playerName + " retrieved!");
+        
         if (queueResults[0].updateType == "NEW")
         {
-          //NEW PLAYER
+          //TODO:NEW PLAYER
         }
         else if (queueResults[0].updateType == "UPDATE")
         {
-          //PLAYER UPDATE
+          //TODO:PLAYER UPDATE
         }
     } 
 
