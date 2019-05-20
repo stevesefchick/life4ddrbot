@@ -360,7 +360,7 @@ function getTrialQueueInfo(trialID,callback){
 
   setTimeout( function(){
 
-    var trialQueueQuery = "SELECT * from playertrialrank WHERE playerTrailRankID = " + trialID;
+    var trialQueueQuery = "SELECT * from playertrialrank WHERE playerTrialRankID = " + trialID;
     connection.query(trialQueueQuery, function (error, results) {
       if (error) throw error;
       callback(null,results)
@@ -1202,6 +1202,8 @@ function LIFE4sequence()
       var trialInfo = wait.for(getTrialQueueInfo,queueResults[0].trialID);
         console.log("Trial #" + queueResults[0].trialID + "  retrieved!");
 
+        var playerNumberRanking = wait.for(getranks, trialInfo[0].trialName,trialInfo[0].playerName);
+
         if (queueResults[0].updateType == "NEW")
         {
           //TODO:NEW TRIAL
@@ -1209,6 +1211,11 @@ function LIFE4sequence()
         else if (queueResults[0].updateType == "UPDATE")
         {
           //TODO:TRIAL UPDATE
+          var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].playerTwitter, trialInfo[0].trialName,playerNumberRanking);
+          console.log("Twitter announcement complete!");
+          var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].trialName,playerNumberRanking);
+          console.log("Discord announcement complete!");
+
         }
     }
     //player queue
@@ -1221,11 +1228,17 @@ function LIFE4sequence()
         
         if (queueResults[0].updateType == "NEW")
         {
-          //TODO:NEW PLAYER
+          var twitterannounce = wait.for(announceNewPlayerTwitter, playerInfo[0].playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
+          console.log("Twitter announcement complete!");
+          var discordannounce = wait.for(announceNewPlayerDiscord, playerInfo[0].playerName, playerInfo[0].playerRank);
+          console.log("Discord announcement complete!");
         }
         else if (queueResults[0].updateType == "UPDATE")
         {
-          //TODO:PLAYER UPDATE
+          var twitterannounce = wait.for(announcePlayerRankupTwitter, playerInfo[0].playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
+          console.log("Twitter announcement complete!");
+          var discordannounce = wait.for(announcePlayerRankupDiscord, playerInfo[0].playerName, playerInfo[0].playerRank);
+          console.log("Discord announcement complete!");
         }
     } 
 
