@@ -1442,7 +1442,7 @@ var trialRanges = [
               trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
               insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
               console.log("Audit update complete!");
-              var insertTrialInQueue = wait.for(insertPlayerInQueue,playerName,"UPDATE",trialresults[0].playerTrialRankID);
+              var inserttrial = wait.for(insertTrialInQueue,playerName,"UPDATE",trialresults[0].playerTrialRankID);
               console.log("Queue updated!");
       
 
@@ -1467,7 +1467,7 @@ var trialRanges = [
             console.log("Insert complete!");
             //var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
             //console.log("Numerical rank retrieved!");
-            var insertTrialInQueue = wait.for(insertPlayerInQueue,playerName,"NEW",trialresults[0].playerTrialRankID);
+            var inserttrial = wait.for(insertTrialInQueue,playerName,"NEW",trialresults[0].playerTrialRankID);
             console.log("Queue updated!");
 
             //var twitterannounce = wait.for(announceNewPlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
