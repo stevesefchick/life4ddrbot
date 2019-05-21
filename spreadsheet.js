@@ -325,6 +325,43 @@ function trialGetSpreadsheetRowNameValue(row, callback){
   }, 25);
 }; 
 
+function insertPlayerInQueue(playerName,updateType,playerID,callback){
+
+
+  setTimeout( function(){
+
+    var insertQuery = "INSERT INTO playerQueue (playerName,updateType,updateCategory,playerID,trialID,queueStatus) VALUES ('"+playerName+"','"+updateType+"','PLAYER',"+ playerID+",null,'ACTIVE')";
+
+
+    connection.query(insertQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
+
+
+function insertTrialInQueue(playerName,updateType, trialID,callback){
+
+
+  setTimeout( function(){
+
+    var insertQuery = "INSERT INTO playerQueue (playerName,updateType,updateCategory,playerID,trialID,queueStatus) VALUES ('"+playerName+"','"+updateType+"','TRIAL', null,"+trialID+"','ACTIVE')";
+
+
+    connection.query(insertQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
+
 function setQueueItemToProcessed(playerQueueID,callback){
 
   setTimeout( function(){
@@ -1291,13 +1328,12 @@ console.log("Player list retrieved!");
           console.log("Player updated!");
           var insertresults = wait.for(insertNewPlayerAuditRecord, playerresults[0].playerID, playerRank);
           console.log("Player Audit History complete!");
-          //TODO: Add to queue
-          var twitterannounce = wait.for(announcePlayerRankupTwitter, playerName, playerRank, playerTwitter);
-          console.log("Twitter announcement complete!");
-          //TODO: Add to queue
-          var discordannounce = wait.for(announcePlayerRankupDiscord, playerName, playerRank);
-          console.log("Discord announcement complete!");
-
+          var insertPlayerIntoQueue = wait.for(insertPlayerInQueue,playerresults[0].playerName,"UPDATE",playerresults[0].playerID);
+          //var twitterannounce = wait.for(announcePlayerRankupTwitter, playerName, playerRank, playerTwitter);
+          //console.log("Twitter announcement complete!");
+          //var discordannounce = wait.for(announcePlayerRankupDiscord, playerName, playerRank);
+          //console.log("Discord announcement complete!");
+          console.log("Queue updated!");
         }
 
       }
@@ -1312,12 +1348,12 @@ console.log("Player list retrieved!");
         playerresults = wait.for(checkForExistingPlayer, playerName);
         var insertresults = wait.for(insertNewPlayerAuditRecord, playerresults[0].playerID, playerRank);
         console.log("Player Audit History complete!");
-        //TODO: Add to queue
-        var twitterannounce = wait.for(announceNewPlayerTwitter, playerName, playerRank, playerTwitter);
-        console.log("Twitter announcement complete!");
-        //TODO: Add to queue
-        var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerRank);
-        console.log("Discord announcement complete!");
+        var insertPlayerIntoQueue = wait.for(insertPlayerInQueue,playerresults[0].playerName,"NEW",playerresults[0].playerID);
+        console.log("Queue updated!");
+        //var twitterannounce = wait.for(announceNewPlayerTwitter, playerName, playerRank, playerTwitter);
+        //console.log("Twitter announcement complete!");
+        //var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerRank);
+        //console.log("Discord announcement complete!");
       }
     }
     });
@@ -1406,14 +1442,18 @@ var trialRanges = [
               trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
               insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
               console.log("Audit update complete!");
-              var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
-              console.log("Numerical rank retrieved!");
-              //TODO: Add to queue
-              var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
-            console.log("Twitter announcement complete!");
-            //TODO: Add to queue
-            var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i],playerNumberRanking);
-            console.log("Discord announcement complete!");
+              var insertTrialInQueue = wait.for(insertPlayerInQueue,playerName,"UPDATE",trialresults[0].playerTrialRankID);
+              console.log("Queue updated!");
+      
+
+
+              //var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
+              //console.log("Numerical rank retrieved!");
+
+              //var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
+            //console.log("Twitter announcement complete!");
+            //var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i],playerNumberRanking);
+            //console.log("Discord announcement complete!");
 
             }
           }
@@ -1425,14 +1465,15 @@ var trialRanges = [
             console.log("Insert complete! Preparing audit update");
             insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
             console.log("Insert complete!");
-            var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
-            console.log("Numerical rank retrieved!");
-            //TODO: Add to queue
-            var twitterannounce = wait.for(announceNewPlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
-            console.log("Twitter announcement complete!");
-            //TODO: Add to queue
-            var discordannounce = wait.for(announceNewPlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i],playerNumberRanking);
-            console.log("Discord announcement complete!");
+            //var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
+            //console.log("Numerical rank retrieved!");
+            var insertTrialInQueue = wait.for(insertPlayerInQueue,playerName,"NEW",trialresults[0].playerTrialRankID);
+            console.log("Queue updated!");
+
+            //var twitterannounce = wait.for(announceNewPlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
+            //console.log("Twitter announcement complete!");
+            //var discordannounce = wait.for(announceNewPlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i],playerNumberRanking);
+            //console.log("Discord announcement complete!");
 
           }
       }
