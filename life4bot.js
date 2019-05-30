@@ -17,12 +17,52 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = process.env.PORT;
+//waitfor
+var wait = require('wait.for');
+
+var mysql = require('mysql');
+var connection;
+
+
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
 
+
+function testTheBoy(callback)
+{
+  setTimeout( function(){
+
+
+    callback(null,"hey!");
+
+
+}, 750);
+
+}
+
+
+
+
+
+
+
+
+
 app.get("/api/test", function(req, res) {
-  res.status(200).json("hey!");
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  var testboy = wait.for(testTheBoy);
+
+
+
+  res.status(200).json(testboy);
 });
 
 
