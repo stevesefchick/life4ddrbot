@@ -21,6 +21,11 @@ const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
 
+app.get("/api/test", function(req, res) {
+  res.status(200).json("hey!");
+});
+
+
 //run main class
 var getSpreadsheet = function()
 {
