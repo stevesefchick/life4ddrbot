@@ -50,6 +50,7 @@ function testTheBoy(callback)
 
 
 app.get("/api/test", function(req, res) {
+/*
   connection = mysql.createConnection({
     host     : process.env.MYSQLHOST,
     user     : process.env.MYSQLUSER,
@@ -57,12 +58,13 @@ app.get("/api/test", function(req, res) {
     database : process.env.MYSQLPLAYERDB
   });
   connection.connect();
+  */
+ 
+  //var testboy = wait.for(testTheBoy);
 
-  var testboy = wait.for(testTheBoy);
 
 
-
-  res.status(200).json(testboy);
+  res.status(200).json("the dang test worked!");
 });
 
 
