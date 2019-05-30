@@ -349,7 +349,7 @@ function insertTrialInQueue(playerName,updateType, trialID,callback){
 
   setTimeout( function(){
 
-    var insertQuery = "INSERT INTO playerQueue (playerName,updateType,updateCategory,playerID,trialID,queueStatus) VALUES ('"+playerName+"','"+updateType+"','TRIAL', null,"+trialID+"','ACTIVE')";
+    var insertQuery = "INSERT INTO playerQueue (playerName,updateType,updateCategory,playerID,trialID,queueStatus) VALUES ('"+playerName+"','"+updateType+"','TRIAL', null,"+trialID+",'ACTIVE')";
 
 
     connection.query(insertQuery, function (error, results) {
