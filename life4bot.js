@@ -41,11 +41,35 @@ function testTheBoy(callback)
 
 }
 
+function sendTheBoy(res,allplayers,callback)
+{
+  setTimeout( function(){
+
+    res.send(allplayers);
+    //callback(null,"ok!");
 
 
+}, 750);
+
+}
+
+function getAllPlayersfromDB(callback){
+
+  setTimeout( function(){
+
+    var playerAllQuery = "SELECT * from playerList";
+    connection.query(playerAllQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
 
 
-function getAllPlayersSequence()
+function getAllPlayersSequence(req,res)
 {
   connection = mysql.createConnection({
     host     : process.env.MYSQLHOST,
@@ -55,8 +79,10 @@ function getAllPlayersSequence()
   });
   connection.connect();
 
-
-  res.send( wait.for(console.log("ok!")) );
+  console.log("Time for test!");
+  wait.for(testTheBoy);
+  var allplayers = wait.for(getAllPlayersfromDB);
+  wait.for(sendTheBoy,res,allplayers);
 };
 
 
@@ -64,7 +90,7 @@ app.get("/api/players/all", function(req, res) {
    
     //var testboy = wait.for(testTheBoy);
   
-    wait.launchFiber(getAllPlayersSequence);
+    wait.launchFiber(getAllPlayersSequence,req,res);
 
   
     //res.status(200).json("the dang test worked!");
