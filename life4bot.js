@@ -45,12 +45,8 @@ function testTheBoy(callback)
 
 
 
-
-
-
-
-app.get("/api/test", function(req, res) {
-/*
+function getAllPlayersSequence()
+{
   connection = mysql.createConnection({
     host     : process.env.MYSQLHOST,
     user     : process.env.MYSQLUSER,
@@ -58,12 +54,27 @@ app.get("/api/test", function(req, res) {
     database : process.env.MYSQLPLAYERDB
   });
   connection.connect();
-  */
- 
-  //var testboy = wait.for(testTheBoy);
+
+
+  res.send( wait.for(console.log("ok!")) );
+};
+
+
+app.get("/api/players/all", function(req, res) {
+   
+    //var testboy = wait.for(testTheBoy);
+  
+    wait.launchFiber(getAllPlayersSequence);
+
+  
+    //res.status(200).json("the dang test worked!");
+  });
 
 
 
+
+
+app.get("/api/test", function(req, res) {
   res.status(200).json("the dang test worked!");
 });
 
