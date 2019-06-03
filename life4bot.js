@@ -41,11 +41,11 @@ function testTheBoy(callback)
 
 }
 
-function sendTheBoy(res,allplayers,callback)
+function sendTheBoy(res,deets,callback)
 {
   setTimeout( function(){
 
-    res.send(allplayers);
+    res.send(JSON.stringify(deets));
     //callback(null,"ok!");
 
 
@@ -59,6 +59,21 @@ function getAllPlayersfromDB(callback){
 
     var playerAllQuery = "SELECT * from playerList";
     connection.query(playerAllQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
+
+function getSinglePlayerFromDB(playername, callback){
+
+  setTimeout( function(){
+
+    var playerOneQuery = "SELECT * from playerList where playerName = '"+playername+"'";
+    connection.query(playerOneQuery, function (error, results) {
       if (error) throw error;
       callback(null,results)
 
@@ -85,18 +100,34 @@ function getAllPlayersSequence(req,res)
   wait.for(sendTheBoy,res,allplayers);
 };
 
+function getSinglePlayerSequence(req,res)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  wait.for(testTheBoy);
+  var oneplayer = wait.for(getSinglePlayerFromDB,req.params.name);
+  wait.for(sendTheBoy,res,oneplayer);
+};
+
 
 app.get("/api/players/all", function(req, res) {
    
-    //var testboy = wait.for(testTheBoy);
-  
     wait.launchFiber(getAllPlayersSequence,req,res);
-
   
-    //res.status(200).json("the dang test worked!");
   });
 
+  app.get("/api/player/:name", function(req, res) {
+   
+    wait.launchFiber(getSinglePlayerSequence, req,res);
+    //res.status(200).json("the name is " + req.params.name);
 
+  });
 
 
 
