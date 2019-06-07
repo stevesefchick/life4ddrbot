@@ -83,6 +83,93 @@ function getSinglePlayerFromDB(playername, callback){
 
 }
 
+function translateTrialName(trialName)
+{
+  if (trialName == "heartbreak")
+  {
+    trialName = "HEARTBREAK (12)";
+  }
+  else if (trialName == "celestial")
+  {
+    trialName = "CELESTIAL (13)";
+  }
+  else if (trialName == "daybreak")
+  {
+    trialName = "DAYBREAK (14)";
+  }
+  else if (trialName == "hellscape")
+  {
+    trialName = "HELLSCAPE (14)";
+  }
+  else if (trialName == "clockwork")
+  {
+    trialName = "CLOCKWORK (15)";
+  }
+  else if (trialName == "pharaoh")
+  {
+    trialName = "PHARAOH (15)";
+  }
+  else if (trialName == "paradox")
+  {
+    trialName = "PARADOX (16)";
+  }
+  else if (trialName == "inhuman")
+  {
+    trialName = "INHUMAN (16)";
+  }
+  else if (trialName == "chemical")
+  {
+    trialName = "CHEMICAL (17)";
+  }
+  else if (trialName == "origin")
+  {
+    trialName = "ORIGIN (18)";
+  }
+  else if (trialName == "origin")
+  {
+    trialName = "ORIGIN (18)";
+  }
+  else if (trialName == "mainframe")
+  {
+    trialName = "MAINFRAME (13)";
+  }
+  else if (trialName == "countdown")
+  {
+    trialName = "COUNTDOWN (14)";
+  }
+  else if (trialName == "heatwave")
+  {
+    trialName = "HEATWAVE (15)";
+  }
+  else if (trialName == "snowdrift")
+  {
+    trialName = "SNOWDRIFT (16)";
+  }
+  else if (trialName == "ascension")
+  {
+    trialName = "ASCENSION (17)";
+  }
+  return trialName;
+};
+
+
+function getTopTrialsFromDB(trialname, callback){
+
+  setTimeout( function(){
+
+    trialname = translateTrialName(trialname);
+
+    var trialTopQuery = "SELECT playerName, trialName, playerRank,playerScore,playerDiff,playerUpdateDate from playertrialrank where trialName = '"+trialname+"' order by playerScore desc limit 10";
+    connection.query(trialTopQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
+
 
 function getAllPlayersSequence(req,res)
 {
@@ -115,22 +202,48 @@ function getSinglePlayerSequence(req,res)
   wait.for(sendTheBoy,res,oneplayer);
 };
 
+function getTopTrialSequence(req,res)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
 
+  wait.for(testTheBoy);
+  var toptrials = wait.for(getTopTrialsFromDB,req.params.name);
+  wait.for(sendTheBoy,res,toptrials);
+};
+
+
+//GET ALL PLAYERS
 app.get("/api/players/all", function(req, res) {
    
     wait.launchFiber(getAllPlayersSequence,req,res);
   
   });
 
+
+
+
+  //GET SINGLE PLAYER
   app.get("/api/player/:name", function(req, res) {
    
     wait.launchFiber(getSinglePlayerSequence, req,res);
-    //res.status(200).json("the name is " + req.params.name);
+
+  });
+
+  //GET TRIAL TOP PLAYERS
+  app.get("/api/trial/:name", function(req, res) {
+   
+    wait.launchFiber(getTopTrialSequence, req,res);
 
   });
 
 
-
+  //TEST
 app.get("/api/test", function(req, res) {
   res.status(200).json("the dang test worked!");
 });
