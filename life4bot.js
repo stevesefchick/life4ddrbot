@@ -153,13 +153,13 @@ function translateTrialName(trialName)
 };
 
 
-function getTopTrialsFromDB(trialname, callback){
+function getTopTrialsFromDB(trialname, trialtopnum, callback){
 
   setTimeout( function(){
 
     trialname = translateTrialName(trialname);
 
-    var trialTopQuery = "SELECT playerName, trialName, playerRank,playerScore,playerDiff,playerUpdateDate from playertrialrank where trialName = '"+trialname+"' order by playerScore desc limit 10";
+    var trialTopQuery = "SELECT playerName, trialName, playerRank,playerScore,playerDiff,playerUpdateDate from playertrialrank where trialName = '"+trialname+"' order by playerScore desc limit " + trialtopnum;
     connection.query(trialTopQuery, function (error, results) {
       if (error) throw error;
       callback(null,results)
@@ -213,7 +213,7 @@ function getTopTrialSequence(req,res)
   connection.connect();
 
   wait.for(testTheBoy);
-  var toptrials = wait.for(getTopTrialsFromDB,req.params.name);
+  var toptrials = wait.for(getTopTrialsFromDB,req.params.name,req.params.num);
   wait.for(sendTheBoy,res,toptrials);
 };
 
@@ -236,7 +236,7 @@ app.get("/api/players/all", function(req, res) {
   });
 
   //GET TRIAL TOP PLAYERS
-  app.get("/api/trial/:name", function(req, res) {
+  app.get("/api/trial/:name/:num", function(req, res) {
    
     wait.launchFiber(getTopTrialSequence, req,res);
 
