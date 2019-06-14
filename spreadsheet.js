@@ -117,7 +117,18 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/A3.png';
   }
-
+  else if (rank == "Emerald I")
+  {
+    //TODO:Images
+  }
+  else if (rank == "Emerald II")
+  {
+    //TODO:Images
+  }
+  else if (rank == "Emerald III")
+  {
+    //TODO:Images
+  }
   return twitterImageURL;
 
 }
@@ -210,7 +221,18 @@ var getDiscordIcon = function(rank)
   {
     discordemoji = "<:a3:540807991373594633>";
   }
-
+  else if (rank == "Emerald I")
+  {
+    //TODO:Images
+  }
+  else if (rank == "Emerald II")
+  {
+    //TODO:Images
+  }
+  else if (rank == "Emerald III")
+  {
+    //TODO:Images
+  }
 
   return discordemoji;
 }
@@ -244,7 +266,10 @@ var getTrialDiscordIcon = function(rank)
   {
     discordemoji = "<:a3:540807991373594633>";
   }
-
+  else if (rank == "Emerald")
+  {
+    //TODO:Discord emoji
+  }
 
   return discordemoji;
 }
@@ -680,6 +705,10 @@ var getTwitterTrialImageURL = function(trial,rank)
   {
     twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK AMETHYST.png';
   }
+  else if (rank == "Emerald" && trial == "HEARTBREAK (12)")
+  {
+    //TODO:Images
+  }
 //CELESTIAL(13)
 else if (rank == "Silver" && trial == "CELESTIAL (13)")
 {
@@ -700,6 +729,10 @@ else if (rank == "Cobalt" && trial == "CELESTIAL (13)")
 else if (rank == "Amethyst" && trial == "CELESTIAL (13)")
 {
   twitterImageURL = './trial_images/CELESTIAL/CELESTIAL AMETHYST.png';
+}
+else if (rank == "Emerald" && trial == "CELESTIAL (13)")
+{
+  //TODO:Images
 }
 //DAYBREAK(14)
 else if (rank == "Silver" && trial == "DAYBREAK (14)")
@@ -722,6 +755,10 @@ else if (rank == "Amethyst" && trial == "DAYBREAK (14)")
 {
   twitterImageURL = './trial_images/DAYBREAK/DAYBREAK AMETHYST.png';
 }
+else if (rank == "Emerald" && trial == "DAYBREAK (14)")
+{
+  //TODO:Images
+}
 //HELLSCAPE(14)
 else if (rank == "Silver" && trial == "HELLSCAPE (14)")
 {
@@ -742,6 +779,10 @@ else if (rank == "Cobalt" && trial == "HELLSCAPE (14)")
 else if (rank == "Amethyst" && trial == "HELLSCAPE (14)")
 {
   twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE AMETHYST.png';
+}
+else if (rank == "Emerald" && trial == "HELLSCAPE (14)")
+{
+  //TODO:Images
 }
 //CLOCKWORK(15)
 else if (rank == "Silver" && trial == "CLOCKWORK (15)")
@@ -764,6 +805,10 @@ else if (rank == "Amethyst" && trial == "CLOCKWORK (15)")
 {
   twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK AMETHYST.png';
 }
+else if (rank == "Emerald" && trial == "CLOCKWORK (15)")
+{
+  //TODO:Images
+}
 //PHARAOH(15)
 else if (rank == "Silver" && trial == "PHARAOH (15)")
 {
@@ -785,6 +830,10 @@ else if (rank == "Amethyst" && trial == "PHARAOH (15)")
 {
   twitterImageURL = './trial_images/PHARAOH/PHARAOH AMETHYST.png';
 }
+else if (rank == "Emerald" && trial == "PHARAOH (15)")
+{
+  //TODO:Images
+}
 //PARADOX(16)
 else if (rank == "Gold" && trial == "PARADOX (16)")
 {
@@ -801,6 +850,10 @@ else if (rank == "Cobalt" && trial == "PARADOX (16)")
 else if (rank == "Amethyst" && trial == "PARADOX (16)")
 {
   twitterImageURL = './trial_images/PARADOX/PARADOX AMETHYST.png';
+}
+else if (rank == "Emerald" && trial == "PARADOX (16)")
+{
+  //TODO:Images
 }
 //INHUMAN(16)
 else if (rank == "Gold" && trial == "INHUMAN (16)")
@@ -819,6 +872,10 @@ else if (rank == "Amethyst" && trial == "INHUMAN (16)")
 {
   twitterImageURL = './trial_images/INHUMAN/INHUMAN AMETHYST.png';
 }
+else if (rank == "Emerald" && trial == "INHUMAN (16)")
+{
+  //TODO:Images
+}
 //CHEMICAL(17)
 else if (rank == "Gold" && trial == "CHEMICAL (17)")
 {
@@ -836,6 +893,10 @@ else if (rank == "Amethyst" && trial == "CHEMICAL (17)")
 {
   twitterImageURL = './trial_images/CHEMICAL/CHEMICAL AMETHYST.png';
 }
+else if (rank == "Emerald" && trial == "CHEMICAL (17)")
+{
+  //TODO:Images
+}
 //ORIGIN(18)
 else if (rank == "Diamond" && trial == "ORIGIN (18)")
 {
@@ -848,6 +909,10 @@ else if (rank == "Cobalt" && trial == "ORIGIN (18)")
 else if (rank == "Amethyst" && trial == "ORIGIN (18)")
 {
   twitterImageURL = './trial_images/ORIGIN/ORIGIN AMETHYST.png';
+}
+else if (rank == "Emerald" && trial == "ORIGIN (18)")
+{
+  //TODO:Images
 }
 //ASCENSION (17)
 else if (rank == "Gold" && trial == "ASCENSION (17)")
@@ -865,6 +930,10 @@ else if (rank == "Cobalt" && trial == "ASCENSION (17)")
 else if (rank == "Amethyst" && trial == "ASCENSION (17)")
 {
   twitterImageURL = './trial_images/ASCENSION/ASCENSION_AMETHYST.jpg';
+}
+else if (rank == "Emerald" && trial == "ASCENSION (17)")
+{
+  //TODO:Images
 }
 //COUNTDOWN (14)
 else if (rank == "Silver" && trial == "COUNTDOWN (14)")
@@ -887,6 +956,10 @@ else if (rank == "Amethyst" && trial == "COUNTDOWN (14)")
 {
   twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_AMETHYST.jpg';
 }
+else if (rank == "Emerald" && trial == "COUNTDOWN (14)")
+{
+  //TODO:Images
+}
 //HEATWAVE (15)
 else if (rank == "Silver" && trial == "HEATWAVE (15)")
 {
@@ -907,6 +980,10 @@ else if (rank == "Cobalt" && trial == "HEATWAVE (15)")
 else if (rank == "Amethyst" && trial == "HEATWAVE (15)")
 {
   twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_AMETHYST.jpg';
+}
+else if (rank == "Emerald" && trial == "HEATWAVE (15)")
+{
+  //TODO:Images
 }
 //MAINFRAME (13)
 else if (rank == "Silver" && trial == "MAINFRAME (13)")
@@ -929,6 +1006,10 @@ else if (rank == "Amethyst" && trial == "MAINFRAME (13)")
 {
   twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_AMETHYST.jpg';
 }
+else if (rank == "Emerald" && trial == "MAINFRAME (13)")
+{
+  //TODO:Images
+}
 //SNOWDRIFT (16)
 else if (rank == "Silver" && trial == "SNOWDRIFT (16)")
 {
@@ -950,6 +1031,65 @@ else if (rank == "Amethyst" && trial == "SNOWDRIFT (16)")
 {
   twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_AMETHYST.jpg';
 }
+else if (rank == "Emerald" && trial == "SNOWDRIFT (16)")
+{
+  //TODO:Images
+}
+
+//Primal (13)
+//TODO:Like, all of this
+else if (rank == "Silver" && trial == "Primal (13)")
+{
+  //TODO:Images
+}
+else if (rank == "Gold" && trial == "Primal (13)")
+{
+  //TODO:Images
+}
+else if (rank == "Diamond" && trial == "Primal (13)")
+{
+  //TODO:Images
+}
+else if (rank == "Cobalt" && trial == "Primal (13)")
+{
+  //TODO:Images
+}
+else if (rank == "Amethyst" && trial == "Primal (13)")
+{
+  //TODO:Images
+}
+else if (rank == "Emerald" && trial == "Primal (13)")
+{
+  //TODO:Images
+}
+
+//Wanderlust (15)
+//TODO:Like, all of this
+else if (rank == "Silver" && trial == "Wanderlust (15)")
+{
+  //TODO:Images
+}
+else if (rank == "Gold" && trial == "Wanderlust (15)")
+{
+  //TODO:Images
+}
+else if (rank == "Diamond" && trial == "Wanderlust (15)")
+{
+  //TODO:Images
+}
+else if (rank == "Cobalt" && trial == "Wanderlust (15)")
+{
+  //TODO:Images
+}
+else if (rank == "Amethyst" && trial == "Wanderlust (15)")
+{
+  //TODO:Images
+}
+else if (rank == "Emerald" && trial == "Wanderlust (15)")
+{
+  //TODO:Images
+}
+
 
 
   return twitterImageURL;
@@ -1329,10 +1469,6 @@ console.log("Player list retrieved!");
           var insertresults = wait.for(insertNewPlayerAuditRecord, playerresults[0].playerID, playerRank);
           console.log("Player Audit History complete!");
           var insertPlayerIntoQueue = wait.for(insertPlayerInQueue,playerresults[0].playerName,"UPDATE",playerresults[0].playerID);
-          //var twitterannounce = wait.for(announcePlayerRankupTwitter, playerName, playerRank, playerTwitter);
-          //console.log("Twitter announcement complete!");
-          //var discordannounce = wait.for(announcePlayerRankupDiscord, playerName, playerRank);
-          //console.log("Discord announcement complete!");
           console.log("Queue updated!");
         }
 
@@ -1350,10 +1486,7 @@ console.log("Player list retrieved!");
         console.log("Player Audit History complete!");
         var insertPlayerIntoQueue = wait.for(insertPlayerInQueue,playerresults[0].playerName,"NEW",playerresults[0].playerID);
         console.log("Queue updated!");
-        //var twitterannounce = wait.for(announceNewPlayerTwitter, playerName, playerRank, playerTwitter);
-        //console.log("Twitter announcement complete!");
-        //var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerRank);
-        //console.log("Discord announcement complete!");
+
       }
     }
     });
@@ -1380,6 +1513,8 @@ var listOfTrials = [
   "HEATWAVE (15)",
   "SNOWDRIFT (16)",
   "ASCENSION (17)"
+  //TODO:Primal (13)
+  //TODO: Wanderlust (15)
 ];
 
 var trialRanges = [
@@ -1398,6 +1533,8 @@ var trialRanges = [
   "ALL TRIALS!BI2:BM",
   "ALL TRIALS!BN2:BR",
   "ALL TRIALS!BS2:BW"
+    //TODO:Primal (13)
+  //TODO: Wanderlust (15)
 ];
 
   for (var i = 0; i < listOfTrials.length;i++)
@@ -1444,16 +1581,7 @@ var trialRanges = [
               console.log("Audit update complete!");
               var inserttrial = wait.for(insertTrialInQueue,playerName,"UPDATE",trialresults[0].playerTrialRankID);
               console.log("Queue updated!");
-      
 
-
-              //var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
-              //console.log("Numerical rank retrieved!");
-
-              //var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
-            //console.log("Twitter announcement complete!");
-            //var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i],playerNumberRanking);
-            //console.log("Discord announcement complete!");
 
             }
           }
@@ -1469,11 +1597,6 @@ var trialRanges = [
             //console.log("Numerical rank retrieved!");
             var inserttrial = wait.for(insertTrialInQueue,playerName,"NEW",trialresults[0].playerTrialRankID);
             console.log("Queue updated!");
-
-            //var twitterannounce = wait.for(announceNewPlayerTrialTwitter, playerName, playerRank,playerScore,playerDiff, playerTwitter, listOfTrials[i],playerNumberRanking);
-            //console.log("Twitter announcement complete!");
-            //var discordannounce = wait.for(announceNewPlayerTrialDiscord, playerName, playerRank,playerScore,playerDiff, listOfTrials[i],playerNumberRanking);
-            //console.log("Discord announcement complete!");
 
           }
       }
@@ -1547,65 +1670,6 @@ function getNewToken(oAuth2Client, callback) {
       callback(oAuth2Client);
     });
   });
-}
-
-//check to see if a player has deranked
-var checkForDerank = function(existingRank,newRank)
-{
-  console.log("Old Rank = " + existingRank);
-  console.log("New Rank = " + newRank);
-
-  if (existingRank == "Wood II (P)" && newRank =="Wood I")
-  {
-    return true;
-  }
-  else if (existingRank == "Wood III (P)" && newRank =="Wood II")
-  {
-    return true;
-  }
-  else if (existingRank == "Bronze I (P)" && newRank =="Wood III")
-  {
-    return true;
-  }
-  else if (existingRank == "Bronze II (P)" && newRank =="Bronze I")
-  {
-    return true;
-  }
-  else if (existingRank == "Bronze III (P)" && newRank =="Bronze II")
-  {
-    return true;
-  }
-  else if (existingRank == "Silver I (P)" && newRank =="Bronze III")
-  {
-    return true;
-  }
-  else if (existingRank == "Silver II (P)" && newRank =="Silver I")
-  {
-    return true;
-  }
-  else if (existingRank == "Silver III (P)" && newRank =="Silver II")
-  {
-    return true;
-  }
-  else if (existingRank == "Gold I (P)" && newRank =="Silver III")
-  {
-    return true;
-  }
-  else if (existingRank == "Gold II (P)" && newRank =="Gold I")
-  {
-    return true;
-  }
-  else if (existingRank == "Gold III (P)" && newRank =="Gold II")
-  {
-    return true;
-  }
-  //for testing
-  else if (existingRank == "Diamond I (P)" && newRank =="Gold III")
-  {
-    return true;
-  }
-
-  return false;
 }
 
 function newGetPlayersFromSheets(auth,callback)
