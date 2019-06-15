@@ -149,6 +149,7 @@ function translateTrialName(trialName)
   {
     trialName = "ASCENSION (17)";
   }
+  //TODO: Add new trials
   return trialName;
 };
 
@@ -187,7 +188,7 @@ function getAllPlayersSequence(req,res)
   wait.for(sendTheBoy,res,allplayers);
 };
 
-function getSinglePlayerSequence(req,res)
+function getSinglePlayerSequence(playername,req,res)
 {
   connection = mysql.createConnection({
     host     : process.env.MYSQLHOST,
@@ -198,11 +199,11 @@ function getSinglePlayerSequence(req,res)
   connection.connect();
 
   wait.for(testTheBoy);
-  var oneplayer = wait.for(getSinglePlayerFromDB,req.params.name);
+  var oneplayer = wait.for(getSinglePlayerFromDB,playername);
   wait.for(sendTheBoy,res,oneplayer);
 };
 
-function getTopTrialSequence(req,res)
+function getTopTrialSequence(trialname,limit,req,res)
 {
   connection = mysql.createConnection({
     host     : process.env.MYSQLHOST,
@@ -213,7 +214,7 @@ function getTopTrialSequence(req,res)
   connection.connect();
 
   wait.for(testTheBoy);
-  var toptrials = wait.for(getTopTrialsFromDB,req.params.name,req.params.num);
+  var toptrials = wait.for(getTopTrialsFromDB,trialname,limit);
   wait.for(sendTheBoy,res,toptrials);
 };
 
@@ -229,16 +230,47 @@ app.get("/api/players/all", function(req, res) {
 
 
   //GET SINGLE PLAYER
-  app.get("/api/player/:name", function(req, res) {
+  app.get("/api/player", function(req, res) {
    
-    wait.launchFiber(getSinglePlayerSequence, req,res);
+    //get the player's name
+    var name = req.query.name;
 
+    
+    //if no name
+    if (name == undefined)
+    {
+      res.status(400).json("Missing a name!");
+    }
+    //name found
+    else
+    {
+    wait.launchFiber(getSinglePlayerSequence, name, req,res);
+    }
   });
 
   //GET TRIAL TOP PLAYERS
-  app.get("/api/trial/:name/:num", function(req, res) {
+  app.get("/api/trial", function(req, res) {
    
-    wait.launchFiber(getTopTrialSequence, req,res);
+    //get the player's name
+    var trialname = req.query.name;
+    var limit = req.query.limit;
+
+    if (limit == undefined)
+    {
+      limit = 99999;
+    }
+
+    //if no name
+    if (trialname == undefined)
+    {
+      res.status(400).json("Trial name must be included!");
+    }
+    //name found
+    else
+    {
+      wait.launchFiber(getTopTrialSequence, trialname,limit, req,res);
+    }
+
 
   });
 
