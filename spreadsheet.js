@@ -1446,8 +1446,8 @@ console.log("Player list retrieved!");
       var playerTwitter = wait.for(playerGetSpreadsheetRowTwitterValue,row);
       var playerRival = wait.for(playerGetSpreadsheetRowRivalValue,row);
 
-      if ((playerName != null && playerName != "undefined") &&
-      (playerRank != null && playerRank != "undefined"))
+      if ((playerName != null && playerName != undefined) &&
+      (playerRank != null && playerRank != undefined))
     {
       //check for existing player
       var playerresults = wait.for(checkForExistingPlayer, playerName);
@@ -1558,9 +1558,9 @@ var trialRanges = [
       var playerTwitter = wait.for(trialGetSpreadsheetRowTwitterHandleValue,row);
       var playerRival = wait.for(trialGetSpreadsheetRowRivalCodeValue,row);
 
-      if ((playerName != null && playerName != "undefined") &&
-          (playerRank != null && playerRank != "undefined") &&
-          (playerScore != null && playerScore != "undefined") )
+      if ((playerName != "" && playerName != undefined) &&
+          (playerRank != "" && playerRank != undefined) &&
+          (playerScore != "" && playerScore != undefined) )
       {
           //check for player in trials DB
           var trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
