@@ -99,7 +99,7 @@ function translateTrialName(trialName)
   }
   else if (trialName == "hellscape")
   {
-    trialName = "HELLSCAPE (14)";
+    trialName = "HELLSCAPE (15)";
   }
   else if (trialName == "clockwork")
   {
@@ -149,7 +149,14 @@ function translateTrialName(trialName)
   {
     trialName = "ASCENSION (17)";
   }
-  //TODO: Add new trials
+  else if (trialName == "wanderlust")
+  {
+    trialName = "WANDERLUST (15)";
+  }
+  else if (trialName == "primal")
+  {
+    trialName = "PRIMAL (13)";
+  }
   return trialName;
 };
 
