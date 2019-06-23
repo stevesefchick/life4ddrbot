@@ -707,8 +707,9 @@ var getTwitterTrialImageURL = function(trial,rank)
   }
   else if (rank == "Emerald" && trial == "HEARTBREAK (12)")
   {
-    //TODO:Images
+    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK_EMERALD.png';
   }
+
 //CELESTIAL(13)
 else if (rank == "Silver" && trial == "CELESTIAL (13)")
 {
@@ -732,8 +733,9 @@ else if (rank == "Amethyst" && trial == "CELESTIAL (13)")
 }
 else if (rank == "Emerald" && trial == "CELESTIAL (13)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/CELESTIAL/CELESTIAL_EMERALD.png';
 }
+
 //DAYBREAK(14)
 else if (rank == "Silver" && trial == "DAYBREAK (14)")
 {
@@ -757,33 +759,35 @@ else if (rank == "Amethyst" && trial == "DAYBREAK (14)")
 }
 else if (rank == "Emerald" && trial == "DAYBREAK (14)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/DAYBREAK/DAYBREAK_EMERALD.png';
 }
-//HELLSCAPE(14)
-else if (rank == "Silver" && trial == "HELLSCAPE (14)")
+
+//HELLSCAPE(15)
+else if (rank == "Silver" && trial == "HELLSCAPE (15)")
 {
-  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE SILVER.png';
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE_S.png';
 }
-else if (rank == "Gold" && trial == "HELLSCAPE (14)")
+else if (rank == "Gold" && trial == "HELLSCAPE (15)")
 {
-  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE GOLD.png';
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE_G.png';
 }
-else if (rank == "Diamond" && trial == "HELLSCAPE (14)")
+else if (rank == "Diamond" && trial == "HELLSCAPE (15)")
 {
-  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE DIAMOND.png';
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE_D.png';
 }
-else if (rank == "Cobalt" && trial == "HELLSCAPE (14)")
+else if (rank == "Cobalt" && trial == "HELLSCAPE (15)")
 {
-  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE COBALT.png';
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE_C.png';
 }
-else if (rank == "Amethyst" && trial == "HELLSCAPE (14)")
+else if (rank == "Amethyst" && trial == "HELLSCAPE (15)")
 {
-  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE AMETHYST.png';
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE_A.png';
 }
-else if (rank == "Emerald" && trial == "HELLSCAPE (14)")
+else if (rank == "Emerald" && trial == "HELLSCAPE (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE_E.png';
 }
+
 //CLOCKWORK(15)
 else if (rank == "Silver" && trial == "CLOCKWORK (15)")
 {
@@ -807,8 +811,9 @@ else if (rank == "Amethyst" && trial == "CLOCKWORK (15)")
 }
 else if (rank == "Emerald" && trial == "CLOCKWORK (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK_EMERALD.png';
 }
+
 //PHARAOH(15)
 else if (rank == "Silver" && trial == "PHARAOH (15)")
 {
@@ -832,8 +837,9 @@ else if (rank == "Amethyst" && trial == "PHARAOH (15)")
 }
 else if (rank == "Emerald" && trial == "PHARAOH (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/PHARAOH/PHARAOH_EMERALD.png';
 }
+
 //PARADOX(16)
 else if (rank == "Gold" && trial == "PARADOX (16)")
 {
@@ -853,8 +859,9 @@ else if (rank == "Amethyst" && trial == "PARADOX (16)")
 }
 else if (rank == "Emerald" && trial == "PARADOX (16)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/PARADOX/PARADOX_EMERALD.png';
 }
+
 //INHUMAN(16)
 else if (rank == "Gold" && trial == "INHUMAN (16)")
 {
@@ -874,8 +881,9 @@ else if (rank == "Amethyst" && trial == "INHUMAN (16)")
 }
 else if (rank == "Emerald" && trial == "INHUMAN (16)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/INHUMAN/INHUMAN_EMERALD.png';
 }
+
 //CHEMICAL(17)
 else if (rank == "Gold" && trial == "CHEMICAL (17)")
 {
@@ -895,8 +903,9 @@ else if (rank == "Amethyst" && trial == "CHEMICAL (17)")
 }
 else if (rank == "Emerald" && trial == "CHEMICAL (17)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL_EMERALD.png';
 }
+
 //ORIGIN(18)
 else if (rank == "Diamond" && trial == "ORIGIN (18)")
 {
@@ -912,8 +921,9 @@ else if (rank == "Amethyst" && trial == "ORIGIN (18)")
 }
 else if (rank == "Emerald" && trial == "ORIGIN (18)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/ORIGIN/ORIGIN_EMERALD.png';
 }
+
 //ASCENSION (17)
 else if (rank == "Gold" && trial == "ASCENSION (17)")
 {
@@ -933,7 +943,7 @@ else if (rank == "Amethyst" && trial == "ASCENSION (17)")
 }
 else if (rank == "Emerald" && trial == "ASCENSION (17)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/ASCENSION/ASCENSION_EMERALD.png';
 }
 //COUNTDOWN (14)
 else if (rank == "Silver" && trial == "COUNTDOWN (14)")
@@ -958,7 +968,7 @@ else if (rank == "Amethyst" && trial == "COUNTDOWN (14)")
 }
 else if (rank == "Emerald" && trial == "COUNTDOWN (14)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_EMERALD.png';
 }
 //HEATWAVE (15)
 else if (rank == "Silver" && trial == "HEATWAVE (15)")
@@ -983,8 +993,10 @@ else if (rank == "Amethyst" && trial == "HEATWAVE (15)")
 }
 else if (rank == "Emerald" && trial == "HEATWAVE (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_EMERALD.png';
 }
+
+
 //MAINFRAME (13)
 else if (rank == "Silver" && trial == "MAINFRAME (13)")
 {
@@ -1008,8 +1020,9 @@ else if (rank == "Amethyst" && trial == "MAINFRAME (13)")
 }
 else if (rank == "Emerald" && trial == "MAINFRAME (13)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_EMERALD.png';
 }
+
 //SNOWDRIFT (16)
 else if (rank == "Silver" && trial == "SNOWDRIFT (16)")
 {
@@ -1033,61 +1046,59 @@ else if (rank == "Amethyst" && trial == "SNOWDRIFT (16)")
 }
 else if (rank == "Emerald" && trial == "SNOWDRIFT (16)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_EMERALD.png';
 }
 
 //Primal (13)
-//TODO:Like, all of this
 else if (rank == "Silver" && trial == "Primal (13)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/PRIMAL/PRIMAL_S.png';
 }
 else if (rank == "Gold" && trial == "Primal (13)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/PRIMAL/PRIMAL_G.png';
 }
 else if (rank == "Diamond" && trial == "Primal (13)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/PRIMAL/PRIMAL_D.png';
 }
 else if (rank == "Cobalt" && trial == "Primal (13)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/PRIMAL/PRIMAL_C.png';
 }
 else if (rank == "Amethyst" && trial == "Primal (13)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/PRIMAL/PRIMAL_A.png';
 }
 else if (rank == "Emerald" && trial == "Primal (13)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/PRIMAL/PRIMAL_E.png';
 }
 
 //Wanderlust (15)
-//TODO:Like, all of this
 else if (rank == "Silver" && trial == "Wanderlust (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_S.png';
 }
 else if (rank == "Gold" && trial == "Wanderlust (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_G.png';
 }
 else if (rank == "Diamond" && trial == "Wanderlust (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_D.png';
 }
 else if (rank == "Cobalt" && trial == "Wanderlust (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_C.png';
 }
 else if (rank == "Amethyst" && trial == "Wanderlust (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_A.png';
 }
 else if (rank == "Emerald" && trial == "Wanderlust (15)")
 {
-  //TODO:Images
+  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_E.png';
 }
 
 
@@ -1496,6 +1507,9 @@ console.log("Player list retrieved!");
 console.log("Players complete!");
 
 console.log("Trials starting!");
+
+
+//TODO:Handle new Hellscape 14/15 rebalance
 
 var listOfTrials = [
   "HEARTBREAK (12)",
