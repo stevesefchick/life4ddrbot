@@ -119,15 +119,15 @@ var getTwitterImageURL = function(rank)
   }
   else if (rank == "Emerald I")
   {
-    //TODO:Images
+    twitterImageURL = './rankup_images/E1.png';
   }
   else if (rank == "Emerald II")
   {
-    //TODO:Images
+    twitterImageURL = './rankup_images/E2.png';
   }
   else if (rank == "Emerald III")
   {
-    //TODO:Images
+    twitterImageURL = './rankup_images/E3.png';
   }
   return twitterImageURL;
 
@@ -223,15 +223,15 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Emerald I")
   {
-    //TODO:Images
+    discordemoji = "<:e1:592474998820569088>";
   }
   else if (rank == "Emerald II")
   {
-    //TODO:Images
+    discordemoji = "<:e2:592474998367715347>";
   }
   else if (rank == "Emerald III")
   {
-    //TODO:Images
+    discordemoji = "<:e3:592474998564716544>";
   }
 
   return discordemoji;
@@ -268,7 +268,7 @@ var getTrialDiscordIcon = function(rank)
   }
   else if (rank == "Emerald")
   {
-    //TODO:Discord emoji
+    discordemoji = "<:e3:592474998564716544>";
   }
 
   return discordemoji;
@@ -1515,7 +1515,7 @@ var listOfTrials = [
   "HEARTBREAK (12)",
   "CELESTIAL (13)",
   "DAYBREAK (14)",
-  "HELLSCAPE (14)",
+  "HELLSCAPE (15)",
   "CLOCKWORK (15)",
   "PHARAOH (15)",
   "PARADOX (16)",
