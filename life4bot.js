@@ -29,18 +29,6 @@ app.listen(port, () => console.log(`Listening on port ${port}!`));
 
 
 
-function testTheBoy(callback)
-{
-  setTimeout( function(){
-
-
-    callback(null,"hey!");
-
-
-}, 750);
-
-}
-
 function sendTheBoy(res,deets,callback)
 {
   setTimeout( function(){
@@ -50,6 +38,21 @@ function sendTheBoy(res,deets,callback)
 
 
 }, 750);
+
+}
+
+function getAppStatusFromDB(callback){
+
+  setTimeout( function(){
+
+    var appStatus = "SELECT varValue from life4Controls where varName='appStatus'";
+    connection.query(appStatus, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
 
 }
 
@@ -190,7 +193,6 @@ function getAllPlayersSequence(req,res)
   connection.connect();
 
   console.log("Time for test!");
-  wait.for(testTheBoy);
   var allplayers = wait.for(getAllPlayersfromDB);
   wait.for(sendTheBoy,res,allplayers);
 };
@@ -205,7 +207,6 @@ function getSinglePlayerSequence(playername,req,res)
   });
   connection.connect();
 
-  wait.for(testTheBoy);
   var oneplayer = wait.for(getSinglePlayerFromDB,playername);
   wait.for(sendTheBoy,res,oneplayer);
 };
@@ -220,10 +221,36 @@ function getTopTrialSequence(trialname,limit,req,res)
   });
   connection.connect();
 
-  wait.for(testTheBoy);
   var toptrials = wait.for(getTopTrialsFromDB,trialname,limit);
   wait.for(sendTheBoy,res,toptrials);
 };
+
+
+function getAppStatusSequence(req,res)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  console.log("CheckingStatus!");
+  var currentStatus = wait.for(getAppStatusFromDB);
+  wait.for(sendTheBoy,res,currentStatus);
+};
+
+
+
+//GET APP STATUS
+app.get("/api/app/status", function(req, res) {
+   
+  wait.launchFiber(getAppStatusSequence,req,res);
+
+});
+
+
 
 
 //GET ALL PLAYERS
