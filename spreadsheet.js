@@ -119,15 +119,15 @@ var getTwitterImageURL = function(rank)
   }
   else if (rank == "Emerald I")
   {
-    twitterImageURL = './rankup_images/E1.png';
+    twitterImageURL = './rankup_images/EMERALD1.png';
   }
   else if (rank == "Emerald II")
   {
-    twitterImageURL = './rankup_images/E2.png';
+    twitterImageURL = './rankup_images/EMERALD2.png';
   }
   else if (rank == "Emerald III")
   {
-    twitterImageURL = './rankup_images/E3.png';
+    twitterImageURL = './rankup_images/EMERALD3.png';
   }
   return twitterImageURL;
 
