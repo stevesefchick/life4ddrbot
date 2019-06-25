@@ -1444,6 +1444,10 @@ var queueDone = wait.for(setQueueItemToProcessed,queueResults[0].playerQueueID);
 
 console.log("Queue updates are complete!");
 
+
+
+/*
+
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
 console.log("Player list retrieved!");
@@ -1506,10 +1510,10 @@ console.log("Player list retrieved!");
 
 console.log("Players complete!");
 
+*/
+
 console.log("Trials starting!");
 
-
-//TODO:Handle new Hellscape 14/15 rebalance
 
 var listOfTrials = [
   "HEARTBREAK (12)",
@@ -1526,9 +1530,9 @@ var listOfTrials = [
   "COUNTDOWN (14)",
   "HEATWAVE (15)",
   "SNOWDRIFT (16)",
-  "ASCENSION (17)"
-  //TODO:Primal (13)
-  //TODO: Wanderlust (15)
+  "ASCENSION (17)",
+  "PRIMAL (13)",
+  "WANDERLUST (15)"
 ];
 
 var trialRanges = [
@@ -1546,9 +1550,29 @@ var trialRanges = [
   "ALL TRIALS!BD2:BH",
   "ALL TRIALS!BI2:BM",
   "ALL TRIALS!BN2:BR",
-  "ALL TRIALS!BS2:BW"
-    //TODO:Primal (13)
-  //TODO: Wanderlust (15)
+  "ALL TRIALS!BS2:BW",
+  "Sheet1!A2:E",
+  "Sheet1!F2:J"
+];
+
+var trialSpreadsheetID = [
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs"
 ];
 
   for (var i = 0; i < listOfTrials.length;i++)
@@ -1556,21 +1580,25 @@ var trialRanges = [
   console.log("Beginning " + listOfTrials[i]);
 
   //get the list of players
-  var trialPlayerList = wait.for(newGetTrials, getauth, trialRanges[i]);
+  var trialPlayerList = wait.for(newGetTrials, getauth, trialRanges[i],trialSpreadsheetID[i]);
 
 
   console.log(listOfTrials[i] +" LIST RETRIEVED!");
   //for each player
   if (trialPlayerList && trialPlayerList.length)
   {
+    console.log(trialPlayerList);
     console.log("Retrieving " + listOfTrials[i] + " player info...");
     trialPlayerList.map((row) => {
+      console.log("Mapping...");
       var playerName = wait.for(trialGetSpreadsheetRowNameValue,row);
       var playerRank = wait.for(trialGetSpreadsheetRowRankValue,row);
       var playerScore = wait.for(trialGetSpreadsheetRowScoreValue,row);
       var playerDiff = wait.for(trialGetSpreadsheetRowDiffValue,row);
       var playerTwitter = wait.for(trialGetSpreadsheetRowTwitterHandleValue,row);
       var playerRival = wait.for(trialGetSpreadsheetRowRivalCodeValue,row);
+
+      console.log(playerName + "||" + playerRank + "||" + playerScore);
 
       if ((playerName != "" && playerName != undefined) &&
           (playerRank != "" && playerRank != undefined) &&
@@ -1580,7 +1608,7 @@ var trialRanges = [
           var trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
           if (trialresults && trialresults.length)
           {
-            console.log("Player exists! Check for update!");
+            console.log("Player " + playerName + " exists! Check for update!");
             if (playerScore == trialresults[0].playerScore)
             {
               console.log("Player has same score!");
@@ -1699,11 +1727,12 @@ function newGetPlayersFromSheets(auth,callback)
   });
 }
 
-function newGetTrials(auth,trialRange,callback)
+function newGetTrials(auth,trialRange, spreadsheetID,callback)
 {
+
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
-    spreadsheetId: '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+    spreadsheetId: spreadsheetID,
     range: trialRange,
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
