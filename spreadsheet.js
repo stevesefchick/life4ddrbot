@@ -1596,7 +1596,6 @@ var trialSpreadsheetID = [
       var playerTwitter = wait.for(trialGetSpreadsheetRowTwitterHandleValue,row);
       var playerRival = wait.for(trialGetSpreadsheetRowRivalCodeValue,row);
 
-      console.log(playerName + "||" + playerRank + "||" + playerScore);
 
       if ((playerName != "" && playerName != undefined) &&
           (playerRank != "" && playerRank != undefined) &&
@@ -1607,7 +1606,8 @@ var trialSpreadsheetID = [
           if (trialresults && trialresults.length)
           {
             console.log("Player " + playerName + " exists! Check for update!");
-            if (playerScore == trialresults[0].playerScore)
+            if (playerScore == trialresults[0].playerScore &&
+              playerRank == trialresults[0].playerRank)
             {
               console.log("Player has same score!");
             }
