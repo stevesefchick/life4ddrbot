@@ -994,7 +994,7 @@ else if (rank == "Amethyst" && trial == "HEATWAVE (15)")
 }
 else if (rank == "Emerald" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_EMERALD.png';
+  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_EMREALD.png';
 }
 
 
