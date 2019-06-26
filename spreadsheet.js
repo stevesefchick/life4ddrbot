@@ -684,6 +684,7 @@ var getTwitterTrialImageURL = function(trial,rank)
 {
   var twitterImageURL = "";
 
+ 
   //HEARTBREAK(12)
   if (rank == "Silver" && trial == "HEARTBREAK (12)")
   {
