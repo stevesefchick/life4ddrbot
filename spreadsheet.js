@@ -1051,53 +1051,53 @@ else if (rank == "Emerald" && trial == "SNOWDRIFT (16)")
 }
 
 //Primal (13)
-else if (rank == "Silver" && trial == "Primal (13)")
+else if (rank == "Silver" && trial == "PRIMAL (13)")
 {
   twitterImageURL = './trial_images/PRIMAL/PRIMAL_S.png';
 }
-else if (rank == "Gold" && trial == "Primal (13)")
+else if (rank == "Gold" && trial == "PRIMAL (13)")
 {
   twitterImageURL = './trial_images/PRIMAL/PRIMAL_G.png';
 }
-else if (rank == "Diamond" && trial == "Primal (13)")
+else if (rank == "Diamond" && trial == "PRIMAL (13)")
 {
   twitterImageURL = './trial_images/PRIMAL/PRIMAL_D.png';
 }
-else if (rank == "Cobalt" && trial == "Primal (13)")
+else if (rank == "Cobalt" && trial == "PRIMAL (13)")
 {
   twitterImageURL = './trial_images/PRIMAL/PRIMAL_C.png';
 }
-else if (rank == "Amethyst" && trial == "Primal (13)")
+else if (rank == "Amethyst" && trial == "PRIMAL (13)")
 {
   twitterImageURL = './trial_images/PRIMAL/PRIMAL_A.png';
 }
-else if (rank == "Emerald" && trial == "Primal (13)")
+else if (rank == "Emerald" && trial == "PRIMAL (13)")
 {
   twitterImageURL = './trial_images/PRIMAL/PRIMAL_E.png';
 }
 
 //Wanderlust (15)
-else if (rank == "Silver" && trial == "Wanderlust (15)")
+else if (rank == "Silver" && trial == "WANDERLUST (15)")
 {
   twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_S.png';
 }
-else if (rank == "Gold" && trial == "Wanderlust (15)")
+else if (rank == "Gold" && trial == "WANDERLUST (15)")
 {
   twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_G.png';
 }
-else if (rank == "Diamond" && trial == "Wanderlust (15)")
+else if (rank == "Diamond" && trial == "WANDERLUST (15)")
 {
   twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_D.png';
 }
-else if (rank == "Cobalt" && trial == "Wanderlust (15)")
+else if (rank == "Cobalt" && trial == "WANDERLUST (15)")
 {
   twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_C.png';
 }
-else if (rank == "Amethyst" && trial == "Wanderlust (15)")
+else if (rank == "Amethyst" && trial == "WANDERLUST (15)")
 {
   twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_A.png';
 }
-else if (rank == "Emerald" && trial == "Wanderlust (15)")
+else if (rank == "Emerald" && trial == "WANDERLUST (15)")
 {
   twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_E.png';
 }
