@@ -24,6 +24,13 @@ bot.on('ready', () => {
 //BOT LISTEN FOR MESSAGES
   bot.on('message', (message) => {
 
+    //GET COMMANDS
+    if(message.content.includes(bot.user.toString()) && message.content.includes('commands')) {
+
+        message.reply('Here are my commands!\n status = get status \n turn on = enable the bot \n turn off = disable the bot');
+    }
+    
+
     //GET STATUS
     if(message.content.includes(bot.user.toString()) && message.content.includes('status')) {
       if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
