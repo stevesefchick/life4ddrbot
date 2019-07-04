@@ -12,10 +12,16 @@ var Discord = require('discord.js');
 var bot = new Discord.Client();
 bot.login(process.env.DISCORD_BOT_TOKEN);
 
+
+//BOT LOG IN
 bot.on('ready', () => {
     console.log(`Logged in as ${bot.user.tag}!`);
   });
 
+
+
+
+//BOT LISTEN FOR MESSAGES
   bot.on('message', (message) => {
 
     //GET STATUS
@@ -24,17 +30,49 @@ bot.on('ready', () => {
         return message.reply("Only admins can run this, sorry friend!");
       else
       {
-        message.reply('Status is currently ON! Bot is running!');
+        wait.launchFiber(getAppStatusSequenceDiscord,message);
+
+        //message.reply('Status is currently ON! Bot is running!');
+      }
+    }
+
+    //TURN ON
+    if(message.content.includes(bot.user.toString()) && message.content.includes('turn on')) {
+      if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+        return message.reply("Only admins can run this, sorry friend!");
+      else
+      {
+        //wait.launchFiber(getAppStatusSequenceDiscord,message);
+
+        message.reply('Beep boop turning on the bot!');
       }
     }
 
 
+    //TURN OFF
+    //TURN ON
+    if(message.content.includes(bot.user.toString()) && message.content.includes('turn off')) {
+      if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+        return message.reply("Only admins can run this, sorry friend!");
+      else
+      {
+        //wait.launchFiber(getAppStatusSequenceDiscord,message);
+
+        message.reply('Beep boop turning off the bot. Go ahead and make your spreadsheet edits!');
+      }
+    }
 
     //PLAYER LOOKUP
     if(message.content.includes(bot.user.toString()) && message.content.includes('whois')) {
       message.reply('TBD player lookup');
   }
 });
+
+
+
+
+
+
 
 
 require('dotenv').config();
@@ -53,19 +91,64 @@ var connection;
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
 
-
+//
+//GENERAL API FUNCTIONS
+//
 function sendTheBoy(res,deets,callback)
 {
   setTimeout( function(){
 
     res.send(JSON.stringify(deets));
-    botJoinDiscordChannel();
-
 
 }, 750);
 
 }
+  //TEST
+  app.get("/api/test", function(req, res) {
+    res.status(200).json("the dang test worked!");
+  });
 
+  
+
+
+
+//
+//GET STATUS
+//
+
+
+//GET APP STATUS
+app.get("/api/app/status", function(req, res) {
+   
+  wait.launchFiber(getAppStatusSequence,req,res);
+
+});
+
+function discordSendStatusMessage(message,status,callback)
+{
+  setTimeout( function(){
+
+    var messagetext = "";
+
+    if (status == "ON")
+    {
+      messagetext = "Status is currently " + status +"! The bot is running!";
+    }
+    else if (status == "OFF")
+    {
+      messagetext = "Status is currently " + status +"! The bot is not running!";
+    }
+    else if (status == "ERROR")
+    {
+      messagetext = "Status is currently " + status +"! Uh oh! Tell my Dad!";
+    }
+
+
+    message.reply(messagetext);
+
+}, 750);
+
+}
 function getAppStatusFromDB(callback){
 
   setTimeout( function(){
@@ -80,6 +163,62 @@ function getAppStatusFromDB(callback){
 }, 25);
 
 }
+
+
+function getAppStatusSequence(req,res)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  console.log("CheckingStatus!");
+  var currentStatus = wait.for(getAppStatusFromDB);
+  wait.for(sendTheBoy,res,currentStatus);
+};
+
+function getAppStatusSequenceDiscord(message)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  console.log("Checking Status!");
+  var currentStatus = wait.for(getAppStatusFromDB);
+  wait.for(discordSendStatusMessage,message,currentStatus[0].varValue);
+};
+
+
+
+
+//
+// CHANGE STATUS
+//
+
+//API
+app.get("/api/app/status/change", function(req, res) {
+   
+  var value = req.query.status;
+
+  if (value == undefined ||
+    (value != "ON" &&
+    value !="OFF"))
+    {
+      res.status(400).json("Invalid status");
+    }
+    else
+    {
+  wait.launchFiber(changeAppStatusSequence, value,req,res);
+    }
+});
+
 
 function changeAppStatus(status,callback){
 
@@ -96,6 +235,33 @@ function changeAppStatus(status,callback){
 
 }
 
+function changeAppStatusSequence(status,req,res)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  console.log("Updating Status!!");
+  var currentStatus = wait.for(changeAppStatus,status);
+  wait.for(sendTheBoy,res,currentStatus);
+};
+
+
+
+//
+// GET ALL PLAYERS
+//
+
+//API
+app.get("/api/players/all", function(req, res) {
+   
+  wait.launchFiber(getAllPlayersSequence,req,res);
+
+});
 
 function getAllPlayersfromDB(callback){
 
@@ -112,6 +278,45 @@ function getAllPlayersfromDB(callback){
 
 }
 
+function getAllPlayersSequence(req,res)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  console.log("Time for test!");
+  var allplayers = wait.for(getAllPlayersfromDB);
+  wait.for(sendTheBoy,res,allplayers);
+};
+
+
+//
+// GET SINGLE PLAYER
+//
+
+ //API
+ app.get("/api/player", function(req, res) {
+   
+  //get the player's name
+  var name = req.query.name;
+
+  
+  //if no name
+  if (name == undefined)
+  {
+    res.status(400).json("Missing a name!");
+  }
+  //name found
+  else
+  {
+  wait.launchFiber(getSinglePlayerSequence, name, req,res);
+  }
+});
+
 function getSinglePlayerFromDB(playername, callback){
 
   setTimeout( function(){
@@ -126,6 +331,52 @@ function getSinglePlayerFromDB(playername, callback){
 }, 25);
 
 }
+
+
+function getSinglePlayerSequence(playername,req,res)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  var oneplayer = wait.for(getSinglePlayerFromDB,playername);
+  wait.for(sendTheBoy,res,oneplayer);
+};
+
+
+//
+// GET TOP TRIALS
+//
+
+//API
+app.get("/api/trial", function(req, res) {
+   
+  //get the player's name
+  var trialname = req.query.name;
+  var limit = req.query.limit;
+
+  if (limit == undefined)
+  {
+    limit = 99999;
+  }
+
+  //if no name
+  if (trialname == undefined)
+  {
+    res.status(400).json("Trial name must be included!");
+  }
+  //name found
+  else
+  {
+    wait.launchFiber(getTopTrialSequence, trialname,limit, req,res);
+  }
+
+
+});
 
 function translateTrialName(trialName)
 {
@@ -204,7 +455,6 @@ function translateTrialName(trialName)
   return trialName;
 };
 
-
 function getTopTrialsFromDB(trialname, trialtopnum, callback){
 
   setTimeout( function(){
@@ -222,36 +472,6 @@ function getTopTrialsFromDB(trialname, trialtopnum, callback){
 
 }
 
-
-function getAllPlayersSequence(req,res)
-{
-  connection = mysql.createConnection({
-    host     : process.env.MYSQLHOST,
-    user     : process.env.MYSQLUSER,
-    password : process.env.MYSQLPW,
-    database : process.env.MYSQLPLAYERDB
-  });
-  connection.connect();
-
-  console.log("Time for test!");
-  var allplayers = wait.for(getAllPlayersfromDB);
-  wait.for(sendTheBoy,res,allplayers);
-};
-
-function getSinglePlayerSequence(playername,req,res)
-{
-  connection = mysql.createConnection({
-    host     : process.env.MYSQLHOST,
-    user     : process.env.MYSQLUSER,
-    password : process.env.MYSQLPW,
-    database : process.env.MYSQLPLAYERDB
-  });
-  connection.connect();
-
-  var oneplayer = wait.for(getSinglePlayerFromDB,playername);
-  wait.for(sendTheBoy,res,oneplayer);
-};
-
 function getTopTrialSequence(trialname,limit,req,res)
 {
   connection = mysql.createConnection({
@@ -266,124 +486,18 @@ function getTopTrialSequence(trialname,limit,req,res)
   wait.for(sendTheBoy,res,toptrials);
 };
 
-function changeAppStatusSequence(status,req,res)
-{
-  connection = mysql.createConnection({
-    host     : process.env.MYSQLHOST,
-    user     : process.env.MYSQLUSER,
-    password : process.env.MYSQLPW,
-    database : process.env.MYSQLPLAYERDB
-  });
-  connection.connect();
-
-  console.log("Updating Status!!");
-  var currentStatus = wait.for(changeAppStatus,status);
-  wait.for(sendTheBoy,res,currentStatus);
-};
-
-
-function getAppStatusSequence(req,res)
-{
-  connection = mysql.createConnection({
-    host     : process.env.MYSQLHOST,
-    user     : process.env.MYSQLUSER,
-    password : process.env.MYSQLPW,
-    database : process.env.MYSQLPLAYERDB
-  });
-  connection.connect();
-
-  console.log("CheckingStatus!");
-  var currentStatus = wait.for(getAppStatusFromDB);
-  wait.for(sendTheBoy,res,currentStatus);
-};
 
 
 
-//GET APP STATUS
-app.get("/api/app/status", function(req, res) {
-   
-  wait.launchFiber(getAppStatusSequence,req,res);
-
-});
-
-//CHANGE APP STATUS
-app.get("/api/app/status/change", function(req, res) {
-   
-  var value = req.query.status;
-
-  if (value == undefined ||
-    (value != "ON" &&
-    value !="OFF"))
-    {
-      res.status(400).json("Invalid status");
-    }
-    else
-    {
-  wait.launchFiber(changeAppStatusSequence, value,req,res);
-    }
-});
 
 
-//GET ALL PLAYERS
-app.get("/api/players/all", function(req, res) {
-   
-    wait.launchFiber(getAllPlayersSequence,req,res);
+
+
+ 
+
   
-  });
 
 
-
-
-  //GET SINGLE PLAYER
-  app.get("/api/player", function(req, res) {
-   
-    //get the player's name
-    var name = req.query.name;
-
-    
-    //if no name
-    if (name == undefined)
-    {
-      res.status(400).json("Missing a name!");
-    }
-    //name found
-    else
-    {
-    wait.launchFiber(getSinglePlayerSequence, name, req,res);
-    }
-  });
-
-  //GET TRIAL TOP PLAYERS
-  app.get("/api/trial", function(req, res) {
-   
-    //get the player's name
-    var trialname = req.query.name;
-    var limit = req.query.limit;
-
-    if (limit == undefined)
-    {
-      limit = 99999;
-    }
-
-    //if no name
-    if (trialname == undefined)
-    {
-      res.status(400).json("Trial name must be included!");
-    }
-    //name found
-    else
-    {
-      wait.launchFiber(getTopTrialSequence, trialname,limit, req,res);
-    }
-
-
-  });
-
-
-  //TEST
-app.get("/api/test", function(req, res) {
-  res.status(200).json("the dang test worked!");
-});
 
 
 //run main class
@@ -391,22 +505,6 @@ var getSpreadsheet = function()
 {
   var spreadsheet = require('./spreadsheet.js');
 }
-
-var botJoinDiscordChannel = function()
-{
-
-  var discordpost = "test";
-
-  const channel = bot.channels.find('name', 'admin-bot');
-  console.log(bot.channels);
-
-  channel.send(discordpost)
-  .then(message => console.log(discordpost))
-  .catch(console.error);
-
-}
-
-
 
 //check for needed activity
 var life4actionTime = function()
