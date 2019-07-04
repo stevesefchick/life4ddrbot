@@ -31,3 +31,10 @@ GET
 /api/app/status
 ```
 This API returns the current bot status. "ON" is the normal state, where it will run every time the heroku schedule kicks off. "OFF" is a manual state in which the app is temporarily off while updates are being made.
+
+### CHANGE APP STATUS
+```
+GET
+/api/app/status/change?status=[value]
+```
+This API updates the bot status. Valid valids are "ON" or "OFF" otherwise it will not update.

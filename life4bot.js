@@ -56,6 +56,22 @@ function getAppStatusFromDB(callback){
 
 }
 
+function changeAppStatus(status,callback){
+
+  setTimeout( function(){
+
+    var appStatus = "UPDATE life4Controls set varValue = '"+status+"' where varName='appStatus'";
+    connection.query(appStatus, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
+
+
 function getAllPlayersfromDB(callback){
 
   setTimeout( function(){
@@ -225,6 +241,21 @@ function getTopTrialSequence(trialname,limit,req,res)
   wait.for(sendTheBoy,res,toptrials);
 };
 
+function changeAppStatusSequence(status,req,res)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  console.log("Updating Status!!");
+  var currentStatus = wait.for(changeAppStatus,status);
+  wait.for(sendTheBoy,res,currentStatus);
+};
+
 
 function getAppStatusSequence(req,res)
 {
@@ -250,7 +281,22 @@ app.get("/api/app/status", function(req, res) {
 
 });
 
+//CHANGE APP STATUS
+app.get("/api/app/status/change", function(req, res) {
+   
+  var value = req.query.status;
 
+  if (value == undefined ||
+    (value != "ON" &&
+    value !="OFF"))
+    {
+      res.status(400).json("Invalid status");
+    }
+    else
+    {
+  wait.launchFiber(changeAppStatusSequence, value,req,res);
+    }
+});
 
 
 //GET ALL PLAYERS
