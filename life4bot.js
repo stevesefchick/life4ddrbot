@@ -42,9 +42,9 @@ bot.on('ready', () => {
         return message.reply("Only admins can run this, sorry friend!");
       else
       {
-        //wait.launchFiber(getAppStatusSequenceDiscord,message);
+        wait.launchFiber(changeAppStatusSequenceDiscord,message,"ON");
 
-        message.reply('Beep boop turning on the bot!');
+        //message.reply('Beep boop turning on the bot!');
       }
     }
 
@@ -56,9 +56,9 @@ bot.on('ready', () => {
         return message.reply("Only admins can run this, sorry friend!");
       else
       {
-        //wait.launchFiber(getAppStatusSequenceDiscord,message);
+        wait.launchFiber(changeAppStatusSequenceDiscord,message,"OFF");
 
-        message.reply('Beep boop turning off the bot. Go ahead and make your spreadsheet edits!');
+        //message.reply('Beep boop turning off the bot. Go ahead and make your spreadsheet edits!');
       }
     }
 
@@ -235,6 +235,28 @@ function changeAppStatus(status,callback){
 
 }
 
+function discordSendStatusChangeMessage(message,status,callback)
+{
+  setTimeout( function(){
+
+    var messagetext = "";
+
+    if (status == "ON")
+    {
+      messagetext = "The bot has been activated! It will run every 10 minutes.";
+    }
+    else if (status == "OFF")
+    {
+      messagetext = "The bot has been deactivated! Go ahead and make your spreadsheet updates!";
+    }
+
+    message.reply(messagetext);
+
+}, 750);
+
+}
+
+
 function changeAppStatusSequence(status,req,res)
 {
   connection = mysql.createConnection({
@@ -249,6 +271,22 @@ function changeAppStatusSequence(status,req,res)
   var currentStatus = wait.for(changeAppStatus,status);
   wait.for(sendTheBoy,res,currentStatus);
 };
+
+function changeAppStatusSequenceDiscord(message,status)
+{
+  connection = mysql.createConnection({
+    host     : process.env.MYSQLHOST,
+    user     : process.env.MYSQLUSER,
+    password : process.env.MYSQLPW,
+    database : process.env.MYSQLPLAYERDB
+  });
+  connection.connect();
+
+  console.log("Updating status!");
+  var currentStatus = wait.for(changeAppStatus,status);
+  wait.for(discordSendStatusChangeMessage,message,status);
+};
+
 
 
 

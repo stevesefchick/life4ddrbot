@@ -289,6 +289,24 @@ function getCredentials(callback){
       }, 1000);
 };
 
+function getBotStatus(callback){
+  setTimeout( function(){
+
+    var appStatus = "SELECT varValue from life4Controls where varName='appStatus'";
+
+
+    connection.query(appStatus, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+
+
+}; 
+
 function playerGetSpreadsheetRowNameValue(row, callback){
   setTimeout( function(){
 
@@ -1377,7 +1395,22 @@ function LIFE4sequence()
   var getauth = wait.for(newauthorize,getTrialJSON);
   console.log("Authorization complete! Hot damn!");
 
+  //GET BOT STATUS
+  var botStatus = "ON";
+  botStatus = wait.for(getBotStatus);
+  botStatus = botStatus[0].varValue;
 
+  if (botStatus =="OFF")
+  {
+    console.log("Bot is off! Nothing will run!");
+  }
+  else if (botStatus == "ERROR")
+  {
+    console.log("Bot is having issues! Bot will not run!");
+  }
+  else if (botStatus == "ON")
+{
+  console.log("Bot is on!");
   console.log("Checking queue for requests!");
   var queueResults = wait.for(getReadyFromQueue);
   if (queueResults.length)
@@ -1650,6 +1683,7 @@ var trialSpreadsheetID = [
 }
 
 console.log("LIFE4 bot update complete!");
+}
 connection.end();
 }
 
