@@ -8,8 +8,33 @@ const fs = require('fs');
 var twit = require('twit');
 var config = require('./config.js');
 var Twitter = new twit(config);
+var Discord = require('discord.js');
+var bot = new Discord.Client();
+bot.login(process.env.DISCORD_BOT_TOKEN);
+
+bot.on('ready', () => {
+    console.log(`Logged in as ${bot.user.tag}!`);
+  });
+
+  bot.on('message', (message) => {
+
+    //GET STATUS
+    if(message.content.includes(bot.user.toString()) && message.content.includes('status')) {
+      if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
+        return message.reply("Only admins can run this, sorry friend!");
+      else
+      {
+        message.reply('Status is currently ON! Bot is running!');
+      }
+    }
 
 
+
+    //PLAYER LOOKUP
+    if(message.content.includes(bot.user.toString()) && message.content.includes('whois')) {
+      message.reply('TBD player lookup');
+  }
+});
 
 
 require('dotenv').config();
@@ -34,7 +59,7 @@ function sendTheBoy(res,deets,callback)
   setTimeout( function(){
 
     res.send(JSON.stringify(deets));
-    //callback(null,"ok!");
+    botJoinDiscordChannel();
 
 
 }, 750);
@@ -370,12 +395,15 @@ var getSpreadsheet = function()
 var botJoinDiscordChannel = function()
 {
 
-   const channel = bot.channels.find('name', 'general')
-   channel.send('hello!')
-   .then(message => console.log("sent!"))
-   .catch(console.error);
+  var discordpost = "test";
 
-    console.log("henlo");
+  const channel = bot.channels.find('name', 'admin-bot');
+  console.log(bot.channels);
+
+  channel.send(discordpost)
+  .then(message => console.log(discordpost))
+  .catch(console.error);
+
 }
 
 
@@ -387,7 +415,6 @@ var life4actionTime = function()
     console.log('App is running!!!');
     //this works
     getSpreadsheet();
-
 }
 
 
