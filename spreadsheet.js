@@ -276,6 +276,15 @@ var getTrialDiscordIcon = function(rank)
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
+let tokenjson = {
+  "access_token": process.env.G_ACCESS_TOKEN,
+  "refresh_token": process.env.DISCORD_BOT_TOKEN,
+  "scope":"https://www.googleapis.com/auth/spreadsheets.readonly",
+  "token_type":"Bearer",
+  "expiry_date":1547324367365
+}
+
+console.log(tokenjson);
 
 function getCredentials(callback){
   setTimeout( function(){
@@ -1690,16 +1699,20 @@ connection.end();
 function newauthorize(credentials, callback) {
 
   const {client_secret, client_id, redirect_uris} = credentials.installed;
+  
+  
   const oAuth2Client = new google.auth.OAuth2(
-      client_id, client_secret, redirect_uris[0]);
+      client_id, client_secret, redirect_uris[0]);   
+      oAuth2Client.setCredentials(JSON.parse(tokenjson));
 
   // Check if we have previously stored a token.
+  /*
   fs.readFile(TOKEN_PATH, (err, token) => {
     if (err) return getNewToken(oAuth2Client, callback);
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(null,oAuth2Client);
   });
-
+*/
 
 };
 
