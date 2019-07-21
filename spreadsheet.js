@@ -276,6 +276,8 @@ var getTrialDiscordIcon = function(rank)
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = 'token.json';
+
+/*
 let tokenjson = {
   "access_token": process.env.G_ACCESS_TOKEN,
   "refresh_token": process.env.DISCORD_BOT_TOKEN,
@@ -283,8 +285,8 @@ let tokenjson = {
   "token_type":"Bearer",
   "expiry_date":1547324367365
 }
-
 console.log(tokenjson);
+*/
 
 function getCredentials(callback){
   setTimeout( function(){
@@ -1129,6 +1131,134 @@ else if (rank == "Emerald" && trial == "WANDERLUST (15)")
   twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_E.png';
 }
 
+//CIRCADIA (16)
+else if (rank == "Silver" && trial == "CIRCADIA (16)")
+{
+  twitterImageURL = './trial_images/CIRCADIA/circadia silver.png';
+}
+else if (rank == "Gold" && trial == "CIRCADIA (16)")
+{
+  twitterImageURL = './trial_images/CIRCADIA/circadia gold.png';
+}
+else if (rank == "Diamond" && trial == "CIRCADIA (16)")
+{
+  twitterImageURL = './trial_images/CIRCADIA/circadia diamond.png';
+}
+else if (rank == "Cobalt" && trial == "CIRCADIA (16)")
+{
+  twitterImageURL = './trial_images/CIRCADIA/circadia cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "CIRCADIA (16)")
+{
+  twitterImageURL = './trial_images/CIRCADIA/circadia amethyst.png';
+}
+else if (rank == "Emerald" && trial == "CIRCADIA (16)")
+{
+  twitterImageURL = './trial_images/CIRCADIA/circadia emerald.png';
+}
+
+//QUANTUM (18)
+else if (rank == "Gold" && trial == "QUANTUM (18)")
+{
+  twitterImageURL = './trial_images/QUANTUM/quantum gold.png';
+}
+else if (rank == "Diamond" && trial == "QUANTUM (18)")
+{
+  twitterImageURL = './trial_images/QUANTUM/quantum diamond.png';
+}
+else if (rank == "Cobalt" && trial == "QUANTUM (18)")
+{
+  twitterImageURL = './trial_images/QUANTUM/quantum cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "QUANTUM (18)")
+{
+  twitterImageURL = './trial_images/QUANTUM/quantum amethyst.png';
+}
+else if (rank == "Emerald" && trial == "QUANTUM (18)")
+{
+  twitterImageURL = './trial_images/QUANTUM/quantum emerald.png';
+}
+
+//SPECIES (13)
+else if (rank == "Silver" && trial == "SPECIES (13)")
+{
+  twitterImageURL = './trial_images/SPECIES/species silver.png';
+}
+else if (rank == "Gold" && trial == "SPECIES (13)")
+{
+  twitterImageURL = './trial_images/SPECIES/species gold.png';
+}
+else if (rank == "Diamond" && trial == "SPECIES (13)")
+{
+  twitterImageURL = './trial_images/SPECIES/species diamond.png';
+}
+else if (rank == "Cobalt" && trial == "SPECIES (13)")
+{
+  twitterImageURL = './trial_images/SPECIES/species cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "SPECIES (13)")
+{
+  twitterImageURL = './trial_images/SPECIES/species amethyst.png';
+}
+else if (rank == "Emerald" && trial == "SPECIES (13)")
+{
+  twitterImageURL = './trial_images/SPECIES/species emerald.png';
+}
+
+//TEMPEST (15)
+else if (rank == "Silver" && trial == "TEMPEST (15)")
+{
+  twitterImageURL = './trial_images/TEMPEST/tempest silver.png';
+}
+else if (rank == "Gold" && trial == "TEMPEST (15)")
+{
+  twitterImageURL = './trial_images/TEMPEST/tempest gold.png';
+}
+else if (rank == "Diamond" && trial == "TEMPEST (15)")
+{
+  twitterImageURL = './trial_images/TEMPEST/tempest diamond.png';
+}
+else if (rank == "Cobalt" && trial == "TEMPEST (15)")
+{
+  twitterImageURL = './trial_images/TEMPEST/tempest cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "TEMPEST (15)")
+{
+  twitterImageURL = './trial_images/TEMPEST/tempest amethyst.png';
+}
+else if (rank == "Emerald" && trial == "TEMPEST (15)")
+{
+  twitterImageURL = './trial_images/TEMPEST/tempest emerald.png';
+}
+
+//UPHEAVAL (14)
+else if (rank == "Silver" && trial == "UPHEAVAL (14)")
+{
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval silver.png';
+}
+else if (rank == "Gold" && trial == "UPHEAVAL (14)")
+{
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval gold.png';
+}
+else if (rank == "Diamond" && trial == "UPHEAVAL (14)")
+{
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval diamond.png';
+}
+else if (rank == "Cobalt" && trial == "UPHEAVAL (14)")
+{
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "UPHEAVAL (14)")
+{
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval amethyst.png';
+}
+else if (rank == "Emerald" && trial == "UPHEAVAL (14)")
+{
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval emerald.png';
+}
+
+
+
 
 
   return twitterImageURL;
@@ -1557,7 +1687,7 @@ console.log("Players complete!");
 
 console.log("Trials starting!");
 
-
+//TODO: Add new trials w/ ranges to list
 var listOfTrials = [
   "HEARTBREAK (12)",
   "CELESTIAL (13)",
@@ -1703,16 +1833,14 @@ function newauthorize(credentials, callback) {
   
   const oAuth2Client = new google.auth.OAuth2(
       client_id, client_secret, redirect_uris[0]);   
-      oAuth2Client.setCredentials(JSON.parse(tokenjson));
 
   // Check if we have previously stored a token.
-  /*
   fs.readFile(TOKEN_PATH, (err, token) => {
     if (err) return getNewToken(oAuth2Client, callback);
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(null,oAuth2Client);
   });
-*/
+
 
 };
 
