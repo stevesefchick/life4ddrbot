@@ -497,6 +497,26 @@ function translateTrialName(trialName)
   {
     trialName = "PRIMAL (13)";
   }
+  else if (trialName == "species")
+  {
+    trialName = "SPECIES (13)";
+  }
+  else if (trialName == "upheaval")
+  {
+    trialName = "UPHEAVAL (14)";
+  }
+  else if (trialName == "tempest")
+  {
+    trialName = "TEMPEST (15)";
+  }
+  else if (trialName == "circadia")
+  {
+    trialName = "CIRCADIA (16)";
+  }
+  else if (trialName == "quantum")
+  {
+    trialName = "QUANTUM (18)";
+  }
   return trialName;
 };
 

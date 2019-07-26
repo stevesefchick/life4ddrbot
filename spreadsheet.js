@@ -1705,7 +1705,12 @@ var listOfTrials = [
   "SNOWDRIFT (16)",
   "ASCENSION (17)",
   "PRIMAL (13)",
-  "WANDERLUST (15)"
+  "WANDERLUST (15)",
+  "SPECIES (13)",
+  "UPHEAVAL (14)",
+  "TEMPEST (15)",
+  "CIRCADIA (16)",
+  "QUANTUM (18)"
 ];
 
 var trialRanges = [
@@ -1725,7 +1730,12 @@ var trialRanges = [
   "ALL TRIALS!BN2:BR",
   "ALL TRIALS!BS2:BW",
   "Sheet1!A2:E",
-  "Sheet1!F2:J"
+  "Sheet1!F2:J",
+  "Sheet1!K2:Q",
+  "Sheet1!P2:T",
+  "Sheet1!U2:V",
+  "Sheet1!Z2:AD",
+  "Sheet1!AE2:AI"
 ];
 
 var trialSpreadsheetID = [
@@ -1744,6 +1754,11 @@ var trialSpreadsheetID = [
   "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
   "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
   "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
   "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
   "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs"
 ];
