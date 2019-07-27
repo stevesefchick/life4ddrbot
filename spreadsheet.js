@@ -1620,7 +1620,7 @@ console.log("Queue updates are complete!");
 
 
 
-/*
+
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
 console.log("Player list retrieved!");
@@ -1679,7 +1679,7 @@ console.log("Player list retrieved!");
     }
     });
   }
- */
+ 
 
 console.log("Players complete!");
 
