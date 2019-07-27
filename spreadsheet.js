@@ -517,7 +517,7 @@ function trialGetSpreadsheetRowRivalCodeValue(row, callback){
 
 function trialGetSpreadsheetRowScoreValue(row, callback){
   setTimeout( function(){
-
+  
             var returnedScore = `${row[2]}`;
             returnedScore = returnedScore.substr(0, returnedScore.indexOf(' '));
             //console.log("score = " + returnedScore);
@@ -1620,7 +1620,7 @@ console.log("Queue updates are complete!");
 
 
 
-
+/*
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
 console.log("Player list retrieved!");
@@ -1679,7 +1679,7 @@ console.log("Player list retrieved!");
     }
     });
   }
- 
+ */
 
 console.log("Players complete!");
 
@@ -1689,6 +1689,7 @@ console.log("Trials starting!");
 
 //TODO: Add new trials w/ ranges to list
 var listOfTrials = [
+  
   "HEARTBREAK (12)",
   "CELESTIAL (13)",
   "DAYBREAK (14)",
@@ -1714,6 +1715,7 @@ var listOfTrials = [
 ];
 
 var trialRanges = [
+  
   'ALL TRIALS!A2:E',
   'ALL TRIALS!F2:J',
   'ALL TRIALS!K2:O',
@@ -1733,12 +1735,13 @@ var trialRanges = [
   "Sheet1!F2:J",
   "Sheet1!K2:Q",
   "Sheet1!P2:T",
-  "Sheet1!U2:V",
+  "Sheet1!U2:Y",
   "Sheet1!Z2:AD",
   "Sheet1!AE2:AI"
 ];
 
 var trialSpreadsheetID = [
+  
   '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
   '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
   '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
@@ -1789,6 +1792,7 @@ var trialSpreadsheetID = [
           (playerRank != "" && playerRank != undefined) &&
           (playerScore != "" && playerScore != undefined) )
       {
+        
           //check for player in trials DB
           var trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
           if (trialresults && trialresults.length)
