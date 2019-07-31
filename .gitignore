@@ -4,11 +4,6 @@
 #dotenv
 .env
 
-#spreadsheets
-current_list.txt
-stored_list.txt
-announce_queue.txt
-
 #creds
 credentials.json
 
