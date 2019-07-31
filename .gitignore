@@ -9,5 +9,8 @@ current_list.txt
 stored_list.txt
 announce_queue.txt
 
+#creds
+credentials.json
+
 #workspace
 life4workspace.code-workspace

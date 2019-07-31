@@ -1529,9 +1529,14 @@ function LIFE4sequence()
   
   connection.connect();
 
-  var getTrialJSON = wait.for(getCredentials);
-  console.log("JSON Cred object retrieved!");
-  var getauth = wait.for(newauthorize,getTrialJSON);
+  //old, readd if needed
+  //var getTrialJSON = wait.for(getCredentials);
+  //console.log("JSON Cred object retrieved!");
+  //var getauth = wait.for(newauthorize,getTrialJSON);
+
+
+
+  var getauth = wait.for(newauthorize);
   console.log("Authorization complete! Hot damn!");
 
   //GET BOT STATUS
@@ -1845,10 +1850,14 @@ console.log("LIFE4 bot update complete!");
 connection.end();
 }
 
-function newauthorize(credentials, callback) {
+//function newauthorize(credentials, callback) {
+  function newauthorize(callback) {
 
-  const {client_secret, client_id, redirect_uris} = credentials.installed;
+  //const {client_secret, client_id, redirect_uris} = credentials.installed;
   
+  const client_secret = process.env.G_CLIENT_SECRET;
+  const client_id = process.env.G_CLIENT_ID;
+  const redirect_uris = process.env.G_REDIRECT;
   
   const oAuth2Client = new google.auth.OAuth2(
       client_id, client_secret, redirect_uris[0]);   
