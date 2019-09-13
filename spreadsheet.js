@@ -1258,6 +1258,112 @@ else if (rank == "Emerald" && trial == "UPHEAVAL (14)")
 }
 
 
+//TODO: Update with actual values
+//DEVOTION (12)
+else if (rank == "Silver" && trial == "DEVOTION (12)")
+{
+  twitterImageURL = './trial_images/DEVOTION/upheaval silver.png';
+}
+else if (rank == "Gold" && trial == "DEVOTION (12)")
+{
+  twitterImageURL = './trial_images/DEVOTION/upheaval gold.png';
+}
+else if (rank == "Diamond" && trial == "DEVOTION (12)")
+{
+  twitterImageURL = './trial_images/DEVOTION/upheaval diamond.png';
+}
+else if (rank == "Cobalt" && trial == "DEVOTION (12)")
+{
+  twitterImageURL = './trial_images/DEVOTION/upheaval cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "DEVOTION (12)")
+{
+  twitterImageURL = './trial_images/DEVOTION/upheaval amethyst.png';
+}
+else if (rank == "Emerald" && trial == "DEVOTION (12)")
+{
+  twitterImageURL = './trial_images/DEVOTION/upheaval emerald.png';
+}
+
+//BELIEVE (12)
+else if (rank == "Silver" && trial == "BELIEVE (12)")
+{
+  twitterImageURL = './trial_images/BELIEVE/upheaval silver.png';
+}
+else if (rank == "Gold" && trial == "BELIEVE (12)")
+{
+  twitterImageURL = './trial_images/BELIEVE/upheaval gold.png';
+}
+else if (rank == "Diamond" && trial == "BELIEVE (12)")
+{
+  twitterImageURL = './trial_images/BELIEVE/upheaval diamond.png';
+}
+else if (rank == "Cobalt" && trial == "BELIEVE (12)")
+{
+  twitterImageURL = './trial_images/BELIEVE/upheaval cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "BELIEVE (12)")
+{
+  twitterImageURL = './trial_images/BELIEVE/upheaval amethyst.png';
+}
+else if (rank == "Emerald" && trial == "BELIEVE (12)")
+{
+  twitterImageURL = './trial_images/BELIEVE/upheaval emerald.png';
+}
+
+//PASSPORT (13)
+else if (rank == "Silver" && trial == "PASSPORT (13)")
+{
+  twitterImageURL = './trial_images/PASSPORT/upheaval silver.png';
+}
+else if (rank == "Gold" && trial == "PASSPORT (13)")
+{
+  twitterImageURL = './trial_images/PASSPORT/upheaval gold.png';
+}
+else if (rank == "Diamond" && trial == "PASSPORT (13)")
+{
+  twitterImageURL = './trial_images/PASSPORT/upheaval diamond.png';
+}
+else if (rank == "Cobalt" && trial == "PASSPORT (13)")
+{
+  twitterImageURL = './trial_images/PASSPORT/upheaval cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "PASSPORT (13)")
+{
+  twitterImageURL = './trial_images/PASSPORT/upheaval amethyst.png';
+}
+else if (rank == "Emerald" && trial == "PASSPORT (13)")
+{
+  twitterImageURL = './trial_images/PASSPORT/upheaval emerald.png';
+}
+
+
+//SPECTACLE (16)
+else if (rank == "Silver" && trial == "SPECTACLE (16)")
+{
+  twitterImageURL = './trial_images/SPECTACLE/upheaval silver.png';
+}
+else if (rank == "Gold" && trial == "SPECTACLE (16)")
+{
+  twitterImageURL = './trial_images/SPECTACLE/upheaval gold.png';
+}
+else if (rank == "Diamond" && trial == "SPECTACLE (16)")
+{
+  twitterImageURL = './trial_images/SPECTACLE/upheaval diamond.png';
+}
+else if (rank == "Cobalt" && trial == "SPECTACLE (16)")
+{
+  twitterImageURL = './trial_images/SPECTACLE/upheaval cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "SPECTACLE (16)")
+{
+  twitterImageURL = './trial_images/SPECTACLE/upheaval amethyst.png';
+}
+else if (rank == "Emerald" && trial == "SPECTACLE (16)")
+{
+  twitterImageURL = './trial_images/SPECTACLE/upheaval emerald.png';
+}
+
 
 
 
@@ -1692,7 +1798,7 @@ console.log("Players complete!");
 
 console.log("Trials starting!");
 
-//TODO: Add new trials w/ ranges to list
+//TODO: Add new Trials
 var listOfTrials = [
   
   "HEARTBREAK (12)",
@@ -1719,6 +1825,7 @@ var listOfTrials = [
   "QUANTUM (18)"
 ];
 
+//TODO: Add new spreadsheet ranges
 var trialRanges = [
   
   'ALL TRIALS!A2:E',
@@ -1745,6 +1852,7 @@ var trialRanges = [
   "Sheet1!AE2:AI"
 ];
 
+//TODO: Update trial spreadsheetID
 var trialSpreadsheetID = [
   
   '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',

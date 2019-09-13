@@ -517,6 +517,7 @@ function translateTrialName(trialName)
   {
     trialName = "QUANTUM (18)";
   }
+  //TODO: Add new trial mappings
   return trialName;
 };
 
