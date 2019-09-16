@@ -1391,7 +1391,7 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
     // get the new image media on twitter!
     Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
       var mediaIdStr = data.media_id_string
-      var altText = "Player trial rank rank"
+      var altText = "LIFE4 Trial rankup"
       var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
     
       Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
@@ -1435,7 +1435,7 @@ function announceUpdatePlayerTrialTwitter(playerName, playerRank,playerScore,pla
     // get the new image media on twitter!
     Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
       var mediaIdStr = data.media_id_string
-      var altText = "Player trial rank rank"
+      var altText = "LIFE4 Trial rankup"
       var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
     
       Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
@@ -1477,7 +1477,7 @@ function announceNewPlayerTwitter(playerName, playerRank,playerTwitterHandle,cal
     // get the new image media on twitter!
     Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
       var mediaIdStr = data.media_id_string
-      var altText = "Player rank"
+      var altText = "LIFE4 Player Rank"
       var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
     
       Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
@@ -1520,7 +1520,7 @@ function announcePlayerRankupTwitter(playerName, playerRank,playerTwitterHandle,
     // get the new image media on twitter!
     Twitter.post('media/upload', { media_data: b64content }, function (err, data, response) {
       var mediaIdStr = data.media_id_string
-      var altText = "Player rank"
+      var altText = "LIFE4 Player Rank"
       var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
     
       Twitter.post('media/metadata/create', meta_params, function (err, data, response) {
