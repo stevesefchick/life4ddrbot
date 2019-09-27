@@ -1953,6 +1953,28 @@ var trialSpreadsheetID = [
 
 }
 
+//start special event trials
+
+//get list of trials/ranks
+//get spreadsheets/rows
+
+//retrieve from google docs
+//set variables
+
+//check if new
+
+//insert record
+//audit
+//send tweet
+//send disocrd
+
+//check if exists
+
+//insert record
+//audit
+//send tweet
+//send disocrd
+
 console.log("LIFE4 bot update complete!");
 }
 connection.end();
