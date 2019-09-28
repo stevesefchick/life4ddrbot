@@ -1953,13 +1953,37 @@ var trialSpreadsheetID = [
 
 }
 
-//start special event trials
+console.log("Begin limited trials!");
 
-//get list of trials/ranks
-//get spreadsheets/rows
+var nameOfLimitedTrial = "HALLOWED";
 
-//retrieve from google docs
-//set variables
+var ranks = [
+  "Silver and Below",
+  "Gold",
+  "Diamond",
+  "Cobalt",
+  "Amethyst and Above"
+];
+
+var trialRanges = [
+  
+  'HAL Silver-!A2:F',
+  'HAL Gold!A2:F',
+  'HAL Diamond!A2:F',
+  'HAL Cobalt!A2:F',
+  'HAL Amethyst+!A2:F'
+];
+
+var trialSpreadsheetID = '1Qj6wJRZCDs2DY8wVw2JPjCgdCzqmtLVkJJV0dL8d12c';
+
+
+
+//TODO: Pull the list
+var trialSpecialPlayerList = wait.for(newGetLimitedTrials, getauth, trialRanges[i],trialSpreadsheetID);
+
+
+//for each rank
+
 
 //check if new
 
@@ -1974,6 +1998,7 @@ var trialSpreadsheetID = [
 //audit
 //send tweet
 //send disocrd
+console.log("Ending limited trials!");
 
 console.log("LIFE4 bot update complete!");
 }
@@ -2072,5 +2097,20 @@ function newGetTrials(auth,trialRange, spreadsheetID,callback)
     callback(null,rows);
   });
 }
+
+function newGetLimitedTrials(auth,trialRange, spreadsheetID,callback)
+{
+
+  const sheets = google.sheets({version: 'v4', auth});
+  sheets.spreadsheets.values.get({
+    spreadsheetId: spreadsheetID,
+    range: trialRange,
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const rows = res.data.values;
+    callback(null,rows);
+  });
+}
+
 
 wait.launchFiber(LIFE4sequence);
