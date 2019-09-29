@@ -1957,7 +1957,7 @@ console.log("Begin limited trials!");
 
 var nameOfLimitedTrial = "HALLOWED";
 
-var ranks = [
+var rankList = [
   "Silver and Below",
   "Gold",
   "Diamond",
@@ -1976,10 +1976,31 @@ var trialRanges = [
 
 var trialSpreadsheetID = '1Qj6wJRZCDs2DY8wVw2JPjCgdCzqmtLVkJJV0dL8d12c';
 
-
-
 //TODO: Pull the list
 var trialSpecialPlayerList = wait.for(newGetLimitedTrials, getauth, trialRanges[i],trialSpreadsheetID);
+
+console.log(listOfTrials[i] +" LIST RETRIEVED!");
+//for each player
+if (trialSpecialPlayerList && trialSpecialPlayerList.length)
+{
+  console.log("Starting the " + rankList[i] + " list...");
+
+  console.log("Retrieving " + listOfTrials[i] + " player info...");
+  trialPlayerList.map((row) => {
+    //TODO:Fix this
+    var playerName = wait.for(trialGetSpreadsheetRowNameValue,row);
+    var playerRank = wait.for(trialGetSpreadsheetRowRankValue,row);
+    var playerScore = wait.for(trialGetSpreadsheetRowScoreValue,row);
+    var playerDiff = wait.for(trialGetSpreadsheetRowDiffValue,row);
+    var playerTwitter = wait.for(trialGetSpreadsheetRowTwitterHandleValue,row);
+    var playerRival = wait.for(trialGetSpreadsheetRowRivalCodeValue,row);
+
+  });
+
+
+}
+
+
 
 
 //for each rank
