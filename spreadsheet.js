@@ -1731,7 +1731,7 @@ console.log("Queue updates are complete!");
 
 
 
-
+/*
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
 console.log("Player list retrieved!");
@@ -1953,6 +1953,9 @@ var trialSpreadsheetID = [
 
 }
 
+console.log("Trials are complete!");
+*/
+
 console.log("Begin limited trials!");
 
 var nameOfLimitedTrial = "HALLOWED";
@@ -1979,14 +1982,14 @@ var trialSpreadsheetID = '1Qj6wJRZCDs2DY8wVw2JPjCgdCzqmtLVkJJV0dL8d12c';
 //TODO: Pull the list
 var trialSpecialPlayerList = wait.for(newGetLimitedTrials, getauth, trialRanges[i],trialSpreadsheetID);
 
-console.log(listOfTrials[i] +" LIST RETRIEVED!");
+console.log(nameOfLimitedTrial +" LIST RETRIEVED!");
 //for each player
 if (trialSpecialPlayerList && trialSpecialPlayerList.length)
 {
   console.log("Starting the " + rankList[i] + " list...");
 
   console.log("Retrieving " + listOfTrials[i] + " player info...");
-  trialPlayerList.map((row) => {
+  trialSpecialPlayerList.map((row) => {
     //TODO:Fix this
     var playerName = wait.for(trialGetSpreadsheetRowNameValue,row);
     var playerRank = wait.for(trialGetSpreadsheetRowRankValue,row);
