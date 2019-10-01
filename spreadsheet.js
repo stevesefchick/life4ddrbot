@@ -410,6 +410,23 @@ function insertPlayerInQueue(playerName,updateType,playerID,callback){
 
 }
 
+function insertTrialEventInQueue(playerName,updateType, trialID,callback){
+
+
+  setTimeout( function(){
+
+    var insertQuery = "INSERT INTO playerQueue (playerName,updateType,updateCategory,playerID,trialID,queueStatus) VALUES ('"+playerName+"','"+updateType+"','TRIALEVENT', null,"+trialID+",'ACTIVE')";
+
+
+    connection.query(insertQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+}
 
 function insertTrialInQueue(playerName,updateType, trialID,callback){
 
@@ -653,6 +670,31 @@ function getranks(trialname, playerName, callback){
   setTimeout( function(){
 
     var checkrankquery = "SELECT playerName, playerScore from playertrialrank WHERE trialName = '"+trialname+"' order by playerScore DESC";
+    var theRank = 0;
+    connection.query(checkrankquery, function (error, results) {
+        if (error) throw error;
+        console.log(results);
+        for (var i = 0; i < results.length;++i)
+        {
+            if (results[i].playerName == playerName)
+            {
+              theRank = i + 1;  
+            }
+        }
+        callback(null,theRank)
+
+      });
+
+
+}, 100);
+
+}
+
+function getranksevent(trialname, playerName, playerRank, callback){
+
+  setTimeout( function(){
+
+    var checkrankquery = "SELECT playerName, playerScore from playertrialrank WHERE trialName = '"+trialname+"' AND playerRank = '"+ playerRank +"' order by playerScore DESC";
     var theRank = 0;
     connection.query(checkrankquery, function (error, results) {
         if (error) throw error;
@@ -1439,14 +1481,36 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
   setTimeout( function(){
 
     var post = "";
-    if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+    var isEvent = false;
+    if (trialName == "HALLOWED (13)")
     {
-      post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+        isEvent = true;
     }
-    else
+
+    //TODO: Double parens
+    if (isEvent == true)
     {
-      post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+        if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+        {
+          post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+        }
+        else
+        {
+          post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+        }
     }
+    else if (isEvent == false)
+    {
+        if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+        {
+          post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+        }
+        else
+        {
+          post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+        }
+    }
+
 
     var b64content = fs.readFileSync(getTwitterTrialImageURL(trialName,playerRank), { encoding: 'base64' })
                   
@@ -1755,6 +1819,36 @@ function LIFE4sequence()
 
         }
     }
+    //trial event
+    //TODO: Wrap this up
+    else if (queueResults[0].updateCategory == "TRIALEVENT")
+    {
+      console.log("Trial Event identified!");
+
+      var trialInfo = wait.for(getTrialQueueInfo,queueResults[0].trialID);
+        console.log("Trial #" + queueResults[0].trialID + "  retrieved!");
+
+        var playerNumberRanking = wait.for(getranksevent, trialInfo[0].trialName,trialInfo[0].playerName,trialInfo[0].playerRank);
+        console.log("Ranking retrieved");
+
+//Jimmy (Silver and Below division) scored 6634 EX (-634) on the Limited Edition Trial, HALLOWED (13) for a division rank of #4!
+
+        if (queueResults[0].updateType == "NEW")
+        {
+          var twitterannounce = wait.for(announceNewPlayerTrialTwitter, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].playerTwitterHandle, trialInfo[0].trialName,playerNumberRanking);
+          console.log("Twitter announcement complete!");
+          var discordannounce = wait.for(announceNewPlayerTrialDiscord, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].trialName,playerNumberRanking);
+          console.log("Discord announcement complete!");
+        }
+        else if (queueResults[0].updateType == "UPDATE")
+        {
+          var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].playerTwitterHandle, trialInfo[0].trialName,playerNumberRanking);
+          console.log("Twitter announcement complete!");
+          var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].trialName,playerNumberRanking);
+          console.log("Discord announcement complete!");
+
+        }
+    }
     //player queue
     else if (queueResults[0].updateCategory == "PLAYER")
     {
@@ -2032,11 +2126,11 @@ var rankList = [
 
 var trialRanges = [
   
-  'HAL Silver-!A2:F',
+  'HAL Silver!A2:F',
   'HAL Gold!A2:F',
   'HAL Diamond!A2:F',
   'HAL Cobalt!A2:F',
-  'HAL Amethyst+!A2:F'
+  'HAL Amethyst!A2:F'
 ];
 
 var trialSpreadsheetID = '1Qj6wJRZCDs2DY8wVw2JPjCgdCzqmtLVkJJV0dL8d12c';
@@ -2078,7 +2172,7 @@ for (var i = 0; i < rankList.length;i++)
       {   
     
         //check for player in trials DB
-        var trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
+        var trialresults = wait.for(trialCheckForExistingTrial, playerName, nameOfLimitedTrial);
         if (trialresults && trialresults.length)
         {
           console.log("Player " + playerName + " exists! Check for update!");
@@ -2088,33 +2182,26 @@ for (var i = 0; i < rankList.length;i++)
           }
           else
           {
-            //TODO: Update for event
-            
             console.log("Player score update!");
             var updateresults = wait.for(updateTrialRecord, trialresults[0].playerTrialRankID, playerName, playerRival,playerRank, playerScore, playerDiff,playerTwitter);
             console.log("Player trial insert complete!");
-            trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
+            trialresults = wait.for(trialCheckForExistingTrial, playerName, nameOfLimitedTrial);
             insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
             console.log("Audit update complete!");
-            var inserttrial = wait.for(insertTrialInQueue,playerName,"UPDATE",trialresults[0].playerTrialRankID);
+            var inserttrial = wait.for(insertTrialEventInQueue,playerName,"UPDATE",trialresults[0].playerTrialRankID);
             console.log("Queue updated!");
-
 
           }
         }
         else
         {
-          //TODO: Update for event
-
           console.log("Player does not exist! Inserting new record!");
-          var insertresults = wait.for(insertNewTrialRecord, playerName, playerRival, listOfTrials[i],playerRank, playerScore, playerDiff,playerTwitter);
-          trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
+          var insertresults = wait.for(insertNewTrialRecord, playerName, playerRival, nameOfLimitedTrial,playerRank, playerScore, playerDiff,playerTwitter);
+          trialresults = wait.for(trialCheckForExistingTrial, playerName, nameOfLimitedTrial);
           console.log("Insert complete! Preparing audit update");
           insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
           console.log("Insert complete!");
-          //var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
-          //console.log("Numerical rank retrieved!");
-          var inserttrial = wait.for(insertTrialInQueue,playerName,"NEW",trialresults[0].playerTrialRankID);
+          var inserttrial = wait.for(insertTrialEventInQueue,playerName,"NEW",trialresults[0].playerTrialRankID);
           console.log("Queue updated!");
 
         }
