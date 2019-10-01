@@ -379,6 +379,19 @@ function trialGetSpreadsheetRowNameValue(row, callback){
   }, 25);
 }; 
 
+function trialEventGetSpreadsheetRowNameValue(row, callback){
+  setTimeout( function(){
+
+            var returnedName = `${row[1]}`;
+
+           // console.log("name = " + returnedName);
+
+            callback(null,returnedName)
+
+  }, 25);
+}; 
+
+
 function insertPlayerInQueue(playerName,updateType,playerID,callback){
 
 
@@ -503,17 +516,40 @@ function trialGetSpreadsheetRowTwitterHandleValue(row, callback){
   }, 25);
 }; 
 
+function trialEventGetSpreadsheetRowTwitterHandleValue(row, callback){
+  setTimeout( function(){
+
+            var returnedtwitter = `${row[5]}`;
+
+           // console.log("twitter  = " + returnedtwitter);
+
+            callback(null,returnedtwitter)
+
+  }, 25);
+}; 
+
 function trialGetSpreadsheetRowRivalCodeValue(row, callback){
   setTimeout( function(){
 
             var returnedrival = `${row[3]}`;
 
-           // console.log("rival  = " + returnedrival);
 
             callback(null,returnedrival)
 
   }, 25);
 }; 
+
+function trialEventGetSpreadsheetRowRivalCodeValue(row, callback){
+  setTimeout( function(){
+
+            var returnedrival = `${row[4]}`;
+
+
+            callback(null,returnedrival)
+
+  }, 25);
+}; 
+
 
 function trialGetSpreadsheetRowScoreValue(row, callback){
   setTimeout( function(){
@@ -527,6 +563,19 @@ function trialGetSpreadsheetRowScoreValue(row, callback){
   }, 25);
 }; 
 
+function trialEventGetSpreadsheetRowScoreValue(row, callback){
+  setTimeout( function(){
+  
+            var returnedScore = `${row[3]}`;
+            returnedScore = returnedScore.substr(0, returnedScore.indexOf(' '));
+            //console.log("score = " + returnedScore);
+
+            callback(null,returnedScore)
+
+  }, 25);
+}; 
+
+
 function trialGetSpreadsheetRowDiffValue(row, callback){
   setTimeout( function(){
 
@@ -538,6 +587,19 @@ function trialGetSpreadsheetRowDiffValue(row, callback){
 
   }, 25);
 }; 
+
+function trialEventGetSpreadsheetRowDiffValue(row, callback){
+  setTimeout( function(){
+
+            var returnedDiff = `${row[3]}`;
+            returnedDiff = returnedDiff.substr(returnedDiff.indexOf('('), returnedDiff.indexOf(')'));
+            //console.log("diff = " + returnedDiff);
+
+            callback(null,returnedDiff)
+
+  }, 25);
+}; 
+
 
 function trialCheckForExistingTrial(playerName,trialName, callback){
 
@@ -1958,7 +2020,7 @@ console.log("Trials are complete!");
 
 console.log("Begin limited trials!");
 
-var nameOfLimitedTrial = "HALLOWED";
+var nameOfLimitedTrial = "HALLOWED (13)";
 
 var rankList = [
   "Silver and Below",
@@ -1979,27 +2041,93 @@ var trialRanges = [
 
 var trialSpreadsheetID = '1Qj6wJRZCDs2DY8wVw2JPjCgdCzqmtLVkJJV0dL8d12c';
 
-//TODO: Pull the list
-var trialSpecialPlayerList = wait.for(newGetLimitedTrials, getauth, trialRanges[i],trialSpreadsheetID);
+console.log(nameOfLimitedTrial +" TIME!");
 
-console.log(nameOfLimitedTrial +" LIST RETRIEVED!");
-//for each player
-if (trialSpecialPlayerList && trialSpecialPlayerList.length)
+for (var i = 0; i < rankList.length;i++)
 {
-  console.log("Starting the " + rankList[i] + " list...");
+ console.log("Beginning " + rankList[i]);
+  var trialSpecialPlayerList = wait.for(newGetLimitedTrials, getauth, trialRanges[i],trialSpreadsheetID);
 
-  console.log("Retrieving " + listOfTrials[i] + " player info...");
-  trialSpecialPlayerList.map((row) => {
-    //TODO:Fix this
-    var playerName = wait.for(trialGetSpreadsheetRowNameValue,row);
-    var playerRank = wait.for(trialGetSpreadsheetRowRankValue,row);
-    var playerScore = wait.for(trialGetSpreadsheetRowScoreValue,row);
-    var playerDiff = wait.for(trialGetSpreadsheetRowDiffValue,row);
-    var playerTwitter = wait.for(trialGetSpreadsheetRowTwitterHandleValue,row);
-    var playerRival = wait.for(trialGetSpreadsheetRowRivalCodeValue,row);
+  //for each player
+  if (trialSpecialPlayerList && trialSpecialPlayerList.length)
+  {
 
-  });
+    console.log("Retrieving " + trialSpecialPlayerList[i] + " player info...");
+    trialSpecialPlayerList.map((row) => {
 
+      var playerName = wait.for(trialEventGetSpreadsheetRowNameValue,row);
+      var playerRank = rankList[i];
+      var playerScore = wait.for(trialEventGetSpreadsheetRowScoreValue,row);
+      var playerDiff = wait.for(trialEventGetSpreadsheetRowDiffValue,row);
+      var playerTwitter = wait.for(trialEventGetSpreadsheetRowTwitterHandleValue,row);
+      var playerRival = wait.for(trialEventGetSpreadsheetRowRivalCodeValue,row);
+
+
+      console.log("name:" +playerName);
+      console.log("rank:" + playerRank);
+      console.log("score:" + playerScore);
+      console.log("diff: " + playerDiff);
+      console.log("twitter: " + playerTwitter);
+      console.log("rival: " + playerRival);
+
+
+
+      if ((playerName != "" && playerName != undefined) &&
+      (playerRank != "" && playerRank != undefined) &&
+      (playerScore != "" && playerScore != undefined) )
+      {   
+    
+        //check for player in trials DB
+        var trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
+        if (trialresults && trialresults.length)
+        {
+          console.log("Player " + playerName + " exists! Check for update!");
+          if (playerScore == trialresults[0].playerScore)
+          {
+            console.log("Player has same score!");
+          }
+          else
+          {
+            //TODO: Update for event
+            
+            console.log("Player score update!");
+            var updateresults = wait.for(updateTrialRecord, trialresults[0].playerTrialRankID, playerName, playerRival,playerRank, playerScore, playerDiff,playerTwitter);
+            console.log("Player trial insert complete!");
+            trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
+            insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
+            console.log("Audit update complete!");
+            var inserttrial = wait.for(insertTrialInQueue,playerName,"UPDATE",trialresults[0].playerTrialRankID);
+            console.log("Queue updated!");
+
+
+          }
+        }
+        else
+        {
+          //TODO: Update for event
+
+          console.log("Player does not exist! Inserting new record!");
+          var insertresults = wait.for(insertNewTrialRecord, playerName, playerRival, listOfTrials[i],playerRank, playerScore, playerDiff,playerTwitter);
+          trialresults = wait.for(trialCheckForExistingTrial, playerName, listOfTrials[i]);
+          console.log("Insert complete! Preparing audit update");
+          insertresults = wait.for(insertNewTrialAuditRecord, trialresults[0].playerTrialRankID,playerRank, playerScore, playerDiff);
+          console.log("Insert complete!");
+          //var playerNumberRanking = wait.for(getranks, listOfTrials[i],playerName);
+          //console.log("Numerical rank retrieved!");
+          var inserttrial = wait.for(insertTrialInQueue,playerName,"NEW",trialresults[0].playerTrialRankID);
+          console.log("Queue updated!");
+
+        }
+      }
+
+
+
+
+
+
+
+    });
+  }
 
 }
 
