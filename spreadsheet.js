@@ -270,6 +270,15 @@ var getTrialDiscordIcon = function(rank)
   {
     discordemoji = "<:e3:592474998564716544>";
   }
+  //special
+  else if (rank == "Wood/Bronze/Silver")
+  {
+    discordemoji ="<:w3:540808178108203018> <:b3:530665367417389097> <:s3:530666660051419136>";
+  }
+  else if (rank == "Amethyst and Above")
+  {
+    discordemoji ="<:a3:540807991373594633> <:e3:592474998564716544>";
+  }
 
   return discordemoji;
 }
@@ -1471,6 +1480,34 @@ else if (rank == "Emerald" && trial == "SPECTACLE (16)")
 
 
 
+
+
+//EVENTS!
+//HALLOWED (13)
+else if (rank == "Wood/Bronze/Silver" && trial == "HALLOWED (13)")
+{
+  twitterImageURL = './trial_images/HALLOWED/HALLOWED_SILVER_AND_BELOW.png';
+}
+else if (rank == "Gold" && trial == "HALLOWED (13)")
+{
+  twitterImageURL = './trial_images/HALLOWED/HALLOWED_GOLD.png';
+}
+else if (rank == "Diamond" && trial == "HALLOWED (13)")
+{
+  twitterImageURL = './trial_images/HALLOWED/HALLOWED_DIAMOND.png';
+}
+else if (rank == "Cobalt" && trial == "HALLOWED (13)")
+{
+  twitterImageURL = './trial_images/HALLOWED/HALLOWED_COBALT.png';
+}
+else if (rank == "Amethyst and Above" && trial == "HALLOWED (13)")
+{
+  twitterImageURL = './trial_images/HALLOWED/HALLOWED_AMETHYST_AND_ABOVE.png';
+}
+
+
+
+
   return twitterImageURL;
 
 }
@@ -1487,16 +1524,15 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
         isEvent = true;
     }
 
-    //TODO: Double parens
     if (isEvent == true)
     {
         if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
         {
-          post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+          post = "Player " + playerName + " (" + playerTwitterHandle + ") scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " division rank of #"+numberRank+"!";
         }
         else
         {
-          post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+          post = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " division rank of #"+numberRank+"!";
         }
     }
     else if (isEvent == false)
@@ -1546,15 +1582,34 @@ function announceUpdatePlayerTrialTwitter(playerName, playerRank,playerScore,pla
   setTimeout( function(){
 
     var post = "";
-    if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+    var isEvent = false;
+    if (trialName == "HALLOWED (13)")
     {
-      post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+        isEvent = true;
     }
-    else
+    
+    if (isEvent == true)
     {
-      post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+      if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+      {
+        post = "Player " + playerName + " (" + playerTwitterHandle + ") scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " division rank of #"+numberRank+"!";
+      }
+      else
+      {
+        post = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " division rank of #"+numberRank+"!";
+      }
     }
-
+    else if (isEvent == false)
+    {
+      if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
+      {
+        post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+      }
+      else
+      {
+        post = "Player " + playerName + " has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+      }
+    }
     console.log(trialName + "||" + playerRank);
     var b64content = fs.readFileSync(getTwitterTrialImageURL(trialName,playerRank), { encoding: 'base64' })
                   
@@ -1710,8 +1765,21 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
 {
   setTimeout( function(){
 
+    var isEvent=false;
+    var discordpost = "";
+    if (trialName == "HALLOWED (13)")
+    {
+        isEvent = true;
+    }
 
-    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+    if (isEvent == true)
+    {
+      discordpost = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " " + getTrialDiscordIcon(playerRank) + " division rank of #"+numberRank+"!";
+    }
+    else if (isEvent == false)
+    {
+      discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+    }
 
     
     const channel = bot.channels.find('name', 'trial-rankups')
@@ -1732,7 +1800,22 @@ function announceUpdatePlayerTrialDiscord(playerName, playerRank,playerScore,pla
 {
   setTimeout( function(){
 
-    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+    var isEvent=false;
+    var discordpost = "";
+    if (trialName == "HALLOWED (13)")
+    {
+        isEvent = true;
+    }
+
+    if (isEvent == true)
+    {
+      discordpost = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " " + getTrialDiscordIcon(playerRank) + " division rank of #"+numberRank+"!";
+    }
+    else if (isEvent == false)
+    {
+      var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+    }
+
 
     const channel = bot.channels.find('name', 'trial-rankups')
     channel.send(discordpost)
@@ -1820,7 +1903,6 @@ function LIFE4sequence()
         }
     }
     //trial event
-    //TODO: Wrap this up
     else if (queueResults[0].updateCategory == "TRIALEVENT")
     {
       console.log("Trial Event identified!");
@@ -1831,7 +1913,6 @@ function LIFE4sequence()
         var playerNumberRanking = wait.for(getranksevent, trialInfo[0].trialName,trialInfo[0].playerName,trialInfo[0].playerRank);
         console.log("Ranking retrieved");
 
-//Jimmy (Silver and Below division) scored 6634 EX (-634) on the Limited Edition Trial, HALLOWED (13) for a division rank of #4!
 
         if (queueResults[0].updateType == "NEW")
         {
@@ -1887,7 +1968,7 @@ console.log("Queue updates are complete!");
 
 
 
-/*
+
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
 console.log("Player list retrieved!");
@@ -2110,14 +2191,14 @@ var trialSpreadsheetID = [
 }
 
 console.log("Trials are complete!");
-*/
+
 
 console.log("Begin limited trials!");
 
 var nameOfLimitedTrial = "HALLOWED (13)";
 
 var rankList = [
-  "Silver and Below",
+  "Wood/Bronze/Silver",
   "Gold",
   "Diamond",
   "Cobalt",
