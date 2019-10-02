@@ -2237,16 +2237,6 @@ for (var i = 0; i < rankList.length;i++)
       var playerTwitter = wait.for(trialEventGetSpreadsheetRowTwitterHandleValue,row);
       var playerRival = wait.for(trialEventGetSpreadsheetRowRivalCodeValue,row);
 
-
-      console.log("name:" +playerName);
-      console.log("rank:" + playerRank);
-      console.log("score:" + playerScore);
-      console.log("diff: " + playerDiff);
-      console.log("twitter: " + playerTwitter);
-      console.log("rival: " + playerRival);
-
-
-
       if ((playerName != "" && playerName != undefined) &&
       (playerRank != "" && playerRank != undefined) &&
       (playerScore != "" && playerScore != undefined) )
@@ -2300,24 +2290,6 @@ for (var i = 0; i < rankList.length;i++)
 }
 
 
-
-
-//for each rank
-
-
-//check if new
-
-//insert record
-//audit
-//send tweet
-//send disocrd
-
-//check if exists
-
-//insert record
-//audit
-//send tweet
-//send disocrd
 console.log("Ending limited trials!");
 
 console.log("LIFE4 bot update complete!");
