@@ -1,7 +1,7 @@
 //Life4DDRBot
 //Created by Steve Sefchick - 2019
 //Tweets to @Life4DDRBot
-//build using NodeJS
+//built using NodeJS
 
 
 const fs = require('fs');

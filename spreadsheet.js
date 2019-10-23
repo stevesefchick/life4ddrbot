@@ -1,3 +1,8 @@
+//Life4DDRBot
+//Created by Steve Sefchick - 2019
+//Tweets to @Life4DDRBot
+//built using NodeJS
+
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -129,6 +134,22 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/EMERALD3.png';
   }
+  else if (rank == "Platinum I")
+  {
+  //TODO: Plat I
+
+  }
+  else if (rank == "Platinum II")
+  {
+      //TODO: Plat II
+
+  }
+  else if (rank == "Platinum III")
+  {
+      //TODO: Plat III
+
+  }
+
   return twitterImageURL;
 
 }
@@ -232,6 +253,18 @@ var getDiscordIcon = function(rank)
   else if (rank == "Emerald III")
   {
     discordemoji = "<:e3:592474998564716544>";
+  }
+    else if (rank == "Platinum I")
+  {
+    //TODO:Plat I
+  }
+  else if (rank == "Platinum II")
+  {
+    //TODO: Plat II
+  }
+  else if (rank == "Platinum III")
+  {
+    //TODO: Plat III
   }
 
   return discordemoji;
