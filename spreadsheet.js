@@ -256,15 +256,15 @@ var getDiscordIcon = function(rank)
   }
     else if (rank == "Platinum I")
   {
-    //TODO:Plat I
+    discordemoji = "<:p1:638533071267692564>";
   }
   else if (rank == "Platinum II")
   {
-    //TODO: Plat II
+    discordemoji = "<:p2:638533071691448349>";
   }
   else if (rank == "Platinum III")
   {
-    //TODO: Plat III
+    discordemoji = "<:p3:638533071301378068>";
   }
 
   return discordemoji;
@@ -290,6 +290,10 @@ var getTrialDiscordIcon = function(rank)
   else if (rank == "Diamond")
   {
     discordemoji = "<:d3:530667792303783937>";
+  }
+  else if (rank == "Platinum")
+  {
+    discordemoji = "<:p3:638533071301378068>";
   }
   else if (rank == "Cobalt")
   {

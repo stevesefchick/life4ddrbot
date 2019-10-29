@@ -26,7 +26,6 @@ bot.on('ready', () => {
 
     //GET COMMANDS
     if(message.content.includes(bot.user.toString()) && message.content.includes('commands')) {
-
         message.reply('Here are my commands!\n status = get status \n turn on = enable the bot \n turn off = disable the bot');
     }
     
@@ -38,8 +37,6 @@ bot.on('ready', () => {
       else
       {
         wait.launchFiber(getAppStatusSequenceDiscord,message);
-
-        //message.reply('Status is currently ON! Bot is running!');
       }
     }
 
@@ -50,8 +47,6 @@ bot.on('ready', () => {
       else
       {
         wait.launchFiber(changeAppStatusSequenceDiscord,message,"ON");
-
-        //message.reply('Beep boop turning on the bot!');
       }
     }
 
@@ -64,8 +59,6 @@ bot.on('ready', () => {
       else
       {
         wait.launchFiber(changeAppStatusSequenceDiscord,message,"OFF");
-
-        //message.reply('Beep boop turning off the bot. Go ahead and make your spreadsheet edits!');
       }
     }
 
