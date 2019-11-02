@@ -136,17 +136,17 @@ var getTwitterImageURL = function(rank)
   }
   else if (rank == "Platinum I")
   {
-  //TODO: Plat I
+    twitterImageURL = './rankup_images/p1_rankup.png';
 
   }
   else if (rank == "Platinum II")
   {
-      //TODO: Plat II
+    twitterImageURL = './rankup_images/p2_rankup.png';
 
   }
   else if (rank == "Platinum III")
   {
-      //TODO: Plat III
+    twitterImageURL = './rankup_images/p3_rankup.png';
 
   }
 
