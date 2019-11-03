@@ -992,55 +992,53 @@ else if (rank == "Emerald" && trial == "CLOCKWORK (15)")
 {
   twitterImageURL = './trial_images/CLOCKWORK/clockwork_emerald.png';
 }
- //TODO:New images
 
 //PHARAOH(15)
 else if (rank == "Silver" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/PHARAOH SILVER.png';
+  twitterImageURL = './trial_images/PHARAOH/pharaoh_silver.png';
 }
 else if (rank == "Gold" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/PHARAOH GOLD.png';
+  twitterImageURL = './trial_images/PHARAOH/pharaoh_gold.png';
 }
 else if (rank == "Diamond" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/PHARAOH DIAMOND.png';
+  twitterImageURL = './trial_images/PHARAOH/pharaoh_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/PHARAOH COBALT.png';
+  twitterImageURL = './trial_images/PHARAOH/pharaoh_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/PHARAOH AMETHYST.png';
+  twitterImageURL = './trial_images/PHARAOH/pharaoh_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/PHARAOH_EMERALD.png';
+  twitterImageURL = './trial_images/PHARAOH/pharaoh_emerald.png';
 }
- //TODO:New images
 
 //PARADOX(16)
 else if (rank == "Gold" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/PARADOX GOLD.png';
+  twitterImageURL = './trial_images/PARADOX/paradox_gold.png';
 }
 else if (rank == "Diamond" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/PARADOX DIAMOND.png';
+  twitterImageURL = './trial_images/PARADOX/paradox_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/PARADOX COBALT.png';
+  twitterImageURL = './trial_images/PARADOX/paradox_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/PARADOX AMETHYST.png';
+  twitterImageURL = './trial_images/PARADOX/paradox_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/PARADOX_EMERALD.png';
+  twitterImageURL = './trial_images/PARADOX/paradox_emerald.png';
 }
  //TODO:New images
 
