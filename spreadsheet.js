@@ -1224,190 +1224,184 @@ else if (rank == "Emerald" && trial == "SNOWDRIFT (16)")
 {
   twitterImageURL = './trial_images/SNOWDRIFT/snowdrift_emerald.png';
 }
- //TODO:New images
 
 //Primal (13)
 else if (rank == "Silver" && trial == "PRIMAL (13)")
 {
-  twitterImageURL = './trial_images/PRIMAL/PRIMAL_S.png';
+  twitterImageURL = './trial_images/PRIMAL/primal_silver.png';
 }
 else if (rank == "Gold" && trial == "PRIMAL (13)")
 {
-  twitterImageURL = './trial_images/PRIMAL/PRIMAL_G.png';
+  twitterImageURL = './trial_images/PRIMAL/primal_gold.png';
 }
 else if (rank == "Diamond" && trial == "PRIMAL (13)")
 {
-  twitterImageURL = './trial_images/PRIMAL/PRIMAL_D.png';
+  twitterImageURL = './trial_images/PRIMAL/primal_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "PRIMAL (13)")
 {
-  twitterImageURL = './trial_images/PRIMAL/PRIMAL_C.png';
+  twitterImageURL = './trial_images/PRIMAL/primal_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "PRIMAL (13)")
 {
-  twitterImageURL = './trial_images/PRIMAL/PRIMAL_A.png';
+  twitterImageURL = './trial_images/PRIMAL/primal_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "PRIMAL (13)")
 {
-  twitterImageURL = './trial_images/PRIMAL/PRIMAL_E.png';
+  twitterImageURL = './trial_images/PRIMAL/primal_emerald.png';
 }
- //TODO:New images
 
 //Wanderlust (15)
 else if (rank == "Silver" && trial == "WANDERLUST (15)")
 {
-  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_S.png';
+  twitterImageURL = './trial_images/WANDERLUST/wanderlust_silver.png';
 }
 else if (rank == "Gold" && trial == "WANDERLUST (15)")
 {
-  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_G.png';
+  twitterImageURL = './trial_images/WANDERLUST/wanderlust_gold.png';
 }
 else if (rank == "Diamond" && trial == "WANDERLUST (15)")
 {
-  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_D.png';
+  twitterImageURL = './trial_images/WANDERLUST/wanderlust_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "WANDERLUST (15)")
 {
-  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_C.png';
+  twitterImageURL = './trial_images/WANDERLUST/wanderlust_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "WANDERLUST (15)")
 {
-  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_A.png';
+  twitterImageURL = './trial_images/WANDERLUST/wanderlust_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "WANDERLUST (15)")
 {
-  twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_E.png';
+  twitterImageURL = './trial_images/WANDERLUST/wanderlust_emerald.png';
 }
- //TODO:New images
 
 //CIRCADIA (16)
 else if (rank == "Silver" && trial == "CIRCADIA (16)")
 {
-  twitterImageURL = './trial_images/CIRCADIA/circadia silver.png';
+  twitterImageURL = './trial_images/CIRCADIA/circadia_silver.png';
 }
 else if (rank == "Gold" && trial == "CIRCADIA (16)")
 {
-  twitterImageURL = './trial_images/CIRCADIA/circadia gold.png';
+  twitterImageURL = './trial_images/CIRCADIA/circadia_gold.png';
 }
 else if (rank == "Diamond" && trial == "CIRCADIA (16)")
 {
-  twitterImageURL = './trial_images/CIRCADIA/circadia diamond.png';
+  twitterImageURL = './trial_images/CIRCADIA/circadia_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "CIRCADIA (16)")
 {
-  twitterImageURL = './trial_images/CIRCADIA/circadia cobalt.png';
+  twitterImageURL = './trial_images/CIRCADIA/circadia_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "CIRCADIA (16)")
 {
-  twitterImageURL = './trial_images/CIRCADIA/circadia amethyst.png';
+  twitterImageURL = './trial_images/CIRCADIA/circadia_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "CIRCADIA (16)")
 {
-  twitterImageURL = './trial_images/CIRCADIA/circadia emerald.png';
+  twitterImageURL = './trial_images/CIRCADIA/circadia_emerald.png';
 }
- //TODO:New images
 
 //QUANTUM (18)
 else if (rank == "Gold" && trial == "QUANTUM (18)")
 {
-  twitterImageURL = './trial_images/QUANTUM/quantum gold.png';
+  //TODO: Need this
+  //twitterImageURL = './trial_images/QUANTUM/quantum gold.png';
 }
 else if (rank == "Diamond" && trial == "QUANTUM (18)")
 {
-  twitterImageURL = './trial_images/QUANTUM/quantum diamond.png';
+  twitterImageURL = './trial_images/QUANTUM/quantum_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "QUANTUM (18)")
 {
-  twitterImageURL = './trial_images/QUANTUM/quantum cobalt.png';
+  twitterImageURL = './trial_images/QUANTUM/quantum_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "QUANTUM (18)")
 {
-  twitterImageURL = './trial_images/QUANTUM/quantum amethyst.png';
+  twitterImageURL = './trial_images/QUANTUM/quantum_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "QUANTUM (18)")
 {
-  twitterImageURL = './trial_images/QUANTUM/quantum emerald.png';
+  twitterImageURL = './trial_images/QUANTUM/quantum_emerald.png';
 }
- //TODO:New images
 
 //SPECIES (13)
 else if (rank == "Silver" && trial == "SPECIES (13)")
 {
-  twitterImageURL = './trial_images/SPECIES/species silver.png';
+  twitterImageURL = './trial_images/SPECIES/species_silver.png';
 }
 else if (rank == "Gold" && trial == "SPECIES (13)")
 {
-  twitterImageURL = './trial_images/SPECIES/species gold.png';
+  twitterImageURL = './trial_images/SPECIES/species_gold.png';
 }
 else if (rank == "Diamond" && trial == "SPECIES (13)")
 {
-  twitterImageURL = './trial_images/SPECIES/species diamond.png';
+  twitterImageURL = './trial_images/SPECIES/species_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "SPECIES (13)")
 {
-  twitterImageURL = './trial_images/SPECIES/species cobalt.png';
+  twitterImageURL = './trial_images/SPECIES/species_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "SPECIES (13)")
 {
-  twitterImageURL = './trial_images/SPECIES/species amethyst.png';
+  twitterImageURL = './trial_images/SPECIES/species_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "SPECIES (13)")
 {
-  twitterImageURL = './trial_images/SPECIES/species emerald.png';
+  twitterImageURL = './trial_images/SPECIES/species_emerald.png';
 }
- //TODO:New images
 
 //TEMPEST (15)
 else if (rank == "Silver" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest silver.png';
+  twitterImageURL = './trial_images/TEMPEST/tempest_silver.png';
 }
 else if (rank == "Gold" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest gold.png';
+  twitterImageURL = './trial_images/TEMPEST/tempest_gold.png';
 }
 else if (rank == "Diamond" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest diamond.png';
+  twitterImageURL = './trial_images/TEMPEST/tempest_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest cobalt.png';
+  twitterImageURL = './trial_images/TEMPEST/tempest_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest amethyst.png';
+  twitterImageURL = './trial_images/TEMPEST/tempest_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest emerald.png';
+  twitterImageURL = './trial_images/TEMPEST/tempest_emerald.png';
 }
- //TODO:New images
 
 //UPHEAVAL (14)
 else if (rank == "Silver" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval silver.png';
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval_silver.png';
 }
 else if (rank == "Gold" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval gold.png';
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval_gold.png';
 }
 else if (rank == "Diamond" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval diamond.png';
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval cobalt.png';
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval amethyst.png';
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval emerald.png';
+  twitterImageURL = './trial_images/UPHEAVAL/upheaval_emerald.png';
 }
 
 
