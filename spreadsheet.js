@@ -863,32 +863,33 @@ var getTwitterTrialImageURL = function(trial,rank)
 {
   var twitterImageURL = "";
 
- 
   //HEARTBREAK(12)
   if (rank == "Silver" && trial == "HEARTBREAK (12)")
   {
-    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK SILVER.png';
+    twitterImageURL = './trial_images/HEARTBREAK/heartbreak_silver.png';
   }
   else if (rank == "Gold" && trial == "HEARTBREAK (12)")
   {
-    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK GOLD.png';
+    twitterImageURL = './trial_images/HEARTBREAK/heartbreak_gold.png';
   }
   else if (rank == "Diamond" && trial == "HEARTBREAK (12)")
   {
-    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK DIAMOND.png';
+    twitterImageURL = './trial_images/HEARTBREAK/heartbreak_diamond.png';
   }
   else if (rank == "Cobalt" && trial == "HEARTBREAK (12)")
   {
-    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK COBALT.png';
+    twitterImageURL = './trial_images/HEARTBREAK/heartbreak_cobalt.png';
   }
   else if (rank == "Amethyst" && trial == "HEARTBREAK (12)")
   {
-    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK AMETHYST.png';
+    twitterImageURL = './trial_images/HEARTBREAK/heartbreak_amethyst.png';
   }
   else if (rank == "Emerald" && trial == "HEARTBREAK (12)")
   {
-    twitterImageURL = './trial_images/HEARTBREAK/HEARTBREAK_EMERALD.png';
+    twitterImageURL = './trial_images/HEARTBREAK/heartbreak_emerald.png';
   }
+
+   //TODO:New images
 
 //CELESTIAL(13)
 else if (rank == "Silver" && trial == "CELESTIAL (13)")
@@ -915,6 +916,7 @@ else if (rank == "Emerald" && trial == "CELESTIAL (13)")
 {
   twitterImageURL = './trial_images/CELESTIAL/CELESTIAL_EMERALD.png';
 }
+ //TODO:New images
 
 //DAYBREAK(14)
 else if (rank == "Silver" && trial == "DAYBREAK (14)")
@@ -941,6 +943,7 @@ else if (rank == "Emerald" && trial == "DAYBREAK (14)")
 {
   twitterImageURL = './trial_images/DAYBREAK/DAYBREAK_EMERALD.png';
 }
+ //TODO:New images
 
 //HELLSCAPE(15)
 else if (rank == "Silver" && trial == "HELLSCAPE (15)")
@@ -967,6 +970,7 @@ else if (rank == "Emerald" && trial == "HELLSCAPE (15)")
 {
   twitterImageURL = './trial_images/HELLSCAPE/HELLSCAPE_E.png';
 }
+ //TODO:New images
 
 //CLOCKWORK(15)
 else if (rank == "Silver" && trial == "CLOCKWORK (15)")
@@ -993,6 +997,7 @@ else if (rank == "Emerald" && trial == "CLOCKWORK (15)")
 {
   twitterImageURL = './trial_images/CLOCKWORK/CLOCKWORK_EMERALD.png';
 }
+ //TODO:New images
 
 //PHARAOH(15)
 else if (rank == "Silver" && trial == "PHARAOH (15)")
@@ -1019,6 +1024,7 @@ else if (rank == "Emerald" && trial == "PHARAOH (15)")
 {
   twitterImageURL = './trial_images/PHARAOH/PHARAOH_EMERALD.png';
 }
+ //TODO:New images
 
 //PARADOX(16)
 else if (rank == "Gold" && trial == "PARADOX (16)")
@@ -1041,6 +1047,7 @@ else if (rank == "Emerald" && trial == "PARADOX (16)")
 {
   twitterImageURL = './trial_images/PARADOX/PARADOX_EMERALD.png';
 }
+ //TODO:New images
 
 //INHUMAN(16)
 else if (rank == "Gold" && trial == "INHUMAN (16)")
@@ -1063,6 +1070,7 @@ else if (rank == "Emerald" && trial == "INHUMAN (16)")
 {
   twitterImageURL = './trial_images/INHUMAN/INHUMAN_EMERALD.png';
 }
+ //TODO:New images
 
 //CHEMICAL(17)
 else if (rank == "Gold" && trial == "CHEMICAL (17)")
@@ -1085,6 +1093,7 @@ else if (rank == "Emerald" && trial == "CHEMICAL (17)")
 {
   twitterImageURL = './trial_images/CHEMICAL/CHEMICAL_EMERALD.png';
 }
+ //TODO:New images
 
 //ORIGIN(18)
 else if (rank == "Diamond" && trial == "ORIGIN (18)")
@@ -1103,6 +1112,7 @@ else if (rank == "Emerald" && trial == "ORIGIN (18)")
 {
   twitterImageURL = './trial_images/ORIGIN/ORIGIN_EMERALD.png';
 }
+ //TODO:New images
 
 //ASCENSION (17)
 else if (rank == "Gold" && trial == "ASCENSION (17)")
@@ -1125,6 +1135,8 @@ else if (rank == "Emerald" && trial == "ASCENSION (17)")
 {
   twitterImageURL = './trial_images/ASCENSION/ASCENSION_EMERALD.png';
 }
+ //TODO:New images
+
 //COUNTDOWN (14)
 else if (rank == "Silver" && trial == "COUNTDOWN (14)")
 {
@@ -1150,6 +1162,8 @@ else if (rank == "Emerald" && trial == "COUNTDOWN (14)")
 {
   twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_EMERALD.png';
 }
+ //TODO:New images
+
 //HEATWAVE (15)
 else if (rank == "Silver" && trial == "HEATWAVE (15)")
 {
@@ -1176,6 +1190,7 @@ else if (rank == "Emerald" && trial == "HEATWAVE (15)")
   twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_EMREALD.png';
 }
 
+ //TODO:New images
 
 //MAINFRAME (13)
 else if (rank == "Silver" && trial == "MAINFRAME (13)")
@@ -1202,6 +1217,7 @@ else if (rank == "Emerald" && trial == "MAINFRAME (13)")
 {
   twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_EMERALD.png';
 }
+ //TODO:New images
 
 //SNOWDRIFT (16)
 else if (rank == "Silver" && trial == "SNOWDRIFT (16)")
@@ -1228,6 +1244,7 @@ else if (rank == "Emerald" && trial == "SNOWDRIFT (16)")
 {
   twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_EMERALD.png';
 }
+ //TODO:New images
 
 //Primal (13)
 else if (rank == "Silver" && trial == "PRIMAL (13)")
@@ -1254,6 +1271,7 @@ else if (rank == "Emerald" && trial == "PRIMAL (13)")
 {
   twitterImageURL = './trial_images/PRIMAL/PRIMAL_E.png';
 }
+ //TODO:New images
 
 //Wanderlust (15)
 else if (rank == "Silver" && trial == "WANDERLUST (15)")
@@ -1280,6 +1298,7 @@ else if (rank == "Emerald" && trial == "WANDERLUST (15)")
 {
   twitterImageURL = './trial_images/WANDERLUST/WANDERLUST_E.png';
 }
+ //TODO:New images
 
 //CIRCADIA (16)
 else if (rank == "Silver" && trial == "CIRCADIA (16)")
@@ -1306,6 +1325,7 @@ else if (rank == "Emerald" && trial == "CIRCADIA (16)")
 {
   twitterImageURL = './trial_images/CIRCADIA/circadia emerald.png';
 }
+ //TODO:New images
 
 //QUANTUM (18)
 else if (rank == "Gold" && trial == "QUANTUM (18)")
@@ -1328,6 +1348,7 @@ else if (rank == "Emerald" && trial == "QUANTUM (18)")
 {
   twitterImageURL = './trial_images/QUANTUM/quantum emerald.png';
 }
+ //TODO:New images
 
 //SPECIES (13)
 else if (rank == "Silver" && trial == "SPECIES (13)")
@@ -1354,6 +1375,7 @@ else if (rank == "Emerald" && trial == "SPECIES (13)")
 {
   twitterImageURL = './trial_images/SPECIES/species emerald.png';
 }
+ //TODO:New images
 
 //TEMPEST (15)
 else if (rank == "Silver" && trial == "TEMPEST (15)")
@@ -1380,6 +1402,7 @@ else if (rank == "Emerald" && trial == "TEMPEST (15)")
 {
   twitterImageURL = './trial_images/TEMPEST/tempest emerald.png';
 }
+ //TODO:New images
 
 //UPHEAVAL (14)
 else if (rank == "Silver" && trial == "UPHEAVAL (14)")
