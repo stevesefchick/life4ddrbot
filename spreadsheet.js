@@ -1040,202 +1040,189 @@ else if (rank == "Emerald" && trial == "PARADOX (16)")
 {
   twitterImageURL = './trial_images/PARADOX/paradox_emerald.png';
 }
- //TODO:New images
 
 //INHUMAN(16)
 else if (rank == "Gold" && trial == "INHUMAN (16)")
 {
-  twitterImageURL = './trial_images/INHUMAN/INHUMAN GOLD.png';
+  twitterImageURL = './trial_images/INHUMAN/inhuman_gold.png';
 }
 else if (rank == "Diamond" && trial == "INHUMAN (16)")
 {
-  twitterImageURL = './trial_images/INHUMAN/INHUMAN DIAMOND.png';
+  twitterImageURL = './trial_images/INHUMAN/inhuman_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "INHUMAN (16)")
 {
-  twitterImageURL = './trial_images/INHUMAN/INHUMAN COBALT.png';
+  twitterImageURL = './trial_images/INHUMAN/inhuman_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "INHUMAN (16)")
 {
-  twitterImageURL = './trial_images/INHUMAN/INHUMAN AMETHYST.png';
+  twitterImageURL = './trial_images/INHUMAN/inhuman_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "INHUMAN (16)")
 {
-  twitterImageURL = './trial_images/INHUMAN/INHUMAN_EMERALD.png';
+  twitterImageURL = './trial_images/INHUMAN/inhuman_emerald.png';
 }
- //TODO:New images
 
 //CHEMICAL(17)
 else if (rank == "Gold" && trial == "CHEMICAL (17)")
 {
-  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL GOLD.png';
+  twitterImageURL = './trial_images/CHEMICAL/chemical_gold.png';
 }
 else if (rank == "Diamond" && trial == "CHEMICAL (17)")
 {
-  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL DIAMOND.png';
+  twitterImageURL = './trial_images/CHEMICAL/chemical_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "CHEMICAL (17)")
 {
-  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL COBALT.png';
+  twitterImageURL = './trial_images/CHEMICAL/chemical_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "CHEMICAL (17)")
 {
-  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL AMETHYST.png';
+  twitterImageURL = './trial_images/CHEMICAL/chemical_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "CHEMICAL (17)")
 {
-  twitterImageURL = './trial_images/CHEMICAL/CHEMICAL_EMERALD.png';
+  twitterImageURL = './trial_images/CHEMICAL/chemical_emerald.png';
 }
- //TODO:New images
 
 //ORIGIN(18)
 else if (rank == "Diamond" && trial == "ORIGIN (18)")
 {
-  twitterImageURL = './trial_images/ORIGIN/ORIGIN DIAMOND.png';
+  twitterImageURL = './trial_images/ORIGIN/origin_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "ORIGIN (18)")
 {
-  twitterImageURL = './trial_images/ORIGIN/ORIGIN COBALT.png';
+  twitterImageURL = './trial_images/ORIGIN/origin_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "ORIGIN (18)")
 {
-  twitterImageURL = './trial_images/ORIGIN/ORIGIN AMETHYST.png';
+  twitterImageURL = './trial_images/ORIGIN/origin_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "ORIGIN (18)")
 {
-  twitterImageURL = './trial_images/ORIGIN/ORIGIN_EMERALD.png';
+  twitterImageURL = './trial_images/ORIGIN/origin_emerald.png';
 }
- //TODO:New images
 
 //ASCENSION (17)
 else if (rank == "Gold" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_GOLD.jpg';
+  twitterImageURL = './trial_images/ASCENSION/ascension_gold.png';
 }
 else if (rank == "Diamond" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_DIAMOND.jpg';
+  twitterImageURL = './trial_images/ASCENSION/ascension_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_COBALT.jpg';
+  twitterImageURL = './trial_images/ASCENSION/ascension_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_AMETHYST.jpg';
+  twitterImageURL = './trial_images/ASCENSION/ascension_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "ASCENSION (17)")
 {
-  twitterImageURL = './trial_images/ASCENSION/ASCENSION_EMERALD.png';
+  twitterImageURL = './trial_images/ASCENSION/ascension_emerald.png';
 }
- //TODO:New images
 
 //COUNTDOWN (14)
 else if (rank == "Silver" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_SILVER.jpg';
+  twitterImageURL = './trial_images/COUNTDOWN/countdown_silver.png';
 }
 else if (rank == "Gold" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_GOLD.jpg';
+  twitterImageURL = './trial_images/COUNTDOWN/countdown_gold.png';
 }
 else if (rank == "Diamond" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_DIAMOND.jpg';
+  twitterImageURL = './trial_images/COUNTDOWN/countdown_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_COBALT.jpg';
+  twitterImageURL = './trial_images/COUNTDOWN/countdown_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_AMETHYST.jpg';
+  twitterImageURL = './trial_images/COUNTDOWN/countdown_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/COUNTDOWN_EMERALD.png';
+  twitterImageURL = './trial_images/COUNTDOWN/countdown_emerald.png';
 }
- //TODO:New images
 
 //HEATWAVE (15)
 else if (rank == "Silver" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_SILVER.jpg';
+  twitterImageURL = './trial_images/HEATWAVE/heatwave_silver.png';
 }
 else if (rank == "Gold" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_GOLD.jpg';
+  twitterImageURL = './trial_images/HEATWAVE/heatwave_gold.png';
 }
 else if (rank == "Diamond" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_DIAMOND.jpg';
+  twitterImageURL = './trial_images/HEATWAVE/heatwave_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_COBALT.jpg';
+  twitterImageURL = './trial_images/HEATWAVE/heatwave_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_AMETHYST.jpg';
+  twitterImageURL = './trial_images/HEATWAVE/heatwave_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "HEATWAVE (15)")
 {
-  twitterImageURL = './trial_images/HEATWAVE/HEATWAVE_EMREALD.png';
+  twitterImageURL = './trial_images/HEATWAVE/heatwave_emerald.png';
 }
-
- //TODO:New images
 
 //MAINFRAME (13)
 else if (rank == "Silver" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_SILVER.jpg';
+  twitterImageURL = './trial_images/MAINFRAME/mainframe_silver.png';
 }
 else if (rank == "Gold" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_GOLD.jpg';
+  twitterImageURL = './trial_images/MAINFRAME/mainframe_gold.png';
 }
 else if (rank == "Diamond" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_DIAMOND.jpg';
+  twitterImageURL = './trial_images/MAINFRAME/mainframe_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_COBALT.jpg';
+  twitterImageURL = './trial_images/MAINFRAME/mainframe_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_AMETHYST.jpg';
+  twitterImageURL = './trial_images/MAINFRAME/mainframe_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "MAINFRAME (13)")
 {
-  twitterImageURL = './trial_images/MAINFRAME/MAINFRAME_EMERALD.png';
+  twitterImageURL = './trial_images/MAINFRAME/mainframe_emerald.png';
 }
- //TODO:New images
 
 //SNOWDRIFT (16)
-else if (rank == "Silver" && trial == "SNOWDRIFT (16)")
-{
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_SILVER.jpg';
-}
 else if (rank == "Gold" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_GOLD.jpg';
+  twitterImageURL = './trial_images/SNOWDRIFT/snowdrift_gold.png';
 }
 else if (rank == "Diamond" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_DIAMOND.jpg';
+  twitterImageURL = './trial_images/SNOWDRIFT/snowdrift_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_COBALT.jpg';
+  twitterImageURL = './trial_images/SNOWDRIFT/snowdrift_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_AMETHYST.jpg';
+  twitterImageURL = './trial_images/SNOWDRIFT/snowdrift_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "SNOWDRIFT (16)")
 {
-  twitterImageURL = './trial_images/SNOWDRIFT/SNOWDRIFT_EMERALD.png';
+  twitterImageURL = './trial_images/SNOWDRIFT/snowdrift_emerald.png';
 }
  //TODO:New images
 
