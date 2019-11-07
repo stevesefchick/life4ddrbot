@@ -510,7 +510,22 @@ function translateTrialName(trialName)
   {
     trialName = "QUANTUM (18)";
   }
-  //TODO: Add new trial mappings
+  else if (trialName == "passport")
+  {
+    trialName = "PASSPORT (13)";
+  }
+  else if (trialName == "believe")
+  {
+    trialName = "BELIEVE (12)";
+  }
+  else if (trialName == "devotion")
+  {
+    trialName = "DEVOTION (12)";
+  }
+  else if (trialName == "spectacle")
+  {
+    trialName = "SPECTACLE (16)";
+  }
   return trialName;
 };
 

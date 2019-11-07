@@ -1404,110 +1404,105 @@ else if (rank == "Emerald" && trial == "UPHEAVAL (14)")
 }
 
 
-//TODO: Update with actual values
 //DEVOTION (12)
 else if (rank == "Silver" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/upheaval silver.png';
+  twitterImageURL = './trial_images/DEVOTION/devotion_silver.png';
 }
 else if (rank == "Gold" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/upheaval gold.png';
+  twitterImageURL = './trial_images/DEVOTION/devotion_gold.png';
 }
 else if (rank == "Diamond" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/upheaval diamond.png';
+  twitterImageURL = './trial_images/DEVOTION/devotion_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/upheaval cobalt.png';
+  twitterImageURL = './trial_images/DEVOTION/devotion_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/upheaval amethyst.png';
+  twitterImageURL = './trial_images/DEVOTION/devotion_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/upheaval emerald.png';
+  twitterImageURL = './trial_images/DEVOTION/devotion_emerald.png';
 }
 
 //BELIEVE (12)
 else if (rank == "Silver" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/upheaval silver.png';
+  twitterImageURL = './trial_images/BELIEVE/believe_silver.png';
 }
 else if (rank == "Gold" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/upheaval gold.png';
+  twitterImageURL = './trial_images/BELIEVE/believe_gold.png';
 }
 else if (rank == "Diamond" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/upheaval diamond.png';
+  twitterImageURL = './trial_images/BELIEVE/believe_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/upheaval cobalt.png';
+  twitterImageURL = './trial_images/BELIEVE/believe_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/upheaval amethyst.png';
+  twitterImageURL = './trial_images/BELIEVE/believe_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/upheaval emerald.png';
+  twitterImageURL = './trial_images/BELIEVE/believe_emerald.png';
 }
 
 //PASSPORT (13)
 else if (rank == "Silver" && trial == "PASSPORT (13)")
 {
-  twitterImageURL = './trial_images/PASSPORT/upheaval silver.png';
+  twitterImageURL = './trial_images/PASSPORT/passport_silver.png';
 }
 else if (rank == "Gold" && trial == "PASSPORT (13)")
 {
-  twitterImageURL = './trial_images/PASSPORT/upheaval gold.png';
+  twitterImageURL = './trial_images/PASSPORT/passport_gold.png';
 }
 else if (rank == "Diamond" && trial == "PASSPORT (13)")
 {
-  twitterImageURL = './trial_images/PASSPORT/upheaval diamond.png';
+  twitterImageURL = './trial_images/PASSPORT/passport_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "PASSPORT (13)")
 {
-  twitterImageURL = './trial_images/PASSPORT/upheaval cobalt.png';
+  twitterImageURL = './trial_images/PASSPORT/passport_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "PASSPORT (13)")
 {
-  twitterImageURL = './trial_images/PASSPORT/upheaval amethyst.png';
+  twitterImageURL = './trial_images/PASSPORT/passport_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "PASSPORT (13)")
 {
-  twitterImageURL = './trial_images/PASSPORT/upheaval emerald.png';
+  twitterImageURL = './trial_images/PASSPORT/passport_emerald.png';
 }
 
 
 //SPECTACLE (16)
-else if (rank == "Silver" && trial == "SPECTACLE (16)")
-{
-  twitterImageURL = './trial_images/SPECTACLE/upheaval silver.png';
-}
 else if (rank == "Gold" && trial == "SPECTACLE (16)")
 {
-  twitterImageURL = './trial_images/SPECTACLE/upheaval gold.png';
+  twitterImageURL = './trial_images/SPECTACLE/spectacle_gold.png';
 }
 else if (rank == "Diamond" && trial == "SPECTACLE (16)")
 {
-  twitterImageURL = './trial_images/SPECTACLE/upheaval diamond.png';
+  twitterImageURL = './trial_images/SPECTACLE/spectacle_diamond.png';
 }
 else if (rank == "Cobalt" && trial == "SPECTACLE (16)")
 {
-  twitterImageURL = './trial_images/SPECTACLE/upheaval cobalt.png';
+  twitterImageURL = './trial_images/SPECTACLE/spectacle_cobalt.png';
 }
 else if (rank == "Amethyst" && trial == "SPECTACLE (16)")
 {
-  twitterImageURL = './trial_images/SPECTACLE/upheaval amethyst.png';
+  twitterImageURL = './trial_images/SPECTACLE/spectacle_amethyst.png';
 }
 else if (rank == "Emerald" && trial == "SPECTACLE (16)")
 {
-  twitterImageURL = './trial_images/SPECTACLE/upheaval emerald.png';
+  twitterImageURL = './trial_images/SPECTACLE/spectacle_emerald.png';
 }
 
 
@@ -2068,7 +2063,6 @@ console.log("Players complete!");
 
 console.log("Trials starting!");
 
-//TODO: Add new Trials
 var listOfTrials = [
   
   "HEARTBREAK (12)",
@@ -2092,10 +2086,13 @@ var listOfTrials = [
   "UPHEAVAL (14)",
   "TEMPEST (15)",
   "CIRCADIA (16)",
-  "QUANTUM (18)"
+  "QUANTUM (18)",
+  "DEVOTION (12)",
+  "BELIEVE (12)",
+  "PASSPORT (13)",
+  "SPECTACLE (16)"
 ];
 
-//TODO: Add new spreadsheet ranges
 var trialRanges = [
   
   'ALL TRIALS!A2:E',
@@ -2119,10 +2116,13 @@ var trialRanges = [
   "Sheet1!P2:T",
   "Sheet1!U2:Y",
   "Sheet1!Z2:AD",
-  "Sheet1!AE2:AI"
+  "Sheet1!AE2:AI",
+  "Sheet1!AJ2:AN",
+  "Sheet1!AO2:AS",
+  "Sheet1!AT2:AX",
+  "Sheet1!AY2:BC"
 ];
 
-//TODO: Update trial spreadsheetID
 var trialSpreadsheetID = [
   
   '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
@@ -2146,7 +2146,11 @@ var trialSpreadsheetID = [
   "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
   "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
   "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs"
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
+  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
 ];
 
   for (var i = 0; i < listOfTrials.length;i++)
