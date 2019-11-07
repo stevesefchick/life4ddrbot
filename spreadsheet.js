@@ -1306,8 +1306,7 @@ else if (rank == "Emerald" && trial == "CIRCADIA (16)")
 //QUANTUM (18)
 else if (rank == "Gold" && trial == "QUANTUM (18)")
 {
-  //TODO: Need this
-  //twitterImageURL = './trial_images/QUANTUM/quantum gold.png';
+  twitterImageURL = './trial_images/QUANTUM/quantum_gold.png';
 }
 else if (rank == "Diamond" && trial == "QUANTUM (18)")
 {
