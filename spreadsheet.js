@@ -1552,6 +1552,7 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
         isEvent = true;
     }
 
+
     if (isEvent == true)
     {
         if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
@@ -1565,6 +1566,8 @@ function announceNewPlayerTrialTwitter(playerName, playerRank,playerScore,player
     }
     else if (isEvent == false)
     {
+
+
         if (playerTwitterHandle != "" && playerTwitterHandle != "undefined")
         {
           post = "Player " + playerName + " (" + playerTwitterHandle + ") has earned the " + playerRank + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
