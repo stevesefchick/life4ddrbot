@@ -256,15 +256,15 @@ var getDiscordIcon = function(rank)
   }
     else if (rank == "Platinum I")
   {
-    discordemoji = "<:p1:638533071267692564>";
+    discordemoji = "<:p1:645457791942918164>";
   }
   else if (rank == "Platinum II")
   {
-    discordemoji = "<:p2:638533071691448349>";
+    discordemoji = "<:p2:645457792022347806>";
   }
   else if (rank == "Platinum III")
   {
-    discordemoji = "<:p3:638533071301378068>";
+    discordemoji = "<:p3:645457792081330193>";
   }
 
   return discordemoji;
