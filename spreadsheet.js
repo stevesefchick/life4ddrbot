@@ -254,7 +254,7 @@ var getDiscordIcon = function(rank)
   {
     discordemoji = "<:e3:592474998564716544>";
   }
-    else if (rank == "Platinum I")
+  else if (rank == "Platinum I")
   {
     discordemoji = "<:p1:645457791942918164>";
   }
