@@ -1798,19 +1798,20 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
 
     var isEvent=false;
     var discordpost = "";
-    if (trialName == "HALLOWED (13)")
-    {
-        isEvent = true;
-    }
 
-    if (isEvent == true)
-    {
-      discordpost = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " " + getTrialDiscordIcon(playerRank) + " division rank of #"+numberRank+"!";
-    }
-    else if (isEvent == false)
-    {
+    //if (trialName == "HALLOWED (13)")
+    //{
+    //    isEvent = true;
+    //}
+
+    //if (isEvent == true)
+    //{
+    //  discordpost = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " " + getTrialDiscordIcon(playerRank) + " division rank of #"+numberRank+"!";
+    //}
+    //else if (isEvent == false)
+    //{
       discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
-    }
+    //}
 
     
     const channel = bot.channels.find('name', 'trial-rankups')
