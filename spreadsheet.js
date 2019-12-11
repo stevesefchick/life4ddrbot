@@ -1791,13 +1791,14 @@ function announceNewPlayerDiscord(playerName, playerRank,callback)
 
 }
 
-
+//TODO: Improve this so send never returns null. Determine discordpost ahead of time and send to function
+//TODO: Do the same for PlayerUpdate
 function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,numberRank,callback)
 {
   setTimeout( function(){
 
-    var isEvent=false;
-    var discordpost = "";
+    //var isEvent=false;
+    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
 
     //if (trialName == "HALLOWED (13)")
     //{
@@ -1810,7 +1811,7 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
     //}
     //else if (isEvent == false)
     //{
-      discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+    //  discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
     //}
 
     
