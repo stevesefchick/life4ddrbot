@@ -1832,21 +1832,21 @@ function announceUpdatePlayerTrialDiscord(playerName, playerRank,playerScore,pla
 {
   setTimeout( function(){
 
-    var isEvent=false;
+    //var isEvent=false;
     var discordpost = "";
-    if (trialName == "HALLOWED (13)")
-    {
-        isEvent = true;
-    }
+    //if (trialName == "HALLOWED (13)")
+    //{
+    //    isEvent = true;
+    //}
 
-    if (isEvent == true)
-    {
-      discordpost = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " " + getTrialDiscordIcon(playerRank) + " division rank of #"+numberRank+"!";
-    }
-    else if (isEvent == false)
-    {
+    //if (isEvent == true)
+    //{
+    //  discordpost = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " " + getTrialDiscordIcon(playerRank) + " division rank of #"+numberRank+"!";
+    //}
+    //else if (isEvent == false)
+    //{
       var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
-    }
+    //}
 
 
     const channel = bot.channels.find('name', 'trial-rankups')
