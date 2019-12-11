@@ -912,7 +912,7 @@ else if (rank == "Amethyst" && trial == "CELESTIAL (13)")
 }
 else if (rank == "Emerald" && trial == "CELESTIAL (13)")
 {
-  twitterImageURL = './trial_images/CELESTIAL/celestial_emerald.png';
+  twitterImageURL = './trial_images/CELESTIAL/CELESTIAL_EMERALD.png';
 }
 
 //DAYBREAK(14)
