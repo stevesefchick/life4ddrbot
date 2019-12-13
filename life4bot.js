@@ -8,6 +8,8 @@ const fs = require('fs');
 var twit = require('twit');
 var config = require('./config.js');
 var Twitter = new twit(config);
+
+
 var Discord = require('discord.js');
 var bot = new Discord.Client();
 bot.login(process.env.DISCORD_BOT_TOKEN);
@@ -16,6 +18,7 @@ bot.login(process.env.DISCORD_BOT_TOKEN);
 //BOT LOG IN
 bot.on('ready', () => {
     console.log(`Logged in as ${bot.user.tag}!`);
+
   });
 
 
@@ -23,6 +26,12 @@ bot.on('ready', () => {
 
 //BOT LISTEN FOR MESSAGES
   bot.on('message', (message) => {
+
+    console.log("weh");
+    console.log(message);
+    console.log(bot.user.toString());
+
+  
 
     //GET COMMANDS
     if(message.content.includes(bot.user.toString()) && message.content.includes('commands')) {
