@@ -1791,14 +1791,13 @@ function announceNewPlayerDiscord(playerName, playerRank,callback)
 
 }
 
-//TODO: Improve this so send never returns null. Determine discordpost ahead of time and send to function
-//TODO: Do the same for PlayerUpdate
+
 function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,numberRank,callback)
 {
   setTimeout( function(){
 
-    //var isEvent=false;
-    var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+    var isEvent=false;
+    var discordpost = "";
 
     //if (trialName == "HALLOWED (13)")
     //{
@@ -1811,7 +1810,7 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
     //}
     //else if (isEvent == false)
     //{
-    //  discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
+      discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
     //}
 
     
@@ -1833,21 +1832,21 @@ function announceUpdatePlayerTrialDiscord(playerName, playerRank,playerScore,pla
 {
   setTimeout( function(){
 
-    //var isEvent=false;
+    var isEvent=false;
     var discordpost = "";
-    //if (trialName == "HALLOWED (13)")
-    //{
-    //    isEvent = true;
-    //}
+    if (trialName == "HALLOWED (13)")
+    {
+        isEvent = true;
+    }
 
-    //if (isEvent == true)
-    //{
-    //  discordpost = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " " + getTrialDiscordIcon(playerRank) + " division rank of #"+numberRank+"!";
-    //}
-    //else if (isEvent == false)
-    //{
+    if (isEvent == true)
+    {
+      discordpost = "Player " + playerName + " scored " + playerScore + " EX " + playerDiff + " on the Limited Edition Trial " + trialName + " for a " + playerRank + " " + getTrialDiscordIcon(playerRank) + " division rank of #"+numberRank+"!";
+    }
+    else if (isEvent == false)
+    {
       var discordpost = "Player " + playerName + " has earned the " + playerRank + " " + getTrialDiscordIcon(playerRank) + " Trial Rank for " + trialName + " with " + playerScore + " EX " + playerDiff + " for a Trial Ranking of #"+numberRank+"!";
-    //}
+    }
 
 
     const channel = bot.channels.find('name', 'trial-rankups')
