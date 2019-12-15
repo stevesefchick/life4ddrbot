@@ -28,19 +28,21 @@ bot.on('ready', () => {
   bot.on('message', (message) => {
 
     console.log("weh");
-    console.log(message);
-    console.log(bot.user.toString());
-
-  
+    console.log(message.content);
+    
+    var msg = message.content;
+    if (msg.startsWith('<@!')) {
+			msg = msg.replace('!','');
+		}
 
     //GET COMMANDS
-    if(message.content.includes(bot.user.toString()) && message.content.includes('commands')) {
+    if(msg.includes(bot.user.toString()) && msg.includes('commands')) {
         message.reply('Here are my commands!\n status = get status \n turn on = enable the bot \n turn off = disable the bot');
     }
     
 
     //GET STATUS
-    if(message.content.includes(bot.user.toString()) && message.content.includes('status')) {
+    if(msg.includes(bot.user.toString()) && msg.includes('status')) {
       if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
         return message.reply("Only admins can run this, sorry friend!");
       else
@@ -50,7 +52,7 @@ bot.on('ready', () => {
     }
 
     //TURN ON
-    if(message.content.includes(bot.user.toString()) && message.content.includes('turn on')) {
+    if(msg.includes(bot.user.toString()) && msg.includes('turn on')) {
       if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
         return message.reply("Only admins can run this, sorry friend!");
       else
@@ -62,7 +64,7 @@ bot.on('ready', () => {
 
     //TURN OFF
     //TURN ON
-    if(message.content.includes(bot.user.toString()) && message.content.includes('turn off')) {
+    if(msg.includes(bot.user.toString()) && msg.includes('turn off')) {
       if(!message.member.roles.some(r=>["Administrator"].includes(r.name)) )
         return message.reply("Only admins can run this, sorry friend!");
       else
@@ -72,7 +74,7 @@ bot.on('ready', () => {
     }
 
     //PLAYER LOOKUP
-    if(message.content.includes(bot.user.toString()) && message.content.includes('whois')) {
+    if(msg.includes(bot.user.toString()) && msg.includes('whois')) {
       message.reply('TBD player lookup');
   }
 });
