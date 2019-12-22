@@ -27,8 +27,6 @@ bot.on('ready', () => {
 //BOT LISTEN FOR MESSAGES
   bot.on('message', (message) => {
 
-    console.log("weh");
-    console.log(message.content);
     
     var msg = message.content;
     if (msg.startsWith('<@!')) {

@@ -508,6 +508,22 @@ function setQueueItemToProcessed(playerQueueID,callback){
 
 };
 
+function setQueueItemToError(playerQueueID,callback){
+
+  setTimeout( function(){
+
+    var updateQuery = "UPDATE playerQueue SET queueStatus = 'ERROR' WHERE playerQueueID = " + playerQueueID; 
+
+    connection.query(updateQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+};
+
 function getReadyFromQueue(callback){
 
   setTimeout( function(){
@@ -1904,13 +1920,19 @@ function LIFE4sequence()
   console.log("Bot is on!");
   console.log("Checking queue for requests!");
   var queueResults = wait.for(getReadyFromQueue);
+
+try
+{
+
   if (queueResults.length)
   {
     console.log("Something exists in the queue!");
+
     //trial queue
     if (queueResults[0].updateCategory == "TRIAL")
     {
       console.log("Trial identified!");
+
 
       var trialInfo = wait.for(getTrialQueueInfo,queueResults[0].trialID);
         console.log("Trial #" + queueResults[0].trialID + "  retrieved!");
@@ -1933,6 +1955,10 @@ function LIFE4sequence()
           console.log("Discord announcement complete!");
 
         }
+
+
+
+
     }
     //trial event
     else if (queueResults[0].updateCategory == "TRIALEVENT")
@@ -1994,6 +2020,21 @@ var queueDone = wait.for(setQueueItemToProcessed,queueResults[0].playerQueueID);
   {
     console.log("Queue is empty!");
   }
+
+}
+catch(error)
+{
+  console.log("ERROR!");
+
+
+  const channel = bot.channels.find('name', 'admin-bot')
+  channel.send("Uh oh! Something went wrong when posting an update! \n PlayerQueueID = "+queueResults[0].playerQueueID +"\n Logs: \n" + error)
+  .then(message => console.log("Uh oh! Something went wrong when posting an update! \n PlayerQueueID = "+queueResults[0].playerQueueID +"\n Logs: \n" + error))
+  .catch(console.error);
+
+  var queueDone = wait.for(setQueueItemToError,queueResults[0].playerQueueID);
+
+}
 
 console.log("Queue updates are complete!");
 
