@@ -369,9 +369,19 @@ function playerGetSpreadsheetRowNameValue(row, callback){
 
             var returnedName = `${row[0]}`;
 
-           // console.log("name = " + returnedName);
-
-            callback(null,returnedName)
+            if (returnedName.includes("'"))
+            {
+              //var spot = returnedName.indexOf("'");
+              returnedName = returnedName.replace("'","''");
+              console.log("NEW NAME IS " + returnedName);
+              callback(null,returnedName);
+        
+            }
+            else
+            {
+              callback(null,returnedName);
+        
+            }
 
   }, 25);
 }; 
@@ -709,6 +719,28 @@ function getAllPlayerIDPlayerName(callback)
 
 
 }, 100);
+}
+
+function playerUpdateName(playerName, callback){
+
+  setTimeout( function(){
+
+    if (playerName.includes("''"))
+    {
+      //var spot = returnedName.indexOf("'");
+      playerName = playerName.replace("''","'");
+      console.log("NEW NAME IS " + playerName);
+      callback(null,playerName);
+
+    }
+    else
+    {
+      callback(null,playerName);
+
+    }
+
+}, 50);
+
 }
 
 function checkForExistingPlayer(playerName, callback){
@@ -1928,6 +1960,7 @@ try
   {
     console.log("Something exists in the queue!");
 
+    //TODO: Add name check for ' for TRIALS
     //trial queue
     if (queueResults[0].updateCategory == "TRIAL")
     {
@@ -1960,6 +1993,7 @@ try
 
 
     }
+        //TODO: Add name check for ' for TRIAL EVENTS
     //trial event
     else if (queueResults[0].updateCategory == "TRIALEVENT")
     {
@@ -1994,20 +2028,22 @@ try
         console.log("Player identified!");
 
         var playerInfo = wait.for(getPlayerQueueInfo,queueResults[0].playerID);
-        console.log("Player " + playerInfo[0].playerName + " retrieved!");
+        var playerName = wait.for(playerUpdateName, playerInfo[0].playerName);
+
+        console.log("Player " + playerName + " retrieved!");
         
         if (queueResults[0].updateType == "NEW")
         {
-          var twitterannounce = wait.for(announceNewPlayerTwitter, playerInfo[0].playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
+          var twitterannounce = wait.for(announceNewPlayerTwitter, playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
           console.log("Twitter announcement complete!");
-          var discordannounce = wait.for(announceNewPlayerDiscord, playerInfo[0].playerName, playerInfo[0].playerRank);
+          var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerInfo[0].playerRank);
           console.log("Discord announcement complete!");
         }
         else if (queueResults[0].updateType == "UPDATE")
         {
-          var twitterannounce = wait.for(announcePlayerRankupTwitter, playerInfo[0].playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
+          var twitterannounce = wait.for(announcePlayerRankupTwitter, playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
           console.log("Twitter announcement complete!");
-          var discordannounce = wait.for(announcePlayerRankupDiscord, playerInfo[0].playerName, playerInfo[0].playerRank);
+          var discordannounce = wait.for(announcePlayerRankupDiscord, playerName, playerInfo[0].playerRank);
           console.log("Discord announcement complete!");
         }
     } 
@@ -2041,7 +2077,7 @@ console.log("Queue updates are complete!");
 
 
 
-
+//TODO: Add error catching for player retrieval
 console.log("Player retrieval starting!");
 var playerSpreadsheetList = wait.for(newGetPlayersFromSheets, getauth);
 console.log("Player list retrieved!");
@@ -2055,11 +2091,14 @@ console.log("Player list retrieved!");
       var playerTwitter = wait.for(playerGetSpreadsheetRowTwitterValue,row);
       var playerRival = wait.for(playerGetSpreadsheetRowRivalValue,row);
 
+
       if ((playerName != null && playerName != undefined) &&
       (playerRank != null && playerRank != undefined))
     {
       //check for existing player
       var playerresults = wait.for(checkForExistingPlayer, playerName);
+
+
 
       //exists
       if (playerresults && playerresults.length)
@@ -2077,7 +2116,7 @@ console.log("Player list retrieved!");
           console.log("Player updated!");
           var insertresults = wait.for(insertNewPlayerAuditRecord, playerresults[0].playerID, playerRank);
           console.log("Player Audit History complete!");
-          var insertPlayerIntoQueue = wait.for(insertPlayerInQueue,playerresults[0].playerName,"UPDATE",playerresults[0].playerID);
+          var insertPlayerIntoQueue = wait.for(insertPlayerInQueue,playerName,"UPDATE",playerresults[0].playerID);
           console.log("Queue updated!");
         }
 
@@ -2093,7 +2132,7 @@ console.log("Player list retrieved!");
         playerresults = wait.for(checkForExistingPlayer, playerName);
         var insertresults = wait.for(insertNewPlayerAuditRecord, playerresults[0].playerID, playerRank);
         console.log("Player Audit History complete!");
-        var insertPlayerIntoQueue = wait.for(insertPlayerInQueue,playerresults[0].playerName,"NEW",playerresults[0].playerID);
+        var insertPlayerIntoQueue = wait.for(insertPlayerInQueue,playerName,"NEW",playerresults[0].playerID);
         console.log("Queue updated!");
 
       }
@@ -2105,7 +2144,7 @@ console.log("Player list retrieved!");
 console.log("Players complete!");
 
 
-
+//TODO: Add ' name check for TRIALS
 console.log("Trials starting!");
 
 var listOfTrials = [
