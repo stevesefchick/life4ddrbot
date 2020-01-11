@@ -1,5 +1,6 @@
 //Life4DDRBot
-//Created by Steve Sefchick - 2019
+//Created by Steve Sefchick
+//2019 - 2020
 //Tweets to @Life4DDRBot
 //built using NodeJS
 
@@ -1130,7 +1131,7 @@ else if (rank == "Amethyst" && trial == "CHEMICAL (17)")
 }
 else if (rank == "Emerald" && trial == "CHEMICAL (17)")
 {
-  twitterImageURL = './trial_images/CHEMICAL/chemical_emerald.png';
+  twitterImageURL = './trial_images/CHEMICAL/chemical_emerald_.png';
 }
 
 //ORIGIN(18)
