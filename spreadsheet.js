@@ -1197,7 +1197,7 @@ else if (rank == "Amethyst" && trial == "COUNTDOWN (14)")
 }
 else if (rank == "Emerald" && trial == "COUNTDOWN (14)")
 {
-  twitterImageURL = './trial_images/COUNTDOWN/countdown_emerald.png';
+  twitterImageURL = './trial_images/COUNTDOWN/countdown_emerald_1.png';
 }
 
 //HEATWAVE (15)
