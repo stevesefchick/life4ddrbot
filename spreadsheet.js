@@ -2180,6 +2180,67 @@ var listOfTrials = [
 
 var trialRanges = [
   
+  'HEARTBREAK (12)!B2:F',
+  'CELESTIAL (13)!B2:F',
+  'DAYBREAK (14)!B2:F',
+  'HELLSCAPE (14)!B2:F',
+  'CLOCKWORK (15)!B2:F',
+  'PHARAOH (15)!B2:F',
+  'PARADOX (16)!B2:F',
+  'INHUMAN (16)!B2:F',
+  'CHEMICAL (17)!B2:F',
+  'ORIGIN (18)!B2:F',
+  "MAINFRAME (13)!B2:F",
+  "COUNTDOWN (14)!B2:F",
+  "HEATWAVE (15)!B2:F",
+  "SNOWDRIFT (16)!B2:F",
+  "ASCENSION (17)!B2:F",
+  "PRIMAL (13)!B2:F",
+  "WANDERLUST (15)!B2:F",
+  "SPECIES (13)!B2:F",
+  "UPHEAVAL (14)!B2:F",
+  "TEMPEST (15)!B2:F",
+  "CIRCADIA (16)!B2:F",
+  "QUANTUM (18)!B2:F",
+  "DEVOTION (12)!B2:F",
+  "BELIEVE (12)!B2:F",
+  "PASSPORT (13)!B2:F",
+  "SPECTACLE (16)!B2:F"
+];
+
+var trialSpreadsheetID = [
+  
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+];
+
+/*
+var trialRanges = [
+  
   'ALL TRIALS!A2:E',
   'ALL TRIALS!F2:J',
   'ALL TRIALS!K2:O',
@@ -2237,6 +2298,7 @@ var trialSpreadsheetID = [
   "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
   "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
 ];
+*/
 
   for (var i = 0; i < listOfTrials.length;i++)
   {

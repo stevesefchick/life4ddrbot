@@ -25,6 +25,7 @@ bot.on('ready', () => {
 
 
 //BOT LISTEN FOR MESSAGES
+/*
   bot.on('message', (message) => {
 
     
@@ -77,7 +78,7 @@ bot.on('ready', () => {
   }
 });
 
-
+*/
 
 
 
