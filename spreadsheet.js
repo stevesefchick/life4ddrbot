@@ -2238,67 +2238,6 @@ var trialSpreadsheetID = [
   "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
 ];
 
-/*
-var trialRanges = [
-  
-  'ALL TRIALS!A2:E',
-  'ALL TRIALS!F2:J',
-  'ALL TRIALS!K2:O',
-  'ALL TRIALS!P2:T',
-  'ALL TRIALS!U2:Y',
-  'ALL TRIALS!Z2:AD',
-  'ALL TRIALS!AE2:AI',
-  'ALL TRIALS!AJ2:AN',
-  'ALL TRIALS!AO2:AS',
-  'ALL TRIALS!AT2:AX',
-  "ALL TRIALS!AY2:BC",
-  "ALL TRIALS!BD2:BH",
-  "ALL TRIALS!BI2:BM",
-  "ALL TRIALS!BN2:BR",
-  "ALL TRIALS!BS2:BW",
-  "Sheet1!A2:E",
-  "Sheet1!F2:J",
-  "Sheet1!K2:Q",
-  "Sheet1!P2:T",
-  "Sheet1!U2:Y",
-  "Sheet1!Z2:AD",
-  "Sheet1!AE2:AI",
-  "Sheet1!AJ2:AN",
-  "Sheet1!AO2:AS",
-  "Sheet1!AT2:AX",
-  "Sheet1!AY2:BC"
-];
-
-var trialSpreadsheetID = [
-  
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
-  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
-  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
-  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
-  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
-  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-  "1BBJdSJJDMPFKAFMPwVyyh7o7M4kvs-BMikzt8xmSghs",
-];
-*/
 
   for (var i = 0; i < listOfTrials.length;i++)
   {
@@ -2332,7 +2271,7 @@ var trialSpreadsheetID = [
           if (trialresults && trialresults.length)
           {
             console.log("Player " + playerName + " exists! Check for update!");
-            if (playerScore == trialresults[0].playerScore &&
+            if (playerScore <= trialresults[0].playerScore &&
               playerRank == trialresults[0].playerRank)
             {
               console.log("Player has same score!");
