@@ -1065,7 +1065,7 @@ else if (rank == "Amethyst" && trial == "PHARAOH (15)")
 }
 else if (rank == "Emerald" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/pharaoh_emerald.png';
+  twitterImageURL = './trial_images/PHARAOH/PHARAOH_EMERALD.png';
 }
 
 //PARADOX(16)
@@ -2499,6 +2499,7 @@ function newGetPlayersFromSheets(auth,callback)
   });
 }
 
+//TODO: update get spreadsheet
 function newGetTrials(auth,trialRange, spreadsheetID,callback)
 {
 
