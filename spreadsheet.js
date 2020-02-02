@@ -987,7 +987,7 @@ else if (rank == "Amethyst" && trial == "DAYBREAK (14)")
 }
 else if (rank == "Emerald" && trial == "DAYBREAK (14)")
 {
-  twitterImageURL = './trial_images/DAYBREAK/daybreak_emerald.png';
+  twitterImageURL = './trial_images/DAYBREAK/daybreak_emerald_2.png';
 }
 
 //HELLSCAPE(15)
