@@ -810,7 +810,7 @@ function getranksevent(trialname, playerName, playerRank, callback){
 
 }
 
-
+//TODO: Add Discord Handle
 function updatePlayerRecord(playerName, playerRank, playerRival, playerTwitter,callback){
 
   setTimeout( function(){
@@ -827,6 +827,7 @@ function updatePlayerRecord(playerName, playerRank, playerRival, playerTwitter,c
 
 }
 
+//TODO: Add Discord Handle
 function insertNewPlayerRecord(playerName, playerRank, playerRival, playerTwitter,callback){
 
   setTimeout( function(){
@@ -843,6 +844,7 @@ function insertNewPlayerRecord(playerName, playerRank, playerRival, playerTwitte
 
 }
 
+//TODO: Add Discord Handle
 function insertNewTrialRecord(playerName,playerRivalCode,trialName,playerRank,playerScore,playerDiff,playerTwitterHandle, callback){
 
   setTimeout( function(){
@@ -859,6 +861,7 @@ function insertNewTrialRecord(playerName,playerRivalCode,trialName,playerRank,pl
 
 }
 
+//TODO: Add Discord Handle
 function updateTrialRecord(trialrecordID,playerName,playerRivalCode,playerRank,playerScore,playerDiff,playerTwitterHandle, callback){
 
   setTimeout( function(){
@@ -1804,6 +1807,9 @@ function announcePlayerRankupTwitter(playerName, playerRank,playerTwitterHandle,
 
 }
 
+//TODO: Add general discord handling when player id isn't found
+
+//TODO: Add Discord Handle
 function announcePlayerRankupDiscord(playerName, playerRank,callback)
 {
   setTimeout( function(){
@@ -1822,6 +1828,7 @@ function announcePlayerRankupDiscord(playerName, playerRank,callback)
 
 }
 
+//TODO: Add Discord Handle
 function announceNewPlayerDiscord(playerName, playerRank,callback)
 {
   setTimeout( function(){
@@ -1840,7 +1847,7 @@ function announceNewPlayerDiscord(playerName, playerRank,callback)
 
 }
 
-
+//TODO: Add Discord Handle
 function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName,numberRank,callback)
 {
   setTimeout( function(){
@@ -1877,6 +1884,7 @@ function announceNewPlayerTrialDiscord(playerName, playerRank,playerScore,player
 
 }
 
+//TODO: Add Discord Handle
 function announceUpdatePlayerTrialDiscord(playerName, playerRank,playerScore,playerDiff,trialName, numberRank,callback)
 {
   setTimeout( function(){
@@ -1968,6 +1976,7 @@ try
       console.log("Trial identified!");
 
 
+      //TODO: Add Discord info to this call
       var trialInfo = wait.for(getTrialQueueInfo,queueResults[0].trialID);
         console.log("Trial #" + queueResults[0].trialID + "  retrieved!");
 
@@ -1978,6 +1987,7 @@ try
         {
           var twitterannounce = wait.for(announceNewPlayerTrialTwitter, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].playerTwitterHandle, trialInfo[0].trialName,playerNumberRanking);
           console.log("Twitter announcement complete!");
+          //TODO: Add discord handle
           var discordannounce = wait.for(announceNewPlayerTrialDiscord, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].trialName,playerNumberRanking);
           console.log("Discord announcement complete!");
         }
@@ -1985,6 +1995,7 @@ try
         {
           var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].playerTwitterHandle, trialInfo[0].trialName,playerNumberRanking);
           console.log("Twitter announcement complete!");
+          //TODO: Add discord handle
           var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].trialName,playerNumberRanking);
           console.log("Discord announcement complete!");
 
@@ -2000,6 +2011,7 @@ try
     {
       console.log("Trial Event identified!");
 
+      //TODO: Add discord handle to returned info
       var trialInfo = wait.for(getTrialQueueInfo,queueResults[0].trialID);
         console.log("Trial #" + queueResults[0].trialID + "  retrieved!");
 
@@ -2011,6 +2023,7 @@ try
         {
           var twitterannounce = wait.for(announceNewPlayerTrialTwitter, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].playerTwitterHandle, trialInfo[0].trialName,playerNumberRanking);
           console.log("Twitter announcement complete!");
+          //TODO: Add discord handle to this
           var discordannounce = wait.for(announceNewPlayerTrialDiscord, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].trialName,playerNumberRanking);
           console.log("Discord announcement complete!");
         }
@@ -2018,6 +2031,7 @@ try
         {
           var twitterannounce = wait.for(announceUpdatePlayerTrialTwitter, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].playerTwitterHandle, trialInfo[0].trialName,playerNumberRanking);
           console.log("Twitter announcement complete!");
+          //TODO: Add Discord handle to this
           var discordannounce = wait.for(announceUpdatePlayerTrialDiscord, trialInfo[0].playerName, trialInfo[0].playerRank,trialInfo[0].playerScore,trialInfo[0].playerDiff, trialInfo[0].trialName,playerNumberRanking);
           console.log("Discord announcement complete!");
 
@@ -2028,6 +2042,7 @@ try
     {
         console.log("Player identified!");
 
+        //TODO: Get discord handle to playerinfo
         var playerInfo = wait.for(getPlayerQueueInfo,queueResults[0].playerID);
         var playerName = wait.for(playerUpdateName, playerInfo[0].playerName);
 
@@ -2037,6 +2052,7 @@ try
         {
           var twitterannounce = wait.for(announceNewPlayerTwitter, playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
           console.log("Twitter announcement complete!");
+          //TODO: Add discord handle
           var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerInfo[0].playerRank);
           console.log("Discord announcement complete!");
         }
@@ -2044,6 +2060,7 @@ try
         {
           var twitterannounce = wait.for(announcePlayerRankupTwitter, playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
           console.log("Twitter announcement complete!");
+          //TODO: Add discord handle
           var discordannounce = wait.for(announcePlayerRankupDiscord, playerName, playerInfo[0].playerRank);
           console.log("Discord announcement complete!");
         }
@@ -2087,6 +2104,7 @@ console.log("Player list retrieved!");
   if (playerSpreadsheetList.length)
   {
     playerSpreadsheetList.map((row) => {
+      //TODO: Add discord to this
       var playerName = wait.for(playerGetSpreadsheetRowNameValue,row);
       var playerRank = wait.for(playerGetSpreadsheetRowRankValue,row);
       var playerTwitter = wait.for(playerGetSpreadsheetRowTwitterValue,row);
@@ -2258,6 +2276,7 @@ var trialSpreadsheetID = [
       var playerScore = wait.for(trialGetSpreadsheetRowScoreValue,row);
       var playerDiff = wait.for(trialGetSpreadsheetRowDiffValue,row);
       var playerTwitter = wait.for(trialGetSpreadsheetRowTwitterHandleValue,row);
+      //TODO: Add discord tag
       var playerRival = wait.for(trialGetSpreadsheetRowRivalCodeValue,row);
 
 
@@ -2358,6 +2377,7 @@ for (var i = 0; i < rankList.length;i++)
       var playerScore = wait.for(trialEventGetSpreadsheetRowScoreValue,row);
       var playerDiff = wait.for(trialEventGetSpreadsheetRowDiffValue,row);
       var playerTwitter = wait.for(trialEventGetSpreadsheetRowTwitterHandleValue,row);
+      //TODO: Add discord tag
       var playerRival = wait.for(trialEventGetSpreadsheetRowRivalCodeValue,row);
 
       if ((playerName != "" && playerName != undefined) &&
