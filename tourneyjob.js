@@ -27,9 +27,9 @@ AA = 1
 //TODO: Early Submission +1
 
 //TODO: Schedule x1 per day
-//TODO: Create DB Schema
 
-
+//TODO: Retrieve all teams/scores
+//TODO: Retrieve single team, scores per player
 
 
 
@@ -61,8 +61,24 @@ bot.on('ready', () => {
   });
 
 
+  function checkMasterList(callback){
 
-  function LIFE4sequence()
+    setTimeout( function(){
+  
+      var getQuery = "select * from life4tourneyplayerlist";
+      connection.query(getQuery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+  
+      });
+      
+  }, 25);
+  
+  };
+
+
+
+  function LIFE4Revolutionsequence()
   {
   //connecting to DB
   connection = mysql.createConnection({
@@ -74,6 +90,19 @@ bot.on('ready', () => {
 
   
   connection.connect();
+
+  //check if master list is 0
+  var checkMasterList = wait.for(checkMasterList);
+  //if there's nothing, pull from the master list
+  if (!checkMasterList.length)
+  {
+    //TODO: If Master Player List Empty do that pull first
+    //TODO: Populate DB
+  }
+
+
+
+    //TODO: Create DB Schema - Score Submissions
 
     //TODO: Read from submissions
     //TODO: Update Master
