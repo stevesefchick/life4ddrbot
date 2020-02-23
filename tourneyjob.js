@@ -76,6 +76,18 @@ bot.on('ready', () => {
   
   };
 
+  function newGetMasterPlayersFromSheets(auth,callback)
+{
+  const sheets = google.sheets({version: 'v4', auth});
+  sheets.spreadsheets.values.get({
+    spreadsheetId: '1qJ1-hor3dHw8w89mBOG6DNHfaAGmrVFnerq8x6xCCfw',
+    range: 'Master Player List!A2:I',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const rows = res.data.values;
+    callback(null,rows);
+  });
+}
 
 
   function LIFE4Revolutionsequence()
@@ -96,9 +108,13 @@ bot.on('ready', () => {
   //if there's nothing, pull from the master list
   if (!checkMasterList.length)
   {
-    //TODO: If Master Player List Empty do that pull first
     //TODO: Populate DB
+
+    var masterPlayerSpreadsheet = wait.for(newGetMasterPlayersFromSheets, getauth);
+
   }
+
+  
 
 
 
