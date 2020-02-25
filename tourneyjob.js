@@ -90,6 +90,131 @@ bot.on('ready', () => {
 }
 
 
+
+//
+//MASTER SPREADSHEET STUFF
+//
+
+function playerMasterGetName(row, callback){
+  setTimeout( function(){
+
+            var returnedName = `${row[0]}`;
+
+            if (returnedName.includes("'"))
+            {
+              //var spot = returnedName.indexOf("'");
+              returnedName = returnedName.replace("'","''");
+              console.log("NEW NAME IS " + returnedName);
+              callback(null,returnedName);
+        
+            }
+            else
+            {
+              callback(null,returnedName);
+        
+            }
+
+  }, 25);
+}; 
+
+function playerMasterGetTag(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[1]}`;
+
+            callback(null,returnedRank)
+
+  }, 25);
+}; 
+
+function playerMasterGetRival(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[2]}`;
+
+            callback(null,returnedRank)
+
+  }, 25);
+}; 
+
+
+function playerMasterGetDiscord(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[3]}`;
+
+            callback(null,returnedRank)
+
+  }, 25);
+}; 
+
+function playerMasterGetTwitter(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[4]}`;
+
+            callback(null,returnedRank)
+
+  }, 25);
+}; 
+
+function playerMasterGetLIFE4Rank(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[5]}`;
+
+            callback(null,returnedRank)
+
+  }, 25);
+}; 
+
+function playerMasterGetDivision(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[6]}`;
+
+            callback(null,returnedRank)
+
+  }, 25);
+}; 
+
+function playerMasterGetTeam(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[7]}`;
+
+            callback(null,returnedRank)
+
+  }, 25);
+}; 
+
+function playerMasterGetIsCaptain(row, callback){
+  setTimeout( function(){
+
+            var returnedRank = `${row[8]}`;
+
+            callback(null,returnedRank)
+
+  }, 25);
+}; 
+
+function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDiscord,playerTwitter,playerLIFE4Rank,playerDivision,playerTeam,playerIsCaptain,callback){
+
+  setTimeout( function(){
+
+    var insertplayerquery = "INSERT INTO life4tourneyplayerlist (tourneyPlayerName, tourneyPlayerTag, tourneyPlayerRivalCode, tourneyPlayerDiscordTag, tourneyPlayerTwitterHandle,tourneyPlayerLIFE4Rank,tourneyPlayerDivision,tourneyPlayerTeamName,tourneyPlayerIsCaptain) VALUES ('" + playerName + "','" + playerTag + "','" + playerRival + "','"+playerDiscord+"', '"+playerTwitter+"','"+playerLIFE4Rank+"','"+playerDivision+"','"+playerTeam+"','"+playerIsCaptain+"')";
+    connection.query(insertplayerquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+
   function LIFE4Revolutionsequence()
   {
   //connecting to DB
@@ -103,14 +228,36 @@ bot.on('ready', () => {
   
   connection.connect();
 
+  console.log("Job is starting!");
+
   //check if master list is 0
   var checkMasterList = wait.for(checkMasterList);
   //if there's nothing, pull from the master list
   if (!checkMasterList.length)
   {
-    //TODO: Populate DB
-
+    console.log("Populating master player sheet for the first time!");
     var masterPlayerSpreadsheet = wait.for(newGetMasterPlayersFromSheets, getauth);
+    console.log("Master list retrieved!");
+
+        if (masterPlayerSpreadsheet.length)
+        {
+          masterPlayerSpreadsheet.map((row) => {
+            var playerName = wait.for(playerMasterGetName,row);
+            var playerTag = wait.for(playerMasterGetTag,row);
+            var playerRival = wait.for(playerMasterGetRival,row);
+            var playerDiscord = wait.for(playerMasterGetDiscord,row);
+            var playerTwitter = wait.for(playerMasterGetTwitter,row);
+            var playerLIFE4Rank = wait.for(playerMasterGetLIFE4Rank,row);
+            var playerDivision = wait.for(playerMasterGetDivision,row);
+            var playerTeam = wait.for(playerMasterGetTeam,row);
+            var playerIsCaptain = wait.for(playerMasterGetIsCaptain,row);
+            console.log("Inserting record for " + playerName);
+            var playerinsert = wait.for(insertNewPlayerMasterRecord,playerName,playerTag,playerRival,playerDiscord,playerTwitter,playerLIFE4Rank,playerDivision,playerTeam,playerIsCaptain);
+            console.log("Done!");
+
+          });
+        }
+        console.log("Master list completed!");
 
   }
 
