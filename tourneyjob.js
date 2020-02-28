@@ -61,27 +61,17 @@ bot.on('ready', () => {
   });
 
 
-  function checkMasterList(callback){
 
-    setTimeout( function(){
-  
-      var getQuery = "select * from life4tourneyplayerlist";
-      connection.query(getQuery, function (error, results) {
-        if (error) throw error;
-        callback(null,results)
-  
-      });
-      
-  }, 25);
-  
-  };
+//
+//SCORE SUBMISSION STUFF
+//
 
-  function newGetMasterPlayersFromSheets(auth,callback)
+  function getSubmissionsFromSheet(auth,callback)
 {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1qJ1-hor3dHw8w89mBOG6DNHfaAGmrVFnerq8x6xCCfw',
-    range: 'Master Player List!A2:I',
+    range: 'Scores!A2:I',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
@@ -94,6 +84,35 @@ bot.on('ready', () => {
 //
 //MASTER SPREADSHEET STUFF
 //
+
+function checkThatMasterList(callback){
+
+  setTimeout( function(){
+
+    var getQuery = "select * from life4tourneyplayerlist";
+    connection.query(getQuery, function (error, results) {
+      if (error) throw error;
+      callback(null,results)
+
+    });
+    
+}, 25);
+
+};
+
+function newGetMasterPlayersFromSheets(auth,callback)
+{
+  const sheets = google.sheets({version: 'v4', auth});
+  sheets.spreadsheets.values.get({
+    spreadsheetId: '1qJ1-hor3dHw8w89mBOG6DNHfaAGmrVFnerq8x6xCCfw',
+    range: 'Master Player List!A2:I',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const rows = res.data.values;
+    callback(null,rows);
+  });
+}
+
 
 function playerMasterGetName(row, callback){
   setTimeout( function(){
@@ -231,7 +250,7 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
   console.log("Job is starting!");
 
   //check if master list is 0
-  var checkMasterList = wait.for(checkMasterList);
+  var checkMasterList = wait.for(checkThatMasterList);
   //if there's nothing, pull from the master list
   if (!checkMasterList.length)
   {
@@ -261,15 +280,21 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
 
   }
 
-  
-
-
-
+  console.log("Starting score submissions!");
+  var scoreSubmissions = wait.for(getSubmissionsFromSheet, getauth);
+  if (scoreSubmissions.length)
+  {
     //TODO: Create DB Schema - Score Submissions
+    //TODO: Wipe Submissions DB
+    //TODO: Pull submissions into DB - don't copy every row, check for existing player/song and then apply rules to it to get all score mods
+    //TODO: Apply score mods to final list
+    //TODO: Update Master spreadsheet
+    //TODO: Update Team spreadsheet
 
-    //TODO: Read from submissions
-    //TODO: Update Master
-    //TODO: Apply score mods
+
+  }
+
+
 
 
   }
