@@ -71,7 +71,7 @@ bot.on('ready', () => {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1qJ1-hor3dHw8w89mBOG6DNHfaAGmrVFnerq8x6xCCfw',
-    range: 'Scores!A2:I',
+    range: 'Scores!A2:J',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
@@ -79,8 +79,48 @@ bot.on('ready', () => {
   });
 }
 
+function scoreGetVerification(row, callback){
+  setTimeout( function(){
+
+            var returnedVer = `${row[0]}`;
+
+              callback(null,returnedVer);
+        
+
+  }, 25);
+}; 
+
+function scoreGetName(row, callback){
+  setTimeout( function(){
+
+            var returnedName = `${row[1]}`;
+
+            if (returnedName.includes("'"))
+            {
+              //var spot = returnedName.indexOf("'");
+              returnedName = returnedName.replace("'","''");
+              console.log("NEW NAME IS " + returnedName);
+              callback(null,returnedName);
+        
+            }
+            else
+            {
+              callback(null,returnedName);
+        
+            }
+
+  }, 25);
+}; 
 
 
+function scoreSubGetValue(row, col, callback){
+  setTimeout( function(){
+
+            var returnedValue = `${row[col]}`;
+            callback(null,returnedValue);
+
+  }, 25);
+}; 
 //
 //MASTER SPREADSHEET STUFF
 //
@@ -282,20 +322,36 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
 
   console.log("Starting score submissions!");
   var scoreSubmissions = wait.for(getSubmissionsFromSheet, getauth);
-  if (scoreSubmissions.length)
-  {
-    //TODO: Create DB Schema - Score Submissions
-    //TODO: Wipe Submissions DB
-    //TODO: Pull submissions into DB - don't copy every row, check for existing player/song and then apply rules to it to get all score mods
-    //TODO: Apply score mods to final list
-    //TODO: Update Master spreadsheet
-    //TODO: Update Team spreadsheet
+  console.log("Score submissions received!");
+
+    if (scoreSubmissions.length)
+    {
+        playerSpreadsheetList.map((row) => {
+
+          var verification = wait.for(scoreGetVerification,row);
+          
+          if (verification == "X")
+          {
+            var scoreSubName = wait.for(scoreGetName,row);
+            var scoreSubTeam = wait.for(scoreSubGetValue,2,row);
+            var scoreSubDivision = wait.for(scoreSubGetValue,3,row);
+            var scoreSubSong = wait.for(scoreSubGetValue,4,row);
+            var scoreSubEX = wait.for(scoreSubGetValue,5,row);
+            var scoreSubBonusLamp = wait.for(scoreSubGetValue,6,row);
+            var scoreSubBonusGrade = wait.for(scoreSubGetValue,7,row);
+            var scoreSubBonusPB = wait.for(scoreSubGetValue,8,row);
 
 
-  }
+        //TODO: Create new entry if doesn't exist
+        //TODO: Pull submissions into DB - don't copy every row, check for existing player/song and then apply rules to it to get all score mods
+        //TODO: Apply score mods to final list
+        //TODO: Update Master spreadsheet
+        //TODO: Update Team spreadsheet
 
+          }
 
-
+        });
+    }
 
   }
 
