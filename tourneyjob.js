@@ -5,6 +5,7 @@
 
 
 
+                //TODO: Apply score mods to final list
 
 
 
@@ -121,6 +122,23 @@ function scoreSubGetValue(row, col, callback){
 
   }, 25);
 }; 
+
+
+function scoreCheckForExisting(scoreSubPlayer, scoreSubSong, callback){
+  setTimeout( function(){
+
+    var checkforplayerquery = "SELECT tourneyTourneyPlayerScoresID,tourneyTourneyPlayerScoresName,tourneyTourneyPlayerScoresSong FROM life4TourneyPlayerScores where tourneyTourneyPlayerScoresName = '" + scoreSubPlayer + "' and tourneyTourneyPlayerScoresSong = '" + scoreSubSong + "'";
+    connection.query(checkforplayerquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+  }, 25);
+}; 
+
+
+
 //
 //MASTER SPREADSHEET STUFF
 //
@@ -340,13 +358,32 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
             var scoreSubBonusLamp = wait.for(scoreSubGetValue,6,row);
             var scoreSubBonusGrade = wait.for(scoreSubGetValue,7,row);
             var scoreSubBonusPB = wait.for(scoreSubGetValue,8,row);
+            console.log("Player info from spreadsheet retrieved");
+
+            //check for existing
+            var currentPlayerScore = wait.for(scoreCheckForExisting, scoreSubName, scoreSubSong);
+
+            //if exists!
+            if (currentPlayerScore && currentPlayerScore.length)
+            {
+              console.log("Player " + scoreSubName + " // Song " + scoreSubSong + " // EXISTS!");
+
+                //TODO: Update Existing
+
+                //TODO: Pull submissions into DB - don't copy every row, check for existing player/song and then apply rules to it to get all score mods
+                //TODO: Update Master spreadsheet
+                //TODO: Update Team spreadsheet
+            }
+            //if doesn't exist!
+            else
+            {
+              console.log("Player " + scoreSubName + " // Song " + scoreSubSong + " // DOES NOT EXIST!");
+                //TODO: Create new entry if doesn't exist
+
+            }
 
 
-        //TODO: Create new entry if doesn't exist
-        //TODO: Pull submissions into DB - don't copy every row, check for existing player/song and then apply rules to it to get all score mods
-        //TODO: Apply score mods to final list
-        //TODO: Update Master spreadsheet
-        //TODO: Update Team spreadsheet
+
 
           }
 
