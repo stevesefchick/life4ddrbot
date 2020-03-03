@@ -1558,7 +1558,8 @@ else if (rank == "Emerald" && trial == "SPECTACLE (16)")
 }
 
 
-
+//TODO: Upload new trial images
+//TODO: Update Trial images with new trials
 
 
 
@@ -2166,6 +2167,7 @@ console.log("Players complete!");
 //TODO: Add ' name check for TRIALS
 console.log("Trials starting!");
 
+//TODO: Add new trials!
 var listOfTrials = [
   
   "HEARTBREAK (12)",
