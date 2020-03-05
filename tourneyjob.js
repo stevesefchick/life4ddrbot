@@ -137,6 +137,37 @@ function scoreCheckForExisting(scoreSubPlayer, scoreSubSong, callback){
   }, 25);
 }; 
 
+function insertNewScoreSubRecord(playerName, playerTeam, playerDivision, playerSong,playerSongEX,playerBonusLamp,playerBonusGrade,playerBonusPB,callback){
+
+  setTimeout( function(){
+
+    var insertscorequery = "INSERT INTO life4TourneyPlayerScores (tourneyTourneyPlayerScoresName, tourneyTourneyPlayerScoresTeam, tourneyTourneyPlayerScoresDivision, tourneyTourneyPlayerScoresSong, tourneyTourneyPlayerScoresSongEX, tourneyTourneyPlayerScoresSongBonusLamp, tourneyTourneyPlayerScoresSongBonusGrade, tourneyTourneyPlayerScoresSongBonusPersonalBest) VALUES ('" + playerName + "','" + playerTeam + "','" + playerDivision + "','"+playerSong+"','"+playerSongEX+"','"+playerBonusLamp+"', '"+playerBonusGrade+"','"+playerBonusPB+"', now())";
+    connection.query(insertscorequery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function updateNewScoreSubRecord(playerID,playerSongEX,playerBonusLamp,playerBonusGrade,playerBonusPB,callback){
+
+  setTimeout( function(){
+
+    var updatescorequery = "UPDATE life4TourneyPlayerScores set tourneyTourneyPlayerScoresSongEX = "+ playerSongEX +" and tourneyTourneyPlayerScoresSongBonusLamp = " + playerBonusLamp +" and tourneyTourneyPlayerScoresSongBonusGrade = " + playerBonusGrade + " and tourneyTourneyPlayerScoresSongBonusPersonalBest = " + playerBonusPB + " where tourneyTourneyPlayerScoresID = "+playerID;
+    connection.query(updatescorequery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
 
 
 //
@@ -368,22 +399,23 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
             {
               console.log("Player " + scoreSubName + " // Song " + scoreSubSong + " // EXISTS!");
 
-                //TODO: Update Existing
-
+                var playerupdate = wait.for(updateNewScoreSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubEX,scoreSubBonusLamp,scoreSubBonusGrade,scoreSubBonusPB);
                 //TODO: Pull submissions into DB - don't copy every row, check for existing player/song and then apply rules to it to get all score mods
-                //TODO: Update Master spreadsheet
-                //TODO: Update Team spreadsheet
+                console.log("Entry updated!");
+
             }
             //if doesn't exist!
             else
             {
               console.log("Player " + scoreSubName + " // Song " + scoreSubSong + " // DOES NOT EXIST!");
-                //TODO: Create new entry if doesn't exist
+                var playerinsert = wait.for(insertNewScoreSubRecord,scoreSubName,scoreSubTeam,scoreSubDivision,scoreSubSong,scoreSubEX,scoreSubBonusLamp,scoreSubBonusGrade,scoreSubBonusPB);
+                console.log("Entry added!");
 
             }
 
-
-
+                //TODO: Wipe Master/Team spreadsheet
+                //TODO: Update Master spreadsheet
+                //TODO: Update Team spreadsheet
 
           }
 
