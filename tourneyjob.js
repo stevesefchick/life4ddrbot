@@ -127,7 +127,7 @@ function scoreSubGetValue(row, col, callback){
 function scoreCheckForExisting(scoreSubPlayer, scoreSubSong, callback){
   setTimeout( function(){
 
-    var checkforplayerquery = "SELECT tourneyTourneyPlayerScoresID,tourneyTourneyPlayerScoresName,tourneyTourneyPlayerScoresSong FROM life4TourneyPlayerScores where tourneyTourneyPlayerScoresName = '" + scoreSubPlayer + "' and tourneyTourneyPlayerScoresSong = '" + scoreSubSong + "'";
+    var checkforplayerquery = "SELECT tourneyTourneyPlayerScoresID,tourneyTourneyPlayerScoresName,tourneyTourneyPlayerScoresSong,tourneyTourneyPlayerScoresSongEX,tourneyTourneyPlayerScoresSongBonusLamp,tourneyTourneyPlayerScoresSongBonusGrade,tourneyTourneyPlayerScoresSongBonusPersonalBest FROM life4TourneyPlayerScores where tourneyTourneyPlayerScoresName = '" + scoreSubPlayer + "' and tourneyTourneyPlayerScoresSong = '" + scoreSubSong + "'";
     connection.query(checkforplayerquery, function (error, results) {
         if (error) throw error;
         callback(null,results)
@@ -400,7 +400,37 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
               console.log("Player " + scoreSubName + " // Song " + scoreSubSong + " // EXISTS!");
 
                 var playerupdate = wait.for(updateNewScoreSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubEX,scoreSubBonusLamp,scoreSubBonusGrade,scoreSubBonusPB);
-                //TODO: Pull submissions into DB - don't copy every row, check for existing player/song and then apply rules to it to get all score mods
+                //TODO: Check for new EX
+                if (currentPlayerScore.tourneyTourneyPlayerScoresSongEX < scoreSubEX)
+                {
+
+                  console.log("EX Updated!");
+
+                }
+                //TODO: Check for new bonus grade
+                if (currentPlayerScore.tourneyTourneyPlayerScoresSongBonusGrade != scoreSubBonusGrade)
+                {
+
+
+                  
+                  console.log("Bonus grade updated!");
+                }
+                //TODO: Check for new bonus lamp
+                if (currentPlayerScore.tourneyTourneyPlayerScoresSongBonusLamp != scoreSubBonusLamp)
+                {
+
+                  console.log("Bonus lamp updated!");
+                }
+                //TODO: Check for new PB
+                if (currentPlayerScore.tourneyTourneyPlayerScoresSongBonusPersonalBest != scoreSubBonusPB)
+                {
+
+
+                  console.log("Bonus PB updated!");
+                }
+
+
+
                 console.log("Entry updated!");
 
             }
