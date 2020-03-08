@@ -169,6 +169,37 @@ function updateNewScoreSubRecord(playerID,playerSongEX,playerBonusLamp,playerBon
 
 }
 
+function updateScoreSubRecord(playerID,playerSongEX,callback){
+
+  setTimeout( function(){
+
+    var updatescorequery = "UPDATE life4TourneyPlayerScores set tourneyTourneyPlayerScoresSongEX = "+ playerSongEX +" where tourneyTourneyPlayerScoresID = "+playerID;
+    connection.query(updatescorequery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function updatePBSubRecord(playerID,callback){
+
+  setTimeout( function(){
+
+    var updatescorequery = "UPDATE life4TourneyPlayerScores set tourneyTourneyPlayerScoresSongBonusPersonalBest = 'YES' where tourneyTourneyPlayerScoresID = "+playerID;
+    connection.query(updatescorequery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
 
 //
 //MASTER SPREADSHEET STUFF
@@ -399,11 +430,10 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
             {
               console.log("Player " + scoreSubName + " // Song " + scoreSubSong + " // EXISTS!");
 
-                var playerupdate = wait.for(updateNewScoreSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubEX,scoreSubBonusLamp,scoreSubBonusGrade,scoreSubBonusPB);
-                //TODO: Check for new EX
+                //var playerupdate = wait.for(updateNewScoreSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubEX,scoreSubBonusLamp,scoreSubBonusGrade,scoreSubBonusPB);
                 if (currentPlayerScore.tourneyTourneyPlayerScoresSongEX < scoreSubEX)
                 {
-
+                  var playerupdate = wait.for(updateScoreSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubEX);
                   console.log("EX Updated!");
 
                 }
@@ -412,7 +442,7 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
                 {
 
 
-                  
+
                   console.log("Bonus grade updated!");
                 }
                 //TODO: Check for new bonus lamp
@@ -421,11 +451,9 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
 
                   console.log("Bonus lamp updated!");
                 }
-                //TODO: Check for new PB
-                if (currentPlayerScore.tourneyTourneyPlayerScoresSongBonusPersonalBest != scoreSubBonusPB)
+                if (currentPlayerScore.tourneyTourneyPlayerScoresSongBonusPersonalBest == 'NO' && scoreSubBonusPB == 'YES')
                 {
-
-
+                  var playerupdate = wait.for(updatePBSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID);
                   console.log("Bonus PB updated!");
                 }
 
