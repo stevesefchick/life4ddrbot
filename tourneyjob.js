@@ -201,6 +201,174 @@ function updatePBSubRecord(playerID,callback){
 
 }
 
+function updateGradeSubRecord(playerID,newGrade,callback){
+
+  setTimeout( function(){
+
+    var updatebonusquery = "UPDATE life4TourneyPlayerScores set tourneyTourneyPlayerScoresSongBonusGrade = '"+ newGrade + "' where tourneyTourneyPlayerScoresID = "+playerID;
+    connection.query(updatebonusquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function checkForHigherBonusGrade(oldGrade, newGrade,callback){
+
+  setTimeout( function(){
+
+    if (oldGrade =='n/a')
+    {
+      callback(null,true);
+    }
+    else if (oldGrade == 'AA')
+    {
+      if (newGrade == 'AA+')
+      {
+        callback(null,true);    
+
+      }
+      else if (newGrade == 'AAA')
+      {
+        callback(null,true);    
+
+      }
+      else
+      {
+        callback(null,false);    
+      }
+    }
+    else if (oldGrade == 'AA+')
+    {
+      if (newGrade == 'AAA')
+      {
+        callback(null,true);    
+
+      }
+      else
+      {
+        callback(null,false);    
+      }
+    }
+    else
+    {
+      callback(null,false);
+    }
+
+
+}, 250);
+
+}
+
+function updateLampSubRecord(playerID,newLamp,callback){
+
+  setTimeout( function(){
+
+    var updatebonusquery = "UPDATE life4TourneyPlayerScores set tourneyTourneyPlayerScoresSongBonusLamp = '"+ newLamp + "' where tourneyTourneyPlayerScoresID = "+playerID;
+    connection.query(updatebonusquery, function (error, results) {
+        if (error) throw error;
+        callback(null,results)
+
+      });
+
+
+}, 250);
+
+}
+
+function checkForHigherLamp(oldLamp, newLamp,callback){
+
+  setTimeout( function(){
+
+    if (oldLamp =='n/a')
+    {
+      callback(null,true);
+    }
+    else if (oldLamp == 'LIFE4 Clear')
+    {
+      if (newLamp == 'Good Full Combo')
+      {
+        callback(null,true);    
+
+      }
+      else if (newLamp == 'Great Full Combo')
+      {
+        callback(null,true);    
+
+      }
+      else if (newLamp == 'Perfect Full Combo')
+      {
+        callback(null,true);    
+      }
+      else if (newLamp == 'Marvelous Full Combo')
+      {
+        callback(null,true);    
+      }
+      else
+      {
+        callback(null,false);    
+      }
+    }
+    else if (oldLamp == 'Good Full Combo')
+    {
+      if (newLamp == 'Great Full Combo')
+      {
+        callback(null,true);    
+      }
+      else if (newLamp == 'Perfect Full Combo')
+      {
+        callback(null,true);    
+      }
+      else if (newLamp == 'Marvelous Full Combo')
+      {
+        callback(null,true);    
+      }
+      else
+      {
+        callback(null,false)    
+      }
+    }
+    else if (oldLamp == 'Great Full Combo')
+    {
+      if (newLamp == 'Perfect Full Combo')
+      {
+        callback(null,true);    
+      }
+      else if (newLamp == 'Marvelous Full Combo')
+      {
+        callback(null,true);    
+      }
+      else
+      {
+        callback(null,false)    
+      }
+    }
+    else if (oldLamp == 'Perfect Full Combo')
+    {
+      if (newLamp == 'Marvelous Full Combo')
+      {
+        callback(null,true);    
+      }
+      else
+      {
+        callback(null,false)    
+      }
+    }
+    else
+    {
+      callback(null,false)
+    }
+
+
+}, 250);
+
+}
+
+
 //
 //MASTER SPREADSHEET STUFF
 //
@@ -431,26 +599,35 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
               console.log("Player " + scoreSubName + " // Song " + scoreSubSong + " // EXISTS!");
 
                 //var playerupdate = wait.for(updateNewScoreSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubEX,scoreSubBonusLamp,scoreSubBonusGrade,scoreSubBonusPB);
+                //check EX
                 if (currentPlayerScore.tourneyTourneyPlayerScoresSongEX < scoreSubEX)
                 {
                   var playerupdate = wait.for(updateScoreSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubEX);
                   console.log("EX Updated!");
 
                 }
-                //TODO: Check for new bonus grade
+                //check grade bonus
                 if (currentPlayerScore.tourneyTourneyPlayerScoresSongBonusGrade != scoreSubBonusGrade)
                 {
-
-
-
+                  var isHigher = wait.for(checkForHigherBonusGrade,currentPlayerScore.tourneyTourneyPlayerScoresSongBonusGrade,scoreSubBonusGrade);
+                  if (isHigher == true)
+                  {
+                    var gradeupdate = wait.for(updateGradeSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubBonusGrade);
+                  }
                   console.log("Bonus grade updated!");
                 }
-                //TODO: Check for new bonus lamp
+                //check lamp bonus
                 if (currentPlayerScore.tourneyTourneyPlayerScoresSongBonusLamp != scoreSubBonusLamp)
                 {
+                  var isHigher = wait.for(checkForHigherLamp,currentPlayerScore.tourneyTourneyPlayerScoresSongBonusLamp,scoreSubBonusLamp);
+                  if (isHigher == true)
+                  {
+                    var lampupdate = wait.for(updateLampSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID,scoreSubBonusLamp);
+                  }
 
                   console.log("Bonus lamp updated!");
                 }
+                //check pb bonus
                 if (currentPlayerScore.tourneyTourneyPlayerScoresSongBonusPersonalBest == 'NO' && scoreSubBonusPB == 'YES')
                 {
                   var playerupdate = wait.for(updatePBSubRecord,currentPlayerScore.tourneyTourneyPlayerScoresID);
@@ -471,13 +648,15 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
 
             }
 
-                //TODO: Wipe Master/Team spreadsheet
-                //TODO: Update Master spreadsheet
-                //TODO: Update Team spreadsheet
+
 
           }
 
         });
+
+                //TODO: Wipe Master/Team spreadsheet
+                //TODO: Update Master spreadsheet
+                //TODO: Update Team spreadsheet
     }
 
   }
