@@ -654,6 +654,7 @@ function insertNewPlayerMasterRecord(playerName,playerTag,playerRival,playerDisc
 
         });
 
+        //TODO: Figure out division --> score mapping
                 //TODO: Wipe Master/Team spreadsheet
                 //TODO: Update Master spreadsheet
                 //TODO: Update Team spreadsheet

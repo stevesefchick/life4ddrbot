@@ -1152,7 +1152,7 @@ else if (rank == "Amethyst" && trial == "ORIGIN (18)")
 }
 else if (rank == "Emerald" && trial == "ORIGIN (18)")
 {
-  twitterImageURL = './trial_images/ORIGIN/origin_emerald.png';
+  twitterImageURL = './trial_images/ORIGIN/origin_emerald_2.png';
 }
 
 //ASCENSION (17)
