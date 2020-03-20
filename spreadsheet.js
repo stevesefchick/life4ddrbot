@@ -1557,9 +1557,111 @@ else if (rank == "Emerald" && trial == "SPECTACLE (16)")
   twitterImageURL = './trial_images/SPECTACLE/spectacle_emerald.png';
 }
 
+//GOSPEL (13)
+else if (rank == "Silver" && trial == "GOSPEL (13)")
+{
+  twitterImageURL = './trial_images/GOSPEL/gospel_silver.jpg';
+}
+else if (rank == "Gold" && trial == "GOSPEL (13)")
+{
+  twitterImageURL = './trial_images/GOSPEL/gospel_gold.png';
+}
+else if (rank == "Diamond" && trial == "GOSPEL (13)")
+{
+  twitterImageURL = './trial_images/GOSPEL/gospel_diamond.png';
+}
+else if (rank == "Cobalt" && trial == "GOSPEL (13)")
+{
+  twitterImageURL = './trial_images/GOSPEL/gospel_cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "GOSPEL (13)")
+{
+  twitterImageURL = './trial_images/GOSPEL/gospel_amethyst.png';
+}
+else if (rank == "Emerald" && trial == "GOSPEL (13)")
+{
+  twitterImageURL = './trial_images/GOSPEL/gospel_emerald.png';
+}
 
-//TODO: Upload new trial images
-//TODO: Update Trial images with new trials
+//MYTHOS (15)
+else if (rank == "Silver" && trial == "MYTHOS (15)")
+{
+  twitterImageURL = './trial_images/MYTHOS/mythos_silver.jpg';
+}
+else if (rank == "Gold" && trial == "MYTHOS (15)")
+{
+  twitterImageURL = './trial_images/MYTHOS/mythos_gold.png';
+}
+else if (rank == "Diamond" && trial == "MYTHOS (15)")
+{
+  twitterImageURL = './trial_images/MYTHOS/mythos_diamond.png';
+}
+else if (rank == "Cobalt" && trial == "MYTHOS (15)")
+{
+  twitterImageURL = './trial_images/MYTHOS/mythos_cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "MYTHOS (15)")
+{
+  twitterImageURL = './trial_images/MYTHOS/mythos_amethyst.png';
+}
+else if (rank == "Emerald" && trial == "MYTHOS (15)")
+{
+  twitterImageURL = './trial_images/MYTHOS/mythos_emerald.png';
+}
+
+
+//RENDITION (15)
+else if (rank == "Silver" && trial == "RENDITION (15)")
+{
+  twitterImageURL = './trial_images/RENDITION/rendition_silver.jpg';
+}
+else if (rank == "Gold" && trial == "RENDITION (15)")
+{
+  twitterImageURL = './trial_images/RENDITION/rendition_gold.png';
+}
+else if (rank == "Diamond" && trial == "RENDITION (15)")
+{
+  twitterImageURL = './trial_images/RENDITION/rendition_diamond.png';
+}
+else if (rank == "Cobalt" && trial == "RENDITION (15)")
+{
+  twitterImageURL = './trial_images/RENDITION/rendition_cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "RENDITION (15)")
+{
+  twitterImageURL = './trial_images/RENDITION/rendition_amethyst.png';
+}
+else if (rank == "Emerald" && trial == "RENDITION (15)")
+{
+  twitterImageURL = './trial_images/RENDITION/rendition_emerald.png';
+}
+
+
+//SUPERSTAR (14)
+else if (rank == "Silver" && trial == "SUPERSTAR (14)")
+{
+  twitterImageURL = './trial_images/SUPERSTAR/superstar_silver.jpg';
+}
+else if (rank == "Gold" && trial == "SUPERSTAR (14)")
+{
+  twitterImageURL = './trial_images/SUPERSTAR/superstar_gold.png';
+}
+else if (rank == "Diamond" && trial == "SUPERSTAR (14)")
+{
+  twitterImageURL = './trial_images/SUPERSTAR/superstar_diamond.png';
+}
+else if (rank == "Cobalt" && trial == "SUPERSTAR (14)")
+{
+  twitterImageURL = './trial_images/SUPERSTAR/superstar_cobalt.png';
+}
+else if (rank == "Amethyst" && trial == "SUPERSTAR (14)")
+{
+  twitterImageURL = './trial_images/SUPERSTAR/superstar_amethyst.png';
+}
+else if (rank == "Emerald" && trial == "SUPERSTAR (14)")
+{
+  twitterImageURL = './trial_images/SUPERSTAR/superstar_emerald.png';
+}
 
 
 
@@ -2195,7 +2297,11 @@ var listOfTrials = [
   "DEVOTION (12)",
   "BELIEVE (12)",
   "PASSPORT (13)",
-  "SPECTACLE (16)"
+  "SPECTACLE (16)",
+  "GOSPEL (13)",
+  "SUPERSTAR (14)",
+  "MYTHOS (15)",
+  "RENDITION (15)"
 ];
 
 var trialRanges = [
@@ -2225,9 +2331,14 @@ var trialRanges = [
   "DEVOTION (12)!B2:F",
   "BELIEVE (12)!B2:F",
   "PASSPORT (13)!B2:F",
-  "SPECTACLE (16)!B2:F"
+  "SPECTACLE (16)!B2:F",
+  "GOSPEL (13)!B2:F",
+  "SUPERSTAR (14)!B2:F",
+  "MYTHOS (15)!B2:F",
+  "RENDITION (15)!B2:F"
 ];
 
+/*
 var trialSpreadsheetID = [
   
   '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
@@ -2256,15 +2367,19 @@ var trialSpreadsheetID = [
   "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
   "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
   "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4",
+  "1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4"
 ];
-
+*/
 
   for (var i = 0; i < listOfTrials.length;i++)
   {
   console.log("Beginning " + listOfTrials[i]);
 
   //get the list of players
-  var trialPlayerList = wait.for(newGetTrials, getauth, trialRanges[i],trialSpreadsheetID[i]);
+  var trialPlayerList = wait.for(newGetTrials, getauth, trialRanges[i]);
 
 
   console.log(listOfTrials[i] +" LIST RETRIEVED!");
@@ -2522,12 +2637,12 @@ function newGetPlayersFromSheets(auth,callback)
 }
 
 //TODO: update get spreadsheet
-function newGetTrials(auth,trialRange, spreadsheetID,callback)
+function newGetTrials(auth,trialRange,callback)
 {
 
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheetID,
+    spreadsheetId: '1RfhOYUMcFoqfvaNG153YfE-bfeItMP0-ziGco5H-Gz4',
     range: trialRange,
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
