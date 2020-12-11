@@ -1,6 +1,6 @@
 //Life4DDRBot
 //Created by Steve Sefchick
-//2019 - 2020
+//2019 - 2021
 //Tweets to @Life4DDRBot
 //built using NodeJS
 
@@ -177,6 +177,8 @@ var getTwitterImageURL = function(rank)
 
 }
 
+//TODO: Add IV and V ranks
+//TODO: Add Onyx
 var getDiscordIcon = function(rank)
 {
   var discordemoji="";
@@ -293,7 +295,7 @@ var getDiscordIcon = function(rank)
   return discordemoji;
 }
 
-
+//TODO: Add Onyx
 var getTrialDiscordIcon = function(rank)
 {
   var discordemoji="";
@@ -937,6 +939,7 @@ function insertNewPlayerAuditRecord(playerID,playerRank,callback)
 }
 
 
+//TODO: Add Onyx
 var getTwitterTrialImageURL = function(trial,rank)
 {
   var twitterImageURL = "";
