@@ -51,6 +51,8 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/G3.png';
   }
+  //TODO: Add Gold IV
+  //TODO: Add Gold V
   else if (rank == "Silver I" || rank == "Silver I (P)")
   {
     twitterImageURL = './rankup_images/S1.png';
@@ -63,6 +65,8 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/S3.png';
   }
+    //TODO: Add Silver IV
+  //TODO: Add Silver V
   else if (rank == "Bronze I"  || rank ==  "Bronze I (P)")
   {
     twitterImageURL = './rankup_images/B1.png';
@@ -75,6 +79,8 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/B3.png';
   }
+    //TODO: Add Bronze IV
+  //TODO: Add Bronze V
   else if (rank == "Diamond I")
   {
     twitterImageURL = './rankup_images/D1.png';
@@ -87,6 +93,8 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/D3.png';
   }
+    //TODO: Add Diamond IV
+  //TODO: Add Diamond V
   else if (rank == "Cobalt I")
   {
     twitterImageURL = './rankup_images/C1.png';
@@ -99,6 +107,10 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/C3.png';
   }
+    //TODO: Add Cobalt IV
+  //TODO: Add Cobalt V
+
+  //TODO: Update names from Wood to Copper
   else if (rank == "Wood I" || rank ==  "Wood I (P)")
   {
     twitterImageURL = './rankup_images/W1.png';
@@ -111,6 +123,8 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/W3.png';
   }
+    //TODO: Add Copper IV
+  //TODO: Add Copper V
   else if (rank == "Amethyst I")
   {
     twitterImageURL = './rankup_images/A1.png';
@@ -123,6 +137,8 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/A3.png';
   }
+    //TODO: Add Amethyst IV
+  //TODO: Add Amethyst V
   else if (rank == "Emerald I")
   {
     twitterImageURL = './rankup_images/EMERALD1.png';
@@ -135,6 +151,8 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/EMERALD3.png';
   }
+    //TODO: Add Emerald IV
+  //TODO: Add Emerald V
   else if (rank == "Platinum I")
   {
     twitterImageURL = './rankup_images/p1_rankup.png';
@@ -150,7 +168,11 @@ var getTwitterImageURL = function(rank)
     twitterImageURL = './rankup_images/p3_rankup.png';
 
   }
+  //TODO: Add Plat IV
+  //TODO: Add Plat V
 
+
+  //TODO: Add Onyx
   return twitterImageURL;
 
 }
@@ -307,6 +329,10 @@ var getTrialDiscordIcon = function(rank)
   else if (rank == "Emerald")
   {
     discordemoji = "<:e3:592474998564716544>";
+  }
+  else if (rank == "Onyx")
+  {
+    //TODO: add emoji
   }
   //special
   else if (rank == "Wood/Bronze/Silver")
