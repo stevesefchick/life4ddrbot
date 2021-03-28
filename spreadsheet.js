@@ -296,13 +296,11 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Gold IV" || rank ==  "Gold IV (P)")
   {
-    //TODO: Add Gold IV emoji
-    discordemoji = "";
+    discordemoji = "<:g4:825469563965407283>";
   }
   else if (rank == "Gold V" || rank ==  "Gold V (P)")
   {
-    //TODO: Add Gold V emoji
-    discordemoji = "";
+    discordemoji = "<:g5:825469581481082940>";
   }
   else if (rank == "Silver I" || rank == "Silver I (P)")
   {
@@ -318,13 +316,11 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Silver IV"  || rank ==  "Silver IV (P)")
   {
-    //TODO: Add Silver IV emoji
-    discordemoji = "";
+    discordemoji = "<:s4:825469523855540274>";
   }
   else if (rank == "Silver V"  || rank ==  "Silver V (P)")
   {
-    //TODO: Add Silver V emoji
-    discordemoji = "";
+    discordemoji = "<:s5:825469538685419550>";
   }
   else if (rank == "Bronze I"  || rank ==  "Bronze I (P)")
   {
@@ -340,13 +336,11 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Bronze IV"  || rank ==  "Bronze IV (P)")
   {
-    //TODO: Add Bronze IV emoji
-    discordemoji = "";
+    discordemoji = "<:b4:825469480623931482>";
   }
   else if (rank == "Bronze V"  || rank ==  "Bronze V (P)")
   {
-    //TODO: Add Bronze V emoji
-    discordemoji = "";
+    discordemoji = "<:b5:825469496742903828>";
   }
   else if (rank == "Diamond I")
   {
@@ -362,13 +356,11 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Diamond IV")
   {
-    //TODO: Add Diamond IV Emoji
-    discordemoji = "";
+    discordemoji = "<:d4:825469702008340550>";
   }
   else if (rank == "Diamond V")
   {
-    //TODO: Add Diamond V Emoji
-    discordemoji = "";
+    discordemoji = "<:d5:825469716003815465>";
   }
   else if (rank == "Cobalt I")
   {
@@ -384,38 +376,31 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Cobalt IV")
   {
-    //TODO: Add Cobalt IV Emoji
-    discordemoji = "";
+    discordemoji = "<:c4:825469738154852362>";
   }
   else if (rank == "Cobalt V")
   {
-    //TODO: Add Cobalt V Emoji
-    discordemoji = "";
+    discordemoji = "<:c5:825469750825189427>";
   }
   else if (rank == "Copper I" || rank ==  "Copper I (P)")
   {
-    //TODO: Update Copper emoji
-    discordemoji = "<:w1:540808051284901898>";
+    discordemoji = "<:cp1:540808051284901898>";
   }
   else if (rank == "Copper II" || rank ==  "Copper II (P)")
   {
-    //TODO: Update Copper Emoji
-    discordemoji = "<:w2:540808115994492948>";
+    discordemoji = "<:cp2:540808115994492948>";
   }
   else if (rank == "Copper III" || rank ==  "Copper III (P)")
   {
-    //TODO: Update Copper Emoji
-    discordemoji = "<:w3:540808178108203018>";
+    discordemoji = "<:cp3:540808178108203018>";
   }
   else if (rank == "Copper IV" || rank ==  "Copper IV (P)")
   {
-    //TODO: Add Copper IV Emoji
-    discordemoji = "";
+    discordemoji = "<:cp4:825469237954084893>";
   }
   else if (rank == "Copper V" || rank ==  "Copper V (P)")
   {
-    //TODO: Add Copper V Emoji
-    discordemoji = "";
+    discordemoji = "<:cp5:825469270259269672>";
   }
   else if (rank == "Amethyst I")
   {
@@ -431,13 +416,11 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Amethyst IV")
   {
-    //TODO: Add Amethyst IV Emoji
-    discordemoji = "";
+    discordemoji = "<:a4:825469782458499083>";
   }
   else if (rank == "Amethyst V")
   {
-    //TODO: Add Amethyst V Emoji
-    discordemoji = "";
+    discordemoji = "<:a5:825469797906645022>";
   }
   else if (rank == "Emerald I")
   {
@@ -453,13 +436,11 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Emerald IV")
   {
-    //TODO: Add Emerald IV Emoji
-    discordemoji = "";
+    discordemoji = "<:e4:825469824347406348>";
   }
   else if (rank == "Emerald V")
   {
-    //TODO: Add Emerald V Emoji
-    discordemoji = "";
+    discordemoji = "<:e5:825469838125826093>";
   }
   else if (rank == "Platinum I")
   {
@@ -475,38 +456,31 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Platinum IV")
   {
-    //TODO: Add Plat IV Emoji
-    discordemoji = "";
+    discordemoji = "<:p4:825469652532592681>";
   }
   else if (rank == "Platinum V")
   {
-    //TODO: Add Plat V Emoji
-    discordemoji = "";
+    discordemoji = "<:p5:825469675420385371>";
   }
   else if (rank == "Onyx I")
   {
-    //TODO: Add Onyx I Emoji
-    discordemoji = "";
+    discordemoji = "<:on1:825471342387134474>";
   }
   else if (rank == "Onyx II")
   {
-    //TODO: Add Onyx II Emoji
-    discordemoji = "";
+    discordemoji = "<:on2:825471359408275516>";
   }
   else if (rank == "Onyx III")
   {
-    //TODO: Add Onyx III Emoji
-    discordemoji = "";
+    discordemoji = "<:on3:825471377259626566>";
   }
   else if (rank == "Onyx IV")
   {
-    //TODO: Add Onyx IV Emoji
-    discordemoji = "";
+    discordemoji = "<:on4:825471394988294156>";
   }
   else if (rank == "Onyx V")
   {
-    //TODO: Add Onyx V Emoji
-    discordemoji = "";
+    discordemoji = "<:on5:825471412578811955>";
   }
 
 
@@ -551,14 +525,13 @@ var getTrialDiscordIcon = function(rank)
   }
   else if (rank == "Onyx")
   {
-    //TODO: add onyx emoji
+    discordemoji = "<:on3:825471377259626566>";
   }
 
   //special
-  //TODO: Update Wood to Copper down the road
   else if (rank == "Wood/Bronze/Silver")
   {
-    discordemoji ="<:w3:540808178108203018> <:b3:530665367417389097> <:s3:530666660051419136>";
+    discordemoji ="<:cp3:540808178108203018> <:b3:530665367417389097> <:s3:530666660051419136>";
   }
   else if (rank == "Amethyst and Above")
   {
