@@ -493,39 +493,39 @@ var getTrialDiscordIcon = function(rank)
 
   if (rank == "Gold")
   {
-    discordemoji = "<:g3:530667268099670016>";
+    discordemoji = "<:g5:825469581481082940>";
   }
   else if (rank == "Silver")
   {
-    discordemoji = "<:s3:530666660051419136>";
+    discordemoji = "<:s5:825469538685419550>";
   }
   else if (rank == "Bronze")
   {
-    discordemoji = "<:b3:530665367417389097>";
+    discordemoji = "<:b5:825469496742903828>";
   }
   else if (rank == "Diamond")
   {
-    discordemoji = "<:d3:530667792303783937>";
+    discordemoji = "<:d5:825469716003815465>";
   }
   else if (rank == "Platinum")
   {
-    discordemoji = "<:p3:638533071301378068>";
+    discordemoji = "<:p5:825469675420385371>";
   }
   else if (rank == "Cobalt")
   {
-    discordemoji = "<:c3:530667834418921482>";
+    discordemoji = "<:c5:825469750825189427>";
   }
   else if (rank == "Amethyst")
   {
-    discordemoji = "<:a3:540807991373594633>";
+    discordemoji = "<:a5:825469797906645022>";
   }
   else if (rank == "Emerald")
   {
-    discordemoji = "<:e3:592474998564716544>";
+    discordemoji = "<:e5:825469838125826093>";
   }
   else if (rank == "Onyx")
   {
-    discordemoji = "<:on3:825471377259626566>";
+    discordemoji = "<:on5:825471412578811955>";
   }
 
   //special
