@@ -45,232 +45,203 @@ var getTwitterImageURL = function(rank)
 
   if (rank == "Gold I" || rank ==  "Gold I (P)")
   {
-    twitterImageURL = './rankup_images/G1.png';
+    twitterImageURL = './rankup_images/Gold I.webp';
   }
   else if (rank == "Gold II" || rank ==  "Gold II (P)")
   {
-    twitterImageURL = './rankup_images/G2.png';
+    twitterImageURL = './rankup_images/Gold II.webp';
   }
   else if (rank == "Gold III" || rank ==  "Gold III (P)")
   {
-    twitterImageURL = './rankup_images/G3.png';
+    twitterImageURL = './rankup_images/Gold III.webp';
   }
   else if (rank == "Gold IV" || rank ==  "Gold IV (P)")
   {
-    //TODO: Add Gold IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Gold IV.webp';
   }
   else if (rank == "Gold V" || rank ==  "Gold V (P)")
   {
-    //TODO: Add Gold V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Gold V.webp';
   }
   else if (rank == "Silver I" || rank == "Silver I (P)")
   {
-    twitterImageURL = './rankup_images/S1.png';
+    twitterImageURL = './rankup_images/Silver I.webp';
   }
   else if (rank == "Silver II"  || rank ==  "Silver II (P)")
   {
-    twitterImageURL = './rankup_images/S2.png';
+    twitterImageURL = './rankup_images/Silver II.webp';
   }
   else if (rank == "Silver III"  || rank ==  "Silver III (P)")
   {
-    twitterImageURL = './rankup_images/S3.png';
+    twitterImageURL = './rankup_images/Silver III.webp';
   }
   else if (rank == "Silver IV"  || rank ==  "Silver IV (P)")
   {
-    //TODO: Add Silver IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Silver IV.webp';
   }
   else if (rank == "Silver V"  || rank ==  "Silver V (P)")
   {
-    //TODO: Add Silver V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Silver V.webp';
   }
   else if (rank == "Bronze I"  || rank ==  "Bronze I (P)")
   {
-    twitterImageURL = './rankup_images/B1.png';
+    twitterImageURL = './rankup_images/Bronze I.webp';
   }
   else if (rank == "Bronze II"  || rank ==  "Bronze II (P)")
   {
-    twitterImageURL = './rankup_images/B2.png';
+    twitterImageURL = './rankup_images/Bronze II.webp';
   }
   else if (rank == "Bronze III"  || rank ==  "Bronze III (P)")
   {
-    twitterImageURL = './rankup_images/B3.png';
+    twitterImageURL = './rankup_images/Bronze III.webp';
   }
   else if (rank == "Bronze IV"  || rank ==  "Bronze IV (P)")
   {
-    //TODO: Add Bronze IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Bronze IV.webp';
   }
   else if (rank == "Bronze V"  || rank ==  "Bronze V (P)")
   {
-    //TODO: Add Bronze V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Bronze V.webp';
   }
   else if (rank == "Diamond I")
   {
-    twitterImageURL = './rankup_images/D1.png';
+    twitterImageURL = './rankup_images/Diamond I.webp';
   }
   else if (rank == "Diamond II")
   {
-    twitterImageURL = './rankup_images/D2.png';
+    twitterImageURL = './rankup_images/Diamond II.webp';
   }
   else if (rank == "Diamond III")
   {
-    twitterImageURL = './rankup_images/D3.png';
+    twitterImageURL = './rankup_images/Diamond III.webp';
   }
   else if (rank == "Diamond IV")
   {
-    //TODO: Add Diamond IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Diamond IV.webp';
   }
   else if (rank == "Diamond V")
   {
-    //TODO: Add Diamond V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Diamond V.webp';
   }
   else if (rank == "Cobalt I")
   {
-    twitterImageURL = './rankup_images/C1.png';
+    twitterImageURL = './rankup_images/Cobalt I.webp';
   }
   else if (rank == "Cobalt II")
   {
-    twitterImageURL = './rankup_images/C2.png';
+    twitterImageURL = './rankup_images/Cobalt II.webp';
   }
   else if (rank == "Cobalt III")
   {
-    twitterImageURL = './rankup_images/C3.png';
+    twitterImageURL = './rankup_images/Cobalt III.webp';
   }
   else if (rank == "Cobalt IV")
   {
-    //TODO: Add Cobalt IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Cobalt IV.webp';
   }
   else if (rank == "Cobalt V")
   {
-    //TODO: Add Cobalt V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Cobalt V.webp';
   }
   else if (rank == "Copper I" || rank ==  "Copper I (P)")
   {
-    //TODO: Add updated Copper image
-    twitterImageURL = './rankup_images/W1.png';
+    twitterImageURL = './rankup_images/Copper I.webp';
   }
   else if (rank == "Copper II" || rank ==  "Copper II (P)")
   {
-    //TODO: Add updated Copper image
-    twitterImageURL = './rankup_images/W2.png';
+    twitterImageURL = './rankup_images/Copper II.webp';
   }
   else if (rank == "Copper III" || rank ==  "Copper III (P)")
   {
-    //TODO: Add updated Copper image
-    twitterImageURL = './rankup_images/W3.png';
+    twitterImageURL = './rankup_images/Copper III.webp';
   }
   else if (rank == "Copper IV" || rank ==  "Copper IV (P)")
   {
-    //TODO: Add new Copper IV image
-    twitterImageURL = './rankup_images/W3.png';
+    twitterImageURL = './rankup_images/Copper IV.webp';
   }
   else if (rank == "Copper V" || rank ==  "Copper V (P)")
   {
-    //TODO: Add new Copper V image
-    twitterImageURL = './rankup_images/W3.png';
+    twitterImageURL = './rankup_images/Copper V.webp';
   }
   else if (rank == "Amethyst I")
   {
-    twitterImageURL = './rankup_images/A1.png';
+    twitterImageURL = './rankup_images/Amethyst I.webp';
   }
   else if (rank == "Amethyst II")
   {
-    twitterImageURL = './rankup_images/A2.png';
+    twitterImageURL = './rankup_images/Amethyst II.webp';
   }
   else if (rank == "Amethyst III")
   {
-    twitterImageURL = './rankup_images/A3.png';
+    twitterImageURL = './rankup_images/Amethyst III.webp';
   }
   else if (rank == "Amethyst IV")
   {
-    //TODO: Add new amethyst IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Amethyst IV.webp';
   }
   else if (rank == "Amethyst V")
   {
-    //TODO: Add new amethyst V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Amethyst V.webp';
   }
   else if (rank == "Emerald I")
   {
-    twitterImageURL = './rankup_images/EMERALD1.png';
+    twitterImageURL = './rankup_images/Emerald I.webp';
   }
   else if (rank == "Emerald II")
   {
-    twitterImageURL = './rankup_images/EMERALD2.png';
+    twitterImageURL = './rankup_images/Emerald II.webp';
   }
   else if (rank == "Emerald III")
   {
-    twitterImageURL = './rankup_images/EMERALD3.png';
+    twitterImageURL = './rankup_images/Emerald III.webp';
   }
   else if (rank == "Emerald IV")
   {
-    //TODO: Add new Emerald IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Emerald IV.webp';
   }
   else if (rank == "Emerald V")
   {
-    //TODO: Add new Emerald V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Emerald V.webp';
   }
   else if (rank == "Platinum I")
   {
-    twitterImageURL = './rankup_images/p1_rankup.png';
-
+    twitterImageURL = './rankup_images/Platinum I.webp';
   }
   else if (rank == "Platinum II")
   {
-    twitterImageURL = './rankup_images/p2_rankup.png';
-
+    twitterImageURL = './rankup_images/Platinum II.webp';
   }
   else if (rank == "Platinum III")
   {
-    twitterImageURL = './rankup_images/p3_rankup.png';
+    twitterImageURL = './rankup_images/Platinum III.webp';
   }
   else if (rank == "Platinum IV")
   {
-    //TODO: Add new Plat IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Platinum IV.webp';
   }
   else if (rank == "Platinum V")
   {
-    //TODO: Add new Plat V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Platinum V.webp';
   }
-
   else if (rank == "Onyx I")
   {
-    //TODO: Add new Onyx I image
-    twitterImageURL = './rankup_images/p1_rankup.png';
+    twitterImageURL = './rankup_images/Onyx I.webp';
   }
   else if (rank == "Onyx II")
   {
-    //TODO: Add new Onyx II image
-    twitterImageURL = './rankup_images/p2_rankup.png';
+    twitterImageURL = './rankup_images/Onyx II.webp';
   }
   else if (rank == "Onyx III")
   {
-    //TODO: Add new Onyx III image
-    twitterImageURL = './rankup_images/p3_rankup.png';
+    twitterImageURL = './rankup_images/Onyx III.webp';
   }
   else if (rank == "Onyx IV")
   {
-    //TODO: Add new Onyx IV image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Onyx IV.webp';
   }
   else if (rank == "Onyx V")
   {
-    //TODO: Add new Onyx V image
-    twitterImageURL = '';
+    twitterImageURL = './rankup_images/Onyx V.webp';
   }
   
   return twitterImageURL;
@@ -1136,6 +1107,7 @@ var getTwitterTrialImageURL = function(trial,rank)
 {
   var twitterImageURL = "";
 
+  //TODO: Add updated images
   //HEARTBREAK(12)
   if (rank == "Silver" && trial == "HEARTBREAK (12)")
   {
@@ -1162,6 +1134,7 @@ var getTwitterTrialImageURL = function(trial,rank)
     twitterImageURL = './trial_images/HEARTBREAK/heartbreak_emerald.png';
   }
 
+  //TODO: Add updated images
 //CELESTIAL(13)
 else if (rank == "Silver" && trial == "CELESTIAL (13)")
 {
@@ -1187,6 +1160,8 @@ else if (rank == "Emerald" && trial == "CELESTIAL (13)")
 {
   twitterImageURL = './trial_images/CELESTIAL/CELESTIAL_EMERALD.png';
 }
+
+  //TODO: Add updated images
 
 //DAYBREAK(14)
 else if (rank == "Silver" && trial == "DAYBREAK (14)")
@@ -1214,6 +1189,8 @@ else if (rank == "Emerald" && trial == "DAYBREAK (14)")
   twitterImageURL = './trial_images/DAYBREAK/daybreak_emerald_2.png';
 }
 
+  //TODO: Add updated images
+
 //HELLSCAPE(15)
 else if (rank == "Silver" && trial == "HELLSCAPE (15)")
 {
@@ -1239,6 +1216,8 @@ else if (rank == "Emerald" && trial == "HELLSCAPE (15)")
 {
   twitterImageURL = './trial_images/HELLSCAPE/hellscape_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //CLOCKWORK(15)
 else if (rank == "Silver" && trial == "CLOCKWORK (15)")
@@ -1266,6 +1245,8 @@ else if (rank == "Emerald" && trial == "CLOCKWORK (15)")
   twitterImageURL = './trial_images/CLOCKWORK/clockwork_emerald.png';
 }
 
+  //TODO: Add updated images
+
 //PHARAOH(15)
 else if (rank == "Silver" && trial == "PHARAOH (15)")
 {
@@ -1292,6 +1273,8 @@ else if (rank == "Emerald" && trial == "PHARAOH (15)")
   twitterImageURL = './trial_images/PHARAOH/PHARAOH_EMERALD.png';
 }
 
+  //TODO: Add updated images
+
 //PARADOX(16)
 else if (rank == "Gold" && trial == "PARADOX (16)")
 {
@@ -1313,6 +1296,8 @@ else if (rank == "Emerald" && trial == "PARADOX (16)")
 {
   twitterImageURL = './trial_images/PARADOX/paradox_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //INHUMAN(16)
 else if (rank == "Gold" && trial == "INHUMAN (16)")
@@ -1336,6 +1321,8 @@ else if (rank == "Emerald" && trial == "INHUMAN (16)")
   twitterImageURL = './trial_images/INHUMAN/inhuman_emerald.png';
 }
 
+  //TODO: Add updated images
+
 //CHEMICAL(17)
 else if (rank == "Gold" && trial == "CHEMICAL (17)")
 {
@@ -1358,6 +1345,8 @@ else if (rank == "Emerald" && trial == "CHEMICAL (17)")
   twitterImageURL = './trial_images/CHEMICAL/chemical_emerald_.png';
 }
 
+  //TODO: Add updated images
+
 //ORIGIN(18)
 else if (rank == "Diamond" && trial == "ORIGIN (18)")
 {
@@ -1375,6 +1364,8 @@ else if (rank == "Emerald" && trial == "ORIGIN (18)")
 {
   twitterImageURL = './trial_images/ORIGIN/origin_emerald_2.png';
 }
+
+  //TODO: Add updated images
 
 //ASCENSION (17)
 else if (rank == "Gold" && trial == "ASCENSION (17)")
@@ -1397,6 +1388,8 @@ else if (rank == "Emerald" && trial == "ASCENSION (17)")
 {
   twitterImageURL = './trial_images/ASCENSION/ascension_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //COUNTDOWN (14)
 else if (rank == "Silver" && trial == "COUNTDOWN (14)")
@@ -1424,6 +1417,8 @@ else if (rank == "Emerald" && trial == "COUNTDOWN (14)")
   twitterImageURL = './trial_images/COUNTDOWN/countdown_emerald_1.png';
 }
 
+  //TODO: Add updated images
+
 //HEATWAVE (15)
 else if (rank == "Silver" && trial == "HEATWAVE (15)")
 {
@@ -1450,6 +1445,8 @@ else if (rank == "Emerald" && trial == "HEATWAVE (15)")
   twitterImageURL = './trial_images/HEATWAVE/heatwave_emerald.png';
 }
 
+//TODO: Add updated images
+
 //MAINFRAME (13)
 else if (rank == "Silver" && trial == "MAINFRAME (13)")
 {
@@ -1475,6 +1472,7 @@ else if (rank == "Emerald" && trial == "MAINFRAME (13)")
 {
   twitterImageURL = './trial_images/MAINFRAME/mainframe_emerald.png';
 }
+ //TODO: Add updated images
 
 //SNOWDRIFT (16)
 else if (rank == "Gold" && trial == "SNOWDRIFT (16)")
@@ -1497,6 +1495,8 @@ else if (rank == "Emerald" && trial == "SNOWDRIFT (16)")
 {
   twitterImageURL = './trial_images/SNOWDRIFT/snowdrift_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //Primal (13)
 else if (rank == "Silver" && trial == "PRIMAL (13)")
@@ -1524,6 +1524,8 @@ else if (rank == "Emerald" && trial == "PRIMAL (13)")
   twitterImageURL = './trial_images/PRIMAL/primal_emerald.png';
 }
 
+  //TODO: Add updated images
+
 //Wanderlust (15)
 else if (rank == "Silver" && trial == "WANDERLUST (15)")
 {
@@ -1549,6 +1551,8 @@ else if (rank == "Emerald" && trial == "WANDERLUST (15)")
 {
   twitterImageURL = './trial_images/WANDERLUST/wanderlust_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //CIRCADIA (16)
 else if (rank == "Silver" && trial == "CIRCADIA (16)")
@@ -1576,6 +1580,8 @@ else if (rank == "Emerald" && trial == "CIRCADIA (16)")
   twitterImageURL = './trial_images/CIRCADIA/circadia_emerald.png';
 }
 
+  //TODO: Add updated images
+
 //QUANTUM (18)
 else if (rank == "Gold" && trial == "QUANTUM (18)")
 {
@@ -1597,6 +1603,8 @@ else if (rank == "Emerald" && trial == "QUANTUM (18)")
 {
   twitterImageURL = './trial_images/QUANTUM/quantum_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //SPECIES (13)
 else if (rank == "Silver" && trial == "SPECIES (13)")
@@ -1624,6 +1632,8 @@ else if (rank == "Emerald" && trial == "SPECIES (13)")
   twitterImageURL = './trial_images/SPECIES/species_emerald.png';
 }
 
+  //TODO: Add updated images
+
 //TEMPEST (15)
 else if (rank == "Silver" && trial == "TEMPEST (15)")
 {
@@ -1649,6 +1659,8 @@ else if (rank == "Emerald" && trial == "TEMPEST (15)")
 {
   twitterImageURL = './trial_images/TEMPEST/tempest_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //UPHEAVAL (14)
 else if (rank == "Silver" && trial == "UPHEAVAL (14)")
@@ -1676,6 +1688,7 @@ else if (rank == "Emerald" && trial == "UPHEAVAL (14)")
   twitterImageURL = './trial_images/UPHEAVAL/upheaval_emerald.png';
 }
 
+  //TODO: Add updated images
 
 //DEVOTION (12)
 else if (rank == "Silver" && trial == "DEVOTION (12)")
@@ -1703,6 +1716,8 @@ else if (rank == "Emerald" && trial == "DEVOTION (12)")
   twitterImageURL = './trial_images/DEVOTION/devotion_emerald.png';
 }
 
+  //TODO: Add updated images
+
 //BELIEVE (12)
 else if (rank == "Silver" && trial == "BELIEVE (12)")
 {
@@ -1728,6 +1743,8 @@ else if (rank == "Emerald" && trial == "BELIEVE (12)")
 {
   twitterImageURL = './trial_images/BELIEVE/believe_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //PASSPORT (13)
 else if (rank == "Silver" && trial == "PASSPORT (13)")
@@ -1755,6 +1772,7 @@ else if (rank == "Emerald" && trial == "PASSPORT (13)")
   twitterImageURL = './trial_images/PASSPORT/passport_emerald.png';
 }
 
+  //TODO: Add updated images
 
 //SPECTACLE (16)
 else if (rank == "Gold" && trial == "SPECTACLE (16)")
@@ -1777,6 +1795,8 @@ else if (rank == "Emerald" && trial == "SPECTACLE (16)")
 {
   twitterImageURL = './trial_images/SPECTACLE/spectacle_emerald.png';
 }
+
+  //TODO: Add updated images
 
 //GOSPEL (13)
 else if (rank == "Silver" && trial == "GOSPEL (13)")
@@ -1804,6 +1824,8 @@ else if (rank == "Emerald" && trial == "GOSPEL (13)")
   twitterImageURL = './trial_images/GOSPEL/gospel_emerald.png';
 }
 
+  //TODO: Add updated images
+
 //MYTHOS (15)
 else if (rank == "Silver" && trial == "MYTHOS (15)")
 {
@@ -1830,6 +1852,7 @@ else if (rank == "Emerald" && trial == "MYTHOS (15)")
   twitterImageURL = './trial_images/MYTHOS/mythos_emerald.png';
 }
 
+  //TODO: Add updated images
 
 //RENDITION (15)
 else if (rank == "Silver" && trial == "RENDITION (15)")
@@ -1857,6 +1880,7 @@ else if (rank == "Emerald" && trial == "RENDITION (15)")
   twitterImageURL = './trial_images/RENDITION/rendition_emerald.png';
 }
 
+  //TODO: Add updated images
 
 //SUPERSTAR (14)
 else if (rank == "Silver" && trial == "SUPERSTAR (14)")
