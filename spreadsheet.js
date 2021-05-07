@@ -1277,57 +1277,70 @@ else if (rank == "Onyx" && trial == "CLOCKWORK (15)")
   twitterImageURL = './trial_images/CLOCKWORK/Clockwork Onyx.webp';
 }
 
-  //TODO: Add updated images
-
 //PHARAOH(15)
 else if (rank == "Silver" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/pharaoh_silver.png';
+  twitterImageURL = './trial_images/PHARAOH/Pharaoh Silver.webp';
 }
 else if (rank == "Gold" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/pharaoh_gold.png';
+  twitterImageURL = './trial_images/PHARAOH/Pharaoh Gold.webp';
 }
 else if (rank == "Diamond" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/pharaoh_diamond.png';
+  twitterImageURL = './trial_images/PHARAOH/Pharaoh Diamond.webp';
 }
 else if (rank == "Cobalt" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/pharaoh_cobalt.png';
+  twitterImageURL = './trial_images/PHARAOH/Pharaoh Cobalt.webp';
 }
 else if (rank == "Amethyst" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/pharaoh_amethyst.png';
+  twitterImageURL = './trial_images/PHARAOH/Pharaoh Amethyst.webp';
 }
 else if (rank == "Emerald" && trial == "PHARAOH (15)")
 {
-  twitterImageURL = './trial_images/PHARAOH/PHARAOH_EMERALD.png';
+  twitterImageURL = './trial_images/PHARAOH/Pharaoh Emerald.webp';
 }
-
-  //TODO: Add updated images
+else if (rank == "Platinum" && trial == "PHARAOH (15)")
+{
+  twitterImageURL = './trial_images/PHARAOH/Pharaoh Platinum.webp';
+}
+else if (rank == "Onyx" && trial == "PHARAOH (15)")
+{
+  twitterImageURL = './trial_images/PHARAOH/Pharaoh Onyx.webp';
+}
 
 //PARADOX(16)
 else if (rank == "Gold" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/paradox_gold.png';
+  twitterImageURL = './trial_images/PARADOX/Paradox Gold.webp';
 }
 else if (rank == "Diamond" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/paradox_diamond.png';
+  twitterImageURL = './trial_images/PARADOX/Paradox Diamond.webp';
 }
 else if (rank == "Cobalt" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/paradox_cobalt.png';
+  twitterImageURL = './trial_images/PARADOX/Paradox Cobalt.webp';
 }
 else if (rank == "Amethyst" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/paradox_amethyst.png';
+  twitterImageURL = './trial_images/PARADOX/Paradox Amethyst.webp';
 }
 else if (rank == "Emerald" && trial == "PARADOX (16)")
 {
-  twitterImageURL = './trial_images/PARADOX/paradox_emerald.png';
+  twitterImageURL = './trial_images/PARADOX/Paradox Emerald.webp';
 }
+else if (rank == "Platinum" && trial == "PARADOX (16)")
+{
+  twitterImageURL = './trial_images/PARADOX/Paradox Platinum.webp';
+}
+else if (rank == "Onyx" && trial == "PARADOX (16)")
+{
+  twitterImageURL = './trial_images/PARADOX/Paradox Onyx.webp';
+}
+
 
   //TODO: Add updated images
 
