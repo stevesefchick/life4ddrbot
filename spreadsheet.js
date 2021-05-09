@@ -1743,118 +1743,142 @@ else if (rank == "Onyx" && trial == "SPECIES (13)")
   twitterImageURL = './trial_images/SPECIES/Species Onyx.webp';
 }
 
-
-  //TODO: Add updated images
-
 //TEMPEST (15)
 else if (rank == "Silver" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest_silver.png';
+  twitterImageURL = './trial_images/TEMPEST/Tempest Silver.webp';
 }
 else if (rank == "Gold" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest_gold.png';
+  twitterImageURL = './trial_images/TEMPEST/Tempest Gold.webp';
 }
 else if (rank == "Diamond" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest_diamond.png';
+  twitterImageURL = './trial_images/TEMPEST/Tempest Diamond.webp';
 }
 else if (rank == "Cobalt" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest_cobalt.png';
+  twitterImageURL = './trial_images/TEMPEST/Tempest Cobalt.webp';
 }
 else if (rank == "Amethyst" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest_amethyst.png';
+  twitterImageURL = './trial_images/TEMPEST/Tempest Amethyst.webp';
 }
 else if (rank == "Emerald" && trial == "TEMPEST (15)")
 {
-  twitterImageURL = './trial_images/TEMPEST/tempest_emerald.png';
+  twitterImageURL = './trial_images/TEMPEST/Tempest Emerald.webp';
 }
-
-  //TODO: Add updated images
+else if (rank == "Platinum" && trial == "TEMPEST (15)")
+{
+  twitterImageURL = './trial_images/TEMPEST/Tempest Platinum.webp';
+}
+else if (rank == "Onyx" && trial == "TEMPEST (15)")
+{
+  twitterImageURL = './trial_images/TEMPEST/Tempest Onyx.webp';
+}
 
 //UPHEAVAL (14)
 else if (rank == "Silver" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval_silver.png';
+  twitterImageURL = './trial_images/UPHEAVAL/Upheaval Silver.webp';
 }
 else if (rank == "Gold" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval_gold.png';
+  twitterImageURL = './trial_images/UPHEAVAL/Upheaval Gold.webp';
 }
 else if (rank == "Diamond" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval_diamond.png';
+  twitterImageURL = './trial_images/UPHEAVAL/Upheaval Diamond.webp';
 }
 else if (rank == "Cobalt" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval_cobalt.png';
+  twitterImageURL = './trial_images/UPHEAVAL/Upheaval Cobalt.webp';
 }
 else if (rank == "Amethyst" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval_amethyst.png';
+  twitterImageURL = './trial_images/UPHEAVAL/Upheaval Amethyst.webp';
 }
 else if (rank == "Emerald" && trial == "UPHEAVAL (14)")
 {
-  twitterImageURL = './trial_images/UPHEAVAL/upheaval_emerald.png';
+  twitterImageURL = './trial_images/UPHEAVAL/Upheaval Emerald.webp';
 }
-
-  //TODO: Add updated images
+else if (rank == "Platinum" && trial == "UPHEAVAL (14)")
+{
+  twitterImageURL = './trial_images/UPHEAVAL/Upheaval Platinum.webp';
+}
+else if (rank == "Onyx" && trial == "UPHEAVAL (14)")
+{
+  twitterImageURL = './trial_images/UPHEAVAL/Upheaval Onyx.webp';
+}
 
 //DEVOTION (12)
 else if (rank == "Silver" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/devotion_silver.png';
+  twitterImageURL = './trial_images/DEVOTION/Devotion Silver.webp';
 }
 else if (rank == "Gold" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/devotion_gold.png';
+  twitterImageURL = './trial_images/DEVOTION/Devotion Gold.webp';
 }
 else if (rank == "Diamond" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/devotion_diamond.png';
+  twitterImageURL = './trial_images/DEVOTION/Devotion Diamond.webp';
 }
 else if (rank == "Cobalt" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/devotion_cobalt.png';
+  twitterImageURL = './trial_images/DEVOTION/Devotion Cobalt.webp';
 }
 else if (rank == "Amethyst" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/devotion_amethyst.png';
+  twitterImageURL = './trial_images/DEVOTION/Devotion Amethyst.webp';
 }
 else if (rank == "Emerald" && trial == "DEVOTION (12)")
 {
-  twitterImageURL = './trial_images/DEVOTION/devotion_emerald.png';
+  twitterImageURL = './trial_images/DEVOTION/Devotion Emerald.webp';
 }
-
-  //TODO: Add updated images
+else if (rank == "Platinum" && trial == "DEVOTION (12)")
+{
+  twitterImageURL = './trial_images/DEVOTION/Devotion Platinum.webp';
+}
+else if (rank == "Onyx" && trial == "DEVOTION (12)")
+{
+  twitterImageURL = './trial_images/DEVOTION/Devotion Onyx.webp';
+}
 
 //BELIEVE (12)
 else if (rank == "Silver" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/believe_silver.png';
+  twitterImageURL = './trial_images/BELIEVE/Believe Silver.webp';
 }
 else if (rank == "Gold" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/believe_gold.png';
+  twitterImageURL = './trial_images/BELIEVE/Believe Gold.webp';
 }
 else if (rank == "Diamond" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/believe_diamond.png';
+  twitterImageURL = './trial_images/BELIEVE/Believe Diamond.webp';
 }
 else if (rank == "Cobalt" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/believe_cobalt.png';
+  twitterImageURL = './trial_images/BELIEVE/Believe Cobalt.webp';
 }
 else if (rank == "Amethyst" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/believe_amethyst.png';
+  twitterImageURL = './trial_images/BELIEVE/Believe Amethyst.webp';
 }
 else if (rank == "Emerald" && trial == "BELIEVE (12)")
 {
-  twitterImageURL = './trial_images/BELIEVE/believe_emerald.png';
+  twitterImageURL = './trial_images/BELIEVE/Believe Emerald.webp';
 }
+else if (rank == "Platinum" && trial == "BELIEVE (12)")
+{
+  twitterImageURL = './trial_images/BELIEVE/Believe Platinum.webp';
+}
+else if (rank == "Onyx" && trial == "BELIEVE (12)")
+{
+  twitterImageURL = './trial_images/BELIEVE/Believe Onyx.webp';
+}
+
 
   //TODO: Add updated images
 
