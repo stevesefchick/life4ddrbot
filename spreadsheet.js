@@ -1103,7 +1103,6 @@ function insertNewPlayerAuditRecord(playerID,playerRank,callback)
 }
 
 
-//TODO: Add Onyx
 var getTwitterTrialImageURL = function(trial,rank)
 {
   var twitterImageURL = "";
@@ -2011,64 +2010,73 @@ else if (rank == "Onyx" && trial == "MYTHOS (15)")
   twitterImageURL = './trial_images/MYTHOS/Mythos Onyx.webp';
 }
 
-
-  //TODO: Add updated images
-
 //RENDITION (15)
 else if (rank == "Silver" && trial == "RENDITION (15)")
 {
-  twitterImageURL = './trial_images/RENDITION/rendition_silver.jpg';
+  twitterImageURL = './trial_images/RENDITION/Rendition Silver.webp';
 }
 else if (rank == "Gold" && trial == "RENDITION (15)")
 {
-  twitterImageURL = './trial_images/RENDITION/rendition_gold.png';
+  twitterImageURL = './trial_images/RENDITION/Rendition Gold.webp';
 }
 else if (rank == "Diamond" && trial == "RENDITION (15)")
 {
-  twitterImageURL = './trial_images/RENDITION/rendition_diamond.png';
+  twitterImageURL = './trial_images/RENDITION/Rendition Diamond.webp';
 }
 else if (rank == "Cobalt" && trial == "RENDITION (15)")
 {
-  twitterImageURL = './trial_images/RENDITION/rendition_cobalt.png';
+  twitterImageURL = './trial_images/RENDITION/Rendition Cobalt.webp';
 }
 else if (rank == "Amethyst" && trial == "RENDITION (15)")
 {
-  twitterImageURL = './trial_images/RENDITION/rendition_amethyst.png';
+  twitterImageURL = './trial_images/RENDITION/Rendition Amethyst.webp';
 }
 else if (rank == "Emerald" && trial == "RENDITION (15)")
 {
-  twitterImageURL = './trial_images/RENDITION/rendition_emerald.png';
+  twitterImageURL = './trial_images/RENDITION/Rendition Emerald.webp';
 }
-
-  //TODO: Add updated images
+else if (rank == "Platinum" && trial == "RENDITION (15)")
+{
+  twitterImageURL = './trial_images/RENDITION/Rendition Platinum.webp';
+}
+else if (rank == "Onyx" && trial == "RENDITION (15)")
+{
+  twitterImageURL = './trial_images/RENDITION/Rendition Onyx.webp';
+}
 
 //SUPERSTAR (14)
 else if (rank == "Silver" && trial == "SUPERSTAR (14)")
 {
-  twitterImageURL = './trial_images/SUPERSTAR/superstar_silver.jpg';
+  twitterImageURL = './trial_images/SUPERSTAR/Superstar Silver.webp';
 }
 else if (rank == "Gold" && trial == "SUPERSTAR (14)")
 {
-  twitterImageURL = './trial_images/SUPERSTAR/superstar_gold.png';
+  twitterImageURL = './trial_images/SUPERSTAR/Superstar Gold.webp';
 }
 else if (rank == "Diamond" && trial == "SUPERSTAR (14)")
 {
-  twitterImageURL = './trial_images/SUPERSTAR/superstar_diamond.png';
+  twitterImageURL = './trial_images/SUPERSTAR/Superstar Diamond.webp';
 }
 else if (rank == "Cobalt" && trial == "SUPERSTAR (14)")
 {
-  twitterImageURL = './trial_images/SUPERSTAR/superstar_cobalt.png';
+  twitterImageURL = './trial_images/SUPERSTAR/Superstar Cobalt.webp';
 }
 else if (rank == "Amethyst" && trial == "SUPERSTAR (14)")
 {
-  twitterImageURL = './trial_images/SUPERSTAR/superstar_amethyst.png';
+  twitterImageURL = './trial_images/SUPERSTAR/Superstar Amethyst.webp';
 }
 else if (rank == "Emerald" && trial == "SUPERSTAR (14)")
 {
-  twitterImageURL = './trial_images/SUPERSTAR/superstar_emerald.png';
+  twitterImageURL = './trial_images/SUPERSTAR/Superstar Emerald.webp';
 }
-
-
+else if (rank == "Platinum" && trial == "SUPERSTAR (14)")
+{
+  twitterImageURL = './trial_images/SUPERSTAR/Superstar Platinum.webp';
+}
+else if (rank == "Onyx" && trial == "SUPERSTAR (14)")
+{
+  twitterImageURL = './trial_images/SUPERSTAR/Superstar Onyx.webp';
+}
 
 //EVENTS!
 //HALLOWED (13)
