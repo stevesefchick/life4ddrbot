@@ -9,6 +9,8 @@
 //TODO: Update actual spreadsheet source for Wood-->Copper
 //TODO: Dependabot updates
 
+//TODO: Add userID to database
+
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -611,6 +613,29 @@ function playerGetSpreadsheetRowTwitterValue(row, callback){
            // console.log("twitter = " + returnedTwitter);
 
             callback(null,returnedTwitter)
+
+  }, 25);
+}; 
+
+function playerGetSpreadsheetRowDiscordValue(row, callback){
+  setTimeout( function(){
+
+            var returnedDiscord = `${row[5]}`;
+
+
+            callback(null,returnedDiscord)
+
+  }, 25);
+}; 
+
+
+function playerGetSpreadsheetRowIDValue(row, callback){
+  setTimeout( function(){
+
+            var returnedID = `${row[6]}`;
+
+
+            callback(null,returnedID)
 
   }, 25);
 }; 
@@ -2620,11 +2645,12 @@ console.log("Player list retrieved!");
   if (playerSpreadsheetList.length)
   {
     playerSpreadsheetList.map((row) => {
-      //TODO: Add discord to this
       var playerName = wait.for(playerGetSpreadsheetRowNameValue,row);
       var playerRank = wait.for(playerGetSpreadsheetRowRankValue,row);
       var playerTwitter = wait.for(playerGetSpreadsheetRowTwitterValue,row);
       var playerRival = wait.for(playerGetSpreadsheetRowRivalValue,row);
+      var playerDiscord = wait.for(playerGetSpreadsheetRowDiscordValue,row);
+      var playerID = wait.for(playerGetSpreadsheetRowIDValue,row);
 
 
       if ((playerName != null && playerName != undefined) &&
@@ -2636,6 +2662,8 @@ console.log("Player list retrieved!");
 
 
       //exists
+      //TODO: Add ID
+      //TODO: Add Discord
       if (playerresults && playerresults.length)
       {
         console.log("Player "+playerName + " exists!");
@@ -2657,6 +2685,8 @@ console.log("Player list retrieved!");
 
       }
       //does not exist!
+      //TODO: Add ID
+      //TODO: Add Discord
       else
       {
         console.log("Player " + playerName + " does not exist!");
