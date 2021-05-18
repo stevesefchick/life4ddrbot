@@ -5,11 +5,8 @@
 //Tweets to @Life4DDRBot
 //built using NodeJS
 
-//TODO: Update spreadsheet columns based on new ranks
 //TODO: Update actual spreadsheet source for Wood-->Copper
 //TODO: Dependabot updates
-
-//TODO: Add userID to database
 
 const fs = require('fs');
 const readline = require('readline');
@@ -1027,12 +1024,11 @@ function getranksevent(trialname, playerName, playerRank, callback){
 
 }
 
-//TODO: Add Discord Handle
-function updatePlayerRecord(playerName, playerRank, playerRival, playerTwitter,callback){
+function updatePlayerRecord(playerName, playerRank, playerRival, playerTwitter, playerDiscord, playerLIFE4ID, callback){
 
   setTimeout( function(){
 
-    var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "', playerRivalCode='"+playerRival+"', twitterHandle='"+ playerTwitter + "', playerDateEarned=now() where playerName = '" + playerName +"'";
+    var updateplayerquery = "UPDATE playerList set playerRank='" + playerRank + "', playerRivalCode='"+playerRival+"', twitterHandle='"+ playerTwitter + "', playerDateEarned=now(), discordHandle='" + playerDiscord + "', playerLIFE4ID='"+ playerLIFE4ID + "' where playerName = '" + playerName +"'";
     connection.query(updateplayerquery, function (error, results) {
         if (error) throw error;
         callback(null,results)
@@ -1044,12 +1040,11 @@ function updatePlayerRecord(playerName, playerRank, playerRival, playerTwitter,c
 
 }
 
-//TODO: Add Discord Handle
-function insertNewPlayerRecord(playerName, playerRank, playerRival, playerTwitter,callback){
+function insertNewPlayerRecord(playerName, playerRank, playerRival, playerTwitter, playerDiscord, playerLIFE4ID, callback){
 
   setTimeout( function(){
 
-    var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRival + "','"+playerTwitter+"', now())";
+    var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, discordHandle, playerLIFE4ID playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRival + "','"+playerTwitter+"', '"+playerDiscord+"', '"+playerLIFE4ID+"', now())";
     connection.query(insertplayerquery, function (error, results) {
         if (error) throw error;
         callback(null,results)
@@ -2650,7 +2645,7 @@ console.log("Player list retrieved!");
       var playerTwitter = wait.for(playerGetSpreadsheetRowTwitterValue,row);
       var playerRival = wait.for(playerGetSpreadsheetRowRivalValue,row);
       var playerDiscord = wait.for(playerGetSpreadsheetRowDiscordValue,row);
-      var playerID = wait.for(playerGetSpreadsheetRowIDValue,row);
+      var playerLIFE4ID = wait.for(playerGetSpreadsheetRowIDValue,row);
 
 
       if ((playerName != null && playerName != undefined) &&
@@ -2662,8 +2657,6 @@ console.log("Player list retrieved!");
 
 
       //exists
-      //TODO: Add ID
-      //TODO: Add Discord
       if (playerresults && playerresults.length)
       {
         console.log("Player "+playerName + " exists!");
@@ -2675,7 +2668,7 @@ console.log("Player list retrieved!");
         else
         {
           console.log("New rank!");
-          var updateplayerresults = wait.for(updatePlayerRecord, playerName,playerRank,playerRival,playerTwitter);
+          var updateplayerresults = wait.for(updatePlayerRecord, playerName,playerRank,playerRival,playerTwitter,playerDiscord,playerLIFE4ID);
           console.log("Player updated!");
           var insertresults = wait.for(insertNewPlayerAuditRecord, playerresults[0].playerID, playerRank);
           console.log("Player Audit History complete!");
@@ -2685,13 +2678,11 @@ console.log("Player list retrieved!");
 
       }
       //does not exist!
-      //TODO: Add ID
-      //TODO: Add Discord
       else
       {
         console.log("Player " + playerName + " does not exist!");
-              //insert if new
-        var playerinsert = wait.for(insertNewPlayerRecord,playerName,playerRank,playerRival,playerTwitter);
+        //insert if new
+        var playerinsert = wait.for(insertNewPlayerRecord,playerName,playerRank,playerRival,playerTwitter,playerDiscord,playerLIFE4ID);
         console.log("Player " + playerName + " added!");
         //re-retrieve player
         playerresults = wait.for(checkForExistingPlayer, playerName);
