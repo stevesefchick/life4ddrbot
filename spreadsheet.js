@@ -5,7 +5,6 @@
 //Tweets to @Life4DDRBot
 //built using NodeJS
 
-//TODO: Update actual spreadsheet source for Wood-->Copper
 //TODO: Dependabot updates
 
 const fs = require('fs');
