@@ -2589,8 +2589,8 @@ function LIFE4sequence()
   connection.connect();
 
   //old, readd if needed
-  //var getTrialJSON = wait.for(getCredentials);
-  //console.log("JSON Cred object retrieved!");
+  var getTrialJSON = wait.for(getCredentials);
+  console.log("JSON Cred object retrieved!");
   //var getauth = wait.for(newauthorize,getTrialJSON);
 
 
@@ -3110,6 +3110,7 @@ console.log("LIFE4 bot update complete!");
 connection.end();
 }
 
+//uncomment these when you need a new token
 //function newauthorize(credentials, callback) {
   function newauthorize(callback) {
 
