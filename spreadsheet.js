@@ -168,7 +168,7 @@ var getTwitterImageURL = function(rank)
   }
 
 
-  else if (rank == "Diamond I (P)" || "Diamond II (P)" || "Diamond III (P)" || "Diamond IV (P)" || "Diamond V (P)")
+  else if (rank == "Diamond I (P)" || rank =="Diamond II (P)" || rank =="Diamond III (P)" || rank =="Diamond IV (P)" || rank =="Diamond V (P)")
   {
     twitterImageURL = './rankup_images/Diamond_GenericP.webp';
   }
@@ -194,7 +194,7 @@ var getTwitterImageURL = function(rank)
   }
   
 
-  else if (rank == "Cobalt I (P)" || "Cobalt II (P)" || "Cobalt III (P)" || "Cobalt IV (P)" || "Cobalt V (P)")
+  else if (rank == "Cobalt I (P)" || rank =="Cobalt II (P)" || rank =="Cobalt III (P)" || rank =="Cobalt IV (P)" || rank =="Cobalt V (P)")
   {
     twitterImageURL = './rankup_images/Cobalt_GenericP.webp';
   }
@@ -261,7 +261,7 @@ var getTwitterImageURL = function(rank)
   }
 
 
-  else if (rank == "Amethyst I (P)" || "Amethyst II (P)" || "Amethyst III (P)" || "Amethyst IV (P)" || "Amethyst V (P)")
+  else if (rank == "Amethyst I (P)" || rank =="Amethyst II (P)" || rank =="Amethyst III (P)" || rank =="Amethyst IV (P)" || rank =="Amethyst V (P)")
   {
     twitterImageURL = './rankup_images/Amethyst_GenericP.webp';
   }
@@ -286,7 +286,7 @@ var getTwitterImageURL = function(rank)
     twitterImageURL = './rankup_images/Amethyst V.webp';
   }
   
-  else if (rank == "Emerald I (P)" || "Emerald II (P)" || "Emerald III (P)" || "Emerald IV (P)" || "Emerald V (P)")
+  else if (rank == "Emerald I (P)" || rank =="Emerald II (P)" || rank =="Emerald III (P)" || rank =="Emerald IV (P)" || rank =="Emerald V (P)")
   {
     twitterImageURL = './rankup_images/Emerald_GenericP.webp';
   }
@@ -312,7 +312,7 @@ var getTwitterImageURL = function(rank)
   }
   
 
-  else if (rank == "Platinum I (P)" || "Platinum II (P)" || "Platinum III (P)" || "Platinum IV (P)" || "Platinum V (P)")
+  else if (rank == "Platinum I (P)" || rank =="Platinum II (P)" || rank =="Platinum III (P)" || rank =="Platinum IV (P)" || rank =="Platinum V (P)")
   {
     twitterImageURL = './rankup_images/Platinum_GenericP.webp';
   }
@@ -338,7 +338,7 @@ var getTwitterImageURL = function(rank)
   }
 
 
-  else if (rank == "Onyx I (P)" || "Onyx II (P)" || "Onyx III (P)" || "Onyx IV (P)" || "Onyx V (P)")
+  else if (rank == "Onyx I (P)" || rank =="Onyx II (P)" || rank =="Onyx III (P)" || rank =="Onyx IV (P)" || rank =="Onyx V (P)")
   {
     twitterImageURL = './rankup_images/Onyx_GenericP.webp';
   }
