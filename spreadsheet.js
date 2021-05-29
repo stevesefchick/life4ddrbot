@@ -737,7 +737,7 @@ function playerGetSpreadsheetRowDiscordValue(row, callback){
   setTimeout( function(){
 
             var returnedDiscord = `${row[5]}`;
-
+            console.log("Discord value = " + returnedDiscord);
 
             callback(null,returnedDiscord)
 
@@ -749,7 +749,7 @@ function playerGetSpreadsheetRowIDValue(row, callback){
   setTimeout( function(){
 
             var returnedID = `${row[6]}`;
-
+            console.log("ID Value = " + returnedID);
 
             callback(null,returnedID)
 
@@ -3182,7 +3182,7 @@ function newGetPlayersFromSheets(auth,callback)
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.get({
     spreadsheetId: '1FPiO1h9XDSeTB6tWmRi7ursSqFOBYitiVweu3eOQ8tg',
-    range: 'User List!A2:E',
+    range: 'User List!A2:G',
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
