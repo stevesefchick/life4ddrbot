@@ -46,7 +46,7 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/Gold I.webp';
   }
-  if (rank ==  "Gold I (P)")
+  else if (rank ==  "Gold I (P)")
   {
     twitterImageURL = './rankup_images/GoldI_P.webp';
   }
@@ -54,7 +54,7 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/Gold II.webp';
   }
-  if (rank ==  "Gold II (P)")
+  else if (rank ==  "Gold II (P)")
   {
     twitterImageURL = './rankup_images/GoldII_P.webp';
   }
@@ -62,7 +62,7 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/Gold III.webp';
   }
-  if (rank ==  "Gold III (P)")
+  else if (rank ==  "Gold III (P)")
   {
     twitterImageURL = './rankup_images/GoldIII_P.webp';
   }
@@ -70,7 +70,7 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/Gold IV.webp';
   }
-  if (rank ==  "Gold IV (P)")
+  else if (rank ==  "Gold IV (P)")
   {
     twitterImageURL = './rankup_images/GoldIV_P.webp';
   }
@@ -78,7 +78,7 @@ var getTwitterImageURL = function(rank)
   {
     twitterImageURL = './rankup_images/Gold V.webp';
   }
-  if (rank ==  "Gold V (P)")
+  else if (rank ==  "Gold V (P)")
   {
     twitterImageURL = './rankup_images/GoldV_P.webp';
   }
@@ -1163,7 +1163,7 @@ function insertNewPlayerRecord(playerName, playerRank, playerRival, playerTwitte
 
   setTimeout( function(){
 
-    var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, discordHandle, playerLIFE4ID playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRival + "','"+playerTwitter+"', '"+playerDiscord+"', '"+playerLIFE4ID+"', now())";
+    var insertplayerquery = "INSERT INTO playerList (playerName, playerRank, playerRivalCode, twitterHandle, discordHandle, playerLIFE4ID, playerDateEarned) VALUES ('" + playerName + "','" + playerRank + "','" + playerRival + "','"+playerTwitter+"', '"+playerDiscord+"', '"+playerLIFE4ID+"', now())";
     connection.query(insertplayerquery, function (error, results) {
         if (error) throw error;
         callback(null,results)
@@ -2589,8 +2589,8 @@ function LIFE4sequence()
   connection.connect();
 
   //old, readd if needed
-  var getTrialJSON = wait.for(getCredentials);
-  console.log("JSON Cred object retrieved!");
+  //var getTrialJSON = wait.for(getCredentials);
+  //console.log("JSON Cred object retrieved!");
   //var getauth = wait.for(newauthorize,getTrialJSON);
 
 
