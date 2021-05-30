@@ -5,7 +5,11 @@
 //Tweets to @Life4DDRBot
 //built using NodeJS
 
+//TODO: Look into startup crash
 //TODO: Dependabot updates
+//TODO: Get userID sync
+//TODO: Get discord sync
+//TODO: Add discord messaging
 
 const fs = require('fs');
 const readline = require('readline');
