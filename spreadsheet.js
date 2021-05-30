@@ -432,6 +432,10 @@ var getDiscordIcon = function(rank)
   {
     discordemoji = "<:b5:825469496742903828>";
   }
+  else if (rank == "Diamond (P)")
+  {
+    discordemoji = "<:d1:530667766487842826>";
+  }
   else if (rank == "Diamond I")
   {
     discordemoji = "<:d1:530667766487842826>";
@@ -451,6 +455,10 @@ var getDiscordIcon = function(rank)
   else if (rank == "Diamond V")
   {
     discordemoji = "<:d5:825469716003815465>";
+  }
+  else if (rank == "Cobalt (P)")
+  {
+    discordemoji = "<:c1:530667803498250252>";
   }
   else if (rank == "Cobalt I")
   {
@@ -492,6 +500,10 @@ var getDiscordIcon = function(rank)
   {
     discordemoji = "<:cp5:825469270259269672>";
   }
+  else if (rank == "Amethyst (P)")
+  {
+    discordemoji = "<:a1:540807826323537930>";
+  }
   else if (rank == "Amethyst I")
   {
     discordemoji = "<:a1:540807826323537930>";
@@ -511,6 +523,10 @@ var getDiscordIcon = function(rank)
   else if (rank == "Amethyst V")
   {
     discordemoji = "<:a5:825469797906645022>";
+  }
+  else if (rank == "Emerald (P)")
+  {
+    discordemoji = "<:e1:592474998820569088>";
   }
   else if (rank == "Emerald I")
   {
@@ -532,25 +548,29 @@ var getDiscordIcon = function(rank)
   {
     discordemoji = "<:e5:825469838125826093>";
   }
-  else if (rank == "Platinum I")
+  else if (rank == "Platinum I" || rank =="Platinum I (P)")
   {
     discordemoji = "<:p1:645457791942918164>";
   }
-  else if (rank == "Platinum II")
+  else if (rank == "Platinum II" || rank =="Platinum II (P)")
   {
     discordemoji = "<:p2:645457792022347806>";
   }
-  else if (rank == "Platinum III")
+  else if (rank == "Platinum III" || rank =="Platinum III (P)")
   {
     discordemoji = "<:p3:645457792081330193>";
   }
-  else if (rank == "Platinum IV")
+  else if (rank == "Platinum IV" || rank =="Platinum IV (P)")
   {
     discordemoji = "<:p4:825469652532592681>";
   }
-  else if (rank == "Platinum V")
+  else if (rank == "Platinum V" || rank =="Platinum V (P)")
   {
     discordemoji = "<:p5:825469675420385371>";
+  }
+  else if (rank == "Onyx (P)")
+  {
+    discordemoji = "<:on1:825471342387134474>";
   }
   else if (rank == "Onyx I")
   {
@@ -737,7 +757,6 @@ function playerGetSpreadsheetRowDiscordValue(row, callback){
   setTimeout( function(){
 
             var returnedDiscord = `${row[5]}`;
-            console.log("Discord value = " + returnedDiscord);
 
             callback(null,returnedDiscord)
 
@@ -749,7 +768,6 @@ function playerGetSpreadsheetRowIDValue(row, callback){
   setTimeout( function(){
 
             var returnedID = `${row[6]}`;
-            console.log("ID Value = " + returnedID);
 
             callback(null,returnedID)
 
