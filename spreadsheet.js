@@ -168,7 +168,7 @@ var getTwitterImageURL = function(rank)
   }
 
 
-  else if (rank == "Diamond I (P)" || rank =="Diamond II (P)" || rank =="Diamond III (P)" || rank =="Diamond IV (P)" || rank =="Diamond V (P)")
+  else if (rank == "Diamond (P)")
   {
     twitterImageURL = './rankup_images/Diamond_GenericP.webp';
   }
