@@ -312,7 +312,7 @@ var getTwitterImageURL = function(rank)
   }
   
 
-  else if (rank == "Platinum I (P)" || rank =="Platinum II (P)" || rank =="Platinum III (P)" || rank =="Platinum IV (P)" || rank =="Platinum V (P)")
+  else if (rank == "Platinum (P)")
   {
     twitterImageURL = './rankup_images/Platinum_GenericP.webp';
   }
@@ -547,6 +547,10 @@ var getDiscordIcon = function(rank)
   else if (rank == "Emerald V")
   {
     discordemoji = "<:e5:825469838125826093>";
+  }
+  else if (rank == "Platinum (P)")
+  {
+    discordemoji = "<:p1:645457791942918164>";
   }
   else if (rank == "Platinum I" || rank =="Platinum I (P)")
   {
