@@ -198,7 +198,7 @@ var getTwitterImageURL = function(rank)
   }
   
 
-  else if (rank == "Cobalt I (P)" || rank =="Cobalt II (P)" || rank =="Cobalt III (P)" || rank =="Cobalt IV (P)" || rank =="Cobalt V (P)")
+  else if (rank == "Cobalt (P)")
   {
     twitterImageURL = './rankup_images/Cobalt_GenericP.webp';
   }
@@ -265,7 +265,7 @@ var getTwitterImageURL = function(rank)
   }
 
 
-  else if (rank == "Amethyst I (P)" || rank =="Amethyst II (P)" || rank =="Amethyst III (P)" || rank =="Amethyst IV (P)" || rank =="Amethyst V (P)")
+  else if (rank == "Amethyst (P)")
   {
     twitterImageURL = './rankup_images/Amethyst_GenericP.webp';
   }
@@ -342,7 +342,7 @@ var getTwitterImageURL = function(rank)
   }
 
 
-  else if (rank == "Onyx I (P)" || rank =="Onyx II (P)" || rank =="Onyx III (P)" || rank =="Onyx IV (P)" || rank =="Onyx V (P)")
+  else if (rank == "Onyx I (P)")
   {
     twitterImageURL = './rankup_images/Onyx_GenericP.webp';
   }
@@ -526,7 +526,7 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Amethyst V")
   {
-    discordemoji = "<:a5:825469797906645022>";
+    discordemoji = "<:a5:837270346096181258>";
   }
   else if (rank == "Emerald (P)")
   {
