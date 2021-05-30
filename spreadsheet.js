@@ -286,7 +286,7 @@ var getTwitterImageURL = function(rank)
     twitterImageURL = './rankup_images/Amethyst V.webp';
   }
   
-  else if (rank == "Emerald I (P)" || rank =="Emerald II (P)" || rank =="Emerald III (P)" || rank =="Emerald IV (P)" || rank =="Emerald V (P)")
+  else if (rank == "Emerald (P)")
   {
     twitterImageURL = './rankup_images/Emerald_GenericP.webp';
   }
