@@ -10,6 +10,7 @@
 //TODO: Get userID sync
 //TODO: Get discord sync
 //TODO: Add discord messaging
+//TODO: recheck amethyst icons
 
 const fs = require('fs');
 const readline = require('readline');
@@ -510,7 +511,7 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Amethyst I")
   {
-    discordemoji = "<:a1:540807826323537930>";
+    discordemoji = "<:a1:837270276634705991>";
   }
   else if (rank == "Amethyst II")
   {
@@ -518,7 +519,7 @@ var getDiscordIcon = function(rank)
   }
   else if (rank == "Amethyst III")
   {
-    discordemoji = "<:a3:540807991373594633>";
+    discordemoji = "<:a3:837270327514890280>";
   }
   else if (rank == "Amethyst IV")
   {
