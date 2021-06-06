@@ -10,7 +10,6 @@
 //TODO: Get userID sync
 //TODO: Get discord sync
 //TODO: Add discord messaging
-//TODO: recheck amethyst icons
 
 const fs = require('fs');
 const readline = require('readline');
@@ -343,7 +342,7 @@ var getTwitterImageURL = function(rank)
   }
 
 
-  else if (rank == "Onyx I (P)")
+  else if (rank == "Onyx (P)")
   {
     twitterImageURL = './rankup_images/Onyx_GenericP.webp';
   }
