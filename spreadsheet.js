@@ -2509,11 +2509,42 @@ function announcePlayerRankupDiscord(playerName, playerRank,callback)
 
 }
 
-//TODO: Add Discord Handle
-function announceNewPlayerDiscord(playerName, playerRank,callback)
+//TODO: Test discord announce
+//TODO: Re-enable twitter
+function announceNewPlayerDiscord(playerName, playerRank,playerDiscordHandle,callback)
 {
   setTimeout( function(){
 
+    var discordpost="";
+    var updatedhandle = "'"+playerDiscordHandle+"'";
+    
+    if (playerDiscordHandle != "" && playerDiscordHandle != "undefined")
+    {
+      console.log(playerDiscordHandle);
+      console.log(bot.users.cache.find(u => u.tag === 'stevesefchick#7960'));
+     
+      
+      var userid = bot.users.cache.find(u => u.tag === playerDiscordHandle).id;
+      var id = "<@" + userid + ">";
+
+      discordpost = "Player " + playerName + " (" + id + ") has joined LIFE4! Their current rank is " + playerRank + "! Welcome! "+ getDiscordIcon(playerRank);
+    }
+    else
+    {
+      discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon(playerRank);
+    }
+
+    const channel = bot.channels.find('name', 'rankups')
+    channel.send(discordpost)
+    .then(message => console.log(discordpost))
+    .catch(console.error);
+
+    callback(null,"done");
+
+
+
+    //old
+    /*
     var discordpost = "Player " + playerName + " has joined LIFE4! Their current rank is " + playerRank + "! Welcome! " + getDiscordIcon(playerRank);
 
     const channel = bot.channels.find('name', 'rankups')
@@ -2523,6 +2554,7 @@ function announceNewPlayerDiscord(playerName, playerRank,callback)
 
     callback(null,"done");
 
+    */
 
 }, 750);
 
@@ -2723,7 +2755,6 @@ try
     {
         console.log("Player identified!");
 
-        //TODO: Get discord handle to playerinfo
         var playerInfo = wait.for(getPlayerQueueInfo,queueResults[0].playerID);
         var playerName = wait.for(playerUpdateName, playerInfo[0].playerName);
 
@@ -2731,10 +2762,9 @@ try
         
         if (queueResults[0].updateType == "NEW")
         {
-          var twitterannounce = wait.for(announceNewPlayerTwitter, playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
-          console.log("Twitter announcement complete!");
-          //TODO: Add discord handle
-          var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerInfo[0].playerRank);
+          //var twitterannounce = wait.for(announceNewPlayerTwitter, playerName, playerInfo[0].playerRank, playerInfo[0].twitterHandle);
+          //console.log("Twitter announcement complete!");
+          var discordannounce = wait.for(announceNewPlayerDiscord, playerName, playerInfo[0].playerRank, playerInfo[0].discordHandle);
           console.log("Discord announcement complete!");
         }
         else if (queueResults[0].updateType == "UPDATE")
