@@ -636,7 +636,7 @@ var getTrialDiscordIcon = function(rank)
   }
   else if (rank == "Amethyst")
   {
-    discordemoji = "<:a5:837270346096181258>";
+    discordemoji = "<:a5:825469797906645022>";
   }
   else if (rank == "Emerald")
   {
