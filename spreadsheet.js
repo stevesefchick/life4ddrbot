@@ -25,6 +25,7 @@ var Twitter = new twit(config);
 //discord
 var Discord = require('discord.js');
 var bot = new Discord.Client();
+var guild = new Discord.Guild();
 
 //waitfor
 var wait = require('wait.for');
@@ -2509,6 +2510,7 @@ function announcePlayerRankupDiscord(playerName, playerRank,callback)
 
 }
 
+
 //TODO: Test discord announce
 //TODO: Re-enable twitter
 function announceNewPlayerDiscord(playerName, playerRank,playerDiscordHandle,callback)
@@ -2522,7 +2524,9 @@ function announceNewPlayerDiscord(playerName, playerRank,playerDiscordHandle,cal
     {
       console.log(playerDiscordHandle);
       console.log(bot.users.cache.find(u => u.tag === 'stevesefchick#7960'));
-     
+      console.log(bot.users.cache.find(u => u.tag === 'LIFE4DDRBOT#5086'));
+      console.log(bot.users.cache.get(u => u.tag === 'stevesefchick#7960'));
+      console.log(bot.users.cache.get("tag","stevesefchick#7960"));
       
       var userid = bot.users.cache.find(u => u.tag === playerDiscordHandle).id;
       var id = "<@" + userid + ">";
@@ -2790,7 +2794,7 @@ var queueDone = wait.for(setQueueItemToProcessed,queueResults[0].playerQueueID);
 catch(error)
 {
   console.log("ERROR!");
-
+  console.log(console.error);
 
   const channel = bot.channels.find('name', 'admin-bot')
   channel.send("Uh oh! Something went wrong when posting an update! \n PlayerQueueID = "+queueResults[0].playerQueueID +"\n Logs: \n" + error)
